@@ -6,5 +6,5 @@ g++ main.cpp -std=c++17 -c -o Obj/main.o -w
 
 #g++ QSR/Obj/Reltt.o QSR/Obj/main.o -o bin/Reltt
 #exit
-export RelttPath="/Users/christopherclement/Projects/Reltt_LAng"
-export PATH="$RelttPath/bin:$PATH"
+export RelttPath="/Users/christopherclement/Projects/Reltt_LAng/Reltt/"
+export PATH="$RelttPath\ bin:$PATH"

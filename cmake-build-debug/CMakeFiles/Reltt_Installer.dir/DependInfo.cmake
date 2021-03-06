@@ -1,11 +1,19 @@
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
+  "C"
   "CXX"
   )
 # The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_C
+  "/Users/christopherclement/Projects/Reltt_LAng/Reltt/Modules/ASM.c" "/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles/Reltt_Installer.dir/Reltt/Modules/ASM.c.o"
+  )
+set(CMAKE_C_COMPILER_ID "AppleClang")
+
+# The include file search paths:
+set(CMAKE_C_TARGET_INCLUDE_PATH
+  )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/christopherclement/Projects/Reltt_LAng/Reltt/Reltt.cpp" "/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles/Reltt_Installer.dir/Reltt/Reltt.cpp.o"
-  "/Users/christopherclement/Projects/Reltt_LAng/Reltt/main.cpp" "/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles/Reltt_Installer.dir/Reltt/main.cpp.o"
+  "/Users/christopherclement/Projects/Reltt_LAng/Installer/Installer.cpp" "/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles/Reltt_Installer.dir/Installer/Installer.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

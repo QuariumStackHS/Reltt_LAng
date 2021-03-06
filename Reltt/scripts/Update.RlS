@@ -7,12 +7,19 @@ using scripts/CSscript.RlS
 
 func update ( ) as:
     App-RCP
-    call Native -> "Reltt-Update" "scripts/Update.RlS"
-    call Native -> "Reltt-Compile" "scripts/Compile.RlS"
-    call Native -> "Reltt-Help" "scripts/help.qf"
+    Gen_Help
+    call Native -> "Reltt_Update" "scripts/Update.RlS"
+    call Native -> "Reltt_Compile" "scripts/Compile.RlS"
+    call Native -> "Reltt_Help" "scripts/help.qf"
 
 end;
+import "ASM"
+ASM test ( ) as:
 
+mov eax dc
+mov eax cx
+
+end;
 
 call update
 

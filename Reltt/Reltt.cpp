@@ -1088,6 +1088,12 @@ int Reltt_INT::init_Func()
     add_Cask("*>", "[varname], delete var √", &Del);
     add_Cask("DMP", "show loaded UD_function. Note this function do not work with compiled script √", &Dump);
     add_Cask("if", "if ( bool ) then ø", &R_If);
+    //inline asm("mov ")
+    /*
+
+
+
+     */
     //add_Cask("print", "[varname]", &print);
     /*add Operators*/
     //add_Cask("+", "[module]", &Plus);
