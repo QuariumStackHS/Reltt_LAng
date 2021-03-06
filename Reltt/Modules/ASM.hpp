@@ -41,7 +41,7 @@ void *new_asmfun(Reltt_INT *IN){
             }
         }
         ofstream NasmFile;
-        NasmFile.open((FucName+".nasm").c_str());
+        NasmFile.open((FucName+".cRlS").c_str());
         NasmFile<<FncCode<<"\n";
         NasmFile.close();
         IN->newFunc(FucName, beginline, EndOFFunc, G);

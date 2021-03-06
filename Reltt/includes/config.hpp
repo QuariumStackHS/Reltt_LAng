@@ -60,12 +60,13 @@ class Configurator{
     public:
     Configurator();
     //Data
-    string Reltt_path=getenv("RelttPath");
+    string Reltt_path;
     string ProgrameName;
     //string *IncPath;
     int buildtype;
     int CPPLang;
     int Termwidth;
     bool debug;
+
 };
 #endif

@@ -9,7 +9,7 @@ void *Gen_Help(Reltt_INT *IN)
     vector<string> VOM;
     ofstream myfile;
 
-    myfile.open("scripts/help.QF");
+    myfile.open("help.QF");
     myfile << "Begin:\n";
     myfile << "-help Base\n";
     cout << GREEN << "\tModule\t" << BLUE << "Base (Reltt)" << RESET << GREEN << "\tWith " << BOLDBLUE << IN->__Tasks.size() << RESET << GREEN << " Functions" << endl;

@@ -31,8 +31,18 @@ includes/Reltt.hpp
 /Users/christopherclement/Projects/Reltt_LAng/Reltt/Reltt.cpp
 includes/Reltt.hpp
 /Users/christopherclement/Projects/Reltt_LAng/Reltt/includes/Reltt.hpp
+cfg.hpp
+/Users/christopherclement/Projects/Reltt_LAng/Reltt/cfg.hpp
 Modules.hpp
 /Users/christopherclement/Projects/Reltt_LAng/Reltt/Modules.hpp
+filesystem
+-
+dirent.h
+-
+cstdlib
+-
+
+/Users/christopherclement/Projects/Reltt_LAng/Reltt/cfg.hpp
 filesystem
 -
 dirent.h
@@ -53,4 +63,18 @@ vector
 -
 string
 -
+
+/Users/christopherclement/Projects/Reltt_LAng/Reltt/includes/info.hpp
+iostream
+-
+string
+-
+config.hpp
+/Users/christopherclement/Projects/Reltt_LAng/Reltt/includes/config.hpp
+
+/Users/christopherclement/Projects/Reltt_LAng/Reltt/main.cpp
+includes/Reltt.hpp
+/Users/christopherclement/Projects/Reltt_LAng/Reltt/includes/Reltt.hpp
+includes/info.hpp
+/Users/christopherclement/Projects/Reltt_LAng/Reltt/includes/info.hpp
 

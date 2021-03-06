@@ -6,6 +6,7 @@ CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/Modules/ASM.hpp
 CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/Modules/Generator.hpp
 CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/Modules/RelttSTD.hpp
 CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/Reltt.cpp
+CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/cfg.hpp
 CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/includes/Reltt.hpp
 CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/includes/config.hpp
 

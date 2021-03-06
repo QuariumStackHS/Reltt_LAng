@@ -1,4 +1,4 @@
-g++ Reltt.cpp -std=c++17 -c -o QSR/Obj/Reltt.o -w
+g++ Reltt.cpp -std=c++17 -c -o Obj/Reltt.o -w
 
 g++ main.cpp -std=c++17 -c -o Obj/main.o -w
 

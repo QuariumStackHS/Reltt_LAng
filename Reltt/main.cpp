@@ -8,11 +8,11 @@ int main(int argc, char **argv)
     //cout<<ch;
     }*/
     try
-    {
+    {Reltt_Info();
         char *argcv[3];
         if (argc == 1)
         {
-            Reltt_Info();
+
             string command = "";
             string buffer = "";
             Reltt_INT *Args = new Reltt_INT();

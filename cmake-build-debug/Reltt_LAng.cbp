@@ -125,12 +125,6 @@
 		<Unit filename="/Users/christopherclement/Projects/Reltt_LAng/Installer/Installer.cpp">
 			<Option target="Reltt_Installer"/>
 		</Unit>
-		<Unit filename="/Users/christopherclement/Projects/Reltt_LAng/Reltt/Modules/ASM.c">
-			<Option target="Reltt_Installer"/>
-		</Unit>
-		<Unit filename="/Users/christopherclement/Projects/Reltt_LAng/Reltt/Modules/ASM.h">
-			<Option target="Reltt_Installer"/>
-		</Unit>
 		<Unit filename="/Users/christopherclement/Projects/Reltt_LAng/Reltt/Reltt.cpp">
 			<Option target="Reltt_LAng"/>
 		</Unit>

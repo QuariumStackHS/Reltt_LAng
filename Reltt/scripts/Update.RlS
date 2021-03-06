@@ -13,13 +13,7 @@ func update ( ) as:
     call Native -> "Reltt_Help" "scripts/help.qf"
 
 end;
-import "ASM"
-ASM test ( ) as:
 
-mov eax dc
-mov eax cx
-
-end;
 
 call update
 

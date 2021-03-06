@@ -5,7 +5,7 @@
 //#include "ConstArgv.hpp"
 #include "includes/Reltt.hpp"
 //#include "../Cfg.hpp"
-
+#include "cfg.hpp"
 #include "Modules.hpp"
 #include <filesystem>
 #include <dirent.h>
@@ -1197,12 +1197,4 @@ Value func_INS_Var::get_Value(string Varnmae)
     }
 
     return Value(Varnmae, Varnmae, "string");
-}
-Configurator::Configurator()
-{
-    this->buildtype = EXE;
-    this->CPPLang = CPP17;
-    this->ProgrameName = "RELTT";
-    this->Termwidth=90;
-    this->debug=0;
 }
