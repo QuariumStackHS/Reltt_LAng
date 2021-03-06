@@ -73,6 +73,7 @@ CMAKE_BINARY_DIR = /Users/christopherclement/Projects/Reltt_LAng/cmake-build-deb
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/Reltt_Installer.dir/all
 all: CMakeFiles/Reltt_LAng.dir/all
 
 .PHONY : all
@@ -83,9 +84,37 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/Reltt_Installer.dir/clean
 clean: CMakeFiles/Reltt_LAng.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Reltt_Installer.dir
+
+# All Build rule for target.
+CMakeFiles/Reltt_Installer.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Reltt_Installer.dir/build.make CMakeFiles/Reltt_Installer.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Reltt_Installer.dir/build.make CMakeFiles/Reltt_Installer.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target Reltt_Installer"
+.PHONY : CMakeFiles/Reltt_Installer.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Reltt_Installer.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Reltt_Installer.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/Reltt_Installer.dir/rule
+
+# Convenience name for target.
+Reltt_Installer: CMakeFiles/Reltt_Installer.dir/rule
+
+.PHONY : Reltt_Installer
+
+# clean rule for target.
+CMakeFiles/Reltt_Installer.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Reltt_Installer.dir/build.make CMakeFiles/Reltt_Installer.dir/clean
+.PHONY : CMakeFiles/Reltt_Installer.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/Reltt_LAng.dir
@@ -94,7 +123,7 @@ clean: CMakeFiles/Reltt_LAng.dir/clean
 CMakeFiles/Reltt_LAng.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Reltt_LAng.dir/build.make CMakeFiles/Reltt_LAng.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Reltt_LAng.dir/build.make CMakeFiles/Reltt_LAng.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target Reltt_LAng"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=4,5,6 "Built target Reltt_LAng"
 .PHONY : CMakeFiles/Reltt_LAng.dir/all
 
 # Build rule for subdir invocation for target.

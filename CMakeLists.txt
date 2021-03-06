@@ -3,4 +3,5 @@ project(Reltt_LAng)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Reltt_LAng main.cpp Reltt.cpp)
+add_executable(Reltt_LAng Reltt/main.cpp Reltt/Reltt.cpp)
+add_executable(Reltt_Installer Installer/main.cpp Reltt/Reltt.cpp)

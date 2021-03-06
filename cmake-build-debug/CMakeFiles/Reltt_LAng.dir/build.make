@@ -77,42 +77,42 @@ include CMakeFiles/Reltt_LAng.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Reltt_LAng.dir/flags.make
 
-CMakeFiles/Reltt_LAng.dir/main.cpp.o: CMakeFiles/Reltt_LAng.dir/flags.make
-CMakeFiles/Reltt_LAng.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Reltt_LAng.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Reltt_LAng.dir/main.cpp.o -c /Users/christopherclement/Projects/Reltt_LAng/main.cpp
+CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.o: CMakeFiles/Reltt_LAng.dir/flags.make
+CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.o: ../Reltt/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.o -c /Users/christopherclement/Projects/Reltt_LAng/Reltt/main.cpp
 
-CMakeFiles/Reltt_LAng.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Reltt_LAng.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/christopherclement/Projects/Reltt_LAng/main.cpp > CMakeFiles/Reltt_LAng.dir/main.cpp.i
+CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/christopherclement/Projects/Reltt_LAng/Reltt/main.cpp > CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.i
 
-CMakeFiles/Reltt_LAng.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Reltt_LAng.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/christopherclement/Projects/Reltt_LAng/main.cpp -o CMakeFiles/Reltt_LAng.dir/main.cpp.s
+CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/christopherclement/Projects/Reltt_LAng/Reltt/main.cpp -o CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.s
 
-CMakeFiles/Reltt_LAng.dir/Reltt.cpp.o: CMakeFiles/Reltt_LAng.dir/flags.make
-CMakeFiles/Reltt_LAng.dir/Reltt.cpp.o: ../Reltt.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Reltt_LAng.dir/Reltt.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Reltt_LAng.dir/Reltt.cpp.o -c /Users/christopherclement/Projects/Reltt_LAng/Reltt.cpp
+CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: CMakeFiles/Reltt_LAng.dir/flags.make
+CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o: ../Reltt/Reltt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o -c /Users/christopherclement/Projects/Reltt_LAng/Reltt/Reltt.cpp
 
-CMakeFiles/Reltt_LAng.dir/Reltt.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Reltt_LAng.dir/Reltt.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/christopherclement/Projects/Reltt_LAng/Reltt.cpp > CMakeFiles/Reltt_LAng.dir/Reltt.cpp.i
+CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/christopherclement/Projects/Reltt_LAng/Reltt/Reltt.cpp > CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.i
 
-CMakeFiles/Reltt_LAng.dir/Reltt.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Reltt_LAng.dir/Reltt.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/christopherclement/Projects/Reltt_LAng/Reltt.cpp -o CMakeFiles/Reltt_LAng.dir/Reltt.cpp.s
+CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/christopherclement/Projects/Reltt_LAng/Reltt/Reltt.cpp -o CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.s
 
 # Object files for target Reltt_LAng
 Reltt_LAng_OBJECTS = \
-"CMakeFiles/Reltt_LAng.dir/main.cpp.o" \
-"CMakeFiles/Reltt_LAng.dir/Reltt.cpp.o"
+"CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.o" \
+"CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o"
 
 # External object files for target Reltt_LAng
 Reltt_LAng_EXTERNAL_OBJECTS =
 
-Reltt_LAng: CMakeFiles/Reltt_LAng.dir/main.cpp.o
-Reltt_LAng: CMakeFiles/Reltt_LAng.dir/Reltt.cpp.o
+Reltt_LAng: CMakeFiles/Reltt_LAng.dir/Reltt/main.cpp.o
+Reltt_LAng: CMakeFiles/Reltt_LAng.dir/Reltt/Reltt.cpp.o
 Reltt_LAng: CMakeFiles/Reltt_LAng.dir/build.make
 Reltt_LAng: CMakeFiles/Reltt_LAng.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/christopherclement/Projects/Reltt_LAng/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Reltt_LAng"
