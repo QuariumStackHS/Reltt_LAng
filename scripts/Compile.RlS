@@ -1,0 +1,8 @@
+Begin:
+
+using "scripts/CSscript.RlS"
+import "Generator"
+
+call Native -> argv-1 argv-2
+
+end;

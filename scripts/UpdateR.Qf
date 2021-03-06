@@ -1,0 +1,24 @@
+beginf:
+
+
+import Std 
+
+/* idea */
+func ptes ( string ) as:
+    print "K#="
+    print @0
+end;
+
+func Fname ( string string ) as:
+    print "arg-1"
+    print @0
+    string I @1
+    call ptes with I
+    DMP
+end;
+
+
+
+call Fname with "0K" "0.0"
+
+end;
