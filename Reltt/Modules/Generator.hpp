@@ -61,7 +61,7 @@ void *As_Native(Reltt_INT *IN)
 
     ofstream myfile;
     string fileout = getenv("RelttPath") + (string) "cache/";
-    system(((string)"mkdir ").append(fileout).c_str());
+    //system(((string)"mkdir ").append(fileout).c_str());
     fileout.append(Appname).append("-OBJ.cpp");
     myfile.open(fileout.c_str());
 

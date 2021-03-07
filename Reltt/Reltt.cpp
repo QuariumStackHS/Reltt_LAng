@@ -542,7 +542,7 @@ void *Update(Reltt_INT *IN)
         string PG=getenv("RelttPath");
         cout << BOLDGREEN << "\nRecompiling Reltt interpreter:" << endl;
         cout << "\tUpdating configuration.." << RESET << endl;
-        int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -std=c++17 -c -o ").append(PG).append("Obj/Reltt.o -w").c_str());
+        int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -std=c++17 -c -o ").append(PG).append("OBJ/Reltt.o -w").c_str());
         if (i == 0)
         {
             cout << GREEN << "\tCompiled " << BLUE << "Reltt " << GREEN << "With Return code: " << CYAN << i / 256 << endl;

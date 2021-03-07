@@ -78,6 +78,8 @@ int main(){
     myfile.close();
     string CMD;
     CMD.append("g++ -std=c++17 -o ").append(i).append("bin/Reltt ").append(i).append("*.cpp -w");
+    string fileout = getenv("RelttPath") + (string) "cache/";
+    system(((string)"mkdir ").append(fileout).c_str());
     return system(CMD.c_str());
 
 }
