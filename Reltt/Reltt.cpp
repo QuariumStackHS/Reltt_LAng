@@ -266,11 +266,6 @@ vector<string> list_dir(string dird)
     //for (auto file : files) cout << file << "| ";
     //cout << endl;
 }
-struct var
-{
-    string varname;
-    string value;
-};
 
 Helper::Helper(Reltt_INT *HTL)
 {
@@ -344,10 +339,6 @@ Helper::Helper(Reltt_INT *HTL)
     cout << "┘" << endl;
     HTL->charstr++;
     //exit(0);
-}
-int Reltt_INT::GetInsL(int Ins)
-{
-    return this->lines[Ins];
 }
 int Reltt_INT::newFunc(string funcName, int line, int endline, vector<ArgType> AG)
 {
@@ -652,7 +643,7 @@ void *import_T(Reltt_INT *IN)
 
     string SKN = IN->getVar(IN->get_Next_Token()).S_value;
     //cout << "importing: " << SKN << endl;
-    ifstream Src(SKN.c_str());
+    ifstream Src(IN->get_fileOBJ(SKN));
     if (Src)
     {
         string Code;
@@ -678,40 +669,6 @@ void *import_T(Reltt_INT *IN)
         IN->getnextIns();
         //IN->charstr++;
         // cout << "klol" << endl;
-    }
-    else
-    {
-        ifstream Src((getenv("RelttPath") + SKN).c_str());
-        if (Src)
-        {
-            string Code;
-
-            int SG = 0;
-            int sk = 0;
-            vector<std::string> vB;
-            while (getline(Src, Code))
-            {
-                SG++;
-                std::vector<std::string> v;
-                split(Code, v, ' ');
-                sk += v.size();
-                vB.insert(vB.end(), v.begin(), v.end());
-
-                //this->argc++;
-
-                //cout << Code<<endl;
-            }
-            //cout << "Importing for real:" << endl;
-            IN->argv.insert(IN->argv.begin() + IN->charstr + 1, vB.begin() + 1, vB.end() - 1);
-
-            IN->getnextIns();
-            //IN->charstr++;
-            // cout << "klol" << endl;
-        }
-        else
-        {
-            cout << BOLDRED << "[ERROR]" << RESET << "no import possible with name: " << (getenv("RelttPath") + SKN).c_str() << endl;
-        }
     }
     return 0;
 }
@@ -1088,6 +1045,9 @@ int Reltt_INT::init_Func()
     add_Cask("*>", "[varname], delete var √", &Del);
     add_Cask("DMP", "show loaded UD_function. Note this function do not work with compiled script √", &Dump);
     add_Cask("if", "if ( bool ) then ø", &R_If);
+
+    add_path(getenv("RelttPath"));
+    add_path(((string)getenv("RelttPath")).append("scripts/"));
     //inline asm("mov ")
     /*
 

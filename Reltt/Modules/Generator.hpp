@@ -31,7 +31,7 @@ void *As_Native(Reltt_INT *IN)
 {
     string Appname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
     string Fname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
-    ifstream Src(Fname.c_str());
+    ifstream Src(IN->get_fileOBJ(Fname));
     //cout<<Appname<<IN->StackPointer<<endl;
     string Code;
     vector<string> CodeH;
@@ -56,35 +56,7 @@ void *As_Native(Reltt_INT *IN)
             }
         }
     }
-    else
-    {
-        ifstream Src((getenv("RelttPath") + Fname).c_str());
-        if (Src)
-        {
-            while (getline(Src, Code))
-            {
-                //SG++;
-                std::vector<std::string> v;
-                split(Code, v, ' ');
 
-                //cout << Code<<endl;
-                int k = v.size();
-                for (int i = 0; i < k; i++)
-                {
-                    if (strcmp(v[i].c_str(), ""))
-                    {
-                        CodeH.push_back(v[i].c_str());
-                        //this->argc++;
-                    }
-                    //this->lines.push_back(SG);
-                }
-            }
-        }
-        else
-        {
-            cout << "no file:" << Fname << endl;
-        }
-    }
 
     ofstream myfile;
     string fileout = getenv("RelttPath") + (string) "cache/";

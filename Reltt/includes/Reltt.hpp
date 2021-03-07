@@ -4,7 +4,7 @@
 #define COLOR 1
 
 #include "config.hpp"
-//#include <cstring>
+#include <cstring>
 
 #include <fstream> // std::fstream
 #define elif else if
@@ -30,6 +30,7 @@ class Value{
     float F_V;
     
     };*/
+
 class app
 {
 public:
@@ -114,6 +115,24 @@ public:
             }
         }
         return 0;
+    }
+    vector<string> paths;
+    string get_fileOBJ(string ik){
+
+        for (int i=0;i<paths.size();i++){
+            ifstream Src((paths[i]+((string)ik)).c_str());
+            if (Src){
+                return paths[i]+(ik);
+            }
+        }
+
+            return "None";
+
+
+
+    }
+    void add_path(string i){
+        this->paths.push_back(i);
     }
     vector<instruction> INSD;
     Value Resolve_statement();
