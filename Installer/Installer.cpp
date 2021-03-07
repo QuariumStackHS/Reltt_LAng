@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 //#include <ofstream>
+#include <cstring>
 #include <filesystem>
 #include <fstream>
 #define RESET   "\033[0m"
