@@ -1,0 +1,1 @@
+g++ -std=c++17 installer.cpp -o installer

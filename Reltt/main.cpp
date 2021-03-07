@@ -1,5 +1,45 @@
 #include "includes/Reltt.hpp"
+#include <iomanip>
+#include <unistd.h>
+#include <termios.h>
+#define BACKSPACE 127
+#define SPACE 32
+#define ENTER 10
+#define ctrlA 1
+#define ctrlB 2
+#define ctrlD 4
+#define CTRLE 5
+#define CTRLF 6
+#define CTRLG 7
 #include "includes/info.hpp"
+char getch() {
+    char buf = 0;
+    struct termios old = {0};
+    if (tcgetattr(0, &old) < 0)
+        perror("tcsetattr()");
+    old.c_lflag &= ~ICANON;
+    old.c_lflag &= ~ECHO;
+    old.c_cc[VMIN] = 1;
+    old.c_cc[VTIME] = 0;
+    if (tcsetattr(0, TCSANOW, &old) < 0)
+        perror("tcsetattr ICANON");
+    if (read(0, &buf, 1) < 0)
+        perror ("read()");
+    old.c_lflag |= ICANON;
+    old.c_lflag |= ECHO;
+    if (tcsetattr(0, TCSADRAIN, &old) < 0)
+        perror ("tcsetattr ~ICANON");
+    return (buf);
+}
+string getline(){
+    string BF;
+    for(int i=getch();(char)i!=(char)ENTER;i=getch()){
+        BF.push_back((char)i);
+    }
+    return BF;
+
+
+}
 int main(int argc, char **argv)
 {
     cout << "---------Reltt_Lang---------" << endl;
@@ -44,8 +84,8 @@ int main(int argc, char **argv)
             string buffer = "";
             Reltt_INT *Args = new Reltt_INT();
 
-            cout <<BOLDRED<<"Reltt"<<CYAN<<" ~>"<<RESET;
-            while (getline(cin, buffer))
+            cout <<BOLDRED<<"Reltt DS"<<CYAN<<" ~>"<<RESET;
+            for(string k=getline();)
 
             {vector<string> argvz;
                 //cout << "eareaing vector:" << endl;

@@ -42,9 +42,10 @@ int main(){
           "  | $$  | $$  | $$ \\____  $$  | $$ /$$ /$$__  $$| $$| $$| $$_____/| $$      \n"
           " /$$$$$$| $$  | $$ /$$$$$$$/  |  $$$$/|  $$$$$$$| $$| $$|  $$$$$$$| $$      \n"
           "|______/|__/  |__/|_______/    \\___/   \\_______/|__/|__/ \\_______/|__/"""<<RESET<<endl;
+    cout<<GREEN<<"credits to QuariumStackHS for this simple installer"<<RESET<<endl;
     string i=((string)"/Users/").append(getenv("USER")).append("/Reltt");
     cout<<"enter path to install Reltt or enter 0 to use: "<<RED<<i<<RESET<<endl;
-    cout<<CYAN<<"~>"<<RESET;
+    cout<<getenv("USER")<<"@Reltt %"<<CYAN<<" ~>"<<RESET;
 
     cin >>i;
     if (strcmp(i.c_str(),"0")==0){

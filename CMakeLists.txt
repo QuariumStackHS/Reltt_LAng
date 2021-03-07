@@ -5,3 +5,4 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(Reltt_LAng Reltt/main.cpp Reltt/Reltt.cpp)
 add_executable(Reltt_Installer Installer/Installer.cpp)
+add_executable(Reltt_IDE Reltt-Ide/Ide.cpp Reltt-Ide/Ide.h Reltt/Reltt.cpp)

@@ -551,16 +551,18 @@ void *Update(Reltt_INT *IN)
         string PG=getenv("RelttPath");
         cout << BOLDGREEN << "\nRecompiling Reltt interpreter:" << endl;
         cout << "\tUpdating configuration.." << RESET << endl;
-        int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -std=c++17 -c -o ").append(PG).append("Obj/Reltt.o -w").c_str());
+        string mkdir=PG+"OBJ/";
+        system(mkdir.c_str());
+        int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -std=c++17 -c -o ").append(PG).append("OBJ/Reltt.o -w").c_str());
         if (i == 0)
         {
             cout << GREEN << "\tCompiled " << BLUE << "Reltt " << GREEN << "With Return code: " << CYAN << i / 256 << endl;
 
-            int j = system((((string)"g++ ").append(PG).append("main.cpp -std=c++17 -c -o ").append(PG).append("main.o -w")).c_str());
+            int j = system((((string)"g++ ").append(PG).append("main.cpp -std=c++17 -c -o ").append(PG).append("OBJ/main.o -w")).c_str());
             if (j == 0)
             {
                 cout << GREEN << "\tCompiled " << BLUE << "Reltt_Main " << GREEN << "With Return code: " << CYAN << j / 256 << endl;
-                j = system((((string)"g++ -std=c++17 ").append(PG).append("Obj/Reltt.o ").append(PG).append("Obj/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
+                j = system((((string)"g++ -std=c++17 ").append(PG).append("OBJ/Reltt.o ").append(PG).append("OBJ/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
 
                 cout << GREEN << "\tLinked " << BLUE << "Reltt interpreter " << GREEN << "With Return code: " << CYAN << j / 256 << endl;
                 //j = system("g++ -std=c++17  $RelttPath/QSR/Obj/Reltt.o $RelttPath/QSR/Obj/main.o -o $RelttPath/Reltt.app/Contents/MacOS/Reltt -w");
@@ -801,7 +803,7 @@ int Reltt_INT::Parse()
             if ((isexist == 0) && (strcmp(getcurrentIns().c_str(), "Begin:") != 0))
             {
                 cout << RED << "[ERROR] " << BOLDRED << "Unknown Instruction: \"" << getcurrentIns() << "\"  at line : " << get_line_fromcharstr(charstr) << RESET << endl;
-                exit(0);
+                //exit(0);
             }
         }
         if ((this->DBuf == 0) && (first_ins == 1))
@@ -1051,7 +1053,23 @@ void *Dump(Reltt_INT *IN)
 {
     for (int i = 0; i < IN->Functions.size(); i++)
     {
-        cout << BLUE << IN->Functions[i].FuncName << RESET << " at line: " << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].BeginLine) - 1 << RESET << ":" << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].EndLine) << RESET << endl;
+        string Strs;
+        if (IN->Functions[i].ArgsT.size()!=0){
+        for (int j=0;j<IN->Functions[i].ArgsT.size();j++){
+            if (j+1<IN->Functions[i].ArgsT.size()){
+            Strs.append(RED).append(IN->Functions[i].ArgsT[j].ArgTyper).append(RESET).append(BLUE).append(", ").append(RESET);
+            }
+            else{
+                Strs.append(RED).append(IN->Functions[i].ArgsT[j].ArgTyper).append(RESET).append(BLUE).append(" ").append(RESET);
+
+            }
+        }
+        }
+        else{
+            Strs.append("None ");
+        }
+        Strs.append("as arg(s)");
+        cout << BLUE <<"\""<< IN->Functions[i].FuncName <<"\""<< RESET <<" -> "<<Strs<< " at line: " << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].BeginLine) - 1 << RESET << ":" << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].EndLine) << RESET << endl;
     }
 }
 void *with(Reltt_INT *IN)

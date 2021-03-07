@@ -1,0 +1,7 @@
+    |*.hpp
+config:
+    contain includes for config information for Reltt
+info:
+    provide Reltt a nice print
+Reltt:
+    Reltt main header file
