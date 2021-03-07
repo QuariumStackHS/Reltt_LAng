@@ -29,6 +29,7 @@ void *Gen_Help(Reltt_INT *IN)
 }
 void *As_Native(Reltt_INT *IN)
 {
+
     string Appname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
     string Fname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
     ifstream Src(IN->get_fileOBJ(Fname));
@@ -60,6 +61,7 @@ void *As_Native(Reltt_INT *IN)
 
     ofstream myfile;
     string fileout = getenv("RelttPath") + (string) "cache/";
+    system(((string)"mkdir ").append(fileout).c_str());
     fileout.append(Appname).append("-OBJ.cpp");
     myfile.open(fileout.c_str());
 

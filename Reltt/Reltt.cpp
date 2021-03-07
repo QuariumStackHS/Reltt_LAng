@@ -547,11 +547,11 @@ void *Update(Reltt_INT *IN)
         {
             cout << GREEN << "\tCompiled " << BLUE << "Reltt " << GREEN << "With Return code: " << CYAN << i / 256 << endl;
 
-            int j = system((((string)"g++ ").append(PG).append("main.cpp -std=c++17 -c -o ").append(PG).append("main.o -w")).c_str());
+            int j = system((((string)"g++ ").append(PG).append("main.cpp -std=c++17 -c -o ").append(PG).append("OBJ/main.o -w")).c_str());
             if (j == 0)
             {
                 cout << GREEN << "\tCompiled " << BLUE << "Reltt_Main " << GREEN << "With Return code: " << CYAN << j / 256 << endl;
-                j = system((((string)"g++ -std=c++17 ").append(PG).append("Obj/Reltt.o ").append(PG).append("Obj/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
+                j = system((((string)"g++ -std=c++17 ").append(PG).append("OBJ/Reltt.o ").append(PG).append("OBJ/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
 
                 cout << GREEN << "\tLinked " << BLUE << "Reltt interpreter " << GREEN << "With Return code: " << CYAN << j / 256 << endl;
                 //j = system("g++ -std=c++17  $RelttPath/QSR/Obj/Reltt.o $RelttPath/QSR/Obj/main.o -o $RelttPath/Reltt.app/Contents/MacOS/Reltt -w");
