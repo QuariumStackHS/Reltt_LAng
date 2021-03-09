@@ -119,7 +119,7 @@ void *Compile_Reltt(Reltt_INT *IN)
     string RP = getenv("RelttPath");
     //RP.pop_back();
     myfile << "};\nint " << Appname << "_size=" << CodeH.size() << ";";
-    myfile << "\n\tReltt_INT *i =new Reltt_INT(" << Appname << "_size," << Appname << "_Code);\n\t	for (int ij=0;ij<Aargc;ij++)\ti->New_Var(Value(\"argv-\"+to_string(ij),Aargv[ij],\"string\"));\n\ti->Parse();\n\treturn 0;\n}\n";
+    myfile << "\n\tReltt_INT *i =new Reltt_INT(" << Appname << "_size," << Appname << "_Code);\n\t	for (int ij=0;ij<Aargc;ij++){\t i->charstr--; i->New_Var(Value(\"argv-\"+to_string(ij),Aargv[ij],\"string\"));i->charstr++;}\n\ti->Parse();\n\treturn 0;\n}\n";
     myfile << "\n";
     string CompileCommand = ((string) "g++ -w -std=c++17 -I$RelttPath -c ").append("cache/").append(Appname).append("-OBJ.cpp");
     CompileCommand.append(" -o ").append("cache/").append(Appname).append("-OBJ.o");

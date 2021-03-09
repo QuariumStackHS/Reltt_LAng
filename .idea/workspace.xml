@@ -16,26 +16,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;&#10;}">
-      <change afterPath="$PROJECT_DIR$/Reltt/Env.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reltt/Tests/.CRS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reltt/Tests/main.RlS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reltt/env.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reltt/scripts/strings.RlS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Installer/Installer" beforeDir="false" afterPath="$PROJECT_DIR$/Installer/Installer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reltt/Tests/build.CRS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Reltt_LAng.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Reltt_LAng.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/customTargets.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/customTargets.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tools/External Tools.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/tools/External Tools.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/1200px-ISO_C_Logo.svg.ansi.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main-4401b0f5.o.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/.CRS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/.CRS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/bin/Build_Reltt_exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/bin/Main_exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/cache/@2_exe-OBJ.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/main.RlS" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Compile-OBJ.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Compile-OBJ.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Help-OBJ.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Help-OBJ.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Update-OBJ.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Update-OBJ.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/env.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/Main.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/help.QF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/main.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/UpdateR.Qf" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/UpdateR.Qf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/help.QF" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +88,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Reltt/Tests/scripts" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -110,7 +122,11 @@
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Update.RLS" />
-        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Compile Reltt INT" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="test installer" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="Test Installer" CONFIG_NAME="Test Installer" RUN_PATH="$PROJECT_DIR$/Installer/Installer">
@@ -121,11 +137,6 @@
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -188,7 +199,9 @@
       <workItem from="1615142449676" duration="601000" />
       <workItem from="1615145506770" duration="611000" />
       <workItem from="1615152233823" duration="37000" />
-      <workItem from="1615152367345" duration="14636000" />
+      <workItem from="1615152367345" duration="17978000" />
+      <workItem from="1615302078087" duration="120000" />
+      <workItem from="1615302344506" duration="1629000" />
     </task>
     <servers />
   </component>

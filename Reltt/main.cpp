@@ -118,13 +118,17 @@ int main(int argc, char **argv)
 
                 Args->Parse();
                 buffer = "as: ";
-                cout <<BOLDRED<<"Reltt"<<CYAN<<" ~>"<<RESET<<BLUE;            }
+                cout <<BOLDRED<<"R̳e̳l̳t̳t̳"<<CYAN<<" ~>"<<RESET<<BLUE;            }
         }
         elif (argc == 2)
         {
+            Reltt_INT TT=Reltt_INT();
             argcv[0] = "begin:";
             argcv[1] = "-RlS";
+            //char *ijk=(char *)TT.get_fileOBJ().c_str();
             argcv[2] = argv[argc - 1];
+            //delete &TT;
+
             cout << argcv[1] << " | " << argcv[2] << endl;
             Reltt_INT Args = Reltt_INT(3, argcv);
 

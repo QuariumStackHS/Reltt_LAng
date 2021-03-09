@@ -17,10 +17,10 @@ Value resolve_parentensis(Reltt_INT *IN){
     int par=0;
     bool isfirst=1;
     while(par>=1 || isfirst){
-        cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+        //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
 
         if (strcmp(token.S_value.c_str(),"+")==0){
-            cout<<"Plus"<<endl;
+            //cout<<"Plus"<<endl;
             token=IN->getVar(IN->get_Next_Token());
             cachevalue.S_value=cachevalue.S_value.append(token.S_value);
             cachevalue.I_value=cachevalue.I_value+token.I_value;
@@ -34,12 +34,12 @@ Value resolve_parentensis(Reltt_INT *IN){
         if (par==0)
         {
             return_Value=IN->getVar(cachevalue.S_value);
-            cout<<"return last"<<endl;
+            //cout<<"return last"<<endl;
             return return_Value;
         }
         }
         elif (isfirst){
-            cout<<"Reterning"<<return_Value.S_value<<endl;
+            //cout<<"Reterning"<<return_Value.S_value<<endl;
             return return_Value;
         }
         else{
@@ -472,7 +472,7 @@ int Reltt_INT::runfile()
     if (this->Cfg.debug)
         cout << RQFS << RESET << RED << SKN << RESET << "-----" << endl;
     // Read from the text file
-    ifstream Src(getVar(getcurrentIns()).S_value.c_str());
+    ifstream Src(this->get_fileOBJ(getVar(getcurrentIns()).S_value.c_str()));
     charstr++;
     int SG = 0;
     while (getline(Src, Code))
@@ -889,25 +889,27 @@ void *Call(Reltt_INT *IN)
         }
         else
         {
+
+
             IN->charstr -= 1;
+            if(IN->Functions[Path].ArgsT.size()>=1){
+                cout<<RED<<"[ERROR] did you forget to use '->'? because Function: \""<<IN->Functions[Path].FuncName<<"\" use "<<IN->Functions[Path].ArgsT.size()<<" Args;"<<RESET<<endl;
+                isexist=0;
+            }
         }
         IN->StackPointer++;
         //cout << IN->StackPointer << endl;
         //IN->Math_Var.size()++;
         //1 sec before execution
         int add = 0;
-        for (int i = 0; i < IN->NextFNCID; i++)
-        {
-            if (strcmp(Fname.c_str(), IN->Functions[i].FuncName.c_str()) == 0)
-            {
-
+            if(isexist) {
                 int oldCharstr = IN->charstr - 1;
-                IN->charstr = IN->Functions[i].BeginLine;
+                IN->charstr = IN->Functions[Path].BeginLine;
                 IN->Parse();
                 //IN->StackPointer--;
                 IN->charstr = oldCharstr;
+
             }
-        }
         //IN->charstr
         //1 1 after
         /*for (int i=0;IN->Math_Var[IN->StackPointer]->localVars.size();i++){
@@ -1059,7 +1061,23 @@ void *Dump(Reltt_INT *IN)
 {
     for (int i = 0; i < IN->Functions.size(); i++)
     {
-        cout << BLUE << IN->Functions[i].FuncName << RESET << " at line: " << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].BeginLine) - 1 << RESET << ":" << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].EndLine) << RESET << endl;
+        string Strs;
+        if (IN->Functions[i].ArgsT.size()!=0){
+            for (int j=0;j<IN->Functions[i].ArgsT.size();j++){
+                if (j+1<IN->Functions[i].ArgsT.size()){
+                    Strs.append(RED).append(IN->Functions[i].ArgsT[j].ArgTyper).append(RESET).append(BLUE).append(", ").append(RESET);
+                }
+                else{
+                    Strs.append(RED).append(IN->Functions[i].ArgsT[j].ArgTyper).append(RESET).append(BLUE).append(" ").append(RESET);
+
+                }
+            }
+        }
+        else{
+            Strs.append("None ");
+        }
+        Strs.append("as arg(s)");
+        cout << BLUE <<"\""<< IN->Functions[i].FuncName <<"\""<< RESET <<" -> "<<Strs<< " at line: " << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].BeginLine) - 1 << RESET << ":" << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].EndLine) << RESET << endl;
     }
 }
 void *with(Reltt_INT *IN)
@@ -1125,6 +1143,7 @@ int Reltt_INT::init_Func()
     add_Cask("using", "using [Module], note those are QF import √", &import_T);
     add_Cask("func", "[Fname] ( argtype1 argtype2 ) as begin: {Code} end; √", &func);
     add_Cask("call", "[Func] √", &Call);
+    add_Cask(">", "[Func] √", &Call);
     add_Cask("with", "call [Func] with/-> Args √", &with);
     add_Cask("exit", "exit Programme √", &Exit);
     add_Cask("add", "add [Compilable_Module]", &add);

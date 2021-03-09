@@ -3,19 +3,28 @@ Begin:
 /* .CRS Compile Reltt Script */
 import "Std"
 import "Compilator"
-func Call ( string ) as:
+
+func setup ( ) as:
+    Setup
+end;
+
+
+func Call ( EXE_Name:string ) as:
     string code ( "./bin/" + @1 + "_exe" )
 
     Sys code
 
 end;
-func Compile ( string string ) as:
-
-    Setup
-    Set_Main ( @1 )
-    Set_Name ( @2 + "_exe" )
+func Build-this ( ) as:
     Compile
     Clean
 end;
+func Set ( Main_File:string EXE_Name:string ) as:
+    Set_Main ( @1 )
+    Set_Name ( @2 + "_exe" )
 
+end;
+/*
+
+*/
 end;

@@ -6,7 +6,7 @@
       <option name="WORKING_DIRECTORY" value="$USER_HOME$/Projects/Reltt_LAng/Reltt/" />
     </exec>
   </tool>
-  <tool name="g++" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+  <tool name="compile Installer" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
     <exec>
       <option name="COMMAND" value="g++" />
       <option name="PARAMETERS" value="-std=c++17 -o Installer Installer.cpp" />
@@ -18,6 +18,13 @@
       <option name="COMMAND" value="g++" />
       <option name="PARAMETERS" value="Installer.cpp -o Installer -std=c++17" />
       <option name="WORKING_DIRECTORY" value="$USER_HOME$/Projects/Reltt_LAng/Installer" />
+    </exec>
+  </tool>
+  <tool name="Compile Reltt" showInMainMenu="false" showInEditor="false" showInProject="false" showInSearchPopup="false" disabled="false" useConsole="true" showConsoleOnStdOut="false" showConsoleOnStdErr="false" synchronizeAfterRun="true">
+    <exec>
+      <option name="COMMAND" value="g++" />
+      <option name="PARAMETERS" value="Reltt.cpp main.cpp -o bin/Reltt -std=c++17 -w" />
+      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Projects/Reltt_LAng/Reltt" />
     </exec>
   </tool>
 </toolSet>
