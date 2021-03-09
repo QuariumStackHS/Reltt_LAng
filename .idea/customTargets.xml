@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="8e46051c-4ca2-4419-ba36-13cf76901ba7" name="Reltt Update" defaultType="TOOL">
+      <configuration id="22d44927-5fd3-4e64-9ada-27b45761e6b2" name="Reltt Update">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_g++" />
+        </build>
+      </configuration>
+    </target>
+    <target id="13c83140-adc3-44d5-8c3b-d8cd5bbb2cc9" name="Test Installer" defaultType="TOOL">
+      <configuration id="703b8a3f-4b48-46d4-9c89-a5d1232c9fb6" name="Test Installer">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_test Installer" />
+        </build>
+      </configuration>
+    </target>
+  </component>
+</project>

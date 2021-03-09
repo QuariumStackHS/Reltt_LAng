@@ -1,24 +1,23 @@
-beginf:
+Begin:
 
 
 import Std 
 
 /* idea */
 func ptes ( string ) as:
-    print "K#="
-    print @0
+    cout "K#="
+    cout @0
 end;
 
 func Fname ( string string ) as:
-    print "arg-1"
-    print @0
-    string I @1
-    call ptes with I
+    cout "arg-1"
+    cout @0
+
     DMP
 end;
 
 
 
-call Fname with "0K" "0.0"
+call Fname -> "0K" "0.0"
 
 end;

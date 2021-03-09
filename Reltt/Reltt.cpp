@@ -10,7 +10,50 @@
 #include <filesystem>
 #include <dirent.h>
 #include <cstdlib>
+Value resolve_parentensis(Reltt_INT *IN){
+    Value token=IN->getVar(IN->get_Next_Token());
+    Value cachevalue=Value("","","string");
+    Value return_Value=Value("","","string");
+    int par=0;
+    bool isfirst=1;
+    while(par>=1 || isfirst){
+        cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
 
+        if (strcmp(token.S_value.c_str(),"+")==0){
+            cout<<"Plus"<<endl;
+            token=IN->getVar(IN->get_Next_Token());
+            cachevalue.S_value=cachevalue.S_value.append(token.S_value);
+            cachevalue.I_value=cachevalue.I_value+token.I_value;
+            cachevalue.F_value=cachevalue.F_value+token.F_value;
+        }
+        elif(strcmp(token.S_value.c_str(),"(")==0){
+            par++;
+        }
+        elif(strcmp(token.S_value.c_str(),")")==0){
+            par--;
+        if (par==0)
+        {
+            return_Value=IN->getVar(cachevalue.S_value);
+            cout<<"return last"<<endl;
+            return return_Value;
+        }
+        }
+        elif (isfirst){
+            cout<<"Reterning"<<return_Value.S_value<<endl;
+            return return_Value;
+        }
+        else{
+            cachevalue=IN->getVar(token.v_Name);;
+        }
+        isfirst=0;
+
+        token=IN->getVar(IN->get_Next_Token());
+
+    }
+    cout<<"Reterning after: "<<return_Value.S_value<<endl;
+    return return_Value;
+
+}
 app::app(string name, int argc, char **argv)
 {
     for (int i = 0; i < argc; i++)
@@ -758,7 +801,7 @@ int Reltt_INT::Parse()
             if ((isexist == 0) && (strcmp(getcurrentIns().c_str(), "Begin:") != 0))
             {
                 cout << RED << "[ERROR] " << BOLDRED << "Unknown Instruction: \"" << getcurrentIns() << "\"  at line : " << get_line_fromcharstr(charstr) << RESET << endl;
-                exit(0);
+                //exit(0);
             }
         }
         if ((this->DBuf == 0) && (first_ins == 1))
@@ -892,6 +935,7 @@ void *Call(Reltt_INT *IN)
 
     //charstr++;
 }
+
 void *Export(Reltt_INT *IN)
 {
 }
@@ -937,10 +981,13 @@ void *Del(Reltt_INT *IN)
 void *String(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
-    string VarValue = IN->getVar(IN->get_Next_Token()).S_value;
+    string VarValue = resolve_parentensis(IN).S_value;
+    cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
+    IN->StackPointer--;
     IN->New_Var(Value(Varname, VarValue, "string"));
+    IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
 void *Int(Reltt_INT *IN)
@@ -949,14 +996,18 @@ void *Int(Reltt_INT *IN)
     string VarValue = IN->get_Next_Token();
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
+    IN->StackPointer--;
     IN->New_Var(Value(Varname, VarValue, "int"));
+    IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
 void *Float(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
     string VarValue = IN->get_Next_Token();
+    IN->StackPointer--;
     IN->New_Var(Value(Varname, VarValue, "float"));
+    IN->StackPointer++;
 }
 void *func(Reltt_INT *IN)
 {
@@ -1020,6 +1071,47 @@ void *R_If(Reltt_INT *IN)
 {
     IN->get_Next_Token();
 }
+void *add_Path(Reltt_INT *IN){
+    string newpat=IN->getVar(IN->get_Next_Token()).S_value;
+    IN->add_path(newpat);
+}
+void *set_RelttPath(Reltt_INT *IN){
+    string i=IN->getVar(IN->get_Next_Token()).S_value;
+    ofstream myfile;
+    cout<<"RelttPath="<<i<<endl;
+    myfile.open(i+"/cfg.hpp");
+    myfile<<"#include <filesystem>\n"
+          <<"#include <dirent.h>\n"
+          <<"#include <cstdlib>\nConfigurator::Configurator()\n"
+          <<"{\n"
+          <<"this->buildtype = EXE;"
+          <<"this->CPPLang = CPP17;"
+          <<"this->ProgrameName = \"RELTT\";"
+          <<"this->Termwidth=90;"
+          <<"this->debug=0;"
+          <<"setenv(\"RelttPath\",\""<<i<<"\",1);"
+          <<"this->Reltt_path=getenv(\"RelttPath\");"
+          <<"}";
+
+    myfile.close();
+}
+void *Gen_this(Reltt_INT *IN){
+    string i=IN->getVar(IN->get_Next_Token()).S_value;
+    ofstream myfile;
+    myfile.open(i);
+    for(int i=0;i<IN->argv.size();i++){
+        myfile<<IN->argv[i]<<" ";
+
+    }
+    myfile.close();
+
+}
+void *ShowVar(Reltt_INT *IN){
+    for(int i=0; i<IN->Math_Var.size();i++){
+        for(int j=0; j<IN->Math_Var[i]->localVars.size();j++)cout<<"Var:"<<RED<<IN->Math_Var[i]->localVars[j]->v_Name<<RESET<<" with S_value: "<<BLUE<<
+        IN->Math_Var[i]->localVars[j]->S_value<<RESET<<endl;
+    }
+}
 
 int Reltt_INT::init_Func()
 {
@@ -1043,10 +1135,18 @@ int Reltt_INT::init_Func()
     add_Cask("int", "[varname] [var_value] √", &Int);
     add_Cask("float", "[varname] [var_value] √", &Float);
     add_Cask("*>", "[varname], delete var √", &Del);
+    add_Cask("PATH", "add to the looking path√", &add_Path);
     add_Cask("DMP", "show loaded UD_function. Note this function do not work with compiled script √", &Dump);
     add_Cask("if", "if ( bool ) then ø", &R_If);
+    add_Cask("SET", "set RelttPath (Restart Reltt to take change)", &set_RelttPath);
+    add_Cask("show", "show all variables", &ShowVar);
+    add_Cask("Gen_this", "Generate a script with this code)", &Gen_this);
+   // Gen_this
+
+
 
     add_path(getenv("RelttPath"));
+    add_path("");
     add_path(((string)getenv("RelttPath")).append("scripts/"));
     //inline asm("mov ")
     /*

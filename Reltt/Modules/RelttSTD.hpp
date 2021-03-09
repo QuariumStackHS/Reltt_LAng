@@ -6,8 +6,8 @@
 
 
 void *print(Reltt_INT *IN){
-string PT=IN->get_Next_Token();
-    cout<<IN->getVar(PT).S_value<<endl;
+string PT=IN->getVar(IN->get_Next_Token()).S_value;
+    cout<<PT<<endl;
 
 }
 void *system(Reltt_INT *IN){

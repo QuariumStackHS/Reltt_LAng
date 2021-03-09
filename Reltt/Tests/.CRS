@@ -1,0 +1,21 @@
+Begin:
+
+/* .CRS Compile Reltt Script */
+import "Std"
+import "Compilator"
+func Call ( string ) as:
+    string code ( "./bin/" + @1 + "_exe" )
+
+    Sys code
+
+end;
+func Compile ( string string ) as:
+
+    Setup
+    Set_Main ( @1 )
+    Set_Name ( @2 + "_exe" )
+    Compile
+    Clean
+end;
+
+end;

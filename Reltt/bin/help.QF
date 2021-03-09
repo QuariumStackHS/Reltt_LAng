@@ -3,5 +3,4 @@ Begin:
 -help Generator
 -help Std
 -help ASM
--help Compilator
 end;
