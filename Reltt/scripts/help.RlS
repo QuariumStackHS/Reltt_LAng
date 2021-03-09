@@ -1,0 +1,7 @@
+Begin:
+-help Base
+-help Generator
+-help Std
+-help ASM
+-help Compilator
+end;

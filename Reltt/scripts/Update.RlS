@@ -8,14 +8,14 @@ using scripts/CSscript.RlS
 func update ( ) as:
     App-RCP
     Gen_Help
-    call Native -> "Reltt_Update" "scripts/Update.RlS"
-    call Native -> "Reltt_Compile" "scripts/Compile.RlS"
-    call Native -> "Reltt_Help" "scripts/help.RlS"
+    > Native -> "Reltt_Update" "scripts/Update.RlS"
+    > Native -> "Reltt_Compile" "scripts/Compile.RlS"
+    > Native -> "Reltt_Help" "scripts/help.RlS"
 
 end;
 
 
-call update
+> update
 
 
 

@@ -685,6 +685,19 @@ void *import_T(Reltt_INT *IN)
 {
 
     string SKN = IN->getVar(IN->get_Next_Token()).S_value;
+    string k=SKN;
+
+    SKN.pop_back();
+    SKN.pop_back();
+    SKN.pop_back();
+    SKN.pop_back();
+    if(strcmp(k.c_str(),SKN.append(".RlS").c_str())==0 ){
+
+    }
+    else{
+        SKN=k.append(".RlS");
+        cout<<"importing "<<SKN<<endl;
+    }
     //cout << "importing: " << SKN << endl;
     ifstream Src(IN->get_fileOBJ(SKN));
     if (Src)
@@ -942,9 +955,9 @@ void *Export(Reltt_INT *IN)
 {
 }
 void *import_Module(Reltt_INT *IN)
-{
+{int didran = 0;
     string N = IN->getVar(IN->get_Next_Token()).S_value;
-    int didran = 0;
+
     //cout << N << endl;
     for (int i = 0; i < IN->QS.size(); i++)
     {
@@ -1130,7 +1143,9 @@ void *ShowVar(Reltt_INT *IN){
         IN->Math_Var[i]->localVars[j]->S_value<<RESET<<endl;
     }
 }
-
+void *Add_To_Search(Reltt_INT *IN){
+    IN->add_path(resolve_parentensis(IN).S_value);
+}
 int Reltt_INT::init_Func()
 {
     //&Compile;
@@ -1154,18 +1169,22 @@ int Reltt_INT::init_Func()
     add_Cask("int", "[varname] [var_value] √", &Int);
     add_Cask("float", "[varname] [var_value] √", &Float);
     add_Cask("*>", "[varname], delete var √", &Del);
-    add_Cask("PATH", "add to the looking path√", &add_Path);
+    add_Cask("PATH", "add to the looking path√", &Add_To_Search);
     add_Cask("DMP", "show loaded UD_function. Note this function do not work with compiled script √", &Dump);
     add_Cask("if", "if ( bool ) then ø", &R_If);
     add_Cask("SET", "set RelttPath (Restart Reltt to take change)", &set_RelttPath);
     add_Cask("show", "show all variables", &ShowVar);
     add_Cask("Gen_this", "Generate a script with this code)", &Gen_this);
+    //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
+
+
    // Gen_this
 
 
 
     add_path(getenv("RelttPath"));
     add_path("");
+    add_path(((string)getenv("RelttPath")).append("RlS/"));
     add_path(((string)getenv("RelttPath")).append("scripts/"));
     //inline asm("mov ")
     /*

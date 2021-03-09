@@ -6,7 +6,7 @@
 
 
 void *print(Reltt_INT *IN){
-string PT=IN->getVar(IN->get_Next_Token()).S_value;
+string PT=resolve_parentensis(IN).S_value;
     cout<<PT<<endl;
 
 }
