@@ -10,9 +10,9 @@ end;
 
 
 func Call ( EXE_Name:string ) as:
-    string code ( "./bin/" + @1 + "_exe" )
+    string code ( "./bin/" + @1 + "_exe " )
 
-    Sys code
+    /* Sys code */
 
 end;
 func Build-this ( ) as:
@@ -21,8 +21,9 @@ func Build-this ( ) as:
 end;
 func Set ( Main_File:string EXE_Name:string ) as:
     string main ( @1 )
+    string name ( @2 )
     Set_Main ( main )
-    Set_Name ( @2 + "_exe" )
+    Set_Name ( name + "_exe" )
 
 end;
 /*
