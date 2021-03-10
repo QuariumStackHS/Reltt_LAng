@@ -119,7 +119,7 @@ void *Compile_Reltt(Reltt_INT *IN)
     string RP = getenv("RelttPath");
     //RP.pop_back();
     myfile << "};\nint " << Appname << "_size=" << CodeH.size() << ";";
-    myfile << "\n\tReltt_INT *i =new Reltt_INT(" << Appname << "_size," << Appname << "_Code);\n\t	for (int ij=0;ij<Aargc;ij++){\t i->charstr--; i->New_Var(Value(\"argv-\"+to_string(ij),Aargv[ij],\"string\"));i->charstr++;}\n\ti->Parse();\n\treturn 0;\n}\n";
+    myfile << "\n\tReltt_INT *i =new Reltt_INT(" << Appname << "_size," << Appname << "_Code);\n\t	for (int ij=0;ij<Aargc;ij++){\t i->charstr--; i->New_Var(Value(\"argv-\"+to_string(ij),Aargv[ij],\"string\"),0);i->charstr++;}\n\ti->Parse();\n\treturn 0;\n}\n";
     myfile << "\n";
     string CompileCommand = ((string) "g++ -w -std=c++17 -I$RelttPath -c ").append("cache/").append(Appname).append("-OBJ.cpp");
     CompileCommand.append(" -o ").append("cache/").append(Appname).append("-OBJ.o");
@@ -149,7 +149,7 @@ void *Compile_Reltt(Reltt_INT *IN)
 
 }
 void *set_Main(Reltt_INT *IN){
-    string i=resolve_parentensis(IN).S_value;
+    string i=IN->getVar(resolve_parentensis(IN).S_value).S_value;
     setenv("MainFile",i.c_str(),1);
 
 }

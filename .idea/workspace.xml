@@ -5,8 +5,8 @@
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated>
-      <config projectName="Reltt_LAng" targetName="Reltt_Installer" />
       <config projectName="Reltt_LAng" targetName="Reltt_LAng" />
+      <config projectName="Reltt_LAng" targetName="Reltt_Installer" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -16,24 +16,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;&#10;}">
-      <change afterPath="$PROJECT_DIR$/Reltt/RlS/Builds.RlS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reltt/RlS/PATH.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Installer/Installer" beforeDir="false" afterPath="$PROJECT_DIR$/Installer/Installer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Installer/Installer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Installer/Installer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Tests/.CRS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Tests/build.CRS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/build.CRS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/includes/info.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/info.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/RlS/Builds.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/Builds.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/bin/Main_exe" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/bin/Main_exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,11 +103,6 @@
     <configuration name="test installer" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="Test Installer" CONFIG_NAME="Test Installer" RUN_PATH="$PROJECT_DIR$/Installer/Installer">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">

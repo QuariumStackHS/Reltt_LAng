@@ -897,7 +897,7 @@ void *Call(Reltt_INT *IN)
             for (int i = 0; i < VA.size(); i++)
             {
                 //cout << VA[i].S_value << VA[i].v_Name << endl;
-                IN->New_Var(VA[i]);
+                IN->New_Var(VA[i],IN->StackPointer);
             }
         }
         else
@@ -1000,9 +1000,9 @@ void *String(Reltt_INT *IN)
     cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
-    IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "string"));
-    IN->StackPointer++;
+    //IN->StackPointer--;
+    IN->New_Var(Value(Varname, VarValue, "string"),IN->StackPointer-1);
+    //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
 void *Int(Reltt_INT *IN)
@@ -1011,18 +1011,18 @@ void *Int(Reltt_INT *IN)
     string VarValue = IN->get_Next_Token();
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
-    IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "int"));
-    IN->StackPointer++;
+    //IN->StackPointer--;
+    IN->New_Var(Value(Varname, VarValue, "int"),IN->StackPointer-1);
+    //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
 void *Float(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
     string VarValue = IN->get_Next_Token();
-    IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "float"));
-    IN->StackPointer++;
+    //IN->StackPointer--;
+    IN->New_Var(Value(Varname, VarValue, "float"),IN->StackPointer-1);
+    //IN->StackPointer++;
 }
 void *func(Reltt_INT *IN)
 {

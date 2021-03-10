@@ -20,7 +20,8 @@ func Build-this ( ) as:
     Clean
 end;
 func Set ( Main_File:string EXE_Name:string ) as:
-    Set_Main ( @1 )
+    string main ( @1 )
+    Set_Main ( main )
     Set_Name ( @2 + "_exe" )
 
 end;
