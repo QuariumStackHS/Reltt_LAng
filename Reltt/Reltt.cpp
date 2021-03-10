@@ -1140,7 +1140,7 @@ void *Gen_this(Reltt_INT *IN){
 void *ShowVar(Reltt_INT *IN){
     for(int i=0; i<IN->Math_Var.size();i++){
         for(int j=0; j<IN->Math_Var[i]->localVars.size();j++)cout<<"Var:"<<RED<<IN->Math_Var[i]->localVars[j]->v_Name<<RESET<<" with S_value: "<<BLUE<<
-        IN->Math_Var[i]->localVars[j]->S_value<<RESET<<endl;
+        IN->Math_Var[i]->localVars[j]->S_value<<RESET<<"\tSP:\t"<<i<<endl;
     }
 }
 void *Add_To_Search(Reltt_INT *IN){

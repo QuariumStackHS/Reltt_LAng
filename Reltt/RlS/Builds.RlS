@@ -12,7 +12,7 @@ end;
 func Call ( EXE_Name:string ) as:
     string code ( "./bin/" + @1 + "_exe " )
 
-    /* Sys code */
+    Sys code
 
 end;
 func Build-this ( ) as:

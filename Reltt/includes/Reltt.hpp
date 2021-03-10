@@ -243,12 +243,12 @@ public:
         Value *VR = new Value(TR.v_Name, TR.S_value, TR.T_R);
         if (strcmp(this->getVar(TR.v_Name).S_value.c_str(), TR.v_Name.c_str()) == 0)
         {
-            cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<endl;
+            //cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<endl;
             if ((SP) <= (this->Math_Var.size()))
                 this->Math_Var[SP]->localVars.push_back(VR);
         }
         else
-        { cout<<"Altering "<<TR.v_Name<<endl;
+        { //cout<<"Altering "<<TR.v_Name<<endl;
             for (int k = 0; k <= SP; k++)
             {
                 for (int i = 0; i < this->Math_Var[k]->localVars.size(); i++)
