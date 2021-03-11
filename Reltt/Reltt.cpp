@@ -1328,19 +1328,60 @@ void *with(Reltt_INT *IN)
 }
 void *R_If(Reltt_INT *IN)
 {
+
    Value V=resolve_parentensis(IN);
    if (V.B_value==1){
-       IN->Parse();
+
+       bool i=1;
+       int ifnbr=1;
+       string lastINS="";
+       //cout<<"False"<<endl;
+       //cout<<ifnbr<<endl;
+       while (ifnbr!=0){
+           IN->charstr++;
+           //cout<<IN->argv[IN->charstr]<<endl;
+
+           if (strcmp(IN->argv[IN->charstr].c_str(),"endif;")==0){
+               ifnbr--;
+           }
+           if (strcmp(IN->argv[IN->charstr].c_str(),"else")==0){
+               ifnbr++;
+           }
+           if (strcmp(IN->argv[IN->charstr].c_str(),"if")==0){
+               if (strcmp(lastINS.c_str(),"else")==0){
+                   //ifnbr++;
+               }
+               else{
+                   ifnbr++;
+               }
+
+
+           }
+           lastINS=IN->argv[IN->charstr];
+       }
+       if (i)IN->Parse();
 
     //cout<<"True"<<endl;
    }
    elif (V.B_value==0){
+       bool i=1;
+       int ifnbr=1;
        //cout<<"False"<<endl;
-       while (strcmp(IN->argv[IN->charstr].c_str(),"endif;")!=0){
+       //cout<<ifnbr<<endl;
+       while (ifnbr!=0){
            IN->charstr++;
+           //cout<<IN->argv[IN->charstr]<<endl;
+
+           if (strcmp(IN->argv[IN->charstr].c_str(),"endif;")==0){
+               ifnbr--;
+           }
+           if (strcmp(IN->argv[IN->charstr].c_str(),"if")==0){
+               ifnbr++;
+           }
        }
+       if (i)IN->Parse();
        //cout<<"gonna parse.."<<endl;
-       IN->Parse();
+
 
    }
    else{
