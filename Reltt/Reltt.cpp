@@ -1315,7 +1315,7 @@ void *Dump(Reltt_INT *IN)
             Strs.append("None ");
         }
         Strs.append("as arg(s)");
-        cout << BLUE <<"\""<< IN->Functions[i].FuncName <<"\""<< RESET <<" -> "<<Strs<< " at line: " << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].BeginLine) - 1 << RESET << ":" << BOLDCYAN << IN->get_line_fromcharstr(IN->Functions[i].EndLine) << RESET << endl;
+        cout << BLUE <<"\""<< IN->Functions[i].FuncName <<"\""<< RESET <<" -> "<<Strs<< " at addr:" <<CYAN <<"0x"<<hex<<(int64_t)&IN->Functions[i] <<IN->Functions[i].BeginLine<<dec<< RESET << endl;
     }
 }
 void *with(Reltt_INT *IN)
@@ -1363,9 +1363,17 @@ void *Gen_this(Reltt_INT *IN){
 
 }
 void *ShowVar(Reltt_INT *IN){
+    int lastaddr=0;
     for(int i=0; i<IN->Math_Var.size();i++){
-        for(int j=0; j<IN->Math_Var[i]->localVars.size();j++)cout<<BLUE<<IN->Math_Var[i]->localVars[j]->T_R<<CYAN<<":"<<RED<<IN->Math_Var[i]->localVars[j]->v_Name<<RESET<<" with S_value: "<<BLUE<<
-        IN->Math_Var[i]->localVars[j]->S_value<<RESET<<" SP: "<<i<<" and Addr: "<< CYAN<<"0x"<<std::hex <<((int64_t)&IN->Math_Var[i]->localVars[j])<<RESET<<endl;
+        for(int j=0; j<IN->Math_Var[i]->localVars.size();j++) {
+
+            cout << BLUE << IN->Math_Var[i]->localVars[j]->T_R << CYAN << ":" << RED
+                 << IN->Math_Var[i]->localVars[j]->v_Name << RESET << " with S_value: " << BLUE <<
+                 IN->Math_Var[i]->localVars[j]->S_value << RESET << " SP: " << i << " and Addr: " << CYAN << "0x"
+                 << std::hex << ((int64_t) &IN->Math_Var[i]->localVars[j]) << dec<<" Vsize: "
+                 << ((int64_t) &IN->Math_Var[i]->localVars[j])-lastaddr << RESET << endl;
+            lastaddr=((int64_t)&IN->Math_Var[i]->localVars[j]);
+        }
     }
 }
 void *Add_To_Search(Reltt_INT *IN){
