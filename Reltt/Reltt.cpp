@@ -19,20 +19,24 @@ Value resolve_parentensis(Reltt_INT *IN){
     bool isfirst=1;
     while(par>=1 || isfirst){
         //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
-
-        if (strcmp(token.S_value.c_str(),"+")==0){
+        if (strcmp(token.S_value.c_str()," ")==0){
+            cachevalue.S_value.append(" ");
+        }
+        if (strcmp(token.S_value.c_str(),"+")==0) {
             //cout<<"Plus"<<endl;
 
-            token=IN->getVar(IN->get_Next_Token());
-            if(strcmp(token.T_R.c_str(),"string")==0){
-            cachevalue.S_value=cachevalue.S_value.append(token.S_value);
-            cachevalue=Value(cachevalue.v_Name,cachevalue.S_value,"string");
+            token = IN->getVar(IN->get_Next_Token());
+            if (strcmp(token.S_value.c_str()," ")==0){
+                cachevalue.S_value =cachevalue.S_value.append(" ");
             }
-            else{
-            cachevalue.I_value=cachevalue.I_value+token.I_value;
-            cachevalue.F_value=cachevalue.F_value+token.F_value;
-            cachevalue.S_value=to_string(cachevalue.F_value);
-            cachevalue.T_R="float";
+            if (strcmp(token.T_R.c_str(), "string") == 0) {
+                cachevalue.S_value = cachevalue.S_value.append(token.S_value);
+                cachevalue = Value(cachevalue.v_Name, cachevalue.S_value, "string");
+            } else {
+                cachevalue.I_value = cachevalue.I_value + token.I_value;
+                cachevalue.F_value = cachevalue.F_value + token.F_value;
+                cachevalue.S_value = to_string(cachevalue.F_value);
+                cachevalue.T_R = "float";
             }
         }
         elif (strcmp(token.S_value.c_str(),"-")==0){
@@ -198,15 +202,14 @@ Value resolve_parentensis(Reltt_INT *IN){
                 return return_Value;
             }
         }
+        elif (isfirst){
+            //cout<<"Reterning"<<token.S_value<<endl;
+            return IN->getVar(token.S_value);
+        }
         elif (par==0)
         {
             return_Value=IN->getVar(cachevalue.S_value);
-            //cout<<"return last"<<endl;
-            return return_Value;
-        }
-
-        elif (isfirst){
-            //cout<<"Reterning"<<return_Value.S_value<<endl;
+            //cout<<"return laster"<<return_Value.v_Name<<endl;
             return return_Value;
         }
         else{
@@ -374,6 +377,7 @@ string Reltt_INT::get_Next_Token()
         bool isfirst = ((Word[0] == '"') && (isinstring == 0) && (is == 0));
         //bool isMath = ((Word[0] == '(') &&(Word[g] == ')')&&(isinstring == 0) && (is == 0));
         bool islast = ((Word[Word.size() - 1] == '"') && (isinstring == 1) && (is == 0));
+        bool isunique = (this->argv[charstr].size()==1)&&(this->argv[charstr+1].size()==1);
         if (isfirst)
         {
             //cout << "is first" << endl;
@@ -384,6 +388,13 @@ string Reltt_INT::get_Next_Token()
             next_Token.append(" ");
 
             isinstring = 1;
+        }
+        elif (isunique&&!isinstring){
+            return " ";
+        }
+        elif ((Word[0] == '"') &&(Word.size()==1)){
+            isinstring=1;
+            next_Token.append(" ");
         }
         elif (islast)
         {
@@ -411,10 +422,12 @@ string Reltt_INT::get_Next_Token()
             //next_Token.append(null_Token);
             return next_Token;
         }
+
         elif (!isinstring)
         {
             return getVar(Word).S_value;
         }
+
         else
         {
             next_Token.append(Word).append(" ");
@@ -615,9 +628,9 @@ int Reltt_INT::DeleteVar(string varname)
     return 0;
 }
 Value Reltt_INT::getVar(string varname)
-{
+{//this->StackPointer++;
     //cout <<"is?"<< varname << endl;
-    for (int k = 0; k <= StackPointer - 1; k++)
+    for (int k = 0; k <= StackPointer; k++)
     {
         for (int i = 0; i < this->Math_Var[k]->localVars.size(); i++)
         {
@@ -664,7 +677,9 @@ Value Reltt_INT::getVar(string varname)
     {
         //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
     }
+    //this->StackPointer--;
     return v;
+
 }
 
 int Reltt_INT::runfile()
@@ -1213,21 +1228,26 @@ void *String(Reltt_INT *IN)
 void *Int(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
-    int VarValue = resolve_parentensis(IN).I_value;
+    string VarValue = resolve_parentensis(IN).S_value;
+    cout<<Varname<<VarValue<<endl;
+    //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
     //IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue),IN->StackPointer-1);
+    IN->New_Var(Value(Varname, VarValue, "int"),IN->StackPointer-1);
     //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
 void *Float(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
-    float VarValue = resolve_parentensis(IN).F_value;
+    string VarValue = resolve_parentensis(IN).S_value;
+    cout<<Varname<<VarValue<<endl;
+    //cout<<"VarValue"<<VarValue<<endl;
+    //Value T =;
+    //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
     //IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue ),IN->StackPointer-1);
-    //IN->StackPointer++;
+    IN->New_Var(Value(Varname, VarValue, "float"),IN->StackPointer-1);
 }
 void *func(Reltt_INT *IN)
 {
@@ -1268,47 +1288,6 @@ void *func(Reltt_INT *IN)
     }
 
     IN->newFunc(FucName, beginline, EndOFFunc, G);
-    //cout << "analized Func properly" << endl;
-    //charstr--;
-}
-void *ASM(Reltt_INT *IN)
-{
-    IN->charstr++;
-    string FucName = IN->getcurrentIns();
-    vector<ArgType> G;
-    int beginline = IN->charstr + 1;
-    //cout<<"Adding Func name: "<<FucName<<endl;
-    string FncCode;
-    int EndOFFunc = 0;
-    int lastline;
-    while (!EndOFFunc)
-    {lastline=IN->get_line_fromcharstr(IN->charstr);
-        IN->charstr++;
-        //cout<<getcurrentIns()<<endl;
-
-        string InStr = IN->getcurrentIns();
-
-        if (strcmp(InStr.c_str(), "end;") == 0)
-        {
-            EndOFFunc = IN->charstr;
-        }
-        else
-        {
-            if(lastline!=IN->get_line_fromcharstr(IN->charstr)){
-                FncCode.append("\n");
-                cout<<lastline;
-            }
-            FncCode.append(InStr.c_str());
-            FncCode.append(" ");
-        }
-    }
-
-    ofstream I;
-    I.open(((string) getenv("RelttPath")+"ASM/"+FucName+".asm").c_str());
-    I<<FncCode<<"\n;Code Generated by Reltt\n";
-    string CMD="nasm "+((string)getenv("RelttPath")+"ASM/"+FucName+".asm -f macho64 -o"+(string)getenv("RelttPath")+"ASM/"+FucName+".RLB");
-    cout<<CMD<<endl;
-    system(CMD.c_str());
     //cout << "analized Func properly" << endl;
     //charstr--;
 }
@@ -1385,12 +1364,18 @@ void *Gen_this(Reltt_INT *IN){
 }
 void *ShowVar(Reltt_INT *IN){
     for(int i=0; i<IN->Math_Var.size();i++){
-        for(int j=0; j<IN->Math_Var[i]->localVars.size();j++)cout<<"Var:"<<RED<<IN->Math_Var[i]->localVars[j]->v_Name<<RESET<<" with S_value: "<<BLUE<<
-        IN->Math_Var[i]->localVars[j]->S_value<<RESET<<"\tSP:\t"<<i<<endl;
+        for(int j=0; j<IN->Math_Var[i]->localVars.size();j++)cout<<BLUE<<IN->Math_Var[i]->localVars[j]->T_R<<CYAN<<":"<<RED<<IN->Math_Var[i]->localVars[j]->v_Name<<RESET<<" with S_value: "<<BLUE<<
+        IN->Math_Var[i]->localVars[j]->S_value<<RESET<<" SP: "<<i<<" and Addr: "<< CYAN<<"0x"<<std::hex <<((int64_t)&IN->Math_Var[i]->localVars[j])<<RESET<<endl;
     }
 }
 void *Add_To_Search(Reltt_INT *IN){
     IN->add_path(resolve_parentensis(IN).S_value);
+}
+void *ciner(Reltt_INT*IN){
+    string varname=IN->get_Next_Token();
+    string value;
+    cin>>value;
+    IN->New_Var(Value(varname,value,"string"),IN->StackPointer);
 }
 int Reltt_INT::init_Func()
 {
@@ -1411,9 +1396,9 @@ int Reltt_INT::init_Func()
     add_Cask("init", "init Project", &Init);
     add_Cask("-RlS", "Run Reltt Script √", &QF);
     add_Cask("-help", "[module] √", &HelperI);
-    add_Cask("string", "[varname] [\"var value\"] √", &String);
-    add_Cask("int", "[varname] [var_value] √", &Int);
-    add_Cask("float", "[varname] [var_value] √", &Float);
+    add_Cask("<>", "[varname] [\"var value\"] √", &String);
+    add_Cask("string", "[varname] [var_value] √", &String);
+    //add_Cask("float", "[varname] [var_value] √", &Float);
     add_Cask("*>", "[varname], delete var √", &Del);
     add_Cask("PATH", "add to the looking path√", &Add_To_Search);
     add_Cask("DMP", "show loaded UD_function. Note this function do not work with compiled script √", &Dump);
@@ -1422,7 +1407,7 @@ int Reltt_INT::init_Func()
     add_Cask("show", "show all variables", &ShowVar);
     add_Cask("Gen_this", "Generate a script with this code)", &Gen_this);
     add_Cask("wait", "wait for enter key", &Sleeper);
-    add_Cask("ASM","",&ASM);
+    add_Cask("cin", "get until enter key", &ciner);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
 
 
@@ -1458,8 +1443,8 @@ Reltt_INT::Reltt_INT(int argcr, char **argrv)
     //this->Init_APP();
     Cfg = Configurator();
     func_INS_Var *R = new func_INS_Var();
-    Value *D = new Value("None", 0);
-    R->localVars.push_back(D);
+    //Value *D = new Value("None", 0);
+    //R->localVars.push_back(D);
     //cout<<GREEN<<R->localVars.size()<<endl;
     this->Math_Var.push_back(R);
     if (argcr > 2)
@@ -1520,9 +1505,9 @@ func_INS_Var::func_INS_Var()
 {
 
     //int values=localVars.size();
-    Value *S = new Value("None", 0);
-    this->localVars.push_back(S);
-    this->localVars.begin();
+    //Value *S = new Value("Noone", 0);
+    //this->localVars.push_back(S);
+    //this->localVars.begin();
     //cout<<this->localVars[0]->I_value<<endl;
 
     //this->values=9;

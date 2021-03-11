@@ -8,12 +8,10 @@
 void *print(Reltt_INT *IN){
 string PT=resolve_parentensis(IN).S_value;
     cout<<IN->getVar(PT).S_value<<endl;
-
 }
 void *system(Reltt_INT *IN){
-string PT=IN->get_Next_Token();
+string PT=resolve_parentensis(IN).S_value;
     system(IN->getVar(PT).S_value.c_str());
-
 }
 Reltt_INT::QSRcModule RelttSTD_Module(){
     Reltt_INT::QSRcModule E=Reltt_INT::QSRcModule();

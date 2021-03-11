@@ -15,21 +15,24 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;Variable bug patched&#10;}">
+    <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;add ( ) supporte&#10;}">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/RlS/Builds.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/Builds.RlS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/RlS/PATH.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/PATH.RlS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Tests/bin/Main_exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/TestENV.RlS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/Main.RlS" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Tests/build.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/build.RlS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Tests/help.QF" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/helps.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/helps.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/helps.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/help.RlS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/reltt.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +184,7 @@
       <workItem from="1615302078087" duration="120000" />
       <workItem from="1615302344506" duration="7254000" />
       <workItem from="1615312097369" duration="140000" />
-      <workItem from="1615414153701" duration="9685000" />
+      <workItem from="1615414153701" duration="19204000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>
@@ -197,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615375424498</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="{&#10;add ( ) supporte&#10;}">
+      <created>1615424525032</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1615424525033</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +231,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="{&#10;&#10;}" />
     <MESSAGE value="{&#10;Variable bug patched&#10;}" />
-    <option name="LAST_COMMIT_MESSAGE" value="{&#10;Variable bug patched&#10;}" />
+    <MESSAGE value="{&#10;add ( ) supporte&#10;}" />
+    <option name="LAST_COMMIT_MESSAGE" value="{&#10;add ( ) supporte&#10;}" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

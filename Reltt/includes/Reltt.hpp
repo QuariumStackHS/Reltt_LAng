@@ -63,6 +63,7 @@ public:
     ~Value();
     int I_value;
     float F_value;
+    bool B_value;
     string S_value;
     string v_Name;
     string T_R;
@@ -239,11 +240,14 @@ public:
     int Execute(string);
     void New_Var(Value TR,int SP)
     {
+        if(SP<=-1||SP>this->Math_Var.size()){
+            SP=0;
+        }
         //cout<<"new var: "<<TR.v_Name<<" Value: "<<TR.S_value.c_str()<<endl;
         Value *VR = new Value(TR.v_Name, TR.S_value, TR.T_R);
         if (strcmp(this->getVar(TR.v_Name).S_value.c_str(), TR.v_Name.c_str()) == 0)
         {
-            //cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<endl;
+            //cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<" at:"<<SP<<endl;
             if ((SP) <= (this->Math_Var.size()))
                 this->Math_Var[SP]->localVars.push_back(VR);
         }

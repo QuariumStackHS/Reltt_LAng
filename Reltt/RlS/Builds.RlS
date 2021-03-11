@@ -4,26 +4,26 @@ Begin:
 import "Std"
 import "Compilator"
 
-func setup ( ) as:
+func setup ( )
     Setup
 end;
 
 
-func Call ( EXE_Name:string ) as:
-    string code ( "./bin/" + @1 + "_exe test" )
+func Call ( EXE_Name:string )
+    <> code ( "./bin/" + @1 + "_exe test" )
 
     Sys code
 
 end;
 
-func Build-this ( ) as:
+func Build-this ( )
     Compile
     Clean
 end;
 
-func Set ( Main_File:string EXE_Name:string ) as:
-    string main ( @1 )
-    string name ( @2 + _exe )
+func Set ( Main_File:string EXE_Name:string )
+    <> main ( @1 )
+    <> name ( @2 + _exe )
     Set_Main ( main )
     Set_Name ( name )
 

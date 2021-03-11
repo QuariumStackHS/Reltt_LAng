@@ -1,10 +1,8 @@
 Begin:
--help Base
--help Generator
--help Std
--help ASM
--help Compilator
+
 import Std
-cout ( "enter any key+enter to exit" )
-wait
+func ciner ( )
+    /* cin lolz */
+end;
+> ciner
 end;
