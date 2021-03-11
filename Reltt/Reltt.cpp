@@ -18,7 +18,7 @@ Value resolve_parentensis(Reltt_INT *IN){
     int par=0;
     bool isfirst=1;
     while(par>=1 || isfirst){
-        cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+        //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
         if (strcmp(token.S_value.c_str()," ")==0){
             cachevalue.S_value.append(" ");
         }
@@ -222,7 +222,7 @@ Value resolve_parentensis(Reltt_INT *IN){
             par--;
             if (par==0){
                 return_Value=cachevalue;
-                cout<<"return fast"<<endl;
+                //cout<<"return fast"<<endl;
                 return return_Value;
             }
         }
@@ -1252,30 +1252,6 @@ void *String(Reltt_INT *IN)
     //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
-void *Int(Reltt_INT *IN)
-{
-    string Varname = IN->get_Next_Token();
-    string VarValue = resolve_parentensis(IN).S_value;
-    cout<<Varname<<VarValue<<endl;
-    //cout<<"VarValue"<<VarValue<<endl;
-    //Value T =;
-    //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
-    //IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "int"),IN->StackPointer-1);
-    //IN->StackPointer++;
-    //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
-}
-void *Float(Reltt_INT *IN)
-{
-    string Varname = IN->get_Next_Token();
-    string VarValue = resolve_parentensis(IN).S_value;
-    cout<<Varname<<VarValue<<endl;
-    //cout<<"VarValue"<<VarValue<<endl;
-    //Value T =;
-    //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
-    //IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "float"),IN->StackPointer-1);
-}
 void *func(Reltt_INT *IN)
 {
     IN->charstr++;
@@ -1356,19 +1332,19 @@ void *R_If(Reltt_INT *IN)
    if (V.B_value==1){
        IN->Parse();
 
-    cout<<"True"<<endl;
+    //cout<<"True"<<endl;
    }
    elif (V.B_value==0){
-       cout<<"False"<<endl;
+       //cout<<"False"<<endl;
        while (strcmp(IN->argv[IN->charstr].c_str(),"endif;")!=0){
            IN->charstr++;
        }
-       cout<<"gonna parse.."<<endl;
+       //cout<<"gonna parse.."<<endl;
        IN->Parse();
 
    }
    else{
-       cout<<"None"<<endl;
+       //cout<<"None"<<endl;
    }
 }
 void *add_Path(Reltt_INT *IN){

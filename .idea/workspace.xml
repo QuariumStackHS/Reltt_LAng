@@ -16,8 +16,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;working&#10;}">
-      <change afterPath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" afterDir="false" />
+    <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;working bool&#10;}">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
@@ -27,8 +27,6 @@
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +49,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Reltt/main.cpp" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/Reltt/Reltt.cpp" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1pNolVdirIgoaK4H4IhPSLL6bLp" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -198,7 +197,7 @@
       <workItem from="1615302344506" duration="7254000" />
       <workItem from="1615312097369" duration="140000" />
       <workItem from="1615414153701" duration="21023000" />
-      <workItem from="1615470478510" duration="4251000" />
+      <workItem from="1615470478510" duration="7007000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>
@@ -235,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615470834383</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="{&#10;working bool&#10;}">
+      <created>1615475873599</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1615475873599</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,7 +267,8 @@
     <MESSAGE value="{&#10;Variable bug patched&#10;}" />
     <MESSAGE value="{&#10;add ( ) supporte&#10;}" />
     <MESSAGE value="{&#10;working&#10;}" />
-    <option name="LAST_COMMIT_MESSAGE" value="{&#10;working&#10;}" />
+    <MESSAGE value="{&#10;working bool&#10;}" />
+    <option name="LAST_COMMIT_MESSAGE" value="{&#10;working bool&#10;}" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -269,6 +276,11 @@
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Reltt/main.cpp</url>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Reltt/Reltt.cpp</url>
+          <line>13</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

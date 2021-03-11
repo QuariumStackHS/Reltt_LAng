@@ -2,13 +2,20 @@ Begin:
 
 using Builds
 > setup
-> Set -> helps.RlS help
+> Set -> help.RlS help
 > Build-this
 > Call -> help
+
 show
-if ( name )
-cout "Help"
 
+if ( name == "help_exe" )
+    cout "Help"
 endif;
-
+else if ( name == "help_exe" )
+    cout "Helper"
+endif;
+else
+    cout "helse"
+endif;
+*/
 end;
