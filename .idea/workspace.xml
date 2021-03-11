@@ -16,10 +16,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;working bool&#10;}">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;working bool+opti&#10;}">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Tests/build.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/build.RlS" afterDir="false" />
@@ -197,7 +195,7 @@
       <workItem from="1615302344506" duration="7254000" />
       <workItem from="1615312097369" duration="140000" />
       <workItem from="1615414153701" duration="21023000" />
-      <workItem from="1615470478510" duration="7007000" />
+      <workItem from="1615470478510" duration="9181000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>
@@ -241,7 +239,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615475873599</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="{&#10;working bool+opti&#10;}">
+      <created>1615479074957</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1615479074957</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +273,8 @@
     <MESSAGE value="{&#10;add ( ) supporte&#10;}" />
     <MESSAGE value="{&#10;working&#10;}" />
     <MESSAGE value="{&#10;working bool&#10;}" />
-    <option name="LAST_COMMIT_MESSAGE" value="{&#10;working bool&#10;}" />
+    <MESSAGE value="{&#10;working bool+opti&#10;}" />
+    <option name="LAST_COMMIT_MESSAGE" value="{&#10;working bool+opti&#10;}" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

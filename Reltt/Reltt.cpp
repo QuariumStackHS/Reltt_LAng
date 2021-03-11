@@ -1433,12 +1433,12 @@ int Reltt_INT::init_Func()
     add_Cask("*>", "[varname], delete var √", &Del);
     add_Cask("PATH", "add to the looking path√", &Add_To_Search);
     add_Cask("DMP", "show loaded UD_function. Note this function do not work with compiled script √", &Dump);
-    add_Cask("if", "if ( bool ) then ø", &R_If);
-    add_Cask("SET", "set RelttPath (Restart Reltt to take change)", &set_RelttPath);
-    add_Cask("show", "show all variables", &ShowVar);
-    add_Cask("Gen_this", "Generate a script with this code)", &Gen_this);
-    add_Cask("wait", "wait for enter key", &Sleeper);
-    add_Cask("cin", "get until enter key", &ciner);
+    add_Cask("if", "if ( bool ) if else ( bool ) else endif; √", &R_If);
+    add_Cask("SET", "set RelttPath (Restart Reltt to take change) √", &set_RelttPath);
+    add_Cask("show", "show all variables √", &ShowVar);
+    add_Cask("Gen_this", "Generate a script with this code √", &Gen_this);
+    add_Cask("wait", "wait for enter key √", &Sleeper);
+    add_Cask("cin", "get until enter key √", &ciner);
     //add_Cask("endif", "end if else statement", &handler);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
 
