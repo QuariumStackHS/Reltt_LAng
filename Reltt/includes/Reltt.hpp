@@ -233,11 +233,6 @@ public:
     //int newVar(string, string);
     int DeleteVar(string);
     Value getVar(string);
-    int GetInsL(int);
-    int GetSRCFId(string);
-    //Todo
-    int FncExist(string);
-    int Execute(string);
     void New_Var(Value TR,int SP)
     {
         if(SP<=-1||SP>this->Math_Var.size()){
@@ -316,7 +311,7 @@ public:
     int DBuf = -2;
     Value LastMathValue = Value("None", 0);
     string getcurrentIns();
-    int edit(string);
+    //int edit(string);
     int varsN = 0;
     int charstr = 0;
     //int Compile();
@@ -324,7 +319,7 @@ public:
     int executeFunc(string);
     //int Run();
     int newFunc(string, int, int, vector<ArgType>);
-    int import();
+    //int import();
     string getnextIns();
     vector<func_INS_Var *> Math_Var;
 

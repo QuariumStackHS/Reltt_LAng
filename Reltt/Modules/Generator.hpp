@@ -8,7 +8,7 @@ void *Gen_Help(Reltt_INT *IN)
     cout << GREEN << "Reltt C++ Modules: (" << IN->QS.size() + 1 << "):" << RESET << endl;
     vector<string> VOM;
     ofstream myfile;
-    string Pathtohelp=(string)getenv("RelttPath")+(string)"scripts/helps.RlS";
+    string Pathtohelp=(string)getenv("RelttPath")+(string)"scripts/help.RlS";
     myfile.open(Pathtohelp);
     myfile << "Begin:\n";
     myfile << "-help Base\n";

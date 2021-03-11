@@ -1,22 +1,5 @@
 Begin:
 
-import Std
-
-import "Generator"
-using scripts/CSscript.RlS
-
-func update ( )
-    App-RCP
-    Gen_Help
-    > Native -> "Reltt_Update" "scripts/Update.RlS"
-    > Native -> "Reltt_Compile" "scripts/Compile.RlS"
-    > Native -> "Reltt_Help" "scripts/help.RlS"
-
-end;
-
-
+using Updates
 > update
-
-
-
 end;

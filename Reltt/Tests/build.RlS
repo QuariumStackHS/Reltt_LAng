@@ -6,5 +6,9 @@ using Builds
 > Build-this
 > Call -> help
 show
-DMP
+if ( name )
+cout "Help"
+
+endif;
+
 end;

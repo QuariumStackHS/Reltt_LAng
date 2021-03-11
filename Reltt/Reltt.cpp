@@ -18,7 +18,7 @@ Value resolve_parentensis(Reltt_INT *IN){
     int par=0;
     bool isfirst=1;
     while(par>=1 || isfirst){
-        //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+        cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
         if (strcmp(token.S_value.c_str()," ")==0){
             cachevalue.S_value.append(" ");
         }
@@ -186,6 +186,30 @@ Value resolve_parentensis(Reltt_INT *IN){
                 cachevalue.T_R="float";
             }
         }
+        elif(strcmp(token.S_value.c_str(),"&&")==0){
+            cout<<cachevalue.B_value;
+            token=IN->getVar(IN->get_Next_Token());
+
+            cachevalue.B_value=(cachevalue.F_value&&token.F_value)||(cachevalue.I_value&&token.I_value);
+        }
+        elif(strcmp(token.S_value.c_str(),"||")==0){
+            cout<<cachevalue.B_value;
+            token=IN->getVar(IN->get_Next_Token());
+
+            cachevalue.B_value=(cachevalue.F_value||token.F_value);
+        }
+        elif(strcmp(token.S_value.c_str(),"==")==0){
+            token=IN->getVar(IN->get_Next_Token());
+            cachevalue.B_value=(strcmp(cachevalue.S_value.c_str(),token.S_value.c_str())==0);
+        }
+        elif(strcmp(token.S_value.c_str(),"!=")==0){
+            //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+            token=IN->getVar(IN->get_Next_Token());
+            //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+            cachevalue.B_value=(strcmp(cachevalue.S_value.c_str(),token.S_value.c_str()));
+            //cout<<cachevalue.B_value<<endl;
+            //cachevalue.S_value=to_string(cachevalue.B_value);
+        }
         elif(strcmp(token.S_value.c_str(),"(")==0){
             if (par){
                 cachevalue=resolve_parentensis(IN);
@@ -197,8 +221,8 @@ Value resolve_parentensis(Reltt_INT *IN){
         elif(strcmp(token.S_value.c_str(),")")==0){
             par--;
             if (par==0){
-                return_Value=IN->getVar(cachevalue.S_value);
-                //cout<<"return fast"<<endl;
+                return_Value=cachevalue;
+                cout<<"return fast"<<endl;
                 return return_Value;
             }
         }
@@ -896,11 +920,6 @@ string Reltt_INT::getnextIns()
     charstr++;
     return getcurrentIns();
 }
-int Reltt_INT::edit(string FN)
-{
-
-    return 0;
-}
 void *import_T(Reltt_INT *IN)
 {
 
@@ -1010,6 +1029,14 @@ int Reltt_INT::Parse()
             //execution would be there if it was executing a func, if it was not encounter it will return 0 so would continue in the if else statement
         }
         elif (strcmp(getcurrentIns().c_str(), "end;") == 0)
+        {
+            return charstr;
+        }
+        elif (strcmp(getcurrentIns().c_str(), "endif;") == 0)
+        {
+            return charstr;
+        }
+        elif (strcmp(getcurrentIns().c_str(), "else") == 0)
         {
             return charstr;
         }
@@ -1325,7 +1352,24 @@ void *with(Reltt_INT *IN)
 }
 void *R_If(Reltt_INT *IN)
 {
-    IN->get_Next_Token();
+   Value V=resolve_parentensis(IN);
+   if (V.B_value==1){
+       IN->Parse();
+
+    cout<<"True"<<endl;
+   }
+   elif (V.B_value==0){
+       cout<<"False"<<endl;
+       while (strcmp(IN->argv[IN->charstr].c_str(),"endif;")!=0){
+           IN->charstr++;
+       }
+       cout<<"gonna parse.."<<endl;
+       IN->Parse();
+
+   }
+   else{
+       cout<<"None"<<endl;
+   }
 }
 void *add_Path(Reltt_INT *IN){
     string newpat=IN->getVar(IN->get_Next_Token()).S_value;
@@ -1385,6 +1429,9 @@ void *ciner(Reltt_INT*IN){
     cin>>value;
     IN->New_Var(Value(varname,value,"string"),IN->StackPointer);
 }
+void *handler(Reltt_INT *IN){
+
+}
 int Reltt_INT::init_Func()
 {
     //&Compile;
@@ -1405,7 +1452,7 @@ int Reltt_INT::init_Func()
     add_Cask("-RlS", "Run Reltt Script √", &QF);
     add_Cask("-help", "[module] √", &HelperI);
     add_Cask("<>", "[varname] [\"var value\"] √", &String);
-    add_Cask("string", "[varname] [var_value] √", &String);
+    add_Cask("var", "[varname] [var_value] √", &String);
     //add_Cask("float", "[varname] [var_value] √", &Float);
     add_Cask("*>", "[varname], delete var √", &Del);
     add_Cask("PATH", "add to the looking path√", &Add_To_Search);
@@ -1416,6 +1463,7 @@ int Reltt_INT::init_Func()
     add_Cask("Gen_this", "Generate a script with this code)", &Gen_this);
     add_Cask("wait", "wait for enter key", &Sleeper);
     add_Cask("cin", "get until enter key", &ciner);
+    //add_Cask("endif", "end if else statement", &handler);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
 
 

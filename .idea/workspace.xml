@@ -17,9 +17,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;working&#10;}">
-      <change beforePath="$PROJECT_DIR$/.idea/Reltt_LAng.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Reltt_LAng.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Tests/build.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/build.RlS" afterDir="false" />
@@ -27,6 +27,8 @@
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/Update.RlS" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +38,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -85,14 +86,14 @@
       <recent name="$PROJECT_DIR$/Modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Reltt/RlS" />
       <recent name="$PROJECT_DIR$/RelttJumper" />
       <recent name="$PROJECT_DIR$/Reltt/bin/Reltt.app/Contents/MacOS" />
-      <recent name="$PROJECT_DIR$/Reltt/RlS" />
       <recent name="$PROJECT_DIR$/Reltt/OBJ" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.Reltt_Installer">
+  <component name="RunManager" selected="Custom Build Application.Compile Reltt_INT">
     <configuration name="Compile Reltt_INT" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Reltt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="Reltt Update" CONFIG_NAME="Reltt Update" RUN_PATH="$PROJECT_DIR$/Reltt/bin/Reltt_Update">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
@@ -197,7 +198,7 @@
       <workItem from="1615302344506" duration="7254000" />
       <workItem from="1615312097369" duration="140000" />
       <workItem from="1615414153701" duration="21023000" />
-      <workItem from="1615470478510" duration="199000" />
+      <workItem from="1615470478510" duration="4251000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>
@@ -227,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615442270772</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="{&#10;working&#10;}">
+      <created>1615470834383</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1615470834383</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
