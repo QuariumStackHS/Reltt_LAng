@@ -1,10 +1,9 @@
 Begin:
-
 using Builds
-> setup
-> Set -> Main.RlS Main
-> Build-this
-> Call -> Main
 
+> setup
+> Set -> helps.RlS help
+> Build-this
+> Call -> help
 
 end;

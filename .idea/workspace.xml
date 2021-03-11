@@ -19,15 +19,17 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Tests/bin/Main_exe" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/bin/Main_exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Tests/build.CRS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/build.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/RlS/Builds.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/Builds.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/RlS/PATH.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/PATH.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/bin/Main_exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/build.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/build.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Tests/help.QF" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Tests/helps.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/help.RlS" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +70,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Reltt/Tests/scripts" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -85,11 +87,11 @@
       <recent name="$PROJECT_DIR$/Modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/RelttJumper" />
       <recent name="$PROJECT_DIR$/Reltt/bin/Reltt.app/Contents/MacOS" />
       <recent name="$PROJECT_DIR$/Reltt/RlS" />
       <recent name="$PROJECT_DIR$/Reltt/OBJ" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/Installer" />
     </key>
   </component>
   <component name="RunManager" selected="Custom Build Application.Compile Reltt_INT">
@@ -110,9 +112,9 @@
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -179,6 +181,7 @@
       <workItem from="1615302078087" duration="120000" />
       <workItem from="1615302344506" duration="7254000" />
       <workItem from="1615312097369" duration="140000" />
+      <workItem from="1615414153701" duration="9685000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>

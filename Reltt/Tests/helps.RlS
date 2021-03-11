@@ -4,4 +4,7 @@ Begin:
 -help Std
 -help ASM
 -help Compilator
+import Std
+cout ( "enter any key+enter to exit" )
+wait
 end;

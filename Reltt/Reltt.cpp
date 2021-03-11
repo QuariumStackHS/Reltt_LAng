@@ -9,6 +9,7 @@
 #include "Modules.hpp"
 #include <filesystem>
 #include <dirent.h>
+#include <time.h>
 #include <cstdlib>
 Value resolve_parentensis(Reltt_INT *IN){
     Value token=IN->getVar(IN->get_Next_Token());
@@ -21,23 +22,189 @@ Value resolve_parentensis(Reltt_INT *IN){
 
         if (strcmp(token.S_value.c_str(),"+")==0){
             //cout<<"Plus"<<endl;
+
             token=IN->getVar(IN->get_Next_Token());
+            if(strcmp(token.T_R.c_str(),"string")==0){
             cachevalue.S_value=cachevalue.S_value.append(token.S_value);
+            cachevalue=Value(cachevalue.v_Name,cachevalue.S_value,"string");
+            }
+            else{
             cachevalue.I_value=cachevalue.I_value+token.I_value;
             cachevalue.F_value=cachevalue.F_value+token.F_value;
+            cachevalue.S_value=to_string(cachevalue.F_value);
+            cachevalue.T_R="float";
+            }
+        }
+        elif (strcmp(token.S_value.c_str(),"-")==0){
+            //cout<<"Plus"<<endl;
+
+            token=IN->getVar(IN->get_Next_Token());
+
+            if(strcmp(token.T_R.c_str(),"string")==0){
+                try
+                {
+                    int i = std::stoi(token.S_value);
+                    cachevalue.I_value = cachevalue.I_value-i;
+                    //std::cout << i << '\n';
+                }
+                catch (std::invalid_argument const &e)
+                {cout<<"operator - is not available for strings"<<endl;
+                    cachevalue.I_value = -1;
+                    //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+                }
+                catch (std::out_of_range const &e)
+                {cout<<"operator - is not available for strings"<<endl;
+                    cachevalue.I_value = -1;
+                    //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+                }
+                try
+                {
+                    float i = std::stof(token.S_value);
+                    cachevalue.F_value = cachevalue.F_value-i;
+                    //std::cout << i << '\n';
+                }
+                catch (std::invalid_argument const &e)
+                {cout<<"operator - is not available for strings"<<endl;
+                    cachevalue.F_value = -1;
+                    //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+                }
+                catch (std::out_of_range const &e)
+                {cout<<"operator - is not available for strings"<<endl;
+                    cachevalue.F_value = -1;
+                    //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+                }
+                //cachevalue.S_value=cachevalue.S_value.s(token.S_value);
+                //cachevalue=Value("",cachevalue.S_value,"string");
+
+            }
+            else{
+                cachevalue.I_value=cachevalue.I_value-token.I_value;
+                cachevalue.F_value=cachevalue.F_value-token.F_value;
+                cachevalue.S_value=to_string(cachevalue.F_value);
+                cachevalue.T_R="float";
+            }
+        }
+        elif (strcmp(token.S_value.c_str(),"/")==0){
+            //cout<<"divide"<<endl;
+
+            token=IN->getVar(IN->get_Next_Token());
+
+            if(strcmp(token.T_R.c_str(),"string")==0){
+                try
+                {
+                    int i = std::stoi(token.S_value);
+                    cachevalue.I_value = cachevalue.I_value/i;
+                    //std::cout << i << '\n';
+                }
+                catch (std::invalid_argument const &e)
+                {cout<<"operator / is not available for strings"<<endl;
+                    cachevalue.I_value = -1;
+                    //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+                }
+                catch (std::out_of_range const &e)
+                {cout<<"operator / is not available for strings"<<endl;
+                    cachevalue.I_value = -1;
+                    //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+                }
+                try
+                {
+                    float i = std::stof(token.S_value);
+                    cachevalue.F_value = cachevalue.F_value/i;
+                    //std::cout << i << '\n';
+                }
+                catch (std::invalid_argument const &e)
+                {cout<<"operator / is not available for strings"<<endl;
+                    cachevalue.F_value = -1;
+                    //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+                }
+                catch (std::out_of_range const &e)
+                {cout<<"operator / is not available for strings"<<endl;
+                    cachevalue.F_value = -1;
+                    //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+                }
+                //cachevalue.S_value=cachevalue.S_value.s(token.S_value);
+                //cachevalue=Value("",cachevalue.S_value,"string");
+
+            }
+            else{
+                cachevalue.I_value=cachevalue.I_value/token.I_value;
+                cachevalue.F_value=cachevalue.F_value/token.F_value;
+                cachevalue.S_value=to_string(cachevalue.F_value);
+                cachevalue.T_R="float";
+            }
+        }
+        elif (strcmp(token.S_value.c_str(),"*")==0){
+            //cout<<"multiply"<<endl;
+
+            token=IN->getVar(IN->get_Next_Token());
+
+            if(strcmp(token.T_R.c_str(),"string")==0){
+                try
+                {
+                    int i = std::stoi(token.S_value);
+                    cachevalue.I_value = cachevalue.I_value*i;
+                    //std::cout << i << '\n';
+                }
+                catch (std::invalid_argument const &e)
+                {cout<<"operator * is not available for strings"<<endl;
+                    cachevalue.I_value = -1;
+                    //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+                }
+                catch (std::out_of_range const &e)
+                {cout<<"operator * is not available for strings"<<endl;
+                    cachevalue.I_value = -1;
+                    //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+                }
+                try
+                {
+                    float i = std::stof(token.S_value);
+                    cachevalue.F_value = cachevalue.F_value*i;
+                    //std::cout << i << '\n';
+                }
+                catch (std::invalid_argument const &e)
+                {cout<<"operator * is not available for strings"<<endl;
+                    cachevalue.F_value = -1;
+                    //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+                }
+                catch (std::out_of_range const &e)
+                {cout<<"operator * is not available for strings"<<endl;
+                    cachevalue.F_value = -1;
+                    //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+                }
+                //cachevalue.S_value=cachevalue.S_value.s(token.S_value);
+                //cachevalue=Value("",cachevalue.S_value,"string");
+
+            }
+            else{
+                cachevalue.I_value=cachevalue.I_value*token.I_value;
+                cachevalue.F_value=cachevalue.F_value*token.F_value;
+                cachevalue.S_value=to_string(cachevalue.F_value);
+                cachevalue.T_R="float";
+            }
         }
         elif(strcmp(token.S_value.c_str(),"(")==0){
+            if (par){
+                cachevalue=resolve_parentensis(IN);
+            }else{
             par++;
+            }
+
         }
         elif(strcmp(token.S_value.c_str(),")")==0){
             par--;
-        if (par==0)
+            if (par==0){
+                return_Value=IN->getVar(cachevalue.S_value);
+                //cout<<"return fast"<<endl;
+                return return_Value;
+            }
+        }
+        elif (par==0)
         {
             return_Value=IN->getVar(cachevalue.S_value);
             //cout<<"return last"<<endl;
             return return_Value;
         }
-        }
+
         elif (isfirst){
             //cout<<"Reterning"<<return_Value.S_value<<endl;
             return return_Value;
@@ -50,9 +217,14 @@ Value resolve_parentensis(Reltt_INT *IN){
         token=IN->getVar(IN->get_Next_Token());
 
     }
-    cout<<"Reterning after: "<<return_Value.S_value<<endl;
+    //cout<<"Reterning after: "<<return_Value.S_value<<endl;
     return return_Value;
 
+}
+void * Sleeper(Reltt_INT *IN){
+    char s;
+    cin>>s;
+    //wait(resolve_parentensis(IN).I_value);
 }
 app::app(string name, int argc, char **argv)
 {
@@ -119,12 +291,12 @@ int Reltt_INT::try_task(string tname)
     return 0;
 }
 Value::Value(string Name, float Value)
-{
+{this->v_Name=Name;
     this->F_value = Value;
     this->T_R = "float";
 }
 Value::Value(string Name, int Value)
-{
+{   this->v_Name=Name;
     this->I_value = Value;
     this->T_R = "int";
 }
@@ -459,7 +631,40 @@ Value Reltt_INT::getVar(string varname)
             }
         }
     }
-    return Value(varname, varname, "string");
+   Value v= Value(varname, varname, "string");
+    try
+    {
+        int i = std::stoi(v.S_value);
+        //cachevalue.I_value = cachevalue.I_value-i;
+        v.T_R="int";
+        //std::cout << i << '\n';
+    }
+    catch (std::invalid_argument const &e)
+    {//cout<<"operator - is not available for strings"<<endl;
+        //cachevalue.I_value = -1;
+        //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+    }
+    catch (std::out_of_range const &e)
+    {//cout<<"operator - is not available for strings"<<endl;
+        //cachevalue.I_value = -1;
+        //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+    }
+    try
+    {
+        float i = std::stof(v.S_value);
+        v.T_R="float";
+        //cachevalue.F_value = cachevalue.F_value-i;
+        //std::cout << i << '\n';
+    }
+    catch (std::invalid_argument const &e)
+    {
+        //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+    }
+    catch (std::out_of_range const &e)
+    {
+        //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+    }
+    return v;
 }
 
 int Reltt_INT::runfile()
@@ -811,7 +1016,7 @@ int Reltt_INT::Parse()
                     isexist = 1;
                 }
             }
-            if ((isexist == 0) && (strcmp(getcurrentIns().c_str(), "Begin:") != 0))
+            if ((isexist == 0) && (strcmp(getcurrentIns().c_str(), "Begin:") != 0)&&(strcmp(getcurrentIns().c_str(), "")!=0))
             {
                 cout << RED << "[ERROR] " << BOLDRED << "Unknown Instruction: \"" << getcurrentIns() << "\"  at line : " << get_line_fromcharstr(charstr) << RESET << endl;
                 //exit(0);
@@ -997,7 +1202,7 @@ void *String(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
     string VarValue = resolve_parentensis(IN).S_value;
-    cout<<"VarValue"<<VarValue<<endl;
+    //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
     //IN->StackPointer--;
@@ -1008,20 +1213,20 @@ void *String(Reltt_INT *IN)
 void *Int(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
-    string VarValue = IN->get_Next_Token();
+    int VarValue = resolve_parentensis(IN).I_value;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
     //IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "int"),IN->StackPointer-1);
+    IN->New_Var(Value(Varname, VarValue),IN->StackPointer-1);
     //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
 void *Float(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
-    string VarValue = IN->get_Next_Token();
+    float VarValue = resolve_parentensis(IN).F_value;
     //IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "float"),IN->StackPointer-1);
+    IN->New_Var(Value(Varname, VarValue ),IN->StackPointer-1);
     //IN->StackPointer++;
 }
 void *func(Reltt_INT *IN)
@@ -1063,6 +1268,47 @@ void *func(Reltt_INT *IN)
     }
 
     IN->newFunc(FucName, beginline, EndOFFunc, G);
+    //cout << "analized Func properly" << endl;
+    //charstr--;
+}
+void *ASM(Reltt_INT *IN)
+{
+    IN->charstr++;
+    string FucName = IN->getcurrentIns();
+    vector<ArgType> G;
+    int beginline = IN->charstr + 1;
+    //cout<<"Adding Func name: "<<FucName<<endl;
+    string FncCode;
+    int EndOFFunc = 0;
+    int lastline;
+    while (!EndOFFunc)
+    {lastline=IN->get_line_fromcharstr(IN->charstr);
+        IN->charstr++;
+        //cout<<getcurrentIns()<<endl;
+
+        string InStr = IN->getcurrentIns();
+
+        if (strcmp(InStr.c_str(), "end;") == 0)
+        {
+            EndOFFunc = IN->charstr;
+        }
+        else
+        {
+            if(lastline!=IN->get_line_fromcharstr(IN->charstr)){
+                FncCode.append("\n");
+                cout<<lastline;
+            }
+            FncCode.append(InStr.c_str());
+            FncCode.append(" ");
+        }
+    }
+
+    ofstream I;
+    I.open(((string) getenv("RelttPath")+"ASM/"+FucName+".asm").c_str());
+    I<<FncCode<<"\n;Code Generated by Reltt\n";
+    string CMD="nasm "+((string)getenv("RelttPath")+"ASM/"+FucName+".asm -f macho64 -o"+(string)getenv("RelttPath")+"ASM/"+FucName+".RLB");
+    cout<<CMD<<endl;
+    system(CMD.c_str());
     //cout << "analized Func properly" << endl;
     //charstr--;
 }
@@ -1175,6 +1421,8 @@ int Reltt_INT::init_Func()
     add_Cask("SET", "set RelttPath (Restart Reltt to take change)", &set_RelttPath);
     add_Cask("show", "show all variables", &ShowVar);
     add_Cask("Gen_this", "Generate a script with this code)", &Gen_this);
+    add_Cask("wait", "wait for enter key", &Sleeper);
+    add_Cask("ASM","",&ASM);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
 
 
