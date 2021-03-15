@@ -77,14 +77,14 @@ int main(int argc, char **argv)
         char *argcv[3];
         if (argc == 1)
         {
-            /*cout<<YELLOW<<""" _______ _______ _   _________________     _ _______    _______    _______ _   \n"
+            cout<<YELLOW<<""" _______ _______ _   _________________     _ _______    _______    _______ _   \n"
                           "(  ____ |  ____ ( \\  \\__   __|__   __/    / |  ___  )  (  ____ \\  (  ____ | \\  \n"
                           "| (    )| (    \\/ (     ) (     ) (      / /| (   ) |  | (    \\/  | (    )|\\ \\ \n"
                           "| (____)| (__   | |     | |     | |     ( ( | |   | |  | (_____   | (____)| ) )\n"
                           "|     __)  __)  | |     | |     | |     | | | |   | |  (_____  )  |     __) | |\n"
                           "| (\\ (  | (     | |     | |     | |     ( ( | | /\\| |        ) |  | (\\ (    ) )\n"
                           "| ) \\ \\_| (____/\\ (____/\\ |     | |      \\ \\| (_\\ \\ |  /\\____) |  | ) \\ \\__/ / \n"
-                          "|/   \\__(_______(_______)_(     )_(       \\_|____\\/_)  \\_______)  |/   \\__(_/  """<<RESET<<endl;*/
+                          "|/   \\__(_______(_______)_(     )_(       \\_|____\\/_)  \\_______)  |/   \\__(_/  """<<RESET<<endl<<RED<<"╔══("<<BLUE<<"Reltt"<<RED<<")🪢["<<getenv("USER")<<"]"<<endl;
 
 
 
@@ -94,7 +94,7 @@ int main(int argc, char **argv)
             string buffer = "";
             Reltt_INT *Args = new Reltt_INT();
             //cout<<BLUE<<error_message<<RESET<<endl;
-            cout <<BOLDRED<<"R̳e̳l̳t̳t̳"<<CYAN<<" ~>"<<RESET;
+            cout <<BOLDRED<<"╚═"<<CYAN<<"#"<<RESET;
             while (getline(cin, buffer))
 
             {vector<string> argvz;
@@ -116,10 +116,13 @@ int main(int argc, char **argv)
                 Args->AddVector(argvz.size(), argvz);
                 //cout << "PAssing vector:√" << endl;
 
-
+                cout<<GREEN<<"╔═"<<RED<<"("<<BLUE<<"RELTT_INFO"<<RED<<")\n"<<GREEN<<"╚═["<<RESET;
                 Args->Parse();
+                cout<<GREEN<<"  ]"<<RESET<<endl;
                 buffer = "as: ";
-                cout <<BOLDRED<<"R̳e̳l̳t̳t̳"<<CYAN<<" ~>"<<RESET<<BLUE;            }
+                cout<<RED<<"╔══("<<BLUE<<"Reltt"<<RED<<")🪢["<<getenv("USER")<<"]"<<endl;
+                cout <<BOLDRED<<"╚═"<<CYAN<<"#"<<RESET<<BLUE;            }
+
         }
         elif (argc == 2)
         {

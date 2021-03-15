@@ -17,10 +17,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;very buggy if elif else&#10;}">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compile.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Installer/Installer" beforeDir="false" afterPath="$PROJECT_DIR$/Installer/OSX/Installer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,14 +82,14 @@
       <recent name="$PROJECT_DIR$/Modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Installer/OSX" />
       <recent name="$PROJECT_DIR$/Reltt/RlS" />
       <recent name="$PROJECT_DIR$/RelttJumper" />
       <recent name="$PROJECT_DIR$/Reltt/bin/Reltt.app/Contents/MacOS" />
       <recent name="$PROJECT_DIR$/Reltt/OBJ" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.Installer">
+  <component name="RunManager" selected="CMake Application.Reltt">
     <configuration name="Compile Reltt_INT" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Reltt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build Reltt" CONFIG_NAME="build Reltt" RUN_PATH="$PROJECT_DIR$/Reltt/bin/Reltt_Update">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
@@ -99,11 +100,6 @@
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Update.RLS" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="test installer" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build installer" CONFIG_NAME="build installer" RUN_PATH="$PROJECT_DIR$/Installer/Installer">
@@ -129,6 +125,11 @@
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -201,7 +202,8 @@
       <workItem from="1615414153701" duration="21023000" />
       <workItem from="1615470478510" duration="9181000" />
       <workItem from="1615819805271" duration="1531000" />
-      <workItem from="1615824368176" duration="2795000" />
+      <workItem from="1615824368176" duration="2875000" />
+      <workItem from="1615830753471" duration="1731000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>
@@ -259,7 +261,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615825912142</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="{&#10;very buggy if elif else&#10;}">
+      <created>1615829767265</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1615829767265</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
