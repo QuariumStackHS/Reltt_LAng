@@ -1040,6 +1040,14 @@ int Reltt_INT::Parse()
         {
             return charstr;
         }
+        elif (strcmp(getcurrentIns().c_str(), "then:") == 0)
+        {
+            //return charstr;
+        }
+        elif (strcmp(getcurrentIns().c_str(), "elif") == 0)
+        {
+            return charstr;
+        }
         elif (strcmp(getcurrentIns().c_str(), "/*") == 0)
         {
             while (strcmp(getcurrentIns().c_str(), "*/") != 0)
@@ -1328,19 +1336,63 @@ void *with(Reltt_INT *IN)
 }
 void *R_If(Reltt_INT *IN)
 {
+    int Ifer=0;
    Value V=resolve_parentensis(IN);
+   if(IN->Cfg.debug==1)
+    cout << "if" <<IN->argv[IN->charstr+2]<<Ifer<< endl;
+    Ifer++;
    if (V.B_value==1){
        IN->Parse();
-
-    //cout<<"True"<<endl;
+       if(IN->Cfg.debug==1)
+    cout<<"True"<<endl;
    }
    elif (V.B_value==0){
-       //cout<<"False"<<endl;
-       while (strcmp(IN->argv[IN->charstr].c_str(),"endif;")!=0){
+       if(IN->Cfg.debug==1)
+       cout<<"False"<<endl;
+       bool no_Ifer=0;
+       bool isfirst=1;
+       int JmpL=0;
+       while ((Ifer>=1)||(isfirst)) {
+
+           if(strcmp(IN->argv[IN->charstr].c_str(),"endif;")==0){
+               if(IN->Cfg.debug==1)
+               cout<<"endif;"<<Ifer<<endl;
+
+               Ifer--;
+               if (Ifer==0){
+                   JmpL=IN->charstr;
+               }
+           }
+           elif(strcmp(IN->argv[IN->charstr].c_str(),"elif")==0){
+               if(IN->Cfg.debug==1)
+               cout<<"elif"<<IN->argv[IN->charstr+2]<<Ifer<<endl;
+               if (Ifer==0){
+                   //IN->charstr++;
+                   cout<<"resolving parentesis"<<endl;
+                   int re=resolve_parentensis(IN).B_value;
+                   if (re==1){
+                   R_If(IN);
+                   }
+               }
+               isfirst=0;
+           }
+           elif(strcmp(IN->argv[IN->charstr].c_str(),"else")==0){
+               if(IN->Cfg.debug==1)
+               cout<<"else"<<Ifer<<endl;
+               if (Ifer==1){
+
+                   JmpL=IN->charstr+1;
+               }
+
+           }
+
+           //cout<<IN->argv[IN->charstr]<<endl;
            IN->charstr++;
        }
        //cout<<"gonna parse.."<<endl;
+       IN->charstr=JmpL;
        IN->Parse();
+
 
    }
    else{
@@ -1429,6 +1481,8 @@ int Reltt_INT::init_Func()
     add_Cask("-help", "[module] √", &HelperI);
     add_Cask("<>", "[varname] [\"var value\"] √", &String);
     add_Cask("var", "[varname] [var_value] √", &String);
+    //add_Cask("elif", "(statement) √", &R_If);
+
     //add_Cask("float", "[varname] [var_value] √", &Float);
     add_Cask("*>", "[varname], delete var √", &Del);
     add_Cask("PATH", "add to the looking path√", &Add_To_Search);

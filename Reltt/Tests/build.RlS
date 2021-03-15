@@ -8,16 +8,19 @@ using Builds
 
 show
 
-if ( name == "help_exe" )
-    cout "Help"
-endif;
+if ( name != "help_exe" ) then:
+    cout "Help ----"
 
-var argv-0 ( argv-0 + "Loler" )
-else if ( argv-0 != "Loler" )
-    cout argv-0
-endif;
+    /*if ( "helper" == "helper" ) then:
+        cout "ypp ------"
+    //elif ( name != "helper" )
+        cout "y0 -----"
+    else
+    endif;*/
+elif ( argv- != "Loler" ) then:
+    cout "argv ----"
 else
-    cout "helse"
+cout "None"
 endif;
 
 end;

@@ -1,4 +1,5 @@
 Installer/Installer
 .idea
 cmake-build-debug
+MSPG/
 .DS_Store

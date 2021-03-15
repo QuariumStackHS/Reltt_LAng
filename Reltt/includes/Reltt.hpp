@@ -135,6 +135,7 @@ public:
     void add_path(string i){
         this->paths.push_back(i);
     }
+    int ifnbr;
     vector<instruction> INSD;
     Value Resolve_statement();
     //void *Init_APP();
