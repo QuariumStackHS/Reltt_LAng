@@ -7,7 +7,9 @@
 
 void *print(Reltt_INT *IN){
 string PT=resolve_parentensis(IN).S_value;
-    cout<<IN->getVar(PT).S_value<<endl;
+    IN->p.begin_info();
+    IN->p.print_info(IN->getVar(PT).S_value);
+    IN->p.end_info();
 }
 void *system(Reltt_INT *IN){
 string PT=resolve_parentensis(IN).S_value;

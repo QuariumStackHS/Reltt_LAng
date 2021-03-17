@@ -799,8 +799,9 @@ void *Run(Reltt_INT *IN)
     string Cmd03 = ".exe";
     string Cmd = Cmd01.append(Cmd02);
     string Cmd1 = Cmd.append(Cmd03);
-
-    cout << "Running using: \"" << Cmd << "\" | Return: " << system(Cmd1.c_str()) << endl;
+    string i=((string)"Running using: \"");
+    //i.append(Cmd.c_str()).append("\" | Return: ").append(system(Cmd1.c_str()));
+    //IN.p.print_info(((string) ) );
     return 0;
 }
 void *Link(Reltt_INT *IN)
@@ -827,20 +828,20 @@ void *Update(Reltt_INT *IN)
     if ((strcmp(IN->getcurrentIns().c_str(), "App-RCP") == 0))
     {
         string PG=getenv("RelttPath");
-        cout << BOLDGREEN << "\nRecompiling Reltt interpreter:" << endl;
-        cout << "\tUpdating configuration.." << RESET << endl;
+        IN->p.begin_info();
+        IN->p.print_info("Recompiling Reltt interpreter:");
         int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -std=c++17 -c -o ").append(PG).append("OBJ/Reltt.o -w").c_str());
         if (i == 0)
         {
-            cout << GREEN << "\tCompiled " << BLUE << "Reltt " << GREEN << "With Return code: " << CYAN << i / 256 << endl;
+            IN->p.print_info(((string)GREEN).append("\tCompiled ").append(BLUE).append("Reltt ").append(GREEN).append("With Return code: ").append(CYAN).append(to_string(i / 256)));
 
             int j = system((((string)"g++ ").append(PG).append("main.cpp -std=c++17 -c -o ").append(PG).append("OBJ/main.o -w")).c_str());
             if (j == 0)
             {
-                cout << GREEN << "\tCompiled " << BLUE << "Reltt_Main " << GREEN << "With Return code: " << CYAN << j / 256 << endl;
+                IN->p.print_info(((string)GREEN).append("\tCompiled ").append(BLUE).append("Reltt_Main ").append(GREEN).append("With Return code: ").append(CYAN).append(to_string(j / 256)));
                 j = system((((string)"g++ -std=c++17 ").append(PG).append("OBJ/Reltt.o ").append(PG).append("OBJ/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
 
-                cout << GREEN << "\tLinked " << BLUE << "Reltt interpreter " << GREEN << "With Return code: " << CYAN << j / 256 << endl;
+                IN->p.print_info(((string)GREEN).append("\tLinked Reltt interpreter With Return code: ").append(to_string(j / 256)));
                 //j = system("g++ -std=c++17  $RelttPath/QSR/Obj/Reltt.o $RelttPath/QSR/Obj/main.o -o $RelttPath/Reltt.app/Contents/MacOS/Reltt -w");
             }
             else
@@ -854,6 +855,7 @@ void *Update(Reltt_INT *IN)
         {
             cout << BOLDRED "Error while Compiling Reltt Return code: " << i / 256 << RESET << endl;
         }
+        IN->p.end_info();
     }
     elif ((strcmp(IN->getcurrentIns().c_str(), "App-RUP") == 0))
     {
@@ -935,7 +937,9 @@ void *import_T(Reltt_INT *IN)
     }
     else{
         SKN=k.append(".RlS");
-        cout<<"importing "<<SKN<<endl;
+        IN->p.begin_info();
+        IN->p.print_info("importing "+SKN);
+        IN->p.end_info();
     }
     //cout << "importing: " << SKN << endl;
     ifstream Src(IN->get_fileOBJ(SKN));
@@ -981,7 +985,10 @@ void *Init(Reltt_INT *In)
 }
 void *Exit(Reltt_INT *In)
 {
-    cout << "---Exiting! Reltt---" << endl;
+    In->p.begin_info();
+    In->p.print_info("---Exiting! Reltt---");
+    In->p.print_info("Good Bye!");
+    In->p.end_info();
     exit(0);
 }
 void *QF(Reltt_INT *In)
@@ -1068,7 +1075,8 @@ int Reltt_INT::Parse()
             }
             if ((isexist == 0) && (strcmp(getcurrentIns().c_str(), "Begin:") != 0)&&(strcmp(getcurrentIns().c_str(), "")!=0))
             {
-                cout << RED << "[ERROR] " << BOLDRED << "Unknown Instruction: \"" << getcurrentIns() << "\"  at line : " << get_line_fromcharstr(charstr) << RESET << endl;
+
+                this->p.print_Error((string)RED +"Unknown Instruction: \""+getcurrentIns()+"\"  at line : " +to_string(get_line_fromcharstr(charstr))+(string)RESET);
                 //exit(0);
             }
         }

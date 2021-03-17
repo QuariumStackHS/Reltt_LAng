@@ -10,6 +10,7 @@
 //                                                                                            \|_________|                                                         \|_________|
 //
 //
+
 int main(int argc, char **argv)
 {
     cout << "---------Reltt_Lang---------" << endl;
@@ -84,7 +85,7 @@ int main(int argc, char **argv)
                           "|     __)  __)  | |     | |     | |     | | | |   | |  (_____  )  |     __) | |\n"
                           "| (\\ (  | (     | |     | |     | |     ( ( | | /\\| |        ) |  | (\\ (    ) )\n"
                           "| ) \\ \\_| (____/\\ (____/\\ |     | |      \\ \\| (_\\ \\ |  /\\____) |  | ) \\ \\__/ / \n"
-                          "|/   \\__(_______(_______)_(     )_(       \\_|____\\/_)  \\_______)  |/   \\__(_/  """<<RESET<<endl<<RED<<"╔══("<<BLUE<<"Reltt"<<RED<<")🪢["<<getenv("USER")<<"]"<<endl;
+                          "|/   \\__(_______(_______)_(     )_(       \\_|____\\/_)  \\_______)  |/   \\__(_/  """<<RESET<<endl;
 
 
 
@@ -94,7 +95,9 @@ int main(int argc, char **argv)
             string buffer = "";
             Reltt_INT *Args = new Reltt_INT();
             //cout<<BLUE<<error_message<<RESET<<endl;
-            cout <<BOLDRED<<"╚═"<<CYAN<<"#"<<RESET;
+            //cout <<RED<<"╚═"<<CYAN<<"#"<<RESET;
+            printer P =printer(getenv("USER"),"Reltt_Shell");
+            P.B_cin();
             while (getline(cin, buffer))
 
             {vector<string> argvz;
@@ -116,12 +119,14 @@ int main(int argc, char **argv)
                 Args->AddVector(argvz.size(), argvz);
                 //cout << "PAssing vector:√" << endl;
 
-                cout<<GREEN<<"╔═"<<RED<<"("<<BLUE<<"RELTT_INFO"<<RED<<")\n"<<GREEN<<"╚═["<<RESET;
+                //cout<<GREEN<<"╔═"<<RED<<"("<<BLUE<<"RELTT_INFO"<<RED<<")\n"<<GREEN<<"╚═["<<RESET;
                 Args->Parse();
-                cout<<GREEN<<"  ]"<<RESET<<endl;
+                //cout<<GREEN<<"\r]"<<RESET<<endl;
                 buffer = "as: ";
-                cout<<RED<<"╔══("<<BLUE<<"Reltt"<<RED<<")🪢["<<getenv("USER")<<"]"<<endl;
-                cout <<BOLDRED<<"╚═"<<CYAN<<"#"<<RESET<<BLUE;            }
+                //cout<<RED<<"╔══("<<BLUE<<"Reltt"<<RED<<")🪢["<<getenv("USER")<<"]"<<endl;
+                //cout <<RED<<"╚═"<<CYAN<<"#"<<RESET<<BLUE;
+                P.B_cin();
+                }
 
         }
         elif (argc == 2)

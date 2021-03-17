@@ -103,9 +103,42 @@ public:
 
     vector<Value *> localVars;
 };
+class printer{
+public:
+    printer(string user,string Thread){
+        Suser=user;
+        SThread=Thread;
+    }
+    void begin_info(){
+        cout<<GREEN<<"┌──("<<BLUE<<SThread<<GREEN<<")"<<endl;
+    }
+    void end_info(){
+        cout<<GREEN<<"└─{"<<Suser<<"}"<<RESET<<endl;
+    }
+    void print_info(string info){
+
+        cout<<GREEN<<"│\t"<<RESET<<info<<endl;
+
+    }
+    void print_Error(string Error){
+        cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"💥"<<RED<<"(ERROR)"<<endl;
+        cout<<RED<<"└─{"<<RESET<<Error<<RED<<"}"<<RESET<<endl;
+    }
+    void B_cin(){
+        cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"{"<<RESET<<Suser<<RED<<"}"<<endl;
+        cout<<RED<<"└──"<<YELLOW<<"#"<<RESET;
+    }
+
+
+    string Suser;
+    string SThread;
+
+};
+
 class Reltt_INT
 {
 public:
+    printer p=printer("Dev","Reltt_INT");
     int get_line_fromcharstr(int CharStr2)
     {
         for (int i = 0; i < INSD.size(); i++)
@@ -355,6 +388,7 @@ class Helper
 public:
     Helper(Reltt_INT *);
 };
+
 #else
 
 #endif

@@ -10,7 +10,7 @@ func update ( )
     Gen_Help
     > Native -> "Reltt_Update" "scripts/Update.RlS"
     > Native -> "Reltt_Compile" "scripts/Compile.RlS"
-    > Native -> "Reltt_Help" "scripts/help.RlS"
+    > Native -> "Reltt_Help" "RlS/help.RlS"
 
 end;
 
