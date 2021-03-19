@@ -7,6 +7,7 @@
 
 #include "../includes/Reltt.hpp"
 static string linkcmd;
+static string DLL;
 
 void *mod(Reltt_INT *IN){
     string PT=resolve_parentensis(IN).S_value;
@@ -26,17 +27,33 @@ void *link(Reltt_INT *IN){
 }
 void *linker(Reltt_INT *IN){
     string cmd="g++";
-    cmd.append(linkcmd).append(" -std=c++17 -w -o ").append(getenv("EXENAME"));
+    cmd.append(linkcmd).append(" -w -o ").append(getenv("EXENAME")).append(DLL);
     system(cmd.c_str());
     //IN->p.begin_info();
     IN->p.print_info(cmd);
     //IN->p.end_info();
     //string PT=resolve_parentensis(IN).S_value;
     linkcmd="";
+    DLL="";
+}
+void *linker_(Reltt_INT *IN){
+    string cmd="g++";
+    cmd.append(linkcmd).append(" -shared -Wl, -std=c++17 -w -o ").append(getenv("EXENAME")).append(DLL);
+    system(cmd.c_str());
+    //IN->p.begin_info();
+    IN->p.print_info(cmd);
+    //IN->p.end_info();
+    //string PT=resolve_parentensis(IN).S_value;
+    linkcmd="";
+    DLL="";
 }
 void *set_exe_name(Reltt_INT *IN){
     string PT=resolve_parentensis(IN).S_value;
     setenv("EXENAME",IN->getVar(PT).S_value.c_str(),1);
+}
+void*add_DLL(Reltt_INT*IN ){
+    string PT=resolve_parentensis(IN).S_value;
+    DLL.append(" ").append(PT);
 }
 Reltt_INT::QSRcModule CPP_Module(){
     Reltt_INT::QSRcModule E=Reltt_INT::QSRcModule();
@@ -45,6 +62,8 @@ Reltt_INT::QSRcModule CPP_Module(){
     E.add_Cask("Exe","execute value as interpreted",&set_exe_name);
     E.add_Cask("Add","add to linker",&link);
     E.add_Cask("link-this","compile+link",&linker);
+    E.add_Cask("link-this_DLL","compile+link",&linker_);
+    E.add_Cask("Add_DLL","",&add_DLL);
     //link
     return E;
 }

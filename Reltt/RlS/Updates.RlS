@@ -1,22 +1,51 @@
 Begin:
 
 import Std
-
+import C++
 import "Generator"
-using scripts/CSscript.RlS
 
-func update ( )
-    App-RCP
-    Gen_Help
-    > Native -> "Reltt_Update" "scripts/Update.RlS"
-    > Native -> "Reltt_Compile" "scripts/Compile.RlS"
-    > Native -> "Reltt_Help" "RlS/help.RlS"
 
+func Native ( string string )
+    /* create .cpp from RlS */
+
+    As_Native @1 @2
+
+    /* compiling RlS with DLL Rellt */
+
+    Exe ( RelttPath + "bin/" + @1 )
+    Add_DLL ( RelttPath + "bin/Reltt.so" )
+
+    Add brainer
+    module brainer ( RelttPath + "cache/" + @1 + "-OBJ.cpp" )
+    link-this
+
+    /* bundling it */
+
+    Exe ( RelttPath + "bin/Bundled/" + @1 )
+    Add @1
+    module Reltter ( RelttPath + "Reltt.cpp" )
+    Add Reltter
+    module @1 ( RelttPath + "cache/" + @1 + "-OBJ.cpp" )
+    link-this
+
+    Clean ( "cache/" + @1 )
+    cout ( "cache/" + @1 )
 end;
 
+func update ( )
 
+    /* App-RCP */
 
+    Gen_Help
 
+    /* > update_Reltt */
+
+    > Native -> "Reltt_Update" "scripts/Update.RlS"
+    > Native -> "Reltt_Help" "RlS/help.RlS"
+
+    exit
+
+end;
 
 
 end;

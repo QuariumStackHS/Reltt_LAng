@@ -94,6 +94,7 @@ int main(int argc, char **argv)
             string command = "";
             string buffer = "";
             Reltt_INT *Args = new Reltt_INT();
+            //Args->New_Var(Value("RelttPath",getenv("RelttPath"),"string"),0);
             //cout<<BLUE<<error_message<<RESET<<endl;
             //cout <<RED<<"╚═"<<CYAN<<"#"<<RESET;
             printer P =printer(getenv("USER"),"Reltt_Shell");

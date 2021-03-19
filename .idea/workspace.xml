@@ -17,30 +17,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;very buggy if elif else&#10;}">
-      <change afterPath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reltt/Tests/main.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.RlS" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reltt/RlS/build.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/RlS/help.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/help.RlS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Tests/build.RlS" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Compile-OBJ.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Compile-OBJ.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Help-OBJ.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Help-OBJ.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Update-OBJ.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Update-OBJ.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/help.QF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/CSscript.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/CSscript.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Compile.RlS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/GenREAL.Qls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Tfunc.qf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/UpdateR.Qf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/scripts/strings.RlS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt_INT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.RlS" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Installer.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Reltt.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/main.o" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +72,9 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Reltt/main.cpp" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/Reltt/Reltt.cpp" root0="SKIP_INSPECTION" />
@@ -91,7 +97,8 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Reltt/Tests/scripts" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -108,19 +115,16 @@
       <recent name="$PROJECT_DIR$/Modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Reltt/RlS" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Installer/OSX" />
       <recent name="$PROJECT_DIR$/RelttJumper" />
       <recent name="$PROJECT_DIR$/Reltt/bin/Reltt.app/Contents/MacOS" />
     </key>
   </component>
   <component name="RunManager" selected="Custom Build Application.Compile Reltt_INT">
-    <configuration name="Compile Reltt_INT" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Reltt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build Reltt" CONFIG_NAME="build Reltt" RUN_PATH="$PROJECT_DIR$/Reltt/bin/Reltt_Update">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Update.RLS" />
-      </method>
+    <configuration name="Compile Reltt_INT" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build Reltt" CONFIG_NAME="build Reltt" RUN_PATH="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update">
+      <method v="2" />
     </configuration>
     <configuration name="Test Reltt" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Reltt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="Reltt Update">
       <method v="2">
@@ -227,7 +231,15 @@
       <workItem from="1615830753471" duration="2251000" />
       <workItem from="1615986486812" duration="3842000" />
       <workItem from="1615993657520" duration="5000" />
-      <workItem from="1615995059475" duration="4870000" />
+      <workItem from="1615995059475" duration="6491000" />
+      <workItem from="1616025673720" duration="1467000" />
+      <workItem from="1616027845837" duration="90000" />
+      <workItem from="1616028470109" duration="966000" />
+      <workItem from="1616033749934" duration="156000" />
+      <workItem from="1616033923451" duration="17000" />
+      <workItem from="1616033960588" duration="7346000" />
+      <workItem from="1616101242582" duration="4353000" />
+      <workItem from="1616114202716" duration="1699000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>

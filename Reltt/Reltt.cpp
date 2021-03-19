@@ -830,7 +830,7 @@ void *Update(Reltt_INT *IN)
         string PG=getenv("RelttPath");
         IN->p.begin_info();
         IN->p.print_info("Recompiling Reltt interpreter:");
-        int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -std=c++17 -c -o ").append(PG).append("OBJ/Reltt.o -w").c_str());
+        int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -shared -Wl, -std=c++17 -c -o ").append(PG).append("bin/Reltt.so -w").c_str());
         if (i == 0)
         {
             IN->p.print_info(((string)GREEN).append("\tCompiled ").append(BLUE).append("Reltt ").append(GREEN).append("With Return code: ").append(CYAN).append(to_string(i / 256)));
@@ -839,7 +839,7 @@ void *Update(Reltt_INT *IN)
             if (j == 0)
             {
                 IN->p.print_info(((string)GREEN).append("\tCompiled ").append(BLUE).append("Reltt_Main ").append(GREEN).append("With Return code: ").append(CYAN).append(to_string(j / 256)));
-                j = system((((string)"g++ -std=c++17 ").append(PG).append("OBJ/Reltt.o ").append(PG).append("OBJ/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
+                j = system((((string)"g++ -std=c++17 ").append(PG).append("bin/Reltt.so ").append(PG).append("OBJ/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
 
                 IN->p.print_info(((string)GREEN).append("\tLinked Reltt interpreter With Return code: ").append(to_string(j / 256)));
                 //j = system("g++ -std=c++17  $RelttPath/QSR/Obj/Reltt.o $RelttPath/QSR/Obj/main.o -o $RelttPath/Reltt.app/Contents/MacOS/Reltt -w");
@@ -985,7 +985,6 @@ void *Init(Reltt_INT *In)
 }
 void *Exit(Reltt_INT *In)
 {
-    In->p.begin_info();
     In->p.print_info("---Exiting! Reltt---");
     In->p.print_info("Good Bye!");
     In->p.end_info();
@@ -1541,6 +1540,8 @@ Reltt_INT::Reltt_INT(int argcr, char **argrv)
     //R->localVars.push_back(D);
     //cout<<GREEN<<R->localVars.size()<<endl;
     this->Math_Var.push_back(R);
+
+    cout<<"new var"<<endl;
     if (argcr > 2)
     {
         //cout << "first way" << endl;
@@ -1591,6 +1592,7 @@ Reltt_INT::Reltt_INT(int argcr, char **argrv)
             }
         }
     }
+    this->New_Var(Value("RelttPath",getenv("RelttPath"),"string"),0);
 }
 Value::~Value()
 {
@@ -1622,4 +1624,150 @@ Value func_INS_Var::get_Value(string Varnmae)
     }
 
     return Value(Varnmae, Varnmae, "string");
+}
+UD_Function::UD_Function(string Fname, int Bl, int El)
+{
+this->FuncName = Fname;
+this->BeginLine = Bl;
+this->EndLine = El;
+}
+void printer::print_Error(string Error){
+    cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"💥"<<RED<<"(ERROR)"<<endl;
+    cout<<RED<<"└─{"<<RESET<<Error<<RED<<"}"<<RESET<<endl;
+}
+void printer::B_cin(){
+    cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"{"<<RESET<<Suser<<RED<<"}"<<endl;
+    cout<<RED<<"└──"<<YELLOW<<"#"<<RESET;
+}
+void printer::print_info(string info){
+
+    cout<<GREEN<<"│\t"<<RESET<<info<<endl;
+
+}
+void printer::end_info(){
+    cout<<GREEN<<"└─{"<<Suser<<"}"<<RESET<<endl;
+}
+void printer::begin_info(){
+    cout<<GREEN<<"┌──("<<BLUE<<SThread<<GREEN<<")"<<endl;
+}
+printer::printer(string user,string Thread){
+Suser=user;
+SThread=Thread;
+}
+string Reltt_INT::get_fileOBJ(string ik){
+
+    for (int i=0;i<paths.size();i++){
+        ifstream Src((paths[i]+((string)ik)).c_str());
+        if (Src){
+            return paths[i]+(ik);
+        }
+    }
+
+    return "None";
+
+
+
+}
+void Reltt_INT::add_path(string i){
+    this->paths.push_back(i);
+}
+int Reltt_INT::get_line_fromcharstr(int CharStr2)
+{
+    for (int i = 0; i < INSD.size(); i++)
+    {
+        if (INSD[i].insnumber == CharStr2)
+        {
+            return INSD[i].line;
+        }
+    }
+    return 0;
+}
+int Reltt_INT::add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *, Value &))
+{
+    CallableOperator NCO;
+    NCO.Desk = desk;
+    NCO.Name = fname;
+    NCO.Taddr = taddr;
+    Operators.push_back(NCO);
+    return 0;
+}
+int Reltt_INT::QSRcModule::Set_Name(string name)
+{
+    this->Module_Name = name;
+    return 0;
+}
+void Reltt_INT::AddVector(int argcv, vector<string> argvS)
+{
+    //this->LastMathValue=;
+    this->argc+= argcv;
+    for (int i = 0; i <argcv; i++)
+    {
+        string f = argvS.at((size_t)i);
+        this->argv.push_back(f);
+    }
+    //this->init_Func();
+    //Cfg = Configurator();
+}
+int Reltt_INT::QSRcModule::Set_Version(string version)
+{
+    this->Version = version;
+    return 0;
+}
+int Reltt_INT::QSRcModule::add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *))
+{
+    CallableObj NCO;
+    NCO.Desk = desk;
+    NCO.Name = fname;
+    NCO.Taddr = taddr;
+    __Tasks.push_back(NCO);
+    return 0;
+}
+void Reltt_INT::New_Var(Value TR,int SP)
+{
+    if(SP<=-1||SP>this->Math_Var.size()){
+        SP=0;
+    }
+    //cout<<"new var: "<<TR.v_Name<<" Value: "<<TR.S_value.c_str()<<endl;
+    Value *VR = new Value(TR.v_Name, TR.S_value, TR.T_R);
+    if (strcmp(this->getVar(TR.v_Name).S_value.c_str(), TR.v_Name.c_str()) == 0)
+    {
+        //cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<" at:"<<SP<<endl;
+        if ((SP) <= (this->Math_Var.size()))
+            this->Math_Var[SP]->localVars.push_back(VR);
+    }
+    else
+    { //cout<<"Altering "<<TR.v_Name<<endl;
+        for (int k = 0; k <= SP; k++)
+        {
+            for (int i = 0; i < this->Math_Var[k]->localVars.size(); i++)
+            {
+                //cout << varname << i << endl;
+                //cout<<this->vars[i+1]<<"?"<<endl;
+                if (strcmp(this->Math_Var[k]->localVars[i]->v_Name.c_str(), TR.v_Name.c_str()) == 0)
+                {
+                    this->Math_Var[k]->localVars[i] = VR;
+                    //cout<<"[DEBUG]"<<this->Math_Var[StackPointer]->localVars[i]->v_Name<<" V: "<<this->Math_Var[StackPointer]->localVars[i]->S_value<<endl;
+                    //return E;
+                }
+            }
+        }
+    }
+}
+int Reltt_INT::add_Module(QSRcModule MD)
+{
+    QS.push_back(MD);
+    return 0;
+}
+int Reltt_INT::add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *))
+{
+    CallableObj NCO;
+    NCO.Desk = desk;
+    NCO.Name = fname;
+    NCO.Taddr = taddr;
+    __Tasks.push_back(NCO);
+    return 0;
+}
+bool Reltt_INT::is_Name(CallableObj Obj, string Test_Name)
+{
+    return (strcmp(Obj.Name.c_str(), Test_Name.c_str()) == 0);
 }

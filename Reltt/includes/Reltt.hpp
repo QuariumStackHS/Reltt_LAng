@@ -79,12 +79,7 @@ public:
 class UD_Function
 {
 public:
-    UD_Function(string Fname, int Bl, int El)
-    {
-        this->FuncName = Fname;
-        this->BeginLine = Bl;
-        this->EndLine = El;
-    }
+    UD_Function(string Fname, int Bl, int El);
     //argtype.size() is the number of args and argtype[i] is the type of arg
     vector<ArgType> ArgsT;
 
@@ -105,29 +100,12 @@ public:
 };
 class printer{
 public:
-    printer(string user,string Thread){
-        Suser=user;
-        SThread=Thread;
-    }
-    void begin_info(){
-        cout<<GREEN<<"┌──("<<BLUE<<SThread<<GREEN<<")"<<endl;
-    }
-    void end_info(){
-        cout<<GREEN<<"└─{"<<Suser<<"}"<<RESET<<endl;
-    }
-    void print_info(string info){
-
-        cout<<GREEN<<"│\t"<<RESET<<info<<endl;
-
-    }
-    void print_Error(string Error){
-        cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"💥"<<RED<<"(ERROR)"<<endl;
-        cout<<RED<<"└─{"<<RESET<<Error<<RED<<"}"<<RESET<<endl;
-    }
-    void B_cin(){
-        cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"{"<<RESET<<Suser<<RED<<"}"<<endl;
-        cout<<RED<<"└──"<<YELLOW<<"#"<<RESET;
-    }
+    printer(string user,string Thread);
+    void begin_info();
+    void end_info();
+    void print_info(string info);
+    void print_Error(string Error);
+    void B_cin();
 
 
     string Suser;
@@ -139,35 +117,10 @@ class Reltt_INT
 {
 public:
     printer p=printer("Dev","Reltt_INT");
-    int get_line_fromcharstr(int CharStr2)
-    {
-        for (int i = 0; i < INSD.size(); i++)
-        {
-            if (INSD[i].insnumber == CharStr2)
-            {
-                return INSD[i].line;
-            }
-        }
-        return 0;
-    }
+    int get_line_fromcharstr(int CharStr2);
     vector<string> paths;
-    string get_fileOBJ(string ik){
-
-        for (int i=0;i<paths.size();i++){
-            ifstream Src((paths[i]+((string)ik)).c_str());
-            if (Src){
-                return paths[i]+(ik);
-            }
-        }
-
-            return "None";
-
-
-
-    }
-    void add_path(string i){
-        this->paths.push_back(i);
-    }
+    string get_fileOBJ(string ik);
+    void add_path(string i);
     int ifnbr;
     vector<instruction> INSD;
     Value Resolve_statement();
@@ -185,20 +138,10 @@ public:
     R->localVars.push_back(D);
     //cout<<GREEN<<R->localVars.size()<<endl;
     this->Math_Var.push_back(R);
+        this->New_Var(Value("RelttPath",getenv("RelttPath"),"string"),0);
     }
 
-    void AddVector(int argcv, vector<string> argvS)
-    {
-        //this->LastMathValue=;
-        this->argc+= argcv;
-        for (int i = 0; i <argcv; i++)
-        {
-            string f = argvS.at((size_t)i);
-            this->argv.push_back(f);
-        }
-        //this->init_Func();
-        //Cfg = Configurator();
-    }
+    void AddVector(int argcv, vector<string> argvS);
     struct CallableObj
     {
         void *(*Taddr)(Reltt_INT *);
@@ -212,15 +155,7 @@ public:
         string Desk;
     };
     vector<CallableOperator> Operators;
-    int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *, Value &))
-    {
-        CallableOperator NCO;
-        NCO.Desk = desk;
-        NCO.Name = fname;
-        NCO.Taddr = taddr;
-        Operators.push_back(NCO);
-        return 0;
-    }
+    int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *, Value &));
     class QSRcModule
     {
     public:
@@ -233,25 +168,9 @@ public:
         {
             
         }*/
-        int Set_Name(string name)
-        {
-            this->Module_Name = name;
-            return 0;
-        }
-        int Set_Version(string version)
-        {
-            this->Version = version;
-            return 0;
-        }
-        int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *))
-        {
-            CallableObj NCO;
-            NCO.Desk = desk;
-            NCO.Name = fname;
-            NCO.Taddr = taddr;
-            __Tasks.push_back(NCO);
-            return 0;
-        }
+        int Set_Name(string name);
+        int Set_Version(string version);
+        int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *));
 
         vector<CallableObj> __Tasks;
         string Module_Name;
@@ -267,65 +186,14 @@ public:
     //int newVar(string, string);
     int DeleteVar(string);
     Value getVar(string);
-    void New_Var(Value TR,int SP)
-    {
-        if(SP<=-1||SP>this->Math_Var.size()){
-            SP=0;
-        }
-        //cout<<"new var: "<<TR.v_Name<<" Value: "<<TR.S_value.c_str()<<endl;
-        Value *VR = new Value(TR.v_Name, TR.S_value, TR.T_R);
-        if (strcmp(this->getVar(TR.v_Name).S_value.c_str(), TR.v_Name.c_str()) == 0)
-        {
-            //cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<" at:"<<SP<<endl;
-            if ((SP) <= (this->Math_Var.size()))
-                this->Math_Var[SP]->localVars.push_back(VR);
-        }
-        else
-        { //cout<<"Altering "<<TR.v_Name<<endl;
-            for (int k = 0; k <= SP; k++)
-            {
-                for (int i = 0; i < this->Math_Var[k]->localVars.size(); i++)
-                {
-                    //cout << varname << i << endl;
-                    //cout<<this->vars[i+1]<<"?"<<endl;
-                    if (strcmp(this->Math_Var[k]->localVars[i]->v_Name.c_str(), TR.v_Name.c_str()) == 0)
-                    {
-                        this->Math_Var[k]->localVars[i] = VR;
-                        //cout<<"[DEBUG]"<<this->Math_Var[StackPointer]->localVars[i]->v_Name<<" V: "<<this->Math_Var[StackPointer]->localVars[i]->S_value<<endl;
-                        //return E;
-                    }
-                }
-            }
-        }
-    }
+    void New_Var(Value TR,int SP);
     string get_Next_Token();
     bool is_operator(string name);
     int is_Func_or_var(string ins);
     vector<QSRcModule> QS;
-    int add_Module(QSRcModule MD)
-    {
-        QS.push_back(MD);
-        return 0;
-    }
-    int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *))
-    {
-        CallableObj NCO;
-        NCO.Desk = desk;
-        NCO.Name = fname;
-        NCO.Taddr = taddr;
-        __Tasks.push_back(NCO);
-        return 0;
-    }
-    int RunTask()
-    {
-
-        //return Taddr();
-        return 0;
-    }
-    bool is_Name(CallableObj Obj, string Test_Name)
-    {
-        return (strcmp(Obj.Name.c_str(), Test_Name.c_str()) == 0);
-    }
+    int add_Module(QSRcModule MD);
+    int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *));
+    bool is_Name(CallableObj Obj, string Test_Name);
     /*string getname()
         {
             return Name;

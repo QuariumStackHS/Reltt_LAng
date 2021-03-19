@@ -1,8 +1,2 @@
-Begin:
+begin:
 
-func Native ( string string ) as:
-    As_Native @1 @2 
-    Clean @1
-end;
-
-end;

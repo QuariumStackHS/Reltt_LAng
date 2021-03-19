@@ -1,27 +1,34 @@
 #ifndef Generator_hpp
 #define Generator_hpp 1
 #include "../includes/Reltt.hpp"
+#include <sstream>
 using namespace std;
 
 void *Gen_Help(Reltt_INT *IN)
-{
-    cout << GREEN << "Reltt C++ Modules: (" << IN->QS.size() + 1 << "):" << RESET << endl;
+{IN->p.begin_info();
+stringstream ssd2;
+
+
+    ssd2 << GREEN << "Reltt C++ Modules: (" << IN->QS.size() + 1 << "):" << RESET;
+    IN->p.print_info(ssd2.str());
     vector<string> VOM;
     ofstream myfile;
     string Pathtohelp=(string)getenv("RelttPath")+(string)"RlS/help.RlS";
     myfile.open(Pathtohelp);
     myfile << "Begin:\n";
     myfile << "-help Base\n";
-    cout << GREEN << "\tModule\t" << BLUE << "Base (Reltt)" << RESET << GREEN << "\tWith " << BOLDBLUE << IN->__Tasks.size() << RESET << GREEN << " Functions" << endl;
+    cout << GREEN << "│\tModule\t" << BLUE << "Base (Reltt)" << RESET << GREEN << "\tWith " << BOLDBLUE << IN->__Tasks.size() << RESET << GREEN << " Functions" << endl;
     int Functions = IN->__Tasks.size();
     for (int i = 0; i < IN->QS.size(); i++)
     {
-        cout << "\tModule\t" << BLUE << IN->QS[i].Module_Name << RESET << GREEN << "\tWith " << BOLDBLUE << IN->QS[i].__Tasks.size() << RESET << GREEN << " Functions" << endl;
+        cout << "│\tModule\t" << BLUE << IN->QS[i].Module_Name << RESET << GREEN << "\tWith " << BOLDBLUE << IN->QS[i].__Tasks.size() << RESET << GREEN << " Functions";
         Functions += IN->QS[i].__Tasks.size();
         VOM.push_back(IN->QS[i].Module_Name.c_str());
         myfile << "-help " << IN->QS[i].Module_Name.c_str() << "\n";
     }
-    cout << "Total of:\t" << BOLDBLUE << IN->QS.size() + 1 << RESET << GREEN << " Modules and " << BOLDBLUE << Functions << " Functions" << RESET << endl;
+    std::stringstream ssd;
+    ssd << "Total of:\t" << BOLDBLUE << IN->QS.size() + 1 << RESET << GREEN << " Modules and " << BOLDBLUE << Functions << " Functions" << RESET;
+    IN->p.print_info(ssd.str());
 
     myfile << "end;";
 
@@ -29,6 +36,7 @@ void *Gen_Help(Reltt_INT *IN)
 }
 void *As_Native(Reltt_INT *IN)
 {
+
 
     string Appname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
     string Fname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
@@ -115,26 +123,6 @@ void *As_Native(Reltt_INT *IN)
     CompileCommand.append(" -o ").append(getenv("RelttPath")).append("cache/").append(Appname).append("-OBJ.o");
 
     myfile.close();
-    //cout<<CompileCommand<<endl;
-    int didobj = system(CompileCommand.c_str());
-    if (didobj != 0)
-    {
-        cout<<"Unknown error"<<endl;
-    }
-    else
-    {
-        string linking = ((string) "g++ -std=c++17 ").append(getenv("RelttPath")).append("OBJ/Reltt.o ");
-        linking.append(getenv("RelttPath")).append("cache/").append(Appname).append("-OBJ.o -o").append(getenv("RelttPath")).append("/bin/").append(Appname);
-        int did_link =system(linking.c_str());
-        if (did_link==0){
-            cout << BLUE << Appname << GREEN << " created att: \"" << BOLDBLUE << getenv("RelttPath")<<"bin/Reltt-" << Appname << RESET << GREEN << "\"" << endl;
-        }
-        else{
-            cout<<BOLDRED<<"[ERROR] Reltt Core is not compiled!"<<RESET<<endl;
-            exit(0);
-        }
-    }
-    
 }
 void *Gen_App(Reltt_INT *IN)
 {
@@ -218,12 +206,12 @@ void *Gen_App(Reltt_INT *IN)
 }
 void *clean(Reltt_INT *IN)
 {
-    string Appname = IN->get_Next_Token();
-    string fileout = "cache/";
+    string Appname = resolve_parentensis(IN).S_value;
+    string fileout = "";
     fileout.append(Appname).append("-OBJ.cpp");
     remove(fileout.c_str());
-    fileout = "cache/";
-    fileout.append(Appname).append("-OBJ.o");
+    fileout = "";
+    fileout.append(Appname).append(".o");
     remove(fileout.c_str());
 }
 
