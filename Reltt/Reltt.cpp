@@ -11,11 +11,39 @@
 #include <dirent.h>
 #include <time.h>
 #include <cstdlib>
-Value resolve_parentensis(Reltt_INT *IN){
+
+string Reltt_Array_to_string(Reltt_array*I){
+    string retstr="";
+    for (int i=0;i<I->Objects.size();i++){
+        cout<<I->Objects[i].S_value<<endl;
+        retstr.append(I->Objects[i].S_value);
+        retstr.append(",");
+    }
+    retstr.pop_back();
+    cout<<"Debug: "<<retstr<<endl;
+    return retstr;
+}
+Value Reltt_array::Get_at_index(int index){
+    return this->Objects[index];
+}
+int Reltt_array::popback(){
+
+    this->Objects.pop_back();
+    return Objects.size();
+}
+
+int Reltt_array::pushback(Value value) {
+
+    this->Objects.push_back(value);
+    return Objects.size();
+}
+Reltt_array resolve_parentensis(Reltt_INT *IN){
     Value token=IN->getVar(IN->get_Next_Token());
     Value cachevalue=Value("","","string");
+    Reltt_array Arrayvalue=Reltt_array();
     Value return_Value=Value("","","string");
     int par=0;
+    bool isarray=0;
     bool isfirst=1;
     while(par>=1 || isfirst){
         //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
@@ -225,6 +253,33 @@ Value resolve_parentensis(Reltt_INT *IN){
                 //cout<<"return fast"<<endl;
                 return return_Value;
             }
+        }
+        elif(strcmp(token.S_value.c_str(),"[")==0){
+            isarray=true;
+            if (par){
+                cachevalue=resolve_parentensis(IN);
+            }else{
+                par++;
+            }
+
+        }
+        elif(strcmp(token.S_value.c_str(),"]")==0){
+            par--;
+            if (par==0){
+                //Arrayvalue.T_R="Array";ƒ
+                //return_Value=;
+                //cout<<"return fast"<<endl;
+                if (IN->Cfg.debug)
+                cout<<cachevalue.S_value<<endl;
+                Arrayvalue.pushback(cachevalue);
+                Arrayvalue.S_value=Reltt_Array_to_string(&Arrayvalue);
+                return Arrayvalue;
+            }
+        }
+        elif(strcmp(token.S_value.c_str(),",")==0){
+            if (IN->Cfg.debug)
+            cout<<cachevalue.S_value<<endl;
+            Arrayvalue.pushback(cachevalue);
         }
         elif (isfirst){
             //cout<<"Reterning"<<token.S_value<<endl;
@@ -1597,6 +1652,8 @@ Reltt_INT::Reltt_INT(int argcr, char **argrv)
 Value::~Value()
 {
 }
+
+
 func_INS_Var::func_INS_Var()
 {
 

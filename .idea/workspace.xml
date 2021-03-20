@@ -17,33 +17,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;very buggy if elif else&#10;}">
-      <change afterPath="$PROJECT_DIR$/Reltt/RlS/build.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/RlS/build.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/build.RlS" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Help" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Compile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/help.QF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt.so" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/cache/Reltt.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Update-OBJ.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/CSscript.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/scripts/CSscript.RlS" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Compile.RlS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/GenREAL.Qls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/Tfunc.qf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/UpdateR.Qf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/scripts/strings.RlS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt_INT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.RlS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/Installer.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/Reltt.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/main.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/Reltt.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Reltter.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/Reltter.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compile.sh" beforeDir="false" afterPath="$PROJECT_DIR$/compile.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +94,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="CLionExternalConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -123,13 +119,18 @@
     </key>
   </component>
   <component name="RunManager" selected="Custom Build Application.Compile Reltt_INT">
-    <configuration name="Compile Reltt_INT" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build Reltt" CONFIG_NAME="build Reltt" RUN_PATH="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update">
+    <configuration name="Compile Reltt_INT" type="CLionExternalRunConfiguration" factoryName="Application" PROGRAM_PARAMS="build" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build Reltt" CONFIG_NAME="build Reltt" RUN_PATH="$PROJECT_DIR$/Reltt/bin/Reltt">
       <method v="2" />
     </configuration>
-    <configuration name="Test Reltt" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Reltt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="Reltt Update">
+    <configuration name="Test Reltt" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" WORKING_DIR="file://$PROJECT_DIR$/Reltt" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build Reltt" CONFIG_NAME="build Reltt" RUN_PATH="$PROJECT_DIR$/Reltt/bin/Reltt">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Update.RLS" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="test installer" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build installer" CONFIG_NAME="build installer" RUN_PATH="$PROJECT_DIR$/Installer/Installer">
@@ -152,9 +153,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -239,7 +240,8 @@
       <workItem from="1616033923451" duration="17000" />
       <workItem from="1616033960588" duration="7346000" />
       <workItem from="1616101242582" duration="4353000" />
-      <workItem from="1616114202716" duration="1699000" />
+      <workItem from="1616114202716" duration="2307000" />
+      <workItem from="1616175227620" duration="9941000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>
@@ -304,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615829767265</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="{&#10;very buggy if elif else&#10;}">
+      <created>1616172344404</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616172344404</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,11 +350,6 @@
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Reltt/main.cpp</url>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Reltt/Reltt.cpp</url>
-          <line>13</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

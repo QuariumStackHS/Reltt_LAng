@@ -60,15 +60,40 @@ public:
     Value(string Name, string Value, string type);
     Value(string Name, float Value);
     Value(string Name, int Value);
+
+    Value(){
+
+    };
+
     ~Value();
     int I_value;
     float F_value;
     bool B_value;
+    //Reltt_array V_Array;
     string S_value;
     string v_Name;
     string T_R;
 };
+class Reltt_array:public Value{
+public:
+    Reltt_array(Value value) {
+        this->S_value=value.S_value;
+        this->F_value=value.F_value;
+        this->I_value=value.I_value;
+        this->B_value=value.B_value;
+        this->T_R="Array";
+    }
+    Reltt_array(){
+        this->T_R="Array";
+    }
 
+    int pushback(Value value);
+    int popback();
+    Value Get_at_index(int index);
+
+    vector<Value>Objects;
+
+};
 class ArgType
 {
 public:
@@ -250,7 +275,7 @@ public:
     }
     return -1;
 }*/
-Value resolve_parentensis(Reltt_INT *IN);
+Reltt_array resolve_parentensis(Reltt_INT *IN);
 class Helper
 {
 public:

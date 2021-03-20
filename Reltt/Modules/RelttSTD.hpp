@@ -8,7 +8,10 @@
 void *print(Reltt_INT *IN){
 string PT=resolve_parentensis(IN).S_value;
     IN->p.begin_info();
+    IN->p.print_info(IN->getVar(PT).v_Name);
     IN->p.print_info(IN->getVar(PT).S_value);
+    IN->p.print_info(IN->getVar(PT).T_R);
+
     IN->p.end_info();
 }
 void *system(Reltt_INT *IN){

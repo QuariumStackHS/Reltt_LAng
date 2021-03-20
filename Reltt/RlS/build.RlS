@@ -2,41 +2,52 @@ Begin:
 
 using Updates
 func build_Reltt ( )
-    Exe Reltt/bin/Reltt.so
+    Exe ( RelttPath + "bin/Reltt.so" )
 
-        module "Reltt" ( RelttPath + "Reltt.cpp" )
+        module "Reltt" ( RelttPath + "/Reltt.cpp" )
 
         Add Reltt
     link-this_DLL
 end;
 func build_Reltt_int ( )
 
-Exe Reltt/bin/Reltt
-    Add_DLL ( RelttPath + "bin/Reltt.so" )
+Exe ( RelttPath + "bin/Reltt" )
+    Add_DLL ( RelttPath + "/bin/Reltt.so" )
     Add main
-    module "main" ( RelttPath + "main.cpp" )
-
+    module "main" ( RelttPath + "/main.cpp" )
+    Add_Switch ( "-Wall" )
     link-this
 
-Exe Reltt/bin/Bundled/Reltt
+Exe ( RelttPath + "bin/Bundled/Reltt" )
 
     Add Reltt
-    module Reltt ( RelttPath + "Reltt.cpp" )
+    module Reltt ( RelttPath + "/Reltt.cpp" )
 
     Add main
-    module "main" ( RelttPath + "main.cpp" )
+    module "main" ( RelttPath + "/main.cpp" )
 
     link-this
 
 end;
 func build_Installer ( )
-    Exe Installer/Installer
+    Exe ( RelttPath + "../Installer/Installer" )
         module "Installer" ( RelttPath + "../Installer/Installer.cpp" )
         Add Installer
     link-this
 end;
+/*
 > build_Reltt
 > build_Reltt_int
 > build_Installer
+
+*/
+func f ( )
+<> i [ "fuck" , "love" , "andgod" ]
+cout i
+end;
+/*
 > update
+*/
+> f
+
 end;

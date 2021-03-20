@@ -7,6 +7,7 @@
 
 #include "../includes/Reltt.hpp"
 static string linkcmd;
+static string Param;
 static string DLL;
 
 void *mod(Reltt_INT *IN){
@@ -25,9 +26,13 @@ void *link(Reltt_INT *IN){
     linkcmd.append(" cache/").append(PT).append(".o");
     IN->p.end_info();
 }
+void *add_switch_to_gpp(Reltt_INT *IN){
+    string PT=resolve_parentensis(IN).S_value;
+    Param.append(" ").append(PT);
+}
 void *linker(Reltt_INT *IN){
     string cmd="g++";
-    cmd.append(linkcmd).append(" -w -o ").append(getenv("EXENAME")).append(DLL);
+    cmd.append(linkcmd).append(" -w -o ").append(getenv("EXENAME")).append(DLL).append(Param);
     system(cmd.c_str());
     //IN->p.begin_info();
     IN->p.print_info(cmd);
@@ -35,16 +40,18 @@ void *linker(Reltt_INT *IN){
     //string PT=resolve_parentensis(IN).S_value;
     linkcmd="";
     DLL="";
+    Param="";
 }
 void *linker_(Reltt_INT *IN){
     string cmd="g++";
-    cmd.append(linkcmd).append(" -shared -Wl, -std=c++17 -w -o ").append(getenv("EXENAME")).append(DLL);
+    cmd.append(linkcmd).append(" -shared -Wl, -std=c++17 -w -o ").append(getenv("EXENAME")).append(DLL).append(Param);
     system(cmd.c_str());
     //IN->p.begin_info();
     IN->p.print_info(cmd);
     //IN->p.end_info();
     //string PT=resolve_parentensis(IN).S_value;
     linkcmd="";
+    Param="";
     DLL="";
 }
 void *set_exe_name(Reltt_INT *IN){
@@ -64,6 +71,7 @@ Reltt_INT::QSRcModule CPP_Module(){
     E.add_Cask("link-this","compile+link",&linker);
     E.add_Cask("link-this_DLL","compile+link",&linker_);
     E.add_Cask("Add_DLL","",&add_DLL);
+    E.add_Cask("Add_Switch","",&add_switch_to_gpp);
     //link
     return E;
 }

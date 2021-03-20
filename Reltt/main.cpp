@@ -131,13 +131,27 @@ int main(int argc, char **argv)
 
         }
         elif (argc == 2)
-        {
-            Reltt_INT TT=Reltt_INT();
-            argcv[0] = "begin:";
+        {   argcv[0] = "begin:";
             argcv[1] = "-RlS";
             //char *ijk=(char *)TT.get_fileOBJ().c_str();
+            string k=argv[argc - 1];
+            string SKN=argv[argc - 1];
+            SKN.pop_back();
+            SKN.pop_back();
+            SKN.pop_back();
+            SKN.pop_back();
+            if(strcmp(k.c_str(),SKN.append(".RlS").c_str())==0 ){
 
-            argcv[2] = argv[argc - 1];
+            }
+            else{
+                SKN=k.append(".RlS");
+                //IN->p.begin_info();
+                //IN->p.print_info("importing "+SKN);
+                //IN->p.end_info();
+            }
+            Reltt_INT TT=Reltt_INT();
+            char *ijk=(char *)SKN.c_str();
+            argcv[2] = ijk;
             //delete &TT;
 
             cout << argcv[1] << " | " << argcv[2] << endl;
