@@ -13,13 +13,16 @@
 #include <cstdlib>
 
 string Reltt_Array_to_string(Reltt_array*I){
-    string retstr="";
+    string retstr="[ \"";
     for (int i=0;i<I->Objects.size();i++){
         cout<<I->Objects[i].S_value<<endl;
         retstr.append(I->Objects[i].S_value);
-        retstr.append(",");
+        retstr.append("\" , \"");
     }
     retstr.pop_back();
+    retstr.pop_back();
+    retstr.pop_back();
+    retstr.append("]");
     cout<<"Debug: "<<retstr<<endl;
     return retstr;
 }
@@ -1369,8 +1372,8 @@ void *HelperI(Reltt_INT *TLM)
     Helper H = Helper(TLM);
 }
 void *Dump(Reltt_INT *IN)
-{
-    for (int i = 0; i < IN->Functions.size(); i++)
+{IN->p.begin_info();
+for (int i = 0; i < IN->Functions.size(); i++)
     {
         string Strs;
         if (IN->Functions[i].ArgsT.size()!=0){
@@ -1388,8 +1391,11 @@ void *Dump(Reltt_INT *IN)
             Strs.append("None ");
         }
         Strs.append("as arg(s)");
-        cout << BLUE <<"\""<< IN->Functions[i].FuncName <<"\""<< RESET <<" -> "<<Strs<< " at addr:" <<CYAN <<"0x"<<hex<<(int64_t)&IN->Functions[i] <<IN->Functions[i].BeginLine<<dec<< RESET << endl;
+        stringstream ss;
+        ss << BLUE <<"\""<< IN->Functions[i].FuncName <<"\""<< RESET <<" -> "<<Strs<< " at addr:" <<CYAN <<"0x"<<hex<<(int64_t)&IN->Functions[i] <<IN->Functions[i].BeginLine<<dec<< RESET;
+        IN->p.print_info(ss.str());
     }
+    IN->p.end_info();
 }
 void *with(Reltt_INT *IN)
 {
@@ -1497,18 +1503,20 @@ void *Gen_this(Reltt_INT *IN){
 
 }
 void *ShowVar(Reltt_INT *IN){
-    int lastaddr=0;
+    int64_t lastaddr=0;
+    IN->p.begin_info();
     for(int i=0; i<IN->Math_Var.size();i++){
         for(int j=0; j<IN->Math_Var[i]->localVars.size();j++) {
-
-            cout << BLUE << IN->Math_Var[i]->localVars[j]->T_R << CYAN << ":" << RED
-                 << IN->Math_Var[i]->localVars[j]->v_Name << RESET << " with S_value: " << BLUE <<
-                 IN->Math_Var[i]->localVars[j]->S_value << RESET << " SP: " << i << " and Addr: " << CYAN << "0x"
-                 << std::hex << ((int64_t) &IN->Math_Var[i]->localVars[j]) << dec<<" Vsize: "
-                 << ((int64_t) &IN->Math_Var[i]->localVars[j])-lastaddr << RESET << endl;
+    stringstream ss;
+            ss<< BLUE << IN->Math_Var[i]->localVars[j]->T_R << CYAN << ":" << RED
+                 << IN->Math_Var[i]->localVars[j]->v_Name << RESET << " with Value: " << BLUE <<
+                 IN->Math_Var[i]->localVars[j]->S_value << RESET << " StackP: " << i << " at Addr: " << CYAN << "0x"
+                 << std::hex << ((int64_t) &IN->Math_Var[i]->localVars[j]) << dec<< RESET;
+            IN->p.print_info(ss.str());
             lastaddr=((int64_t)&IN->Math_Var[i]->localVars[j]);
         }
     }
+    IN->p.end_info();
 }
 void *Add_To_Search(Reltt_INT *IN){
     IN->add_path(resolve_parentensis(IN).S_value);

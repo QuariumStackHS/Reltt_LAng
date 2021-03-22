@@ -27,6 +27,8 @@ Exe ( RelttPath + "bin/Bundled/Reltt" )
     module "main" ( RelttPath + "/main.cpp" )
 
     link-this
+    <> IJK [ RelttPath , "=path" ]
+    cout IJK
 
 end;
 func build_Installer ( )
@@ -35,19 +37,12 @@ func build_Installer ( )
         Add Installer
     link-this
 end;
-/*
+
 > build_Reltt
 > build_Reltt_int
 > build_Installer
 
-*/
-func f ( )
-<> i [ "fuck" , "love" , "andgod" ]
-cout i
-end;
-/*
-> update
-*/
-> f
+DMP
+show
 
 end;

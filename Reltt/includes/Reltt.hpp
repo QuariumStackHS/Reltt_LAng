@@ -94,6 +94,7 @@ public:
     vector<Value>Objects;
 
 };
+string Reltt_Array_to_string(Reltt_array*I);
 class ArgType
 {
 public:
