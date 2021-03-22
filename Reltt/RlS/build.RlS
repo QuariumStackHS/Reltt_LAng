@@ -11,26 +11,26 @@ func build_Reltt ( )
 end;
 func build_Reltt_int ( )
 
-Exe ( RelttPath + "bin/Reltt" )
-    Add_DLL ( RelttPath + "/bin/Reltt.so" )
-    Add main
-    module "main" ( RelttPath + "/main.cpp" )
-    Add_Switch ( "-Wall" )
+    Exe ( RelttPath + "bin/Reltt" )
+        Add_DLL ( RelttPath + "/bin/Reltt.so" )
+        Add main
+        module "main" ( RelttPath + "/main.cpp" )
+        Add_Switch ( "-Wall" )
     link-this
 
-Exe ( RelttPath + "bin/Bundled/Reltt" )
+    Exe ( RelttPath + "bin/Bundled/Reltt" )
 
-    Add Reltt
-    module Reltt ( RelttPath + "/Reltt.cpp" )
+        Add Reltt
+        module Reltt ( RelttPath + "/Reltt.cpp" )
 
-    Add main
-    module "main" ( RelttPath + "/main.cpp" )
+        Add main
+        module "main" ( RelttPath + "/main.cpp" )
 
     link-this
-    <> IJK [ RelttPath , "=path" ]
-    cout IJK
+
 
 end;
+
 func build_Installer ( )
     Exe ( RelttPath + "../Installer/Installer" )
         module "Installer" ( RelttPath + "../Installer/Installer.cpp" )
@@ -41,6 +41,9 @@ end;
 > build_Reltt
 > build_Reltt_int
 > build_Installer
+
+        <> IJK [ RelttPath , "=path" ]
+        cout IJK
 
 DMP
 show

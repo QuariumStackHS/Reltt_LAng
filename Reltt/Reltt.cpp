@@ -13,10 +13,11 @@
 #include <cstdlib>
 
 string Reltt_Array_to_string(Reltt_array*I){
+    Value K=*I;
     string retstr="[ \"";
     for (int i=0;i<I->Objects.size();i++){
-        cout<<I->Objects[i].S_value<<endl;
-        retstr.append(I->Objects[i].S_value);
+        cout<<K.Objects[i]->S_value<<endl;
+        retstr.append(K.Objects[i]->S_value);
         retstr.append("\" , \"");
     }
     retstr.pop_back();
@@ -27,7 +28,7 @@ string Reltt_Array_to_string(Reltt_array*I){
     return retstr;
 }
 Value Reltt_array::Get_at_index(int index){
-    return this->Objects[index];
+    return *this->Objects[index];
 }
 int Reltt_array::popback(){
 
@@ -35,7 +36,7 @@ int Reltt_array::popback(){
     return Objects.size();
 }
 
-int Reltt_array::pushback(Value value) {
+int Reltt_array::pushback(Value *value) {
 
     this->Objects.push_back(value);
     return Objects.size();
@@ -274,7 +275,7 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
                 //cout<<"return fast"<<endl;
                 if (IN->Cfg.debug)
                 cout<<cachevalue.S_value<<endl;
-                Arrayvalue.pushback(cachevalue);
+                Arrayvalue.pushback(&cachevalue);
                 Arrayvalue.S_value=Reltt_Array_to_string(&Arrayvalue);
                 return Arrayvalue;
             }
@@ -282,7 +283,8 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
         elif(strcmp(token.S_value.c_str(),",")==0){
             if (IN->Cfg.debug)
             cout<<cachevalue.S_value<<endl;
-            Arrayvalue.pushback(cachevalue);
+            Reltt_array f=cachevalue;
+            Arrayvalue.pushback(&f);
         }
         elif (isfirst){
             //cout<<"Reterning"<<token.S_value<<endl;

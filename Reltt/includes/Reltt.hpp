@@ -64,7 +64,7 @@ public:
     Value(){
 
     };
-
+    vector<Value*>Objects;
     ~Value();
     int I_value;
     float F_value;
@@ -82,17 +82,22 @@ public:
         this->I_value=value.I_value;
         this->B_value=value.B_value;
         this->T_R="Array";
+        for (int i=0; i<value.Objects.size();i++){
+            Value v=*value.Objects[i];
+        this->Objects.push_back(&v);
+        }
     }
     Reltt_array(){
         this->T_R="Array";
     }
 
-    int pushback(Value value);
+    //int pushback(Value value);
     int popback();
     Value Get_at_index(int index);
 
-    vector<Value>Objects;
+    //vector<Value>;
 
+    int pushback(Value *value);
 };
 string Reltt_Array_to_string(Reltt_array*I);
 class ArgType
