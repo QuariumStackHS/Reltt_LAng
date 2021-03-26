@@ -56,6 +56,15 @@ public:
     {
         return this->S_value;
     }
+
+    Value *get_next();
+    Value *get_prev();
+    void set_next(Value*);
+    void set_prev(Value*);
+    void Push_Back(Value*);
+    void Push_Forward(Value*);
+    int L_index=0;
+    int L_size();
     Value *GetAS() { return this; }
     Value(string Name, string Value, string type);
     Value(string Name, float Value);
@@ -64,7 +73,8 @@ public:
     Value(){
 
     };
-    vector<Value*>Objects;
+    Value* Next_Obj=nullptr;
+    Value* Prev_Obj=nullptr;
     ~Value();
     int I_value;
     float F_value;
@@ -74,32 +84,7 @@ public:
     string v_Name;
     string T_R;
 };
-class Reltt_array:public Value{
-public:
-    Reltt_array(Value value) {
-        this->S_value=value.S_value;
-        this->F_value=value.F_value;
-        this->I_value=value.I_value;
-        this->B_value=value.B_value;
-        this->T_R="Array";
-        for (int i=0; i<value.Objects.size();i++){
-            Value v=*value.Objects[i];
-        this->Objects.push_back(&v);
-        }
-    }
-    Reltt_array(){
-        this->T_R="Array";
-    }
-
-    //int pushback(Value value);
-    int popback();
-    Value Get_at_index(int index);
-
-    //vector<Value>;
-
-    int pushback(Value *value);
-};
-string Reltt_Array_to_string(Reltt_array*I);
+string Reltt_Array_to_string(Value*I);
 class ArgType
 {
 public:
@@ -281,7 +266,7 @@ public:
     }
     return -1;
 }*/
-Reltt_array resolve_parentensis(Reltt_INT *IN);
+Value* resolve_parentensis(Reltt_INT *IN);
 class Helper
 {
 public:

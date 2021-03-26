@@ -11,9 +11,9 @@ static string Param;
 static string DLL;
 
 void *mod(Reltt_INT *IN){
-    string PT=resolve_parentensis(IN).S_value;
+    string PT=resolve_parentensis(IN)->S_value;
     //IN->charstr--;
-    string PT2=resolve_parentensis(IN).S_value;
+    string PT2=resolve_parentensis(IN)->S_value;
     string cmd="g++ -c -o ";
     cmd.append("cache/").append(PT).append(".o -std=c++17 -w ").append(PT2);
     system(cmd.c_str());
@@ -22,12 +22,12 @@ void *mod(Reltt_INT *IN){
     //IN->p.end_info();
 }
 void *link(Reltt_INT *IN){
-    string PT=resolve_parentensis(IN).S_value;
+    string PT=resolve_parentensis(IN)->S_value;
     linkcmd.append(" cache/").append(PT).append(".o");
     IN->p.end_info();
 }
 void *add_switch_to_gpp(Reltt_INT *IN){
-    string PT=resolve_parentensis(IN).S_value;
+    string PT=resolve_parentensis(IN)->S_value;
     Param.append(" ").append(PT);
 }
 void *linker(Reltt_INT *IN){
@@ -55,11 +55,11 @@ void *linker_(Reltt_INT *IN){
     DLL="";
 }
 void *set_exe_name(Reltt_INT *IN){
-    string PT=resolve_parentensis(IN).S_value;
+    string PT=resolve_parentensis(IN)->S_value;
     setenv("EXENAME",IN->getVar(PT).S_value.c_str(),1);
 }
 void*add_DLL(Reltt_INT*IN ){
-    string PT=resolve_parentensis(IN).S_value;
+    string PT=resolve_parentensis(IN)->S_value;
     DLL.append(" ").append(PT);
 }
 Reltt_INT::QSRcModule CPP_Module(){

@@ -17,8 +17,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;very buggy if elif else&#10;}">
+      <change afterPath="$PROJECT_DIR$/Reltt/Reltt_Linked_List.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Env.sh" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Env.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
@@ -28,18 +30,13 @@
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Help" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt.so" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Help" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt_Update" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/cache/Reltt.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt_Update-OBJ.cpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/Reltt.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/Reltter.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/Reltter.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/brainer.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/brainer.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cache/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/main.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compile.sh" beforeDir="false" afterPath="$PROJECT_DIR$/compile.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +67,29 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="Arrays" />
+                    <option name="lastUsedInstant" value="1616595231" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1616595230" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Reltt/main.cpp" root0="SKIP_INSPECTION" />
@@ -111,11 +131,11 @@
       <recent name="$PROJECT_DIR$/Modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Reltt" />
       <recent name="$PROJECT_DIR$/Reltt/RlS" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/Installer/OSX" />
       <recent name="$PROJECT_DIR$/RelttJumper" />
-      <recent name="$PROJECT_DIR$/Reltt/bin/Reltt.app/Contents/MacOS" />
     </key>
   </component>
   <component name="RunManager" selected="Custom Build Application.Compile Reltt_INT">
@@ -126,11 +146,6 @@
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_Update.RLS" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="test installer" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Reltt_LAng" TARGET_NAME="build installer" CONFIG_NAME="build installer" RUN_PATH="$PROJECT_DIR$/Installer/Installer">
@@ -153,9 +168,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -242,6 +257,8 @@
       <workItem from="1616101242582" duration="4353000" />
       <workItem from="1616114202716" duration="2307000" />
       <workItem from="1616175227620" duration="9941000" />
+      <workItem from="1616602626707" duration="12000" />
+      <workItem from="1616760250352" duration="8168000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>

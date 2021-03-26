@@ -206,7 +206,7 @@ void *Gen_App(Reltt_INT *IN)
 }
 void *clean(Reltt_INT *IN)
 {
-    string Appname = resolve_parentensis(IN).S_value;
+    string Appname = resolve_parentensis(IN)->S_value;
     string fileout = "";
     fileout.append(Appname).append("-OBJ.cpp");
     remove(fileout.c_str());
