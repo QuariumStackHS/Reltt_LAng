@@ -5,7 +5,8 @@ func build_Reltt ( )
     Exe ( RelttPath + "bin/Reltt.so" )
 
         module "Reltt" ( RelttPath + "/Reltt.cpp" )
-
+        module "Reltt_linked" ( RelttPath + "/Reltt_Linked_List.cpp" )
+        Add Reltt_linked
         Add Reltt
     link-this_DLL
 end;
@@ -22,7 +23,8 @@ func build_Reltt_int ( )
 
         Add Reltt
         module Reltt ( RelttPath + "/Reltt.cpp" )
-
+        module "Reltt_linked" ( RelttPath + "/Reltt_Linked_List.cpp" )
+        Add Reltt_linked
         Add main
         module "main" ( RelttPath + "/main.cpp" )
 

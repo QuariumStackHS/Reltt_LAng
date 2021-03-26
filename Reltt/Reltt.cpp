@@ -11,15 +11,76 @@
 #include <dirent.h>
 #include <time.h>
 #include <cstdlib>
-
-string Reltt_Array_to_string(Reltt_array*I){
-    Value K=*I;
-    string retstr="[ \"";
-    for (int i=0;i<I->Objects.size();i++){
-        cout<<K.Objects[i]->S_value<<endl;
-        retstr.append(K.Objects[i]->S_value);
-        retstr.append("\" , \"");
+static Value* R_Null=new Value("Null","Null","Null");
+//static int max_Prev = -443055;
+Value *Value::get_next(){
+    if (this->Next_Obj!=nullptr){
+    return this->Next_Obj;
     }
+    else{
+        cout<<"Random_ERROR"<<endl;
+        return nullptr;
+    }
+
+}
+Value *Value::get_prev(){
+    if (this->Prev_Obj!=nullptr){
+        return this->Prev_Obj;
+    }
+    else{
+        cout<<"Random_ERROR"<<endl;
+        return nullptr;
+    }
+}
+void Value::set_next(Value* IN){
+    this->Next_Obj=IN;
+    this->Next_Obj->L_index=this->L_index+1;
+}
+void Value::set_prev(Value*IN){
+    this->Prev_Obj=IN;
+    this->Next_Obj->L_index=this->L_index+1;
+}
+void Value::Push_Forward(Value*IN){
+    if(this->Prev_Obj==nullptr){
+        this->Prev_Obj=IN;
+        this->Prev_Obj->L_index=this->L_index-1;
+    }
+    else{
+        this->Prev_Obj->Push_Forward(IN);
+    }
+}
+void Value::Push_Back(Value*IN){
+    cout<<"Push_back"<<endl;
+    if(this->Next_Obj==nullptr){
+        this->Next_Obj=IN;
+        //this->Next_Obj->Next_Obj->L_index=
+        this->Next_Obj->L_index=this->L_index+1;
+    }
+    else{
+        this->Next_Obj->Push_Back(IN);
+    }
+}
+int Value::L_size(){
+    cout<<"Getting_size"<<endl;
+    Value*inspect_value=this;
+    //int index=0;
+    while(inspect_value->Next_Obj!=nullptr){
+        inspect_value=inspect_value->Next_Obj;
+        if (inspect_value->Next_Obj==nullptr){
+            return inspect_value->L_index;
+        }
+    }
+
+}
+string Reltt_Array_to_string(Value*I){
+
+    string retstr="[ \"";
+    for (Value *K=I->get_next();K!=nullptr;K=K->get_next()){
+        cout<<K->S_value<<endl;
+        retstr.append(K->S_value);
+        retstr.append("\" , \"");
+
+}
     retstr.pop_back();
     retstr.pop_back();
     retstr.pop_back();
@@ -27,48 +88,34 @@ string Reltt_Array_to_string(Reltt_array*I){
     cout<<"Debug: "<<retstr<<endl;
     return retstr;
 }
-Value Reltt_array::Get_at_index(int index){
-    return *this->Objects[index];
-}
-int Reltt_array::popback(){
-
-    this->Objects.pop_back();
-    return Objects.size();
-}
-
-int Reltt_array::pushback(Value *value) {
-
-    this->Objects.push_back(value);
-    return Objects.size();
-}
-Reltt_array resolve_parentensis(Reltt_INT *IN){
+Value *resolve_parentensis(Reltt_INT *IN){
     Value token=IN->getVar(IN->get_Next_Token());
-    Value cachevalue=Value("","","string");
-    Reltt_array Arrayvalue=Reltt_array();
-    Value return_Value=Value("","","string");
+    Value *cachevalue= new Value("","","string");
+    Value *Arrayvalue= new Value();
+    Value *return_Value=new Value("","","string");
     int par=0;
     bool isarray=0;
     bool isfirst=1;
     while(par>=1 || isfirst){
         //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
         if (strcmp(token.S_value.c_str()," ")==0){
-            cachevalue.S_value.append(" ");
+            cachevalue->S_value.append(" ");
         }
         if (strcmp(token.S_value.c_str(),"+")==0) {
             //cout<<"Plus"<<endl;
 
             token = IN->getVar(IN->get_Next_Token());
             if (strcmp(token.S_value.c_str()," ")==0){
-                cachevalue.S_value =cachevalue.S_value.append(" ");
+                cachevalue->S_value =cachevalue->S_value.append(" ");
             }
             if (strcmp(token.T_R.c_str(), "string") == 0) {
-                cachevalue.S_value = cachevalue.S_value.append(token.S_value);
-                cachevalue = Value(cachevalue.v_Name, cachevalue.S_value, "string");
+                cachevalue->S_value = cachevalue->S_value.append(token.S_value);
+                cachevalue =new Value(cachevalue->v_Name, cachevalue->S_value, "string");
             } else {
-                cachevalue.I_value = cachevalue.I_value + token.I_value;
-                cachevalue.F_value = cachevalue.F_value + token.F_value;
-                cachevalue.S_value = to_string(cachevalue.F_value);
-                cachevalue.T_R = "float";
+                cachevalue->I_value = cachevalue->I_value + token.I_value;
+                cachevalue->F_value = cachevalue->F_value + token.F_value;
+                cachevalue->S_value = to_string(cachevalue->F_value);
+                cachevalue->T_R = "float";
             }
         }
         elif (strcmp(token.S_value.c_str(),"-")==0){
@@ -80,33 +127,33 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
                 try
                 {
                     int i = std::stoi(token.S_value);
-                    cachevalue.I_value = cachevalue.I_value-i;
+                    cachevalue->I_value = cachevalue->I_value-i;
                     //std::cout << i << '\n';
                 }
                 catch (std::invalid_argument const &e)
                 {cout<<"operator - is not available for strings"<<endl;
-                    cachevalue.I_value = -1;
+                    cachevalue->I_value = -1;
                     //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
                 }
                 catch (std::out_of_range const &e)
                 {cout<<"operator - is not available for strings"<<endl;
-                    cachevalue.I_value = -1;
+                    cachevalue->I_value = -1;
                     //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
                 }
                 try
                 {
                     float i = std::stof(token.S_value);
-                    cachevalue.F_value = cachevalue.F_value-i;
+                    cachevalue->F_value = cachevalue->F_value-i;
                     //std::cout << i << '\n';
                 }
                 catch (std::invalid_argument const &e)
                 {cout<<"operator - is not available for strings"<<endl;
-                    cachevalue.F_value = -1;
+                    cachevalue->F_value = -1;
                     //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
                 }
                 catch (std::out_of_range const &e)
                 {cout<<"operator - is not available for strings"<<endl;
-                    cachevalue.F_value = -1;
+                    cachevalue->F_value = -1;
                     //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
                 }
                 //cachevalue.S_value=cachevalue.S_value.s(token.S_value);
@@ -114,10 +161,10 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
 
             }
             else{
-                cachevalue.I_value=cachevalue.I_value-token.I_value;
-                cachevalue.F_value=cachevalue.F_value-token.F_value;
-                cachevalue.S_value=to_string(cachevalue.F_value);
-                cachevalue.T_R="float";
+                cachevalue->I_value=cachevalue->I_value-token.I_value;
+                cachevalue->F_value=cachevalue->F_value-token.F_value;
+                cachevalue->S_value=to_string(cachevalue->F_value);
+                cachevalue->T_R="float";
             }
         }
         elif (strcmp(token.S_value.c_str(),"/")==0){
@@ -129,33 +176,33 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
                 try
                 {
                     int i = std::stoi(token.S_value);
-                    cachevalue.I_value = cachevalue.I_value/i;
+                    cachevalue->I_value = cachevalue->I_value/i;
                     //std::cout << i << '\n';
                 }
                 catch (std::invalid_argument const &e)
                 {cout<<"operator / is not available for strings"<<endl;
-                    cachevalue.I_value = -1;
+                    cachevalue->I_value = -1;
                     //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
                 }
                 catch (std::out_of_range const &e)
                 {cout<<"operator / is not available for strings"<<endl;
-                    cachevalue.I_value = -1;
+                    cachevalue->I_value = -1;
                     //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
                 }
                 try
                 {
                     float i = std::stof(token.S_value);
-                    cachevalue.F_value = cachevalue.F_value/i;
+                    cachevalue->F_value = cachevalue->F_value/i;
                     //std::cout << i << '\n';
                 }
                 catch (std::invalid_argument const &e)
                 {cout<<"operator / is not available for strings"<<endl;
-                    cachevalue.F_value = -1;
+                    cachevalue->F_value = -1;
                     //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
                 }
                 catch (std::out_of_range const &e)
                 {cout<<"operator / is not available for strings"<<endl;
-                    cachevalue.F_value = -1;
+                    cachevalue->F_value = -1;
                     //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
                 }
                 //cachevalue.S_value=cachevalue.S_value.s(token.S_value);
@@ -163,10 +210,10 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
 
             }
             else{
-                cachevalue.I_value=cachevalue.I_value/token.I_value;
-                cachevalue.F_value=cachevalue.F_value/token.F_value;
-                cachevalue.S_value=to_string(cachevalue.F_value);
-                cachevalue.T_R="float";
+                cachevalue->I_value=cachevalue->I_value/token.I_value;
+                cachevalue->F_value=cachevalue->F_value/token.F_value;
+                cachevalue->S_value=to_string(cachevalue->F_value);
+                cachevalue->T_R="float";
             }
         }
         elif (strcmp(token.S_value.c_str(),"*")==0){
@@ -178,33 +225,33 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
                 try
                 {
                     int i = std::stoi(token.S_value);
-                    cachevalue.I_value = cachevalue.I_value*i;
+                    cachevalue->I_value = cachevalue->I_value*i;
                     //std::cout << i << '\n';
                 }
                 catch (std::invalid_argument const &e)
                 {cout<<"operator * is not available for strings"<<endl;
-                    cachevalue.I_value = -1;
+                    cachevalue->I_value = -1;
                     //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
                 }
                 catch (std::out_of_range const &e)
                 {cout<<"operator * is not available for strings"<<endl;
-                    cachevalue.I_value = -1;
+                    cachevalue->I_value = -1;
                     //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
                 }
                 try
                 {
                     float i = std::stof(token.S_value);
-                    cachevalue.F_value = cachevalue.F_value*i;
+                    cachevalue->F_value = cachevalue->F_value*i;
                     //std::cout << i << '\n';
                 }
                 catch (std::invalid_argument const &e)
                 {cout<<"operator * is not available for strings"<<endl;
-                    cachevalue.F_value = -1;
+                    cachevalue->F_value = -1;
                     //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
                 }
                 catch (std::out_of_range const &e)
                 {cout<<"operator * is not available for strings"<<endl;
-                    cachevalue.F_value = -1;
+                    cachevalue->F_value = -1;
                     //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
                 }
                 //cachevalue.S_value=cachevalue.S_value.s(token.S_value);
@@ -212,33 +259,33 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
 
             }
             else{
-                cachevalue.I_value=cachevalue.I_value*token.I_value;
-                cachevalue.F_value=cachevalue.F_value*token.F_value;
-                cachevalue.S_value=to_string(cachevalue.F_value);
-                cachevalue.T_R="float";
+                cachevalue->I_value=cachevalue->I_value*token.I_value;
+                cachevalue->F_value=cachevalue->F_value*token.F_value;
+                cachevalue->S_value=to_string(cachevalue->F_value);
+                cachevalue->T_R="float";
             }
         }
         elif(strcmp(token.S_value.c_str(),"&&")==0){
-            cout<<cachevalue.B_value;
+            cout<<cachevalue->B_value;
             token=IN->getVar(IN->get_Next_Token());
 
-            cachevalue.B_value=(cachevalue.F_value&&token.F_value)||(cachevalue.I_value&&token.I_value);
+            cachevalue->B_value=(cachevalue->F_value&&token.F_value)||(cachevalue->I_value&&token.I_value);
         }
         elif(strcmp(token.S_value.c_str(),"||")==0){
-            cout<<cachevalue.B_value;
+            cout<<cachevalue->B_value;
             token=IN->getVar(IN->get_Next_Token());
 
-            cachevalue.B_value=(cachevalue.F_value||token.F_value);
+            cachevalue->B_value=(cachevalue->F_value||token.F_value);
         }
         elif(strcmp(token.S_value.c_str(),"==")==0){
             token=IN->getVar(IN->get_Next_Token());
-            cachevalue.B_value=(strcmp(cachevalue.S_value.c_str(),token.S_value.c_str())==0);
+            cachevalue->B_value=(strcmp(cachevalue->S_value.c_str(),token.S_value.c_str())==0);
         }
         elif(strcmp(token.S_value.c_str(),"!=")==0){
             //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
             token=IN->getVar(IN->get_Next_Token());
             //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
-            cachevalue.B_value=(strcmp(cachevalue.S_value.c_str(),token.S_value.c_str()));
+            cachevalue->B_value=(strcmp(cachevalue->S_value.c_str(),token.S_value.c_str()));
             //cout<<cachevalue.B_value<<endl;
             //cachevalue.S_value=to_string(cachevalue.B_value);
         }
@@ -274,30 +321,34 @@ Reltt_array resolve_parentensis(Reltt_INT *IN){
                 //return_Value=;
                 //cout<<"return fast"<<endl;
                 if (IN->Cfg.debug)
-                cout<<cachevalue.S_value<<endl;
-                Arrayvalue.pushback(&cachevalue);
-                Arrayvalue.S_value=Reltt_Array_to_string(&Arrayvalue);
+                cout<<cachevalue->S_value<<endl;
+
+                Arrayvalue->Push_Back(cachevalue);
+                Arrayvalue->S_value=Reltt_Array_to_string(Arrayvalue);
                 return Arrayvalue;
             }
         }
         elif(strcmp(token.S_value.c_str(),",")==0){
             if (IN->Cfg.debug)
-            cout<<cachevalue.S_value<<endl;
-            Reltt_array f=cachevalue;
-            Arrayvalue.pushback(&f);
+            cout<<cachevalue->S_value<<endl;
+            Value *f=cachevalue;
+            Arrayvalue->Push_Back(f);
         }
         elif (isfirst){
             //cout<<"Reterning"<<token.S_value<<endl;
-            return IN->getVar(token.S_value);
+            Value *R=new Value(IN->getVar(token.S_value));
+            return R;
         }
         elif (par==0)
-        {
-            return_Value=IN->getVar(cachevalue.S_value);
+        {Value *R=new Value(IN->getVar(cachevalue->S_value));
+            return_Value=R;
             //cout<<"return laster"<<return_Value.v_Name<<endl;
             return return_Value;
         }
         else{
-            cachevalue=IN->getVar(token.v_Name);;
+
+                    Value *R=new Value(IN->getVar(token.v_Name));
+            cachevalue=R;
         }
         isfirst=0;
 
@@ -722,9 +773,9 @@ Value Reltt_INT::getVar(string varname)
             //cout<<this->vars[i+1]<<"?"<<endl;
             if (strcmp(this->Math_Var[k]->localVars[i]->v_Name.c_str(), varname.c_str()) == 0)
             {
-                Value E = *this->Math_Var[k]->localVars[i];
-                //cout<<"[DEBUG]"<<this->Math_Var[StackPointer]->localVars[i]->v_Name<<" V: "<<this->Math_Var[StackPointer]->localVars[i]->S_value<<endl;
-                return E;
+                Value *E = this->Math_Var[k]->localVars[i];
+                cout<<"[DEBUG]"<<this->Math_Var[k]->localVars[i]->v_Name<<" V: "<<this->Math_Var[k]->localVars[i]->S_value<<this->Math_Var[k]->localVars[i]->L_size()<<endl;
+                return *E;
             }
         }
     }
@@ -1318,12 +1369,13 @@ void *Del(Reltt_INT *IN)
 void *String(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
-    string VarValue = resolve_parentensis(IN).S_value;
+    Value *VarValue = resolve_parentensis(IN);
+    VarValue->v_Name=Varname;
     //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
     //IN->StackPointer--;
-    IN->New_Var(Value(Varname, VarValue, "string"),IN->StackPointer-1);
+    IN->New_Var(*VarValue,IN->StackPointer-1);
     //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
@@ -1407,16 +1459,16 @@ void *with(Reltt_INT *IN)
 void *R_If(Reltt_INT *IN)
 {
     int Ifer=0;
-   Value V=resolve_parentensis(IN);
+   Value *V=resolve_parentensis(IN);
    if(IN->Cfg.debug==1)
     cout << "if" <<IN->argv[IN->charstr+2]<<Ifer<< endl;
     Ifer++;
-   if (V.B_value==1){
+   if (V->B_value==1){
        IN->Parse();
        if(IN->Cfg.debug==1)
     cout<<"True"<<endl;
    }
-   elif (V.B_value==0){
+   elif (V->B_value==0){
        if(IN->Cfg.debug==1)
        cout<<"False"<<endl;
        bool no_Ifer=0;
@@ -1439,7 +1491,7 @@ void *R_If(Reltt_INT *IN)
                if (Ifer==0){
                    //IN->charstr++;
                    cout<<"resolving parentesis"<<endl;
-                   int re=resolve_parentensis(IN).B_value;
+                   int re=resolve_parentensis(IN)->B_value;
                    if (re==1){
                    R_If(IN);
                    }
@@ -1521,7 +1573,7 @@ void *ShowVar(Reltt_INT *IN){
     IN->p.end_info();
 }
 void *Add_To_Search(Reltt_INT *IN){
-    IN->add_path(resolve_parentensis(IN).S_value);
+    IN->add_path(resolve_parentensis(IN)->S_value);
 }
 void *ciner(Reltt_INT*IN){
     string varname=IN->get_Next_Token();
@@ -1795,12 +1847,16 @@ void Reltt_INT::New_Var(Value TR,int SP)
         SP=0;
     }
     //cout<<"new var: "<<TR.v_Name<<" Value: "<<TR.S_value.c_str()<<endl;
-    Value *VR = new Value(TR.v_Name, TR.S_value, TR.T_R);
+    //Value VTR = TR;
+    Value *VR=new Value(TR);
+    //cout<<"NewVarBLBL:"<<VR->Objects.size()<<endl;
     if (strcmp(this->getVar(TR.v_Name).S_value.c_str(), TR.v_Name.c_str()) == 0)
     {
         //cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<" at:"<<SP<<endl;
-        if ((SP) <= (this->Math_Var.size()))
+        if ((SP) <= (this->Math_Var.size())){
             this->Math_Var[SP]->localVars.push_back(VR);
+            //cout<<"BLBLB: "<<this->Math_Var[SP]->localVars[this->Math_Var[SP]->localVars.size()-1]->Objects.size()<<endl;
+        }
     }
     else
     { //cout<<"Altering "<<TR.v_Name<<endl;
