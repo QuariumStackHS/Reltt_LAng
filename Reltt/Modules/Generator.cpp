@@ -117,7 +117,7 @@ void *As_Native(Reltt_INT *IN)
     string RP = getenv("RelttPath");
     //RP.pop_back();
     myfile << "};\nint " << Appname << "_size=" << CodeH.size() << ";";
-    myfile << "\n\tReltt_INT *i =new Reltt_INT(" << Appname << "_size," << Appname << "_Code);\n\t	for (int ij=0;ij<Aargc;ij++)\ti->New_Var(Value(\"argv-\"+to_string(ij),Aargv[ij],\"string\"),0);\n\ti->Parse();\n\treturn 0;\n}\n";
+    myfile << "\n\tReltt_INT *i =new Reltt_INT(" << Appname << "_size," << Appname << "_Code);\n\t	for (int ij=0;ij<Aargc;ij++)\ti->New_Var(new Value(\"argv-\"+to_string(ij),Aargv[ij],\"string\"),0);\n\ti->Parse();\n\treturn 0;\n}\n";
     myfile << "\n";
     string CompileCommand = ((string) "g++ -w -std=c++17 -c ").append(getenv("RelttPath")).append("cache/").append(Appname).append("-OBJ.cpp");
     CompileCommand.append(" -o ").append(getenv("RelttPath")).append("cache/").append(Appname).append("-OBJ.o");
