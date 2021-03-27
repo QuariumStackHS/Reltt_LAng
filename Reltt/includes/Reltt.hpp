@@ -74,8 +74,13 @@ public:
     Value(){
 this->T_R="(Linked)Array";
     };
+<<<<<<< Updated upstream
     Value* Next_Obj=nullptr;
     Value* Prev_Obj=nullptr;
+=======
+
+    vector<Value*>Objects;
+>>>>>>> Stashed changes
     ~Value();
     int I_value;
     float F_value;
@@ -85,7 +90,79 @@ this->T_R="(Linked)Array";
     string v_Name;
     string T_R;
 };
+<<<<<<< Updated upstream
 string Reltt_Array_to_string(Value*I);
+=======
+class Reltt_array:public Value{
+public:
+    Reltt_array(Value *value) {
+        Value value_c=*value;
+        this->S_value=value_c.S_value;
+        //cout<<RED<<this->S_value<<":|:"<<value_c.S_value<<endl<<RESET;
+        this->F_value=value_c.F_value;
+        this->I_value=value_c.I_value;
+        this->B_value=value_c.B_value;
+        this->T_R="Array";
+        if (value->Objects.size()>=1){
+            cout<<"Value was already an Reltt_array and then converted into a value!"<<endl;
+        }
+    }
+    Reltt_array(){
+        this->T_R="Array";
+    }
+    Reltt_array(string Name, string Value, string type)
+    {
+        //this->F_value= stof(Value);
+
+        std::string s = Value;
+        this->T_R = type;
+        try
+        {
+            int i = std::stoi(s);
+            this->I_value = i;
+            //std::cout << i << '\n';
+        }
+        catch (std::invalid_argument const &e)
+        {
+            this->I_value = -1;
+            //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+        }
+        catch (std::out_of_range const &e)
+        {
+            this->I_value = -1;
+            //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+        }
+        try
+        {
+            float i = std::stof(s);
+            this->F_value = i;
+            //std::cout << i << '\n';
+        }
+        catch (std::invalid_argument const &e)
+        {
+            this->F_value = -1;
+            //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+        }
+        catch (std::out_of_range const &e)
+        {
+            this->F_value = -1;
+            //std::cout << "Float overflow: std::out_of_range thrown" << '\n';
+        }
+        //this->I_value= stoi(Value.c_str());
+        this->S_value = Value;
+        this->v_Name = Name;
+    }
+
+    //int pushback(Value value);
+    int popback();
+    Value Get_at_index(int index);
+
+    //vector<Value>;
+
+    int pushback(Value *value);
+};
+string Reltt_Array_to_string(Reltt_array*I);
+>>>>>>> Stashed changes
 class ArgType
 {
 public:
@@ -113,7 +190,7 @@ public:
     func_INS_Var();
     void Add_Value(Value &);
 
-    vector<Value *> localVars;
+    vector<Reltt_array *> localVars;
 };
 class printer{
 public:
@@ -151,11 +228,11 @@ public:
     //this->Init_APP();
     Cfg = Configurator();
     func_INS_Var *R = new func_INS_Var();
-    Value *D = new Value("None", 0);
+    Reltt_array *D = new Reltt_array();
     R->localVars.push_back(D);
     //cout<<GREEN<<R->localVars.size()<<endl;
     this->Math_Var.push_back(R);
-        this->New_Var(Value("RelttPath",getenv("RelttPath"),"string"),0);
+        this->New_Var(Reltt_array("RelttPath",getenv("RelttPath"),"string"),0);
     }
 
     void AddVector(int argcv, vector<string> argvS);
@@ -202,9 +279,14 @@ public:
     int runfile();
     //int newVar(string, string);
     int DeleteVar(string);
+<<<<<<< Updated upstream
     Value *getVar(string);
     void New_Var(Value TR,int SP);
     void New_Var(Value *TR,int SP);
+=======
+    Reltt_array getVar(string);
+    void New_Var(Reltt_array TR,int SP);
+>>>>>>> Stashed changes
     string get_Next_Token();
     bool is_operator(string name);
     int is_Func_or_var(string ins);

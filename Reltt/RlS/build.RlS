@@ -132,7 +132,7 @@ func build_Installer ( )
         Add Installer
     link-this
 end;
-
+/*
 > build_Reltt
 > build_Reltt_int
 > build_Installer
@@ -140,6 +140,9 @@ end;
 
         <> D [ "Loler" ]
         <> IJK [ "2" , RelttPath , "=path" ]
+=======
+*/
+        <> IJK [ RelttPath , "=path" ]
         cout IJK
 
 DMP
