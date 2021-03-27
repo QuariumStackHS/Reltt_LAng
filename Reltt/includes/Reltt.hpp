@@ -7,6 +7,7 @@
 #include <cstring>
 
 #include <fstream> // std::fstream
+
 #define elif else if
 //user definable Function
 /*
@@ -71,7 +72,7 @@ public:
     Value(string Name, int Value);
 
     Value(){
-
+this->T_R="(Linked)Array";
     };
     Value* Next_Obj=nullptr;
     Value* Prev_Obj=nullptr;
@@ -201,8 +202,9 @@ public:
     int runfile();
     //int newVar(string, string);
     int DeleteVar(string);
-    Value getVar(string);
+    Value *getVar(string);
     void New_Var(Value TR,int SP);
+    void New_Var(Value *TR,int SP);
     string get_Next_Token();
     bool is_operator(string name);
     int is_Func_or_var(string ins);
@@ -267,6 +269,7 @@ public:
     return -1;
 }*/
 Value* resolve_parentensis(Reltt_INT *IN);
+size_t split(const std::string &txt, std::vector<std::string> &strs, char ch);
 class Helper
 {
 public:

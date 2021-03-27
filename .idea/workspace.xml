@@ -17,26 +17,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="330af063-f371-4861-b057-5f59d05f68be" name="Default Changelist" comment="{&#10;very buggy if elif else&#10;}">
-      <change afterPath="$PROJECT_DIR$/Reltt/Reltt_Linked_List.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reltt/Reltt_Instruction_func.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reltt/Reltt_Value.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reltt/Utils.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Reltt/includes/Mods.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/ASM.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/ASM.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Cmp.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Cmp.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/Generator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/Generator.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/RelttSTD.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Modules/cpp-compile.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Modules/math.hpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/Reltt.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/OBJ/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/OBJ/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/Reltt.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/Reltt_Linked_List.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/Reltt_Linked_List.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/Updates.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/RlS/build.RlS" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/RlS/build.RlS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Help" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Help" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Bundled/Reltt_Update" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/bin/Reltt.so" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/bin/Reltt.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/cache/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/cache/Reltt.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/cache/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/cache/main.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/Reltt.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/Reltt.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/Reltt.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/Reltter.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/Reltter.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/brainer.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/brainer.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/main.o" beforeDir="false" afterPath="$PROJECT_DIR$/cache/main.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reltt/includes/info.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Reltt/includes/info.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Installer.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Reltt.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Reltt_linked.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/Reltter.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/brainer.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cache/main.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/compile.sh" beforeDir="false" afterPath="$PROJECT_DIR$/compile.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,9 +182,9 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -258,7 +272,8 @@
       <workItem from="1616114202716" duration="2307000" />
       <workItem from="1616175227620" duration="9941000" />
       <workItem from="1616602626707" duration="12000" />
-      <workItem from="1616760250352" duration="8168000" />
+      <workItem from="1616760250352" duration="18497000" />
+      <workItem from="1616858504331" duration="5937000" />
     </task>
     <task id="LOCAL-00001" summary="{&#10;&#10;}">
       <created>1615304804856</created>

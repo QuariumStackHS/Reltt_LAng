@@ -1,7 +1,7 @@
 #ifndef ASM_HPP
 #define ASM_HPP 0
 
-#include "../includes/Reltt.hpp"
+#include "../includes/Mods.hpp"
 using namespace std;
 
 void *new_asmfun(Reltt_INT *IN){

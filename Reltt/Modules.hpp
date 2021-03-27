@@ -1,10 +1,5 @@
 /*put includes here*/
-#include "Modules/Generator.hpp"
-#include "Modules/Cmp.hpp"
-#include "Modules/RelttSTD.hpp"
-#include "Modules/ASM.hpp"
-#include "Modules/cpp-compile.hpp"
-#include "includes/Reltt.hpp"
+#include "includes/Mods.hpp"
 
 /*put your module in this function to add it*/
 void Init_Modules(Reltt_INT *I){

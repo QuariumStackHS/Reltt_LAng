@@ -1,6 +1,6 @@
 #ifndef Generator_hpp
 #define Generator_hpp 1
-#include "../includes/Reltt.hpp"
+#include "../includes/Mods.hpp"
 #include <sstream>
 using namespace std;
 
@@ -38,8 +38,8 @@ void *As_Native(Reltt_INT *IN)
 {
 
 
-    string Appname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
-    string Fname = IN->getVar(IN->get_Next_Token()).S_value.c_str();
+    string Appname = IN->getVar(IN->get_Next_Token())->S_value.c_str();
+    string Fname = IN->getVar(IN->get_Next_Token())->S_value.c_str();
     ifstream Src(IN->get_fileOBJ(Fname));
     //cout<<Appname<<IN->StackPointer<<endl;
     string Code;
@@ -126,8 +126,8 @@ void *As_Native(Reltt_INT *IN)
 }
 void *Gen_App(Reltt_INT *IN)
 {
-    ifstream Src(IN->getVar(IN->getnextIns()).S_value.c_str());
-    string Appname = IN->getVar(IN->getnextIns()).S_value.c_str();
+    ifstream Src(IN->getVar(IN->getnextIns())->S_value.c_str());
+    string Appname = IN->getVar(IN->getnextIns())->S_value.c_str();
     string Code;
     vector<string> CodeH;
     while (getline(Src, Code))

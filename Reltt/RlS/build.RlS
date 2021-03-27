@@ -1,13 +1,109 @@
 Begin:
 
-using Updates
-func build_Reltt ( )
-    Exe ( RelttPath + "bin/Reltt.so" )
 
-        module "Reltt" ( RelttPath + "/Reltt.cpp" )
-        module "Reltt_linked" ( RelttPath + "/Reltt_Linked_List.cpp" )
+import Std
+import C++
+import "Generator"
+
+func Add_RelttDll ( )
+
+Add_DLL ( RelttPath + "/bin/Reltt.so" )
+
+end;
+
+func Add_Reltt_import ( )
+        /* Tell the linked .o here */
+        Add Reltt_Utils
+        Add Reltt_Ins_func
+        Add Reltt_Value
         Add Reltt_linked
         Add Reltt
+        /* Modules are added here */
+        Add ASM
+        Add Cmp
+        Add cpp-compile
+        Add Generator
+        Add RelttSTD
+end;
+
+func Add_Reltt ( )
+        /* Reltt is compiled here */
+        module "Reltt" ( RelttPath + "/Reltt.cpp" )
+        module "Reltt_Value" ( RelttPath + "/Reltt_Value.cpp" )
+        module "Reltt_linked" ( RelttPath + "/Reltt_Linked_List.cpp" )
+        module "Reltt_Ins_func" ( RelttPath + "/Reltt_Instruction_func.cpp" )
+        module "Reltt_Utils" ( RelttPath + "/Utils.cpp" )
+        /* Tell the linked .o here */
+        Add Reltt_Utils
+        Add Reltt_Ins_func
+        Add Reltt_Value
+        Add Reltt_linked
+        Add Reltt
+        /* Modules are compiled here */
+        module "ASM" ( RelttPath + "Modules/ASM.cpp" )
+        module "Cmp" ( RelttPath + "Modules/Cmp.cpp" )
+        module "cpp-compile" ( RelttPath + "Modules/cpp-compile.cpp" )
+        module "Generator" ( RelttPath + "Modules/Generator.cpp" )
+        module "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
+        /* Modules are added here */
+        Add ASM
+        Add Cmp
+        Add cpp-compile
+        Add Generator
+        Add RelttSTD
+end;
+
+
+func Native ( string string )
+    /* create .cpp from RlS */
+
+    As_Native @1 @2
+
+    /* compiling RlS with DLL Rellt */
+
+    Exe ( RelttPath + "bin/" + @1 )
+    > Add_RelttDll
+
+    Add brainer
+    module brainer ( RelttPath + "cache/" + @1 + "-OBJ.cpp" )
+    link-this
+
+    /* bundling it */
+
+    Exe ( RelttPath + "bin/Bundled/" + @1 )
+    Add @1
+
+    > Add_Reltt_import
+
+    module @1 ( RelttPath + "cache/" + @1 + "-OBJ.cpp" )
+    link-this
+
+    /* Clean ( "cache/" + @1 ) */
+end;
+
+func update ( )
+
+    /* App-RCP */
+
+    Gen_Help
+
+    /* > update_Reltt */
+
+    > Native -> "Reltt_Update" "scripts/Update.RlS"
+    > Native -> "Reltt_Help" "RlS/help.RlS"
+    Gen_Help
+
+    exit
+
+end;
+
+
+
+func build_Reltt ( )
+    Exe ( RelttPath + "bin/Reltt.so" )
+    > Add_Reltt
+
+
     link-this_DLL
 end;
 func build_Reltt_int ( )
@@ -21,10 +117,7 @@ func build_Reltt_int ( )
 
     Exe ( RelttPath + "bin/Bundled/Reltt" )
 
-        Add Reltt
-        module Reltt ( RelttPath + "/Reltt.cpp" )
-        module "Reltt_linked" ( RelttPath + "/Reltt_Linked_List.cpp" )
-        Add Reltt_linked
+        > Add_Reltt_import
         Add main
         module "main" ( RelttPath + "/main.cpp" )
 
@@ -43,8 +136,10 @@ end;
 > build_Reltt
 > build_Reltt_int
 > build_Installer
+> update
 
-        <> IJK [ RelttPath , "=path" ]
+        <> D [ "Loler" ]
+        <> IJK [ "2" , RelttPath , "=path" ]
         cout IJK
 
 DMP

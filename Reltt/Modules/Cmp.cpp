@@ -1,6 +1,6 @@
 #ifndef CMP_HPP
 #define CMP_HPP 1
-#include "../includes/Reltt.hpp"
+#include "../includes/Mods.hpp"
 void *Compile_Reltt(Reltt_INT *IN)
 {
 
@@ -149,7 +149,7 @@ void *Compile_Reltt(Reltt_INT *IN)
 
 }
 void *set_Main(Reltt_INT *IN){
-    string i=IN->getVar(resolve_parentensis(IN)->S_value).S_value;
+    string i=IN->getVar(resolve_parentensis(IN)->S_value)->S_value;
     setenv("MainFile",i.c_str(),1);
 
 }
@@ -162,7 +162,7 @@ void *add_File(Reltt_INT*IN){
 
 }
 void *set_output(Reltt_INT *IN){
-    string i=IN->getVar(IN->get_Next_Token()).S_value;
+    string i=IN->getVar(IN->get_Next_Token())->S_value;
     setenv("OUTPUTPATH",i.c_str(),1);
 }
 void *Setup(Reltt_INT *IN){
