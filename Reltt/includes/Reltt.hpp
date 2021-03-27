@@ -74,13 +74,11 @@ public:
     Value(){
 this->T_R="(Linked)Array";
     };
-<<<<<<< Updated upstream
     Value* Next_Obj=nullptr;
     Value* Prev_Obj=nullptr;
-=======
+
 
     vector<Value*>Objects;
->>>>>>> Stashed changes
     ~Value();
     int I_value;
     float F_value;
@@ -90,9 +88,7 @@ this->T_R="(Linked)Array";
     string v_Name;
     string T_R;
 };
-<<<<<<< Updated upstream
 string Reltt_Array_to_string(Value*I);
-=======
 class Reltt_array:public Value{
 public:
     Reltt_array(Value *value) {
@@ -162,7 +158,6 @@ public:
     int pushback(Value *value);
 };
 string Reltt_Array_to_string(Reltt_array*I);
->>>>>>> Stashed changes
 class ArgType
 {
 public:
@@ -279,14 +274,14 @@ public:
     int runfile();
     //int newVar(string, string);
     int DeleteVar(string);
-<<<<<<< Updated upstream
+
     Value *getVar(string);
     void New_Var(Value TR,int SP);
-    void New_Var(Value *TR,int SP);
-=======
+
     Reltt_array getVar(string);
     void New_Var(Reltt_array TR,int SP);
->>>>>>> Stashed changes
+
+
     string get_Next_Token();
     bool is_operator(string name);
     int is_Func_or_var(string ins);
