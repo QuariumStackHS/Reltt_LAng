@@ -15,15 +15,15 @@ void *mod(Reltt_INT *IN){
     //IN->charstr--;
     string PT2=resolve_parentensis(IN)->S_value;
     string cmd="g++ -c -o ";
-    cmd.append(getenv("RelttPath")).append("cache/").append(PT).append(".o -std=c++17 -w ").append(PT2);
+    cmd.append(RelttCache).append(PT).append(".o -std=c++17 -w ").append(PT2);
     system(cmd.c_str());
     //IN->p.begin_info();
-    IN->p.print_info(cmd);
+    //IN->p.print_info(cmd);
     //IN->p.end_info();
 }
 void *link(Reltt_INT *IN){
     string PT=resolve_parentensis(IN)->S_value;
-    linkcmd.append(getenv("RelttPath")).append("cache/").append(PT).append(".o ");
+    linkcmd.append(RelttCache).append(PT).append(".o ");
     //IN->p.end_info();
 }
 void *add_switch_to_gpp(Reltt_INT *IN){
@@ -33,11 +33,18 @@ void *add_switch_to_gpp(Reltt_INT *IN){
 void *linker(Reltt_INT *IN){
     string cmd="g++ ";
     cmd.append(linkcmd).append(" -w -o ").append(getenv("EXENAME")).append(DLL).append(Param);
-    system(cmd.c_str());
+    int j=system(cmd.c_str());
     //IN->p.begin_info();
-    IN->p.print_info(cmd);
+    //IN->p.print_info(cmd);
+    if (j==0)
+        cout<<GREEN<<"Compiled Module: "<<getenv("EXENAME")<<" Succefuly"<<RESET<<endl;
     //IN->p.end_info();
     //string PT=resolve_parentensis(IN).S_value;
+   /* vector<string>K;
+    split(linkcmd,K,' ');
+    for(int i=0;i<K.size();i++){
+        remove(K[i].c_str());
+    }*/
     linkcmd="";
     DLL="";
     Param="";
@@ -47,11 +54,17 @@ void *linker_(Reltt_INT *IN){
     cmd.append(linkcmd).append(" -shared -Wl, -std=c++17 -w -o ").append(getenv("EXENAME")).append(DLL).append(Param);
     int j=system(cmd.c_str());
     //IN->p.begin_info();
-    IN->p.print_info(cmd);
+    //IN->p.print_info(cmd);
     if (j==0)
     cout<<GREEN<<"Compiled Module: "<<getenv("EXENAME")<<" Succefuly"<<RESET<<endl;
     //IN->p.end_info();
     //string PT=resolve_parentensis(IN).S_value;
+    /*vector<string>K;
+    split(linkcmd,K,' ');
+    for(int i=0;i<K.size();i++){
+        remove(K[i].c_str());
+    }
+     */
     linkcmd="";
     Param="";
     DLL="";

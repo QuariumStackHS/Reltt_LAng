@@ -7,7 +7,7 @@
 #include <cstring>
 
 #include <fstream> // std::fstream
-
+static string RelttCache =((string)getenv("RelttPath")).append("OBJ/");
 #define elif else if
 //user definable Function
 /*

@@ -1186,9 +1186,6 @@ int Reltt_INT::init_Func()
     add_Cask("-help", "[module] √", &HelperI);
     add_Cask("<>", "[varname] [\"var value\"] √", &String);
     add_Cask("var", "[varname] [var_value] √", &String);
-    //add_Cask("elif", "(statement) √", &R_If);
-
-    //add_Cask("float", "[varname] [var_value] √", &Float);
     add_Cask("*>", "[varname], delete var √", &Del);
     add_Cask("PATH", "add to the looking path√", &Add_To_Search);
     add_Cask("DMP", "show loaded UD_function. Note this function do not work with compiled script √", &Dump);

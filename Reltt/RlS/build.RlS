@@ -12,13 +12,12 @@ Add_DLL ( RelttPath + "/bin/Reltt.so" )
 end;
 
 func Add_Reltt_import ( )
-        /* Tell the linked .o here */
+
         Add Reltt_Utils
         Add Reltt_Ins_func
         Add Reltt_Value
         Add Reltt_linked
         Add Reltt
-        /* Modules are added here */
         Add ASM
         Add Cmp
         Add cpp-compile
@@ -28,11 +27,11 @@ end;
 
 func Add_Reltt ( )
         /* Reltt is compiled here */
-        module "Reltt" ( RelttPath + "/Reltt.cpp" )
-        module "Reltt_Value" ( RelttPath + "/Reltt_Value.cpp" )
-        module "Reltt_linked" ( RelttPath + "/Reltt_Linked_List.cpp" )
-        module "Reltt_Ins_func" ( RelttPath + "/Reltt_Instruction_func.cpp" )
-        module "Reltt_Utils" ( RelttPath + "/Utils.cpp" )
+        module "Reltt" ( RelttPath + "Reltt.cpp" )
+        module "Reltt_Value" ( RelttPath + "Reltt_Value.cpp" )
+        module "Reltt_linked" ( RelttPath + "Reltt_Linked_List.cpp" )
+        module "Reltt_Ins_func" ( RelttPath + "Reltt_Instruction_func.cpp" )
+        module "Reltt_Utils" ( RelttPath + "Utils.cpp" )
         /* Tell the linked .o here */
         Add Reltt_Utils
         Add Reltt_Ins_func
@@ -55,17 +54,15 @@ end;
 
 
 func Native ( string string )
-    /* create .cpp from RlS */
 
     As_Native @1 @2
 
-    /* compiling RlS with DLL Rellt */
 
     Exe ( RelttPath + "bin/" + @1 )
     > Add_RelttDll
 
-    Add brainer
-    module brainer ( RelttPath + "cache/" + @1 + "-OBJ.cpp" )
+    Add @1
+    module @1 ( RelttPath + "OBJ/" + @1 + "-OBJ.cpp" )
     link-this
 
     /* bundling it */
@@ -75,7 +72,7 @@ func Native ( string string )
 
     > Add_Reltt_import
 
-    module @1 ( RelttPath + "cache/" + @1 + "-OBJ.cpp" )
+    module @1 ( RelttPath + "OBJ/" + @1 + "-OBJ.cpp" )
     link-this
 
     /* Clean ( "cache/" + @1 ) */
@@ -89,8 +86,11 @@ func update ( )
 
     /* > update_Reltt */
 
-    > Native -> "Reltt_Update" "scripts/Update.RlS"
-    > Native -> "Reltt_Help" "RlS/help.RlS"
+    > Native -> "Reltt_Update" "build"
+    > Native -> "Reltt_Help" "help"
+    Clean "Reltt_Help"
+    Clean "Reltt_Update"
+
     Gen_Help
 
     exit

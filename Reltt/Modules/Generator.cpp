@@ -21,7 +21,7 @@ stringstream ssd2;
     int Functions = IN->__Tasks.size();
     for (int i = 0; i < IN->QS.size(); i++)
     {
-        cout << "│\tModule\t" << BLUE << IN->QS[i].Module_Name << RESET << GREEN << "\tWith " << BOLDBLUE << IN->QS[i].__Tasks.size() << RESET << GREEN << " Functions";
+        cout << "│\tModule\t" << BLUE << IN->QS[i].Module_Name << RESET << GREEN << "\tWith " << BOLDBLUE << IN->QS[i].__Tasks.size() << RESET << GREEN << " Functions"<<endl;
         Functions += IN->QS[i].__Tasks.size();
         VOM.push_back(IN->QS[i].Module_Name.c_str());
         myfile << "-help " << IN->QS[i].Module_Name.c_str() << "\n";
@@ -68,7 +68,7 @@ void *As_Native(Reltt_INT *IN)
 
 
     ofstream myfile;
-    string fileout = getenv("RelttPath") + (string) "cache/";
+    string fileout = RelttCache;
     //system(((string)"mkdir ").append(fileout).c_str());
     fileout.append(Appname).append("-OBJ.cpp");
     myfile.open(fileout.c_str());
@@ -120,7 +120,7 @@ void *As_Native(Reltt_INT *IN)
     myfile << "\n\tReltt_INT *i =new Reltt_INT(" << Appname << "_size," << Appname << "_Code);\n\t	for (int ij=0;ij<Aargc;ij++)\ti->New_Var(new Value(\"argv-\"+to_string(ij),Aargv[ij],\"string\"),0);\n\ti->Parse();\n\treturn 0;\n}\n";
     myfile << "\n";
     string CompileCommand = ((string) "g++ -w -std=c++17 -c ").append(getenv("RelttPath")).append("cache/").append(Appname).append("-OBJ.cpp");
-    CompileCommand.append(" -o ").append(getenv("RelttPath")).append("cache/").append(Appname).append("-OBJ.o");
+    CompileCommand.append(RelttCache).append("cache/").append(Appname).append("-OBJ.o");
 
     myfile.close();
 }
@@ -208,7 +208,7 @@ void *clean(Reltt_INT *IN)
 {
     string Appname = resolve_parentensis(IN)->S_value;
     string fileout = "";
-    fileout.append(Appname).append("-OBJ.cpp");
+    fileout.append(RelttCache).append(Appname).append("-OBJ.cpp");
     remove(fileout.c_str());
     fileout = "";
     fileout.append(Appname).append(".o");
