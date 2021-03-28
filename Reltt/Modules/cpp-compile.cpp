@@ -17,7 +17,7 @@ void *mod(Reltt_INT *IN){
     string cmd="g++ -c -o ";
     cmd.append(getenv("RelttPath")).append("cache/").append(PT).append(".o -std=c++17 -w ").append(PT2);
     system(cmd.c_str());
-    IN->p.begin_info();
+    //IN->p.begin_info();
     IN->p.print_info(cmd);
     //IN->p.end_info();
 }
