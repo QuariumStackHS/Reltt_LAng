@@ -6,17 +6,94 @@
 #define CPPSTD_HPP
 
 #include "../includes/Mods.hpp"
+#include <fstream>
+
+#include <algorithm>
+#include <iterator>
+#include <string>
+#include <fstream>
+
+template<typename InputIterator1, typename InputIterator2>
+bool
+range_equal(InputIterator1 first1, InputIterator1 last1,
+            InputIterator2 first2, InputIterator2 last2)
+{
+    while(first1 != last1 && first2 != last2)
+    {
+        if(*first1 != *first2) return false;
+        ++first1;
+        ++first2;
+    }
+    return (first1 == last1) && (first2 == last2);
+}
+
+bool compare_files(const std::string& filename1, const std::string& filename2)
+{
+    std::ifstream file1(filename1);
+    std::ifstream file2(filename2);
+
+    std::istreambuf_iterator<char> begin1(file1);
+    std::istreambuf_iterator<char> begin2(file2);
+
+    std::istreambuf_iterator<char> end;
+
+    return range_equal(begin1, end, begin2, end);
+}
+std::ifstream::pos_type filesize(string filename)
+{
+    std::ifstream in(filename.c_str(), std::ifstream::ate | std::ifstream::binary);
+    return in.tellg();
+}
+
+// copy in binary mode
+bool copyFile(string SRC, string DEST)
+{
+    std::ifstream src(SRC, std::ios::binary);
+
+    try {
+        //cout<<srcD.rdbuf()==src.rdbuf();
+        if(filesize(SRC)==filesize(DEST)){
+            return 0;
+        }
+        else if(!compare_files(SRC,DEST))
+        {
+            return 0;
+        }
+        else{
+            std::ofstream dest(DEST, std::ios::binary);
+            dest << src.rdbuf();
+            return 1;
+        }
+    }
+    catch (const std::exception& e){
+        std::ofstream dest(DEST, std::ios::binary);
+        dest << src.rdbuf();
+        return 1;
+    }
+
+    //return src && dest;
+}
+
 static string linkcmd;
 static string Param;
 static string DLL;
+
 
 void *mod(Reltt_INT *IN){
     string PT=resolve_parentensis(IN)->S_value;
     //IN->charstr--;
     string PT2=resolve_parentensis(IN)->S_value;
-    string cmd="g++ -c -o ";
-    cmd.append(RelttCache).append(PT).append(".o -std=c++17 -w ").append(PT2);
-    system(cmd.c_str());
+    bool compile=copyFile(PT2,RelttCache+PT+"_Bc");
+    //cout<<PT2<<":"<<compile<<endl;
+    if (compile) {
+        string cmd = "g++ -c -o ";
+        cmd.append(RelttCache).append(PT).append(".o -std=c++17 -w ").append(PT2);
+        system(cmd.c_str());
+    }
+    else{
+        cout<<"Skiped an object"<<endl;
+    }
+
     //IN->p.begin_info();
     //IN->p.print_info(cmd);
     //IN->p.end_info();

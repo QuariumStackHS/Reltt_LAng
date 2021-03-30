@@ -67,6 +67,7 @@ func Native ( string string )
 
     /* bundling it */
 
+    /*
     Exe ( RelttPath + "bin/Bundled/" + @1 )
     Add @1
 
@@ -74,6 +75,7 @@ func Native ( string string )
 
     module @1 ( RelttPath + "OBJ/" + @1 + "-OBJ.cpp" )
     link-this
+    */
 
     /* Clean ( "cache/" + @1 ) */
 end;
@@ -114,7 +116,7 @@ func build_Reltt_int ( )
         module "main" ( RelttPath + "/main.cpp" )
         Add_Switch ( "-Wall" )
     link-this
-
+    /*
     Exe ( RelttPath + "bin/Bundled/Reltt" )
 
         > Add_Reltt_import
@@ -122,7 +124,7 @@ func build_Reltt_int ( )
         module "main" ( RelttPath + "/main.cpp" )
 
     link-this
-
+    */
 
 end;
 

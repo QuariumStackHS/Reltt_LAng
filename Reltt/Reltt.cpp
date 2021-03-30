@@ -1236,7 +1236,7 @@ Reltt_INT::Reltt_INT(int argcr, char **argrv)
     //cout<<GREEN<<R->localVars.size()<<endl;
     this->Math_Var.push_back(R);
 
-    cout<<"new var"<<endl;
+    //cout<<"new var"<<endl;
     if (argcr > 2)
     {
         //cout << "first way" << endl;
