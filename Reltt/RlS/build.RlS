@@ -5,6 +5,10 @@ import Std
 import C++
 import "Generator"
 
+
+Set_Cache ( RelttPath + "cache/" )
+
+
 func Add_RelttDll ( )
 
 Add_DLL ( RelttPath + "/bin/Reltt.so" )

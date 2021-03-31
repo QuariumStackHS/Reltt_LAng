@@ -7,8 +7,8 @@
 #include <cstring>
 
 #include <fstream> // std::fstream
-static string RelttCache =((string)getenv("RelttPath")).append("OBJ/");
-static string RelttCheck =((string)getenv("RelttPath")).append("check/");
+
+
 #define elif else if
 //user definable Function
 /*
@@ -138,6 +138,8 @@ public:
 class Reltt_INT
 {
 public:
+    string RelttCache =((string)getenv("RelttPath")).append("OBJ/");
+    string RelttCheck =((string)getenv("RelttPath")).append("check/");
     printer p=printer("Dev","Reltt_INT");
     int get_line_fromcharstr(int CharStr2);
     vector<string> paths;
@@ -147,6 +149,7 @@ public:
     vector<instruction> INSD;
     Value Resolve_statement();
     //void *Init_APP();
+
     vector<app> CaPP;
     vector<UD_Function> Functions;
     int StackPointer = 0;

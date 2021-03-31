@@ -77,13 +77,13 @@ void *mod(Reltt_INT *IN){
     string PT=resolve_parentensis(IN)->S_value;
     //IN->charstr--;
     string PT2=resolve_parentensis(IN)->S_value;
-    bool compile=copyFile(PT2,RelttCheck+PT+"_Check.cpp");
+    bool compile=copyFile(PT2,IN->RelttCheck+PT+"_Check.cpp");
     //cout<<PT2<<":"<<compile<<endl;
     if (compile) {
         string cmd = "g++ -c -o ";
-        cmd.append(RelttCache).append(PT).append(".o -std=c++17 -w ").append(PT2);
+        cmd.append(IN->RelttCache).append(PT).append(".o -std=c++17 -w ").append(PT2);
         system(cmd.c_str());
-        cout<<BLUE<<"compiled object: \""<<YELLOW<<PT<<BLUE<<"\""<<RESET<<endl;
+        cout<<BLUE<<"Compiled object: \""<<YELLOW<<PT<<BLUE<<"\""<<RESET<<endl;
         CMP=1;
     }
     else{
@@ -96,7 +96,7 @@ void *mod(Reltt_INT *IN){
 }
 void *link(Reltt_INT *IN){
     string PT=resolve_parentensis(IN)->S_value;
-    linkcmd.append(RelttCache).append(PT).append(".o ");
+    linkcmd.append(IN->RelttCache).append(PT).append(".o ");
     //IN->p.end_info();
 }
 void *add_switch_to_gpp(Reltt_INT *IN){
@@ -157,6 +157,12 @@ void*add_DLL(Reltt_INT*IN ){
     string PT=resolve_parentensis(IN)->S_value;
     DLL.append(" ").append(PT);
 }
+void*Set_Cache(Reltt_INT*IN){
+    IN->RelttCache=resolve_parentensis(IN)->S_value;
+    IN->RelttCheck=IN->RelttCache+"/Check/";
+    string cmd="mkdir "+IN->RelttCheck;
+    int i=system(cmd.c_str());
+}
 Reltt_INT::QSRcModule CPP_Module(){
     Reltt_INT::QSRcModule E=Reltt_INT::QSRcModule();
     E.Module_Name="C++";
@@ -167,6 +173,7 @@ Reltt_INT::QSRcModule CPP_Module(){
     E.add_Cask("link-this_DLL","compile+link",&linker_);
     E.add_Cask("Add_DLL","",&add_DLL);
     E.add_Cask("Add_Switch","",&add_switch_to_gpp);
+    E.add_Cask("Set_Cache","",&Set_Cache);
     //link
     return E;
 }
