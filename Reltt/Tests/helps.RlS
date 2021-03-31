@@ -1,8 +1,0 @@
-Begin:
-
-import Std
-func ciner ( )
-    /* cin lolz */
-end;
-> ciner
-end;

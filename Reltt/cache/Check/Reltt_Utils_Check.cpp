@@ -17,6 +17,7 @@ size_t split(const std::string &txt, std::vector<std::string> &strs, char ch)
 
         pos = txt.find(ch, initialPos);
     }
+    
 
     // Add the last one
     strs.push_back(txt.substr(initialPos, std::min(pos, txt.size()) - initialPos + 1));

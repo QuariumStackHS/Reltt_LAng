@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "../Reltt",
+			"name": "Reltt-Int\t\t(C++)"
+		},
+		{
+			"path": "../Reltt/Modules",
+			"name": "Modules\t\t(C++)"
+		},
+		{
+			"path": "../Reltt/RlS",
+			"name": "RlS\t\t\t(ReLtt Script)"
+		},
+		{
+			"path": "../Installer",
+			"name": "Installer\t\t(C++)"
+		},
+		{
+			
+			"path": "../Reltt/bin",
+			"name": "Build\t\t(C++)"
+		}
+	],
+	"settings": {"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/cmake-build-debug":true,
+		"**/.idea":true,
+		"**/cache":true,
+		"**/RlS":true,
+		"**/bin":true
+	}}
+}

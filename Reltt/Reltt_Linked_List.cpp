@@ -8,6 +8,7 @@ Value *Value::get_next(){
     if (this->Next_Obj!=nullptr){
         return this->Next_Obj;
     }
+    
     else{
         //cout<<"Random_ERROR"<<endl;
         return nullptr;
