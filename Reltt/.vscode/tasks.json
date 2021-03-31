@@ -6,7 +6,12 @@
         {
             "label": "Build Reltt",
             "type": "shell",
-            "command": ". ./Env.sh && Reltt build"
-        },
+            "command": ". ./Env.sh && Reltt build",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
     ]
 }

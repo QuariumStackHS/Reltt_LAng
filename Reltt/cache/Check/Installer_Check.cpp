@@ -78,8 +78,11 @@ int main(){
     if (cloned!=0){
         cout<<""<<endl;
     }
+
     i.append("Reltt/");
     ofstream myfile;
+    string fileout = getenv("RelttPath") + (string) "cache/";
+    system(((string)"mkdir ").append(fileout).c_str());
     cout<<"RelttPath="<<i<<endl;
     myfile.open(i+"/cfg.hpp");
     myfile<<"#include <filesystem>\n"
@@ -94,12 +97,11 @@ int main(){
           <<"setenv(\"RelttPath\",\""<<i<<"\",1);"
           <<"this->Reltt_path=getenv(\"RelttPath\");"
           <<"}";
-
     myfile.close();
-    string CMD;
-    CMD.append("g++ -std=c++17 -o ").append(i).append("bin/Reltt ").append(i).append("*.cpp -w");
-    string fileout = getenv("RelttPath") + (string) "cache/";
-    system(((string)"mkdir ").append(fileout).c_str());
-    return system(CMD.c_str());
+    string CMD="sh ";
+    CMD.append(i).append("../compile.sh");
+    myfile.open(i+"Env.sh");
+    myfile<<"export RelttPath=\""<<i<<"\""<<"\nexport PATH=\"$RelttPath/bin:$PATH\"";
 
+    return system(CMD.c_str());
 }

@@ -133,7 +133,7 @@ func build_Reltt_int ( )
 end;
 
 func build_Installer ( )
-    Exe ( RelttPath + "../Installer/Installer" )
+    Exe ( RelttPath + "bin/" + "Reltt-Installer" )
         module "Installer" ( RelttPath + "../Installer/Installer.cpp" )
         Add Installer
     link-this

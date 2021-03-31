@@ -1,25 +1,29 @@
 {
 	"folders": [
 		{
+			"path": "..",
+			"name": "Root"
+		},
+		{
 			"path": "../Reltt",
-			"name": "Reltt-Int\t\t(C++)"
+			"name": "Reltt-Int\t\t(Reltt.Dll)"
 		},
 		{
 			"path": "../Reltt/Modules",
-			"name": "Modules\t\t(C++)"
+			"name": "Modules\t\t(Reltt.Dll)"
 		},
 		{
 			"path": "../Reltt/RlS",
-			"name": "RlS\t\t\t(ReLtt Script)"
+			"name": "RlS\t\t\t(Reltt Script)"
 		},
 		{
 			"path": "../Installer",
-			"name": "Installer\t\t(C++)"
+			"name": "Installer\t\t(Reltt Installer)"
 		},
 		{
 			
 			"path": "../Reltt/bin",
-			"name": "Build\t\t(C++)"
+			"name": "Build\t\t(Reltt Package)"
 		}
 	],
 	"settings": {"files.exclude": {
