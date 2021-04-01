@@ -27,6 +27,9 @@ func Add_Reltt_import ( )
         Add cpp-compile
         Add Generator
         Add RelttSTD
+        Add Remote
+        Add asmReltt
+        
 end;
 
 func Add_Reltt ( )
@@ -36,24 +39,17 @@ func Add_Reltt ( )
         module "Reltt_linked" ( RelttPath + "Reltt_Linked_List.cpp" )
         module "Reltt_Ins_func" ( RelttPath + "Reltt_Instruction_func.cpp" )
         module "Reltt_Utils" ( RelttPath + "Utils.cpp" )
-        /* Tell the linked .o here */
-        Add Reltt_Utils
-        Add Reltt_Ins_func
-        Add Reltt_Value
-        Add Reltt_linked
-        Add Reltt
-        /* Modules are compiled here */
         module "ASM" ( RelttPath + "Modules/ASM.cpp" )
         module "Cmp" ( RelttPath + "Modules/Cmp.cpp" )
         module "cpp-compile" ( RelttPath + "Modules/cpp-compile.cpp" )
         module "Generator" ( RelttPath + "Modules/Generator.cpp" )
         module "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
-        /* Modules are added here */
-        Add ASM
-        Add Cmp
-        Add cpp-compile
-        Add Generator
-        Add RelttSTD
+        module "Remote" ( RelttPath + "Modules/Remote.cpp" )
+                
+        asm_module "asmReltt" ( RelttPath + "../asm/Reltt.S" )
+        
+        /* Tell the linked .o here */
+> Add_Reltt_import
 end;
 
 
@@ -86,19 +82,18 @@ end;
 
 func update ( )
 
-    /* App-RCP */
-
-    Gen_Help
-
     /* > update_Reltt */
+    <> Update ( RelttPath + "RlS/build.RlS" )
+    <> Help ( RelttPath + "RlS/help.RlS" )
 
-    > Native -> "Reltt_Update" "build"
-    > Native -> "Reltt_Help" "help"
-    Clean "Reltt_Help"
+    > Native -> "Reltt_Update" Update
+    
+    
     Clean "Reltt_Update"
 
     Gen_Help
-
+    > Native -> "Reltt_Help" Help
+    Clean "Reltt_Help"
     exit
 
 end;
@@ -118,7 +113,8 @@ func build_Reltt_int ( )
         Add_DLL ( RelttPath + "/bin/Reltt.so" )
         Add main
         module "main" ( RelttPath + "/main.cpp" )
-        Add_Switch ( "-Wall" )
+        Add asmain
+        asm_module "asmain" ( RelttPath + "../asm/Main.S" )
     link-this
     /*
     Exe ( RelttPath + "bin/Bundled/Reltt" )
@@ -126,7 +122,8 @@ func build_Reltt_int ( )
         > Add_Reltt_import
         Add main
         module "main" ( RelttPath + "/main.cpp" )
-
+        Add asmain
+        asm_module "asmain" ( RelttPath + "../asm/Main.S" )
     link-this
     */
 
@@ -142,10 +139,5 @@ end;
 > build_Reltt_int
 > build_Installer
 > update
-        <> IJK [ RelttPath , "=path" ]
-        cout IJK
-
-DMP
-show
 
 end;

@@ -73,6 +73,34 @@ static string Param;
 static string DLL;
 static bool CMP=0;
 
+void *mod_N(Reltt_INT *IN){
+    string PT=resolve_parentensis(IN)->S_value;
+    //IN->charstr--;
+    string PT2=resolve_parentensis(IN)->S_value;
+    bool compile=copyFile(PT2,IN->RelttCheck+PT+"_Check.S");
+    //cout<<PT2<<":"<<compile<<endl;
+    if (compile) {
+        string cmd = "gcc -c -o ";
+        cmd.append(IN->RelttCache).append(PT).append(".o ").append(PT2);
+        int i=system(cmd.c_str());
+
+        //cout<<cmd<<endl;
+        if(i!=0){
+            cout<<"Error"<<endl;
+            exit(0);
+        }
+        
+        cout<<BLUE<<"(ASM)\t|\tCompiled object: \""<<YELLOW<<PT<<BLUE<<"\""<<RESET<<endl;
+        CMP=1;
+    }
+    else{
+        cout<<MAGENTA<<"(ASM)\t|\tSkipped object \""<<YELLOW<<PT<<MAGENTA<<"\""<<RESET<<" (Already up to date)"<<endl;
+    }
+
+    //IN->p.begin_info();
+    //IN->p.print_info(cmd);
+    //IN->p.end_info();
+}
 void *mod(Reltt_INT *IN){
     string PT=resolve_parentensis(IN)->S_value;
     //IN->charstr--;
@@ -82,15 +110,21 @@ void *mod(Reltt_INT *IN){
     if (compile) {
         string cmd = "g++ -c -o ";
         cmd.append(IN->RelttCache).append(PT).append(".o -std=c++17 -w ").append(PT2);
-        system(cmd.c_str());
-        cout<<BLUE<<"Compiled object: \""<<YELLOW<<PT<<BLUE<<"\""<<RESET<<endl;
+        int i=system(cmd.c_str());
+
+        //cout<<cmd<<endl;
+        if(i!=0){
+            cout<<"Error"<<endl;
+            exit(0);
+        }
+        cout<<BLUE<<"(C++)\t|\tCompiled object: \""<<YELLOW<<PT<<BLUE<<"\""<<RESET<<endl;
         CMP=1;
     }
     else{
-        cout<<MAGENTA<<"Skipped object \""<<YELLOW<<PT<<MAGENTA<<"\""<<RESET<<" (Already up to date)"<<endl;
+        cout<<MAGENTA<<"(C++)\t|\tSkipped object \""<<YELLOW<<PT<<MAGENTA<<"\""<<RESET<<" (Already up to date)"<<endl;
     }
 
-    //IN->p.begin_info();
+    //IN->p.begin_info(); 
     //IN->p.print_info(cmd);
     //IN->p.end_info();
 }
@@ -109,10 +143,13 @@ void *linker(Reltt_INT *IN){
     int j=1;
     if(CMP)
         j=system(cmd.c_str());
+    else{
+        cout<<GREEN<<"(Build)\t|\tSkipping "<<getenv("EXENAME")<<RESET<<endl;
+    }
     //IN->p.begin_info();
     //IN->p.print_info(cmd);
     if (j==0)
-        cout<<GREEN<<"linked: "<<getenv("EXENAME")<<" Succefuly"<<RESET<<endl;
+        cout<<GREEN<<"(Build)\t|\tLinked "<<getenv("EXENAME")<<" Succefuly"<<RESET<<endl;
 
     //IN->p.end_info();
     //string PT=resolve_parentensis(IN).S_value;
@@ -132,10 +169,13 @@ void *linker_(Reltt_INT *IN){
     int j=1;
     if(CMP)
         j=system(cmd.c_str());
+    else{
+        cout<<GREEN<<"(Build)\t|\tSkipping "<<getenv("EXENAME")<<RESET<<endl;
+    }
     //IN->p.begin_info();
     //IN->p.print_info(cmd);
     if (j==0)
-    cout<<GREEN<<"linked: "<<getenv("EXENAME")<<" Succefuly"<<RESET<<endl;
+    cout<<GREEN<<"(Build)\t|\tLinked "<<getenv("EXENAME")<<" Succefuly"<<RESET<<endl;
     //IN->p.end_info();
     //string PT=resolve_parentensis(IN).S_value;
     /*vector<string>K;
@@ -166,6 +206,7 @@ void*Set_Cache(Reltt_INT*IN){
 Reltt_INT::QSRcModule CPP_Module(){
     Reltt_INT::QSRcModule E=Reltt_INT::QSRcModule();
     E.Module_Name="C++";
+    E.add_Cask("asm_module","add module I",&mod_N);
     E.add_Cask("module","add module I",&mod);
     E.add_Cask("Exe","execute value as interpreted",&set_exe_name);
     E.add_Cask("Add","add to linker",&link);

@@ -10,4 +10,5 @@ Reltt_INT::QSRcModule Compilator();
 Reltt_INT::QSRcModule CPP_Module();
 Reltt_INT::QSRcModule Generator();
 Reltt_INT::QSRcModule RelttSTD_Module();
+Reltt_INT::QSRcModule Remote();
 #endif //RELTT_LANG_MODS_HPP

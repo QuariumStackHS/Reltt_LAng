@@ -5,4 +5,5 @@ Begin:
 -help ASM
 -help Compilator
 -help C++
+-help Remote
 end;

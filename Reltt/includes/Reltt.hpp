@@ -8,6 +8,7 @@
 
 #include <fstream> // std::fstream
 
+extern "C" int foo(void);
 
 #define elif else if
 //user definable Function

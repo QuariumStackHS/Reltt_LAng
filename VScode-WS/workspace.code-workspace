@@ -22,6 +22,11 @@
 		},
 		{
 			
+			"path": "../Reltt/cache",
+			"name": "Cache\t\t(Object+Check)"
+		},
+		{
+			
 			"path": "../Reltt/bin",
 			"name": "Build\t\t(Reltt Package)"
 		}
@@ -31,11 +36,17 @@
 		"**/.svn": true,
 		"**/.hg": true,
 		"**/CVS": true,
+		"**/*.o": true,
 		"**/.DS_Store": true,
 		"**/cmake-build-debug":true,
 		"**/.idea":true,
 		"**/cache":true,
 		"**/RlS":true,
-		"**/bin":true
-	}}
+		"**/bin":true,
+		"Modules":true
+	},
+	"files.associations": {
+		"iostream": "cpp"
+	}
+}
 }

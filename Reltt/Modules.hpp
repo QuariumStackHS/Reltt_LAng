@@ -8,5 +8,6 @@ void Init_Modules(Reltt_INT *I){
     I->add_Module(ASM_MOD());
     I->add_Module(Compilator());
     I->add_Module(CPP_Module());
+    I->add_Module(Remote());
 
 }

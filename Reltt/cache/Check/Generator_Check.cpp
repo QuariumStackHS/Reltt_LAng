@@ -36,16 +36,17 @@ stringstream ssd2;
 }
 void *As_Native(Reltt_INT *IN)
 {
-
-
-    string Appname = IN->getVar(IN->get_Next_Token())->S_value.c_str();
-    string Fname = IN->getVar(IN->get_Next_Token())->S_value.c_str();
+    string Appname =IN->getVar(IN->get_Next_Token())->S_value.c_str();
+    
+    string Fname =  resolve_parentensis(IN)->S_value;
     ifstream Src(IN->get_fileOBJ(Fname));
     //cout<<Appname<<IN->StackPointer<<endl;
     string Code;
+
     vector<string> CodeH;
     if (Src)
     {
+        
         while (getline(Src, Code))
         {
             //SG++;

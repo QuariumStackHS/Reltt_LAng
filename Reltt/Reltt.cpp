@@ -951,7 +951,7 @@ void *String(Reltt_INT *IN)
     string Varname = IN->get_Next_Token();
     Value *VarValue = resolve_parentensis(IN);
     VarValue->v_Name=Varname;
-    cout<<"Newvar__"<<VarValue->L_size()<<endl;
+    //cout<<"Newvar__"<<VarValue->L_size()<<endl;
     //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;

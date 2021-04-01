@@ -10,9 +10,9 @@
 //                                                                                            \|_________|                                                         \|_________|
 //
 //
-
-int main(int argc, char **argv)
-{
+extern "C" int Rmain(int argc, char **argv);
+int Rmain(int argc, char **argv)
+{cout<<foo()<<endl;
     cout << "---------Reltt_Lang---------" << endl;
     /*while(true){
     cin>>ch;
@@ -175,5 +175,6 @@ int main(int argc, char **argv)
     {
         cout << "Error: " << e.what() << endl;
     }
+    
     return 0;
 }
