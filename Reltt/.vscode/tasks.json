@@ -13,5 +13,25 @@
                 "isDefault": true
             }
         }
+        ,{
+            "label": "test Reltt",
+            "type": "shell",
+            "command": ". ./Env.sh && Reltt build && Reltt",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "test Installer",
+            "type": "shell",
+            "command": ". ./Env.sh && Reltt build && Reltt-Installer",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        }
     ]
 }

@@ -3,4 +3,4 @@ Installer/OSX/Installer
 cmake-build-debug
 MSPG/
 .DS_Store
-Reltt/cache/Check
+Reltt/cache/*

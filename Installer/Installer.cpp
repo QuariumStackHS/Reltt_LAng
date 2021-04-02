@@ -42,24 +42,7 @@ int main(){
                "| |       | |  | (\\ \\) (_____  )  | |  |  ___  | |     | |     |  __)  |     __)    | |\n"
                "( (       | |  | | \\   |     ) |  | |  | (   ) | |     | |     | (     | (\\ (       ) )\n"
                " \\ \\   ___) (__| )  \\  /\\____) |  | |  | )   ( | (____/\\ (____/\\ (____/\\ ) \\ \\__   / / \n"
-               "  \\_)  \\_______//    )_)_______)  )_(  |/     \\(_______(_______(_______//   \\__/  (_/  """<<endl;
-    /*cout<<RED<<""" /$$$$$$$            /$$   /$$     /$$                                      \n"
-          "| $$__  $$          | $$  | $$    | $$                                      \n"
-          "| $$  \\ $$  /$$$$$$ | $$ /$$$$$$ /$$$$$$                                    \n"
-          "| $$$$$$$/ /$$__  $$| $$|_  $$_/|_  $$_/                                    \n"
-          "| $$__  $$| $$$$$$$$| $$  | $$    | $$                                      \n"
-          "| $$  \\ $$| $$_____/| $$  | $$ /$$| $$ /$$                                  \n"
-          "| $$  | $$|  $$$$$$$| $$  |  $$$$/|  $$$$/                                  \n"
-          "|__/  |__/ \\_______/|__/   \\___/   \\___/                                    \n"
-          "\n"
-          " /$$$$$$                       /$$               /$$ /$$                    \n"
-          "|_  $$_/                      | $$              | $$| $$                    \n"
-          "  | $$   /$$$$$$$   /$$$$$$$ /$$$$$$    /$$$$$$ | $$| $$  /$$$$$$   /$$$$$$ \n"
-          "  | $$  | $$__  $$ /$$_____/|_  $$_/   |____  $$| $$| $$ /$$__  $$ /$$__  $$\n"
-          "  | $$  | $$  \\ $$|  $$$$$$   | $$      /$$$$$$$| $$| $$| $$$$$$$$| $$  \\__/\n"
-          "  | $$  | $$  | $$ \\____  $$  | $$ /$$ /$$__  $$| $$| $$| $$_____/| $$      \n"
-          " /$$$$$$| $$  | $$ /$$$$$$$/  |  $$$$/|  $$$$$$$| $$| $$|  $$$$$$$| $$      \n"
-          "|______/|__/  |__/|_______/    \\___/   \\_______/|__/|__/ \\_______/|__/"""*/cout<<RESET<<endl;
+               "  \\_)  \\_______//    )_)_______)  )_(  |/     \\(_______(_______(_______//   \\__/  (_/  """<<RESET<<endl;
     string i=((string)"/Users/").append(getenv("USER")).append("/Reltt");
     cout<<"enter path to install Reltt or enter 0 to use: "<<RED<<i<<RESET<<endl;
     cout<<CYAN<<"~>"<<RESET;
@@ -76,9 +59,9 @@ int main(){
     }
     int cloned=system((((string)"git clone https://github.com/QuariumStackHS/Reltt_LAng.git ").append(i)).c_str());
     if (cloned!=0){
-        cout<<""<<endl;
+        cout<<"Error while Cloning..."<<endl;
     }
-
+    string j=i;
     i.append("Reltt/");
     ofstream myfile;
     string fileout = getenv("RelttPath") + (string) "cache/";
@@ -98,8 +81,8 @@ int main(){
           <<"this->Reltt_path=getenv(\"RelttPath\");"
           <<"}";
     myfile.close();
-    string CMD="sh ";
-    CMD.append(i).append("../compile.sh");
+    string CMD="cd ";
+    CMD.append(j).append(" && sh ").append(i).append("../compile.sh");
     myfile.open(i+"Env.sh");
     myfile<<"export RelttPath=\""<<i<<"\""<<"\nexport PATH=\"$RelttPath/bin:$PATH\"";
 
