@@ -1,33 +1,33 @@
 {
 	"folders": [
 		{
-			"path": "..",
+			"path": ".",
 			"name": "Root"
 		},
 		{
-			"path": "../Reltt",
+			"path": "Reltt",
 			"name": "Reltt-Int\t\t(Reltt.Dll)"
 		},
 		{
-			"path": "../Reltt/Modules",
+			"path": "Reltt/Modules",
 			"name": "Modules\t\t(Reltt.Dll)"
 		},
 		{
-			"path": "../Reltt/RlS",
+			"path": "Reltt/RlS",
 			"name": "RlS\t\t\t(Reltt Script)"
 		},
 		{
-			"path": "../Installer",
+			"path": "Installer",
 			"name": "Installer\t\t(Reltt Installer)"
 		},
 		{
 			
-			"path": "../Reltt/cache",
+			"path": "Reltt/cache",
 			"name": "Cache\t\t(Object+Check)"
 		},
 		{
 			
-			"path": "../Reltt/bin",
+			"path": "Reltt/bin",
 			"name": "Build\t\t(Reltt Package)"
 		}
 	],
