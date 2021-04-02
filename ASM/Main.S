@@ -7,7 +7,7 @@
 
 
 _foo:
-	movl $790, %eax
+	movl $10000000000000001, %eax
 	ret
 _main:                                  ## @main
 	.cfi_startproc
