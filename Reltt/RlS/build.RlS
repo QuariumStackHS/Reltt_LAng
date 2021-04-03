@@ -5,13 +5,14 @@ import Std
 import C++
 import "Generator"
 <> Suffix ".RX"
+<> DllSuffix ".so"
 
 Set_Cache ( RelttPath + "cache/" )
 
 
 func Add_RelttDll ( )
 
-    Add_DLL ( RelttPath + "/bin/Reltt.so" )
+    Add_DLL ( RelttPath + "/bin/Reltt" + DllSuffix )
 
 end;
 
@@ -28,7 +29,7 @@ func Add_Reltt_import ( )
         Add Generator
         Add RelttSTD
         Add Remote
-        add filesystem_FSys
+        Add filesystem_FSys
         Add asmReltt
         
 end;
@@ -46,8 +47,7 @@ func Add_Reltt ( )
         module "Generator" ( RelttPath + "Modules/Generator.cpp" )
         module "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
         module "filesystem_FSys" ( RelttPath + "Modules/FSys.cpp" )
-        module "Remote" ( RelttPath + "Modules/Remote.cpp" )
-                
+        module "Remote" ( RelttPath + "Modules/Remote.cpp" )   
         asm_module "asmReltt" ( RelttPath + "ASM/Reltt.S" )
         
         /* Tell the linked .o here */
@@ -102,7 +102,7 @@ end;
 
 
 func build_Reltt ( )
-    Exe ( RelttPath + "bin/Reltt.so" )
+    Exe ( RelttPath + "bin/Reltt" + DllSuffix )
     > Add_Reltt
 
 
@@ -111,7 +111,7 @@ end;
 func build_Reltt_int ( )
 
     Exe ( RelttPath + "bin/Reltt" + Suffix )
-        Add_DLL ( RelttPath + "/bin/Reltt.so" )
+        > Add_RelttDll
         Add main
         module "main" ( RelttPath + "/main.cpp" )
         Add asmain

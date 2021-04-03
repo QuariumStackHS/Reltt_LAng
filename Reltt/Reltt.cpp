@@ -12,9 +12,10 @@
 #include <time.h>
 #include <cstdlib>
 #include <sstream>
-void * Sleeper(Reltt_INT *IN){
+void *Sleeper(Reltt_INT *IN)
+{
     char s;
-    cin>>s;
+    cin >> s;
     //wait(resolve_parentensis(IN).I_value);
 }
 app::app(string name, int argc, char **argv)
@@ -28,12 +29,10 @@ app::app(string name, int argc, char **argv)
     this->app_name = name;
 }
 
-
 ArgType::ArgType(string ArgTypeD)
 {
     this->ArgTyper = ArgTypeD;
 }
-
 
 int Reltt_INT::try_task(string tname)
 {
@@ -89,7 +88,7 @@ string Reltt_INT::get_Next_Token()
         bool isfirst = ((Word[0] == '"') && (isinstring == 0) && (is == 0));
         //bool isMath = ((Word[0] == '(') &&(Word[g] == ')')&&(isinstring == 0) && (is == 0));
         bool islast = ((Word[Word.size() - 1] == '"') && (isinstring == 1) && (is == 0));
-        bool isunique = (this->argv[charstr].size()==1)&&(this->argv[charstr+1].size()==1);
+        bool isunique = (this->argv[charstr].size() == 1) && (this->argv[charstr + 1].size() == 1);
         if (isfirst)
         {
             //cout << "is first" << endl;
@@ -101,11 +100,13 @@ string Reltt_INT::get_Next_Token()
 
             isinstring = 1;
         }
-        elif (isunique&&!isinstring){
+        elif (isunique && !isinstring)
+        {
             return " ";
         }
-        elif ((Word[0] == '"') &&(Word.size()==1)){
-            isinstring=1;
+        elif ((Word[0] == '"') && (Word.size() == 1))
+        {
+            isinstring = 1;
             next_Token.append(" ");
         }
         elif (islast)
@@ -340,7 +341,7 @@ int Reltt_INT::DeleteVar(string varname)
     return 0;
 }
 Value *Reltt_INT::getVar(string varname)
-{//this->StackPointer++;
+{ //this->StackPointer++;
     //cout <<"is?"<< varname << endl;
     for (int k = 0; k <= StackPointer; k++)
     {
@@ -356,29 +357,29 @@ Value *Reltt_INT::getVar(string varname)
             }
         }
     }
-   Value *v= new Value(varname,varname , "string");
-   //Reltt_array v= Reltt_array(varname, varname, "string");
+    Value *v = new Value(varname, varname, "string");
+    //Reltt_array v= Reltt_array(varname, varname, "string");
     try
     {
         int i = std::stoi(v->S_value);
         //cachevalue.I_value = cachevalue.I_value-i;
-        v->T_R="int";
+        v->T_R = "int";
         //std::cout << i << '\n';
     }
     catch (std::invalid_argument const &e)
-    {//cout<<"operator - is not available for strings"<<endl;
+    { //cout<<"operator - is not available for strings"<<endl;
         //cachevalue.I_value = -1;
         //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
     }
     catch (std::out_of_range const &e)
-    {//cout<<"operator - is not available for strings"<<endl;
+    { //cout<<"operator - is not available for strings"<<endl;
         //cachevalue.I_value = -1;
         //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
     }
     try
     {
         float i = std::stof(v->S_value);
-        v->T_R="float";
+        v->T_R = "float";
         //cachevalue.F_value = cachevalue.F_value-i;
         //std::cout << i << '\n';
     }
@@ -394,7 +395,6 @@ Value *Reltt_INT::getVar(string varname)
 
     //cout<<"BaddALO"<<varname<<endl;
     return v;
-
 }
 
 int Reltt_INT::runfile()
@@ -490,7 +490,7 @@ void *Run(Reltt_INT *IN)
     string Cmd03 = ".exe";
     string Cmd = Cmd01.append(Cmd02);
     string Cmd1 = Cmd.append(Cmd03);
-    string i=((string)"Running using: \"");
+    string i = ((string) "Running using: \"");
     //i.append(Cmd.c_str()).append("\" | Return: ").append(system(Cmd1.c_str()));
     //IN.p.print_info(((string) ) );
     return 0;
@@ -518,19 +518,19 @@ void *Update(Reltt_INT *IN)
 {
     if ((strcmp(IN->getcurrentIns().c_str(), "App-RCP") == 0))
     {
-        string PG=getenv("RelttPath");
+        string PG = getenv("RelttPath");
         IN->p.begin_info();
         IN->p.print_info("Recompiling Reltt interpreter:");
-        int i = system(((string)"g++ ").append(PG).append("Reltt.cpp -shared -Wl, -std=c++17 -c -o ").append(PG).append("bin/Reltt.so -w").c_str());
+        int i = system(((string) "g++ ").append(PG).append("Reltt.cpp -shared -Wl, -std=c++17 -c -o ").append(PG).append("bin/Reltt.so -w").c_str());
         if (i == 0)
         {
             IN->p.print_info(((string)GREEN).append("\tCompiled ").append(BLUE).append("Reltt ").append(GREEN).append("With Return code: ").append(CYAN).append(to_string(i / 256)));
 
-            int j = system((((string)"g++ ").append(PG).append("main.cpp -std=c++17 -c -o ").append(PG).append("OBJ/main.o -w")).c_str());
+            int j = system((((string) "g++ ").append(PG).append("main.cpp -std=c++17 -c -o ").append(PG).append("OBJ/main.o -w")).c_str());
             if (j == 0)
             {
                 IN->p.print_info(((string)GREEN).append("\tCompiled ").append(BLUE).append("Reltt_Main ").append(GREEN).append("With Return code: ").append(CYAN).append(to_string(j / 256)));
-                j = system((((string)"g++ -std=c++17 ").append(PG).append("bin/Reltt.so ").append(PG).append("OBJ/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
+                j = system((((string) "g++ -std=c++17 ").append(PG).append("bin/Reltt.so ").append(PG).append("OBJ/main.o -o ").append(PG).append("bin/Reltt -w")).c_str());
 
                 IN->p.print_info(((string)GREEN).append("\tLinked Reltt interpreter With Return code: ").append(to_string(j / 256)));
                 //j = system("g++ -std=c++17  $RelttPath/QSR/Obj/Reltt.o $RelttPath/QSR/Obj/main.o -o $RelttPath/Reltt.app/Contents/MacOS/Reltt -w");
@@ -617,19 +617,20 @@ void *import_T(Reltt_INT *IN)
 {
 
     string SKN = IN->getVar(IN->get_Next_Token())->S_value;
-    string k=SKN;
+    string k = SKN;
 
     SKN.pop_back();
     SKN.pop_back();
     SKN.pop_back();
     SKN.pop_back();
-    if(strcmp(k.c_str(),SKN.append(".RlS").c_str())==0 ){
-
+    if (strcmp(k.c_str(), SKN.append(".RlS").c_str()) == 0)
+    {
     }
-    else{
-        SKN=k.append(".RlS");
+    else
+    {
+        SKN = k.append(".RlS");
         IN->p.begin_info();
-        IN->p.print_info("importing "+SKN);
+        IN->p.print_info("importing " + SKN);
         IN->p.end_info();
     }
     //cout << "importing: " << SKN << endl;
@@ -688,6 +689,8 @@ void *QF(Reltt_INT *In)
 }
 void *add(Reltt_INT *In)
 {
+    cout << "Add "
+         << "}Error" << endl;
     string Cmd00 = "mkdir src/";
     string Cmd01 = In->getVar(In->getnextIns())->S_value;
     string Cmd02 = Cmd00.append(Cmd01);
@@ -763,10 +766,10 @@ int Reltt_INT::Parse()
                     isexist = 1;
                 }
             }
-            if ((isexist == 0) && (strcmp(getcurrentIns().c_str(), "Begin:") != 0)&&(strcmp(getcurrentIns().c_str(), "")!=0))
+            if ((isexist == 0) && (strcmp(getcurrentIns().c_str(), "Begin:") != 0) && (strcmp(getcurrentIns().c_str(), "") != 0))
             {
 
-                this->p.print_Error((string)RED +"Unknown Instruction: \""+getcurrentIns()+"\"  at line : " +to_string(get_line_fromcharstr(charstr))+(string)RESET);
+                this->p.print_Error((string)RED + "Unknown Instruction: \"" + getcurrentIns() + "\"  at line : " + to_string(get_line_fromcharstr(charstr)) + (string)RESET);
                 //exit(0);
             }
         }
@@ -819,7 +822,7 @@ void *Call(Reltt_INT *IN)
         IN->Math_Var.push_back(S);
         string C = IN->get_Next_Token();
         bool args = 0;
-        vector<Value*> VA;
+        vector<Value *> VA;
         if ((strcmp(C.c_str(), "with") == 0) || (strcmp(C.c_str(), "->") == 0))
         {
             args = 1;
@@ -834,7 +837,7 @@ void *Call(Reltt_INT *IN)
                 string Arg = "@";
                 Arg.append(p2);
                 //cout<<"Var: "<<Arg<<" v: "<<j;
-                Value *V =new Value(Arg, j, type);
+                Value *V = new Value(Arg, j, type);
 
                 //cout << "Addo" << endl;
 
@@ -850,17 +853,17 @@ void *Call(Reltt_INT *IN)
             for (int i = 0; i < VA.size(); i++)
             {
                 //cout << VA[i].S_value << VA[i].v_Name << endl;
-                IN->New_Var(VA[i],IN->StackPointer);
+                IN->New_Var(VA[i], IN->StackPointer);
             }
         }
         else
         {
 
-
             IN->charstr -= 1;
-            if(IN->Functions[Path].ArgsT.size()>=1){
-                cout<<RED<<"[ERROR] did you forget to use '->'? because Function: \""<<IN->Functions[Path].FuncName<<"\" use "<<IN->Functions[Path].ArgsT.size()<<" Args;"<<RESET<<endl;
-                isexist=0;
+            if (IN->Functions[Path].ArgsT.size() >= 1)
+            {
+                cout << RED << "[ERROR] did you forget to use '->'? because Function: \"" << IN->Functions[Path].FuncName << "\" use " << IN->Functions[Path].ArgsT.size() << " Args;" << RESET << endl;
+                isexist = 0;
             }
         }
         IN->StackPointer++;
@@ -868,14 +871,14 @@ void *Call(Reltt_INT *IN)
         //IN->Math_Var.size()++;
         //1 sec before execution
         int add = 0;
-            if(isexist) {
-                int oldCharstr = IN->charstr - 1;
-                IN->charstr = IN->Functions[Path].BeginLine;
-                IN->Parse();
-                //IN->StackPointer--;
-                IN->charstr = oldCharstr;
-
-            }
+        if (isexist)
+        {
+            int oldCharstr = IN->charstr - 1;
+            IN->charstr = IN->Functions[Path].BeginLine;
+            IN->Parse();
+            //IN->StackPointer--;
+            IN->charstr = oldCharstr;
+        }
         //IN->charstr
         //1 1 after
         /*for (int i=0;IN->Math_Var[IN->StackPointer]->localVars.size();i++){
@@ -908,7 +911,8 @@ void *Export(Reltt_INT *IN)
 {
 }
 void *import_Module(Reltt_INT *IN)
-{int didran = 0;
+{
+    int didran = 0;
     string N = IN->getVar(IN->get_Next_Token())->S_value;
 
     //cout << N << endl;
@@ -950,13 +954,13 @@ void *String(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
     Value *VarValue = resolve_parentensis(IN);
-    VarValue->v_Name=Varname;
+    VarValue->v_Name = Varname;
     //cout<<"Newvar__"<<VarValue->L_size()<<endl;
     //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
     //IN->StackPointer--;
-    IN->New_Var(VarValue,IN->StackPointer-1);
+    IN->New_Var(VarValue, IN->StackPointer - 1);
     //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
@@ -1007,27 +1011,32 @@ void *HelperI(Reltt_INT *TLM)
     Helper H = Helper(TLM);
 }
 void *Dump(Reltt_INT *IN)
-{IN->p.begin_info();
-for (int i = 0; i < IN->Functions.size(); i++)
+{
+    IN->p.begin_info();
+    for (int i = 0; i < IN->Functions.size(); i++)
     {
         string Strs;
-        if (IN->Functions[i].ArgsT.size()!=0){
-            for (int j=0;j<IN->Functions[i].ArgsT.size();j++){
-                if (j+1<IN->Functions[i].ArgsT.size()){
+        if (IN->Functions[i].ArgsT.size() != 0)
+        {
+            for (int j = 0; j < IN->Functions[i].ArgsT.size(); j++)
+            {
+                if (j + 1 < IN->Functions[i].ArgsT.size())
+                {
                     Strs.append(RED).append(IN->Functions[i].ArgsT[j].ArgTyper).append(RESET).append(BLUE).append(", ").append(RESET);
                 }
-                else{
+                else
+                {
                     Strs.append(RED).append(IN->Functions[i].ArgsT[j].ArgTyper).append(RESET).append(BLUE).append(" ").append(RESET);
-
                 }
             }
         }
-        else{
+        else
+        {
             Strs.append("None ");
         }
         Strs.append("as arg(s)");
         stringstream ss;
-        ss << BLUE <<"\""<< IN->Functions[i].FuncName <<"\""<< RESET <<" -> "<<Strs<< " at addr:" <<CYAN <<"0x"<<hex<<(int64_t)&IN->Functions[i] <<IN->Functions[i].BeginLine<<dec<< RESET;
+        ss << BLUE << "\"" << IN->Functions[i].FuncName << "\"" << RESET << " -> " << Strs << " at addr:" << CYAN << "0x" << hex << (int64_t)&IN->Functions[i] << IN->Functions[i].BeginLine << dec << RESET;
         IN->p.print_info(ss.str());
     }
     IN->p.end_info();
@@ -1039,132 +1048,146 @@ void *with(Reltt_INT *IN)
 }
 void *R_If(Reltt_INT *IN)
 {
-    int Ifer=0;
-   Value *V=resolve_parentensis(IN);
-   if(IN->Cfg.debug==1)
-    cout << "if" <<IN->argv[IN->charstr+2]<<Ifer<< endl;
+    int Ifer = 0;
+    Value *V = resolve_parentensis(IN);
+    if (IN->Cfg.debug == 1)
+        cout << "if" << IN->argv[IN->charstr + 2] << Ifer << endl;
     Ifer++;
-   if (V->B_value==1){
-       IN->Parse();
-       if(IN->Cfg.debug==1)
-    cout<<"True"<<endl;
-   }
-   elif (V->B_value==0){
-       if(IN->Cfg.debug==1)
-       cout<<"False"<<endl;
-       bool no_Ifer=0;
-       bool isfirst=1;
-       int JmpL=0;
-       while ((Ifer>=1)||(isfirst)) {
+    if (V->B_value == 1)
+    {
+        IN->Parse();
+        if (IN->Cfg.debug == 1)
+            cout << "True" << endl;
+    }
+    elif (V->B_value == 0)
+    {
+        if (IN->Cfg.debug == 1)
+            cout << "False" << endl;
+        bool no_Ifer = 0;
+        bool isfirst = 1;
+        int JmpL = 0;
+        while ((Ifer >= 1) || (isfirst))
+        {
 
-           if(strcmp(IN->argv[IN->charstr].c_str(),"endif;")==0){
-               if(IN->Cfg.debug==1)
-               cout<<"endif;"<<Ifer<<endl;
+            if (strcmp(IN->argv[IN->charstr].c_str(), "endif;") == 0)
+            {
+                if (IN->Cfg.debug == 1)
+                    cout << "endif;" << Ifer << endl;
 
-               Ifer--;
-               if (Ifer==0){
-                   JmpL=IN->charstr;
-               }
-           }
-           elif(strcmp(IN->argv[IN->charstr].c_str(),"elif")==0){
-               if(IN->Cfg.debug==1)
-               cout<<"elif"<<IN->argv[IN->charstr+2]<<Ifer<<endl;
-               if (Ifer==0){
-                   //IN->charstr++;
-                   cout<<"resolving parentesis"<<endl;
-                   int re=resolve_parentensis(IN)->B_value;
-                   if (re==1){
-                   R_If(IN);
-                   }
-               }
-               isfirst=0;
-           }
-           elif(strcmp(IN->argv[IN->charstr].c_str(),"else")==0){
-               if(IN->Cfg.debug==1)
-               cout<<"else"<<Ifer<<endl;
-               if (Ifer==1){
+                Ifer--;
+                if (Ifer == 0)
+                {
+                    JmpL = IN->charstr;
+                }
+            }
+            elif (strcmp(IN->argv[IN->charstr].c_str(), "elif") == 0)
+            {
+                if (IN->Cfg.debug == 1)
+                    cout << "elif" << IN->argv[IN->charstr + 2] << Ifer << endl;
+                if (Ifer == 0)
+                {
+                    //IN->charstr++;
+                    cout << "resolving parentesis" << endl;
+                    int re = resolve_parentensis(IN)->B_value;
+                    if (re == 1)
+                    {
+                        R_If(IN);
+                    }
+                }
+                isfirst = 0;
+            }
+            elif (strcmp(IN->argv[IN->charstr].c_str(), "else") == 0)
+            {
+                if (IN->Cfg.debug == 1)
+                    cout << "else" << Ifer << endl;
+                if (Ifer == 1)
+                {
 
-                   JmpL=IN->charstr+1;
-               }
+                    JmpL = IN->charstr + 1;
+                }
+            }
 
-           }
-
-           //cout<<IN->argv[IN->charstr]<<endl;
-           IN->charstr++;
-       }
-       //cout<<"gonna parse.."<<endl;
-       IN->charstr=JmpL;
-       IN->Parse();
-
-
-   }
-   else{
-       //cout<<"None"<<endl;
-   }
+            //cout<<IN->argv[IN->charstr]<<endl;
+            IN->charstr++;
+        }
+        //cout<<"gonna parse.."<<endl;
+        IN->charstr = JmpL;
+        IN->Parse();
+    }
+    else
+    {
+        //cout<<"None"<<endl;
+    }
 }
-void *add_Path(Reltt_INT *IN){
-    string newpat=IN->getVar(IN->get_Next_Token())->S_value;
+void *add_Path(Reltt_INT *IN)
+{
+    string newpat = IN->getVar(IN->get_Next_Token())->S_value;
     IN->add_path(newpat);
 }
-void *set_RelttPath(Reltt_INT *IN){
-    string i=IN->getVar(IN->get_Next_Token())->S_value;
+void *set_RelttPath(Reltt_INT *IN)
+{
+    string i = IN->getVar(IN->get_Next_Token())->S_value;
     ofstream myfile;
-    cout<<"RelttPath="<<i<<endl;
-    myfile.open(i+"/cfg.hpp");
-    myfile<<"#include <filesystem>\n"
-          <<"#include <dirent.h>\n"
-          <<"#include <cstdlib>\nConfigurator::Configurator()\n"
-          <<"{\n"
-          <<"this->buildtype = EXE;"
-          <<"this->CPPLang = CPP17;"
-          <<"this->ProgrameName = \"RELTT\";"
-          <<"this->Termwidth=90;"
-          <<"this->debug=0;"
-          <<"setenv(\"RelttPath\",\""<<i<<"\",1);"
-          <<"this->Reltt_path=getenv(\"RelttPath\");"
-          <<"}";
+    cout << "RelttPath=" << i << endl;
+    myfile.open(i + "/cfg.hpp");
+    myfile << "#include <filesystem>\n"
+           << "#include <dirent.h>\n"
+           << "#include <cstdlib>\nConfigurator::Configurator()\n"
+           << "{\n"
+           << "this->buildtype = EXE;"
+           << "this->CPPLang = CPP17;"
+           << "this->ProgrameName = \"RELTT\";"
+           << "this->Termwidth=90;"
+           << "this->debug=0;"
+           << "setenv(\"RelttPath\",\"" << i << "\",1);"
+           << "this->Reltt_path=getenv(\"RelttPath\");"
+           << "}";
 
     myfile.close();
 }
-void *Gen_this(Reltt_INT *IN){
-    string i=IN->getVar(IN->get_Next_Token())->S_value;
+void *Gen_this(Reltt_INT *IN)
+{
+    string i = IN->getVar(IN->get_Next_Token())->S_value;
     ofstream myfile;
     myfile.open(i);
-    for(int i=0;i<IN->argv.size();i++){
-        myfile<<IN->argv[i]<<" ";
-
+    for (int i = 0; i < IN->argv.size(); i++)
+    {
+        myfile << IN->argv[i] << " ";
     }
     myfile.close();
-
 }
-void *ShowVar(Reltt_INT *IN){
-    int64_t lastaddr=0;
+void *ShowVar(Reltt_INT *IN)
+{
+    int64_t lastaddr = 0;
     IN->p.begin_info();
-    for(int i=0; i<IN->Math_Var.size();i++){
-        for(int j=0; j<IN->Math_Var[i]->localVars.size();j++) {
-    stringstream ss;
-            ss<< BLUE << IN->Math_Var[i]->localVars[j]->T_R << CYAN << ":" << RED
-                 << IN->Math_Var[i]->localVars[j]->v_Name << RESET << " with Value: " << BLUE <<
-                 IN->Math_Var[i]->localVars[j]->S_value << RESET << " StackP: " << i << " at Addr: " << CYAN << "0x"
-                 << std::hex << ((int64_t) &IN->Math_Var[i]->localVars[j]) << dec<< RESET;
+    for (int i = 0; i < IN->Math_Var.size(); i++)
+    {
+        for (int j = 0; j < IN->Math_Var[i]->localVars.size(); j++)
+        {
+            stringstream ss;
+            ss << BLUE << IN->Math_Var[i]->localVars[j]->T_R << CYAN << ":" << RED
+               << IN->Math_Var[i]->localVars[j]->v_Name << RESET << " with Value: " << BLUE << IN->Math_Var[i]->localVars[j]->S_value << RESET << " StackP: " << i << " at Addr: " << CYAN << "0x"
+               << std::hex << ((int64_t)&IN->Math_Var[i]->localVars[j]) << dec << RESET;
             IN->p.print_info(ss.str());
-            lastaddr=((int64_t)&IN->Math_Var[i]->localVars[j]);
+            lastaddr = ((int64_t)&IN->Math_Var[i]->localVars[j]);
         }
     }
     IN->p.end_info();
 }
 
-void *Add_To_Search(Reltt_INT *IN){
+void *Add_To_Search(Reltt_INT *IN)
+{
     IN->add_path(resolve_parentensis(IN)->S_value);
 }
-void *ciner(Reltt_INT*IN){
-    string varname=IN->get_Next_Token();
+void *ciner(Reltt_INT *IN)
+{
+    string varname = IN->get_Next_Token();
     string value;
-    cin>>value;
-    IN->New_Var(new Value(varname,value,"string"),IN->StackPointer);
+    cin >> value;
+    IN->New_Var(new Value(varname, value, "string"), IN->StackPointer);
 }
-void *handler(Reltt_INT *IN){
-
+void *handler(Reltt_INT *IN)
+{
 }
 int Reltt_INT::init_Func()
 {
@@ -1199,10 +1222,7 @@ int Reltt_INT::init_Func()
     //add_Cask("endif", "end if else statement", &handler);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
 
-
-   // Gen_this
-
-
+    // Gen_this
 
     add_path(getenv("RelttPath"));
     add_path("");
@@ -1288,11 +1308,10 @@ Reltt_INT::Reltt_INT(int argcr, char **argrv)
             }
         }
     }
-    Value *V=new Value("RelttPath",getenv("RelttPath"),"string");
-    this->New_Var(V,0);
+    Value *V = new Value("RelttPath", getenv("RelttPath"), "string");
+    this->New_Var(V, 0);
     //this->New_Var(Value("RelttPath",getenv("RelttPath"),"string"),0);
 }
-
 
 func_INS_Var::func_INS_Var()
 {
@@ -1309,48 +1328,56 @@ func_INS_Var::func_INS_Var()
 
 UD_Function::UD_Function(string Fname, int Bl, int El)
 {
-this->FuncName = Fname;
-this->BeginLine = Bl;
-this->EndLine = El;
+    this->FuncName = Fname;
+    this->BeginLine = Bl;
+    this->EndLine = El;
 }
-void printer::print_Error(string Error){
-    cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"💥"<<RED<<"(ERROR)"<<endl;
-    cout<<RED<<"└─{"<<RESET<<Error<<RED<<"}"<<RESET<<endl;
+void printer::print_Error(string Error)
+{
+    cout << RED << "┌──(" << BLUE << SThread << RED << ")"
+         << "💥" << RED << "(ERROR)" << endl;
+    cout << RED << "└─{" << RESET << Error << RED << "}" << RESET << endl;
 }
-void printer::B_cin(){
-    cout<<RED<<"┌──("<<BLUE<<SThread<<RED<<")"<<"{"<<RESET<<Suser<<RED<<"}"<<endl;
-    cout<<RED<<"└──"<<YELLOW<<"#"<<RESET;
+void printer::B_cin()
+{
+    cout << RED << "┌──(" << BLUE << SThread << RED << ")"
+         << "{" << RESET << Suser << RED << "}" << endl;
+    cout << RED << "└──" << YELLOW << "#" << RESET;
 }
-void printer::print_info(string info){
+void printer::print_info(string info)
+{
 
-    cout<<GREEN<<"│\t"<<RESET<<info<<endl;
+    cout << GREEN << "│\t" << RESET << info << endl;
+}
+void printer::end_info()
+{
+    cout << GREEN << "└─{" << Suser << "}" << RESET << endl;
+}
+void printer::begin_info()
+{
+    cout << GREEN << "┌──(" << BLUE << SThread << GREEN << ")" << endl;
+}
+printer::printer(string user, string Thread)
+{
+    Suser = user;
+    SThread = Thread;
+}
+string Reltt_INT::get_fileOBJ(string ik)
+{
 
-}
-void printer::end_info(){
-    cout<<GREEN<<"└─{"<<Suser<<"}"<<RESET<<endl;
-}
-void printer::begin_info(){
-    cout<<GREEN<<"┌──("<<BLUE<<SThread<<GREEN<<")"<<endl;
-}
-printer::printer(string user,string Thread){
-Suser=user;
-SThread=Thread;
-}
-string Reltt_INT::get_fileOBJ(string ik){
-
-    for (int i=0;i<paths.size();i++){
-        ifstream Src((paths[i]+((string)ik)).c_str());
-        if (Src){
-            return paths[i]+(ik);
+    for (int i = 0; i < paths.size(); i++)
+    {
+        ifstream Src((paths[i] + ((string)ik)).c_str());
+        if (Src)
+        {
+            return paths[i] + (ik);
         }
     }
 
     return "None";
-
-
-
 }
-void Reltt_INT::add_path(string i){
+void Reltt_INT::add_path(string i)
+{
     this->paths.push_back(i);
 }
 int Reltt_INT::get_line_fromcharstr(int CharStr2)
@@ -1381,8 +1408,8 @@ int Reltt_INT::QSRcModule::Set_Name(string name)
 void Reltt_INT::AddVector(int argcv, vector<string> argvS)
 {
     //this->LastMathValue=;
-    this->argc+= argcv;
-    for (int i = 0; i <argcv; i++)
+    this->argc += argcv;
+    for (int i = 0; i < argcv; i++)
     {
         string f = argvS.at((size_t)i);
         this->argv.push_back(f);

@@ -1,10 +1,6 @@
 {
 	"folders": [
 		{
-			"path": ".",
-			"name": "Root"
-		},
-		{
 			"path": "Reltt",
 			"name": "Reltt-Int\t\t(Reltt.Dll)"
 		},
@@ -18,30 +14,30 @@
 		},
 		{
 			
-			"path": "Reltt/cache",
-			"name": "Cache\t\t(Object+Check)"
-		},
-		{
-			
 			"path": "Reltt/bin",
 			"name": "Build\t\t(Reltt Package)"
 		}
 	],
 	"settings": {"files.exclude": {
-		"**/.git": true,
-		"**/.svn": true,
-		"**/.hg": true,
-		"**/CVS": true,
-		"**/*.o": true,
-		"**/.DS_Store": true,
-		"**/cmake-build-debug":true,
-		"**/.idea":true,
-		"**/cache":true,
-		"**/RlS":true,
-		"**/bin":true,
-	},
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/*.tmp": true,
+			"**/CVS": true,
+			"**/*.o": true,
+			"**/.DS_Store": true,
+			"**/cmake-build-debug": true,
+			"**/.idea": true,
+			"**/cache": true,
+			"**/RlS": true,
+			"**/bin": true,
+			"**/*.Xcpp": true,
+			"**/*.XS": true,
+			"RlS\t\t\t(Reltt Script)/build.RlS": true
+		},
 	"files.associations": {
 		"iostream": "cpp"
-	}
+	},
+	"workspace.isHidden": true
 }
 }

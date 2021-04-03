@@ -5,15 +5,15 @@
 using namespace std;
 
 void *Gen_Help(Reltt_INT *IN)
-{IN->p.begin_info();
-stringstream ssd2;
-
+{
+    IN->p.begin_info();
+    stringstream ssd2;
 
     ssd2 << GREEN << "Reltt C++ Modules: (" << IN->QS.size() + 1 << "):" << RESET;
     IN->p.print_info(ssd2.str());
     vector<string> VOM;
     ofstream myfile;
-    string Pathtohelp=(string)getenv("RelttPath")+(string)"RlS/help.RlS";
+    string Pathtohelp = (string)getenv("RelttPath") + (string) "RlS/help.RlS";
     myfile.open(Pathtohelp);
     myfile << "Begin:\n";
     myfile << "-help Base\n";
@@ -21,7 +21,7 @@ stringstream ssd2;
     int Functions = IN->__Tasks.size();
     for (int i = 0; i < IN->QS.size(); i++)
     {
-        cout << "│\tModule\t" << BLUE << IN->QS[i].Module_Name << RESET << GREEN << "\tWith " << BOLDBLUE << IN->QS[i].__Tasks.size() << RESET << GREEN << " Functions"<<endl;
+        cout << "│\tModule\t" << BLUE << IN->QS[i].Module_Name << RESET << GREEN << "\tWith " << BOLDBLUE << IN->QS[i].__Tasks.size() << RESET << GREEN << " Functions" << endl;
         Functions += IN->QS[i].__Tasks.size();
         VOM.push_back(IN->QS[i].Module_Name.c_str());
         myfile << "-help " << IN->QS[i].Module_Name.c_str() << "\n";
@@ -36,9 +36,9 @@ stringstream ssd2;
 }
 void *As_Native(Reltt_INT *IN)
 {
-    string Appname =IN->getVar(IN->get_Next_Token())->S_value.c_str();
-    
-    string Fname =  resolve_parentensis(IN)->S_value;
+    string Appname = IN->getVar(IN->get_Next_Token())->S_value.c_str();
+
+    string Fname = resolve_parentensis(IN)->S_value;
     ifstream Src(IN->get_fileOBJ(Fname));
     //cout<<Appname<<IN->StackPointer<<endl;
     string Code;
@@ -46,7 +46,7 @@ void *As_Native(Reltt_INT *IN)
     vector<string> CodeH;
     if (Src)
     {
-        
+
         while (getline(Src, Code))
         {
             //SG++;
@@ -66,7 +66,6 @@ void *As_Native(Reltt_INT *IN)
             }
         }
     }
-
 
     ofstream myfile;
     string fileout = IN->RelttCache;
@@ -122,7 +121,6 @@ void *As_Native(Reltt_INT *IN)
     myfile << "\n";
     string CompileCommand = ((string) "g++ -w -std=c++17 -c ").append(IN->RelttCache).append(Appname).append("-OBJ.cpp");
     CompileCommand.append(IN->RelttCache).append(Appname).append("-OBJ.o");
-
 
     myfile.close();
 }

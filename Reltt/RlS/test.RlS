@@ -1,7 +1,0 @@
-Begin:
-
-<> IJK [ "je" , "t'aime" , "pas" ]
-import Std
-cout IJK
-
-end;

@@ -1,0 +1,10 @@
+Begin:
+
+import FileSys
+
+del_f_in_dir ( RelttPath + "Cache/*" )
+
+
+
+
+end;
