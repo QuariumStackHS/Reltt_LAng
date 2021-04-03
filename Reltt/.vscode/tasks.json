@@ -6,7 +6,7 @@
         {
             "label": "Build Reltt",
             "type": "shell",
-            "command": ". ./Env.sh && Reltt build",
+            "command": ". ./Env.sh && Reltt.RX build",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -16,7 +16,7 @@
         ,{
             "label": "test Reltt",
             "type": "shell",
-            "command": ". ./Env.sh && Reltt build && Reltt",
+            "command": ". ./Env.sh && Reltt.RX build && Reltt",
             "problemMatcher": [],
             "group": {
                 "kind": "test",
@@ -26,7 +26,7 @@
         {
             "label": "test Installer",
             "type": "shell",
-            "command": ". ./Env.sh && Reltt build && Reltt-Installer",
+            "command": ". ./Env.sh && Reltt.RX build && Reltt-Installer",
             "problemMatcher": [],
             "group": {
                 "kind": "test",

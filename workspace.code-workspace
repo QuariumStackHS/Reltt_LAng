@@ -36,7 +36,7 @@
 		"**/.svn": true,
 		"**/.hg": true,
 		"**/CVS": true,
-		"**/*.o": false,
+		"**/*.o": true,
 		"**/.DS_Store": true,
 		"**/cmake-build-debug":true,
 		"**/.idea":true,

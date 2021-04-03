@@ -12,7 +12,7 @@
 //
 extern "C" int Rmain(int argc, char **argv);
 int Rmain(int argc, char **argv)
-{cout<<foo()<<endl;
+{
     cout << "---------Reltt_Lang---------" << endl;
     /*while(true){
     cin>>ch;

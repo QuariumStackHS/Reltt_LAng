@@ -4,7 +4,7 @@ Begin:
 import Std
 import C++
 import "Generator"
-
+<> Suffix ".RX"
 
 Set_Cache ( RelttPath + "cache/" )
 
@@ -58,7 +58,7 @@ func Native ( string string )
     As_Native @1 @2
 
 
-    Exe ( RelttPath + "bin/" + @1 )
+    Exe ( RelttPath + "bin/" + @1 + Suffix )
     > Add_RelttDll
 
     Add @1
@@ -68,7 +68,7 @@ func Native ( string string )
     /* bundling it */
 
     /*
-    Exe ( RelttPath + "bin/Bundled/" + @1 )
+    Exe ( RelttPath + "bin/Bundled/" + @1 + Suffix )
     Add @1
 
     > Add_Reltt_import
@@ -85,14 +85,13 @@ func update ( )
     /* > update_Reltt */
     <> Update ( RelttPath + "RlS/build.RlS" )
     <> Help ( RelttPath + "RlS/help.RlS" )
-
-    > Native -> "Reltt_Update" Update
+    > Native -> Reltt_Update Update
     
     
     Clean "Reltt_Update"
 
     Gen_Help
-    > Native -> "Reltt_Help" Help
+    > Native -> Reltt_Help Help
     Clean "Reltt_Help"
     exit
 
@@ -109,7 +108,7 @@ func build_Reltt ( )
 end;
 func build_Reltt_int ( )
 
-    Exe ( RelttPath + "bin/Reltt" )
+    Exe ( RelttPath + "bin/Reltt" + Suffix )
         Add_DLL ( RelttPath + "/bin/Reltt.so" )
         Add main
         module "main" ( RelttPath + "/main.cpp" )
@@ -117,7 +116,7 @@ func build_Reltt_int ( )
         asm_module "asmain" ( RelttPath + "../asm/Main.S" )
     link-this
     /*
-    Exe ( RelttPath + "bin/Bundled/Reltt" )
+    Exe ( RelttPath + "bin/Bundled/Reltt" + Suffix )
 
         > Add_Reltt_import
         Add main

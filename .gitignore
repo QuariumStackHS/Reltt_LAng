@@ -4,3 +4,4 @@ cmake-build-debug
 MSPG/
 .DS_Store
 Reltt/cache/*
+*.RX
