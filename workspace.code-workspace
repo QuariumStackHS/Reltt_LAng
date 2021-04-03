@@ -16,6 +16,10 @@
 			
 			"path": "Reltt/bin",
 			"name": "Build\t\t(Reltt Package)"
+		},
+		{
+			"path": "Test/",
+			"name": "Test Env\t\t(Reltt.Dll)"
 		}
 	],
 	"settings": {"files.exclude": {
