@@ -4,15 +4,32 @@ Begin:
 import Std
 import C++
 import "Generator"
+
+using config
+
+
+if ( this->os == OSX )
+
 <> Suffix ".RX"
 <> DllSuffix ".so"
+
+endif;
+
+
+if ( this->os == Win64 )
+
+<> Suffix ".exe"
+<> DllSuffix ".dll"
+
+endif;
+*/
 
 Set_Cache ( RelttPath + "cache/" )
 
 
 func Add_RelttDll ( )
 
-    Add_DLL ( RelttPath + "/bin/Bundled/Reltt" + DllSuffix )
+    Add_DLL ( RelttPath + "/bin/Bundled/Reltt-" + this->os + DllSuffix )
 
 end;
 
@@ -102,7 +119,7 @@ end;
 
 
 func build_Reltt ( )
-    Exe ( RelttPath + "bin/Bundled/Reltt" + DllSuffix )
+    Exe ( RelttPath + "bin/Bundled/Reltt-" + this->os + DllSuffix )
     > Add_Reltt
 
 
@@ -110,7 +127,7 @@ func build_Reltt ( )
 end;
 func build_Reltt_int ( )
 
-    Exe ( RelttPath + "bin/Reltt" + Suffix )
+    Exe ( RelttPath + "bin/Reltt-" + this->os + Suffix )
         
         > Add_Reltt_import
         Add main
@@ -119,7 +136,7 @@ func build_Reltt_int ( )
         asm_module "asmain" ( RelttPath + "ASM/Main.S" )
     link-this
     
-    Exe ( RelttPath + "bin/Bundled/Reltt" + Suffix )
+    Exe ( RelttPath + "bin/Bundled/Reltt-" + this->os + Suffix )
 
         > Add_RelttDll
         Add Dmain
@@ -132,7 +149,7 @@ func build_Reltt_int ( )
 end;
 
 func build_Installer ( )
-    Exe ( RelttPath + "bin/" + "Reltt-Installer" )
+    Exe ( RelttPath + "bin/" + "Reltt-Installer-" + this->os + Suffix )
         module "Installer" ( RelttPath + "../Installer/Installer.cpp" )
         Add Installer
     link-this

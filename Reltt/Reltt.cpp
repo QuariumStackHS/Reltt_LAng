@@ -1064,11 +1064,10 @@ void *R_If(Reltt_INT *IN)
         if (IN->Cfg.debug == 1)
             cout << "False" << endl;
         bool no_Ifer = 0;
-        bool isfirst = 1;
         int JmpL = 0;
-        while ((Ifer >= 1) || (isfirst))
+        while ((Ifer >= 1))
         {
-
+            IN->charstr++;
             if (strcmp(IN->argv[IN->charstr].c_str(), "endif;") == 0)
             {
                 if (IN->Cfg.debug == 1)
@@ -1080,37 +1079,11 @@ void *R_If(Reltt_INT *IN)
                     JmpL = IN->charstr;
                 }
             }
-            elif (strcmp(IN->argv[IN->charstr].c_str(), "elif") == 0)
-            {
-                if (IN->Cfg.debug == 1)
-                    cout << "elif" << IN->argv[IN->charstr + 2] << Ifer << endl;
-                if (Ifer == 0)
-                {
-                    //IN->charstr++;
-                    cout << "resolving parentesis" << endl;
-                    int re = resolve_parentensis(IN)->B_value;
-                    if (re == 1)
-                    {
-                        R_If(IN);
-                    }
-                }
-                isfirst = 0;
-            }
-            elif (strcmp(IN->argv[IN->charstr].c_str(), "else") == 0)
-            {
-                if (IN->Cfg.debug == 1)
-                    cout << "else" << Ifer << endl;
-                if (Ifer == 1)
-                {
-
-                    JmpL = IN->charstr + 1;
-                }
-            }
 
             //cout<<IN->argv[IN->charstr]<<endl;
-            IN->charstr++;
+            //IN->charstr++;
         }
-        //cout<<"gonna parse.."<<endl;
+        cout<<"gonna parse.."<<endl;
         IN->charstr = JmpL;
         IN->Parse();
     }
