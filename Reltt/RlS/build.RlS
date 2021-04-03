@@ -12,7 +12,7 @@ Set_Cache ( RelttPath + "cache/" )
 
 func Add_RelttDll ( )
 
-    Add_DLL ( RelttPath + "/bin/Reltt" + DllSuffix )
+    Add_DLL ( RelttPath + "/bin/Bundled/Reltt" + DllSuffix )
 
 end;
 
@@ -84,7 +84,7 @@ end;
 
 func update ( )
 
-    /* > update_Reltt */
+    /* > update_Reltt
     <> Update ( RelttPath + "RlS/build.RlS" )
     <> Help ( RelttPath + "RlS/help.RlS" )
     > Native -> Reltt_Update Update
@@ -95,14 +95,14 @@ func update ( )
     Gen_Help
     > Native -> Reltt_Help Help
     Clean "Reltt_Help"
-    exit
+    exit */
 
 end;
 
 
 
 func build_Reltt ( )
-    Exe ( RelttPath + "bin/Reltt" + DllSuffix )
+    Exe ( RelttPath + "bin/Bundled/Reltt" + DllSuffix )
     > Add_Reltt
 
 
@@ -111,22 +111,23 @@ end;
 func build_Reltt_int ( )
 
     Exe ( RelttPath + "bin/Reltt" + Suffix )
-        > Add_RelttDll
-        Add main
-        module "main" ( RelttPath + "/main.cpp" )
-        Add asmain
-        asm_module "asmain" ( RelttPath + "ASM/Main.S" )
-    link-this
-    /*
-    Exe ( RelttPath + "bin/Bundled/Reltt" + Suffix )
-
+        
         > Add_Reltt_import
         Add main
         module "main" ( RelttPath + "/main.cpp" )
         Add asmain
         asm_module "asmain" ( RelttPath + "ASM/Main.S" )
     link-this
-    */
+    
+    Exe ( RelttPath + "bin/Bundled/Reltt" + Suffix )
+
+        > Add_RelttDll
+        Add Dmain
+        module "Dmain" ( RelttPath + "/main.cpp" )
+        Add Dasmain
+        asm_module "Dasmain" ( RelttPath + "ASM/Main.S" )
+    link-this
+    
 
 end;
 

@@ -13,7 +13,11 @@
 #include <string>
 #include <fstream>
 #include <algorithm>
-
+#include <sys/stat.h>
+inline bool F_exist (const std::string& name) {
+  struct stat buffer;   
+  return (stat (name.c_str(), &buffer) == 0); 
+}
 bool compare_files(const std::string &filename1, const std::string &filename2)
 {
     std::ifstream file1(filename1, std::ifstream::ate | std::ifstream::binary); //open file at the end
@@ -52,7 +56,13 @@ bool copyFile(string SRC, string DEST)
             //cout<<RED<<SRC<<"!="<<DEST<<RESET<<endl;
             std::ofstream dest(DEST, std::ios::binary);
             dest << src.rdbuf();
-            return 0;
+            if(F_exist(getenv("EXENAME"))==1){
+                return 0;
+            }
+            else{
+                return 1;
+            }
+            
         }
         else
         {
