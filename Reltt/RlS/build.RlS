@@ -7,6 +7,8 @@ import "Generator"
 
 using config
 
+aliase m module
+
 
 if ( this->os == OSX )
 
@@ -22,7 +24,6 @@ if ( this->os == Win64 )
 <> DllSuffix ".dll"
 
 endif;
-*/
 
 Set_Cache ( RelttPath + "cache/" )
 
@@ -53,18 +54,18 @@ end;
 
 func Add_Reltt ( )
         /* Reltt is compiled here */
-        module "Reltt" ( RelttPath + "Reltt.cpp" )
-        module "Reltt_Value" ( RelttPath + "Reltt_Value.cpp" )
-        module "Reltt_linked" ( RelttPath + "Reltt_Linked_List.cpp" )
-        module "Reltt_Ins_func" ( RelttPath + "Reltt_Instruction_func.cpp" )
-        module "Reltt_Utils" ( RelttPath + "Utils.cpp" )
-        module "ASM" ( RelttPath + "Modules/ASM.cpp" )
-        module "Cmp" ( RelttPath + "Modules/Cmp.cpp" )
-        module "cpp-compile" ( RelttPath + "Modules/cpp-compile.cpp" )
-        module "Generator" ( RelttPath + "Modules/Generator.cpp" )
-        module "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
-        module "filesystem_FSys" ( RelttPath + "Modules/FSys.cpp" )
-        module "Remote" ( RelttPath + "Modules/Remote.cpp" )   
+        m "Reltt" ( RelttPath + "Reltt.cpp" )
+        m "Reltt_Value" ( RelttPath + "Reltt_Value.cpp" )
+        m "Reltt_linked" ( RelttPath + "Reltt_Linked_List.cpp" )
+        m "Reltt_Ins_func" ( RelttPath + "Reltt_Instruction_func.cpp" )
+        m "Reltt_Utils" ( RelttPath + "Utils.cpp" )
+        m "ASM" ( RelttPath + "Modules/ASM.cpp" )
+        m "Cmp" ( RelttPath + "Modules/Cmp.cpp" )
+        m "cpp-compile" ( RelttPath + "Modules/cpp-compile.cpp" )
+        m "Generator" ( RelttPath + "Modules/Generator.cpp" )
+        m "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
+        m "filesystem_FSys" ( RelttPath + "Modules/FSys.cpp" )
+        m "Remote" ( RelttPath + "Modules/Remote.cpp" )   
         asm_module "asmReltt" ( RelttPath + "ASM/Reltt.S" )
         
         /* Tell the linked .o here */

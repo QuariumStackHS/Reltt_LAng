@@ -1162,6 +1162,25 @@ void *ciner(Reltt_INT *IN)
 void *handler(Reltt_INT *IN)
 {
 }
+void*aliase(Reltt_INT*IN){
+    string IK=resolve_parentensis(IN)->S_value;
+    string j=resolve_parentensis(IN)->S_value;
+    //cout<<IN->__Tasks.size()<<endl;
+    for(int i=0; i<IN->__Tasks.size();i++)
+    {
+        
+        if(strcmp(IN->__Tasks[i].Name.c_str(),j.c_str())==0){
+                Reltt_INT::CallableObj NCO;
+                NCO.Desk = IN->__Tasks[i].Desk;
+                NCO.Name = IK;
+                NCO.Taddr = IN->__Tasks[i].Taddr;
+                IN->__Tasks.push_back(NCO);
+                i=IN->__Tasks.size()+1;
+        }
+        
+    
+    }
+}
 int Reltt_INT::init_Func()
 {
     //&Compile;
@@ -1191,6 +1210,7 @@ int Reltt_INT::init_Func()
     add_Cask("show", "show all variables √", &ShowVar);
     add_Cask("Gen_this", "Generate a script with this code √", &Gen_this);
     add_Cask("wait", "wait for enter key √", &Sleeper);
+    add_Cask("aliase", "newkey key √", &aliase);
     add_Cask("cin", "get until enter key √", &ciner);
     //add_Cask("endif", "end if else statement", &handler);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);

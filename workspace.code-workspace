@@ -40,7 +40,8 @@
 			"RlS\t\t\t(Reltt Script)/build.RlS": true
 		},
 	"files.associations": {
-		"iostream": "cpp"
+		"iostream": "cpp",
+		"iosfwd": "cpp"
 	},
 	"workspace.isHidden": true
 }
