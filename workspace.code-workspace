@@ -9,10 +9,6 @@
 			"name": "Reltt-Int\t\t(Reltt.Dll)"
 		},
 		{
-			"path": "Reltt/Modules",
-			"name": "Modules\t\t(Reltt.Dll)"
-		},
-		{
 			"path": "Reltt/RlS",
 			"name": "RlS\t\t\t(Reltt Script)"
 		},
@@ -43,7 +39,6 @@
 		"**/cache":true,
 		"**/RlS":true,
 		"**/bin":true,
-		"Modules":true
 	},
 	"files.associations": {
 		"iostream": "cpp"
