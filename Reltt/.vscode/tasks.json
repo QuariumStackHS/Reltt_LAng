@@ -16,7 +16,17 @@
         ,{
             "label": "test Reltt",
             "type": "shell",
-            "command": ". ./Env.sh && Reltt.RX build && Reltt",
+            "command": ". ./Env.sh && Reltt.RX build && Reltt.RX",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "help Reltt",
+            "type": "shell",
+            "command": ". ./Env.sh && Reltt.RX help",
             "problemMatcher": [],
             "group": {
                 "kind": "test",

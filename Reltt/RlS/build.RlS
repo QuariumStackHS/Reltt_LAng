@@ -11,7 +11,7 @@ Set_Cache ( RelttPath + "cache/" )
 
 func Add_RelttDll ( )
 
-Add_DLL ( RelttPath + "/bin/Reltt.so" )
+    Add_DLL ( RelttPath + "/bin/Reltt.so" )
 
 end;
 
@@ -28,6 +28,7 @@ func Add_Reltt_import ( )
         Add Generator
         Add RelttSTD
         Add Remote
+        add filesystem_FSys
         Add asmReltt
         
 end;
@@ -44,9 +45,10 @@ func Add_Reltt ( )
         module "cpp-compile" ( RelttPath + "Modules/cpp-compile.cpp" )
         module "Generator" ( RelttPath + "Modules/Generator.cpp" )
         module "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
+        module "filesystem_FSys" ( RelttPath + "Modules/FSys.cpp" )
         module "Remote" ( RelttPath + "Modules/Remote.cpp" )
                 
-        asm_module "asmReltt" ( RelttPath + "../asm/Reltt.S" )
+        asm_module "asmReltt" ( RelttPath + "ASM/Reltt.S" )
         
         /* Tell the linked .o here */
 > Add_Reltt_import
@@ -113,7 +115,7 @@ func build_Reltt_int ( )
         Add main
         module "main" ( RelttPath + "/main.cpp" )
         Add asmain
-        asm_module "asmain" ( RelttPath + "../asm/Main.S" )
+        asm_module "asmain" ( RelttPath + "ASM/Main.S" )
     link-this
     /*
     Exe ( RelttPath + "bin/Bundled/Reltt" + Suffix )
@@ -122,7 +124,7 @@ func build_Reltt_int ( )
         Add main
         module "main" ( RelttPath + "/main.cpp" )
         Add asmain
-        asm_module "asmain" ( RelttPath + "../asm/Main.S" )
+        asm_module "asmain" ( RelttPath + "ASM/Main.S" )
     link-this
     */
 
