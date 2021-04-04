@@ -10,5 +10,5 @@ void Init_Modules(Reltt_INT *I){
     I->add_Module(CPP_Module());
     I->add_Module(FSys());
     I->add_Module(Remote());
-
+    I->add_Module(Qemu_D());
 }

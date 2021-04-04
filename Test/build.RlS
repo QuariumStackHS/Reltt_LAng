@@ -1,0 +1,34 @@
+Begin:
+
+
+import Std
+import C++
+import "Generator"
+
+using config
+
+aliase m module
+
+
+if ( this->os == OSX )
+
+<> Suffix ".RX"
+<> DllSuffix ".so"
+
+endif;
+if ( this->os == Linux64 )
+
+<> Suffix ".RX"
+<> DllSuffix ".so"
+
+endif;
+
+if ( this->os == Win64 )
+
+<> Suffix ".exe"
+<> DllSuffix ".dll"
+
+endif;
+
+
+end;

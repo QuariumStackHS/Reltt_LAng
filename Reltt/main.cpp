@@ -130,12 +130,12 @@ int Rmain(int argc, char **argv)
                 }
 
         }
-        elif (argc == 2)
+        else
         {   argcv[0] = "begin:";
             argcv[1] = "-RlS";
             //char *ijk=(char *)TT.get_fileOBJ().c_str();
-            string k=argv[argc - 1];
-            string SKN=argv[argc - 1];
+            string k=argv[1];
+            string SKN=argv[1];
             SKN.pop_back();
             SKN.pop_back();
             SKN.pop_back();
@@ -156,16 +156,14 @@ int Rmain(int argc, char **argv)
 
             cout << argcv[1] << " | " << argcv[2] << endl;
             Reltt_INT *Args = new Reltt_INT(3, argcv);
-
+            for(int i=2;i<argc;i++){
+            string vname="arg";
+            vname.append(to_string(i-1));
+            Value*v=new Value(vname,argv[i],"string");
+            Args->New_Var(v,0);
+            
+            }
             Args->Parse();
-        }
-        else
-        {
-            //cout<<"Run try"<<endl;
-            //cout << argc << endl;
-            Reltt_INT Args = Reltt_INT(argc, argv);
-            //cout<<"ARGC: "<<argc<<endl;
-            Args.Parse();
         }
         char ch;
         //cin >> ch;

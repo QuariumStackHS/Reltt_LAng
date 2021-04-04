@@ -49,6 +49,7 @@ func Add_Reltt_import ( )
         Add Remote
         Add filesystem_FSys
         Add asmReltt
+        Add Qemu
         
 end;
 
@@ -66,6 +67,7 @@ func Add_Reltt ( )
         m "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
         m "filesystem_FSys" ( RelttPath + "Modules/FSys.cpp" )
         m "Remote" ( RelttPath + "Modules/Remote.cpp" )   
+        m "Qemu" ( RelttPath + "Modules/Qemu-D.cpp" )
         asm_module "asmReltt" ( RelttPath + "ASM/Reltt.S" )
         
         /* Tell the linked .o here */
@@ -158,6 +160,6 @@ end;
 > build_Reltt
 > build_Reltt_int
 > build_Installer
-> update
+Gen_Help
 
 end;

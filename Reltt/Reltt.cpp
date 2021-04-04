@@ -1083,7 +1083,7 @@ void *R_If(Reltt_INT *IN)
             //cout<<IN->argv[IN->charstr]<<endl;
             //IN->charstr++;
         }
-        cout<<"gonna parse.."<<endl;
+        //cout<<"gonna parse.."<<endl;
         IN->charstr = JmpL;
         IN->Parse();
     }

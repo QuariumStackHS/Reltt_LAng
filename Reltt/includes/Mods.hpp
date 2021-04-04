@@ -11,5 +11,6 @@ Reltt_INT::QSRcModule CPP_Module();
 Reltt_INT::QSRcModule Generator();
 Reltt_INT::QSRcModule RelttSTD_Module();
 Reltt_INT::QSRcModule Remote();
+Reltt_INT::QSRcModule Qemu_D();
 Reltt_INT::QSRcModule FSys();
 #endif //RELTT_LANG_MODS_HPP

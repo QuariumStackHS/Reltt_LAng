@@ -1,0 +1,57 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Reltt",
+            "type": "shell",
+            "command": ". ./Env.sh && Reltt-OSX.RX build",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+        ,{
+            "label": "test Reltt",
+            "type": "shell",
+            "command": ". ./Env.sh && Reltt-OSX.RX build && Reltt-OSX.RX",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "clear cache & build",
+            "type": "shell",
+            "command": ". ./Env.sh && Reltt-OSX.RX CCache && Reltt-OSX.RX build",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "help Reltt",
+            "type": "shell",
+            "command": ". ./Env.sh && Reltt-OSX.RX help",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        },
+        {
+            "label": "test Installer",
+            "type": "shell",
+            "command": ".  ./Env.sh && Reltt-OSX.RX build && Reltt-Installer",
+            "problemMatcher": [],
+            "group": {
+                "kind": "test",
+                "isDefault": false
+            }
+        }
+    ]
+}

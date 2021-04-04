@@ -7,4 +7,5 @@ Begin:
 -help C++
 -help FileSys
 -help Remote
+-help qemu
 end;
