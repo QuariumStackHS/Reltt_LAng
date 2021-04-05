@@ -1,0 +1,43 @@
+Begin:
+
+import qemu
+import Std
+if ( arg1 == "Create" )
+    Create_Hdd
+endif;
+using arg1
+func Restore ( )
+    
+    if ( argc == 2 )
+        Restore arg3
+        exit
+    endif;
+
+    cout "you need to pass arg3 to restore"
+    exit
+
+end;
+
+if ( arg2 == "Install" )
+add_iso_boot ISO
+launch
+exit
+endif;
+
+
+if ( arg2 == "Start" )
+launch
+exit
+endif;
+if ( arg2 == "Backup" )
+Backup
+exit
+endif;
+if ( arg2 == "Restore" )
+
+> Restore
+
+exit
+endif;
+cout "Please pass arg 'Start', 'Install', 'Backup' or 'Restore' to this script"
+end;

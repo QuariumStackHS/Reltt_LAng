@@ -13,13 +13,11 @@
 			"name": "Installer\t\t(Reltt Installer)"
 		},
 		{
-			
 			"path": "Reltt/bin",
 			"name": "Build\t\t(Reltt Package)"
 		},
 		{
-			"path": "Test/",
-			"name": "Test Env\t\t(Reltt.Dll)"
+			"path": "../../../../Volumes/VM/QEMU"
 		}
 	],
 	"settings": {"files.exclude": {

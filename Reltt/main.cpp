@@ -163,6 +163,8 @@ int Rmain(int argc, char **argv)
             Args->New_Var(v,0);
             
             }
+            Value*v=new Value("argc",to_string(argc-2),"int");
+            Args->New_Var(v,0);
             Args->Parse();
         }
         char ch;

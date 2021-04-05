@@ -7,14 +7,7 @@ void *print(Reltt_INT *IN)
 {
     Value *PT = IN->getVar(IN->get_Next_Token());
     IN->p.begin_info();
-    IN->p.print_info(PT->v_Name);
-    int size = PT->L_size();
-    cout << "LSINZE@" << size << endl;
-    IN->p.print_info(to_string(size));
-    IN->p.print_info(Reltt_Array_to_string(PT));
     IN->p.print_info(PT->S_value);
-    IN->p.print_info(PT->T_R);
-
     IN->p.end_info();
 }
 void *system(Reltt_INT *IN)

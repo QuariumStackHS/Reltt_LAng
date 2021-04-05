@@ -305,6 +305,15 @@ Value *resolve_parentensis(Reltt_INT *IN)
             //cout<<cachevalue.B_value<<endl;
             //cachevalue.S_value=to_string(cachevalue.B_value);
         }
+        elif (strcmp(token.S_value.c_str(), ">=") == 0)
+        {
+            //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+            token = *IN->getVar(IN->get_Next_Token());
+            //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+            cachevalue->B_value = (cachevalue->F_value >=token.F_value);
+            //cout<<cachevalue.B_value<<endl;
+            //cachevalue.S_value=to_string(cachevalue.B_value);
+        }
         elif (strcmp(token.S_value.c_str(), "(") == 0)
         {
             if (par)
