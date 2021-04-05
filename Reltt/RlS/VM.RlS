@@ -5,6 +5,7 @@ import Std
 if ( arg1 == "Create" )
     Create_Hdd
 endif;
+<> IMP ( RelttPath + "VM/" + arg1 )
 using arg1
 func Restore ( )
     

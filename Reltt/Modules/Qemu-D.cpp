@@ -42,7 +42,7 @@ void*create_HDD(Reltt_INT*IN){
     system(cmd.c_str());
 }
 void*Restore_VM(Reltt_INT*IN){
-        string cmd="qemu-img convert -p -f qcow2 -O vpc ";
+    string cmd="qemu-img convert -p -f qcow2 -O vpc ";
     cmd.append(getenv("Boot-drive"));
     cmd.append(" ");
     cmd.append(resolve_parentensis(IN)->S_value);

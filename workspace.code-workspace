@@ -18,6 +18,9 @@
 		},
 		{
 			"path": "../../../../Volumes/VM/QEMU"
+		},
+		{
+			"path": "Reltt/VM"
 		}
 	],
 	"settings": {"files.exclude": {
