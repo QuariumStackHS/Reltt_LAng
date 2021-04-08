@@ -6,10 +6,11 @@ if ( arg1 == "Create" )
     Create_Hdd
 endif;
 <> IMP ( RelttPath + "VM/" + arg1 )
-using arg1
+
+using IMP
 func Restore ( )
-    
-    if ( argc == 2 )
+    cout argc
+    if ( argc == "3" )
         Restore arg3
         exit
     endif;
@@ -31,7 +32,7 @@ launch
 exit
 endif;
 if ( arg2 == "Backup" )
-Backup
+Backup 
 exit
 endif;
 if ( arg2 == "Restore" )
