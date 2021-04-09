@@ -201,6 +201,7 @@ public:
         vector<CallableObj> __Tasks;
         string Module_Name;
         string Version;
+        string constructorname;
     };
     //typedef void *(*TaskAddr)(Reltt_INT*);
 

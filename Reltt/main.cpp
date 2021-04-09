@@ -10,8 +10,7 @@
 //                                                                                            \|_________|                                                         \|_________|
 //
 //
-extern "C" int Rmain(int argc, char **argv);
-int Rmain(int argc, char **argv)
+int main(int argc, char **argv)
 {
     cout << "---------Reltt_Lang---------" << endl;
     /*while(true){

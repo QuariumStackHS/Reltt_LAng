@@ -2,6 +2,7 @@
 #include "../includes/Mods.hpp"
 #include <time.h>
 #include <sstream>
+
 string hdd;
 int hdds = 0;
 string cdrom;
@@ -149,6 +150,7 @@ void *bcfolder(Reltt_INT *IN)
 Reltt_INT::QSRcModule Qemu_D()
 {
     Reltt_INT::QSRcModule M;
+    M.constructorname="Qemu_D";
     setenv("Backup-Folder", "NONE", 0);
     setenv("Boot-drive", "NONE", 0);
     setenv("install-drive", "", 0);
@@ -165,7 +167,7 @@ Reltt_INT::QSRcModule Qemu_D()
     M.add_Cask("Backup", " -> int", &Backup_VM);
     M.add_Cask("Restore", " -> Path_of_backup", &Restore_VM);
     M.add_Cask("Create_Hdd", " disk_name size ", &create_HDD);
-    M.add_Cask("Create_script", "-> VMname PATH size ISO MEM CORES ", &Create_script);
+    M.add_Cask("Create_script", "-> VMname PATH<-(end with '/') size ISO MEM CORES ", &Create_script);
     M.add_Cask("Add_shared_folder","-> rw/r/w Path",&Add_shared_folder);
     return M;
 }

@@ -1181,6 +1181,7 @@ void*aliase(Reltt_INT*IN){
     
     }
 }
+
 int Reltt_INT::init_Func()
 {
     //&Compile;
@@ -1212,6 +1213,7 @@ int Reltt_INT::init_Func()
     add_Cask("wait", "wait for enter key √", &Sleeper);
     add_Cask("aliase", "newkey key √", &aliase);
     add_Cask("cin", "get until enter key √", &ciner);
+    
     //add_Cask("endif", "end if else statement", &handler);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
 

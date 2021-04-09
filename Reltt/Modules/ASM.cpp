@@ -47,10 +47,11 @@ void *new_asmfun(Reltt_INT *IN)
     NasmFile.close();
     IN->newFunc(FucName, beginline, EndOFFunc, G);
 }
-Reltt_INT::QSRcModule ASM_MOD()
+Reltt_INT::QSRcModule ASM()
 {
     Reltt_INT::QSRcModule E = Reltt_INT::QSRcModule();
     E.Module_Name = "ASM";
+    E.constructorname="ASM";
     E.add_Cask("ASM", "", &new_asmfun);
     //E.add_Cask("Sys","execute value as interpreted",&system);
     return E;

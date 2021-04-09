@@ -9,6 +9,10 @@
 			"name": "RlS\t\t\t(Reltt Script)"
 		},
 		{
+			"path": "Build",
+			"name": "corebuilder\t\t\t(python)"
+		},
+		{
 			"path": "Installer",
 			"name": "Installer\t\t(Reltt Installer)"
 		},
@@ -29,7 +33,7 @@
 			"**/.hg": true,
 			"**/*.tmp": true,
 			"**/CVS": true,
-			"**/*.o": true,
+			"**/*.o": false,
 			"**/.DS_Store": true,
 			"**/cmake-build-debug": true,
 			"**/.idea": true,

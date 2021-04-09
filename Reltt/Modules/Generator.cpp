@@ -219,6 +219,7 @@ Reltt_INT::QSRcModule Generator()
 {
     Reltt_INT::QSRcModule M;
     M.Set_Name("Generator");
+    M.constructorname="Generator";
     M.add_Cask("Gen_Help", "Gen helper", &Gen_Help);
     M.add_Cask("Gen_APP", "", &Gen_App);
     M.add_Cask("As_Native", " [exe_name] scriptpath ", &As_Native);

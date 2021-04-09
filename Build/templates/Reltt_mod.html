@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='static/bootstrap-5.0.0-beta3-dist/css/bootstrap.css'>
+    <script src='static/bootstrap-5.0.0-beta3-dist/js/bootstrap.js'></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand">Reltt Modulator</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/link">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Obtain Reltt Binarys
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="mod">Build your Reltt</a></li>
+                  <li><a class="dropdown-item" href="#">get normal reltt</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">this webapp will compile for os.type.{{OS}}</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mod/compile" tabindex="-1" >Build!</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <ol class="list-group list-group-numbered">
+        {% for mod in Mods %}
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">{{mod.name}}</div>
+              {{mod.Path}}
+            
+            </div>
+            {% if mod.isused == 1 %}
+            <a href="/mod/D/{{mod.name}}" type="button"  class="btn btn-danger">Delete</a>
+            
+            {% else %}
+            <a href="/mod/A/{{mod.name}}" type="button"  class="btn btn-light">Add</a>
+            {% endif %}
+
+            <span style="margin:05px;" class=" badge bg-primary rounded-pill">{{mod.size}}</span>
+          </li>
+      {% endfor %}
+      </ol>
+</body>
+</html>

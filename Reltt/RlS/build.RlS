@@ -36,40 +36,49 @@ end;
 
 func Add_Reltt_import ( )
 
+        Add ASM
+        Add Compilator
+        Add CPP_Module
+        Add Generator
+        Add RelttSTD
+        Add Remote
+        Add FSys
+        Add Qemu_D
+
+
+        
         Add Reltt_Utils
         Add Reltt_Ins_func
         Add Reltt_Value
         Add Reltt_linked
         Add Reltt
-        Add ASM
-        Add Cmp
-        Add cpp-compile
-        Add Generator
-        Add RelttSTD
-        Add Remote
-        Add filesystem_FSys
-        Add asmReltt
-        Add Qemu
+
+
         
 end;
 
 func Add_Reltt ( )
+
+        m "ASM" ( RelttPath + "Modules/ASM.cpp" )
+        m "Compilator" ( RelttPath + "Modules/Compilator.cpp" )
+        m "CPP_Module" ( RelttPath + "Modules/CPP_Module.cpp" )
+        m "Generator" ( RelttPath + "Modules/Generator.cpp" )
+        m "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
+        m "FSys" ( RelttPath + "Modules/FSys.cpp" )
+        m "Remote" ( RelttPath + "Modules/Remote.cpp" )   
+        m "Qemu_D" ( RelttPath + "Modules/Qemu_D.cpp" )
+        
+
+
+        create_mod_list ( RelttPath + "../build/mods.py" )
         /* Reltt is compiled here */
         m "Reltt" ( RelttPath + "Reltt.cpp" )
         m "Reltt_Value" ( RelttPath + "Reltt_Value.cpp" )
         m "Reltt_linked" ( RelttPath + "Reltt_Linked_List.cpp" )
         m "Reltt_Ins_func" ( RelttPath + "Reltt_Instruction_func.cpp" )
         m "Reltt_Utils" ( RelttPath + "Utils.cpp" )
-        m "ASM" ( RelttPath + "Modules/ASM.cpp" )
-        m "Cmp" ( RelttPath + "Modules/Cmp.cpp" )
-        m "cpp-compile" ( RelttPath + "Modules/cpp-compile.cpp" )
-        m "Generator" ( RelttPath + "Modules/Generator.cpp" )
-        m "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )
-        m "filesystem_FSys" ( RelttPath + "Modules/FSys.cpp" )
-        m "Remote" ( RelttPath + "Modules/Remote.cpp" )   
-        m "Qemu" ( RelttPath + "Modules/Qemu-D.cpp" )
-        asm_module "asmReltt" ( RelttPath + "ASM/Reltt.S" )
-        
+
+
         /* Tell the linked .o here */
 > Add_Reltt_import
 end;
@@ -125,7 +134,7 @@ func build_Reltt ( )
     Exe ( RelttPath + "bin/Bundled/Reltt-" + this->os + DllSuffix )
     > Add_Reltt
 
-
+    
     link-this_DLL
 end;
 func build_Reltt_int ( )
@@ -135,8 +144,6 @@ func build_Reltt_int ( )
         > Add_Reltt_import
         Add main
         module "main" ( RelttPath + "/main.cpp" )
-        Add asmain
-        asm_module "asmain" ( RelttPath + "ASM/Main.S" )
     link-this
     
     Exe ( RelttPath + "bin/Bundled/Reltt-" + this->os + Suffix )
@@ -144,8 +151,6 @@ func build_Reltt_int ( )
         > Add_RelttDll
         Add Dmain
         module "Dmain" ( RelttPath + "/main.cpp" )
-        Add Dasmain
-        asm_module "Dasmain" ( RelttPath + "ASM/Main.S" )
     link-this
     
 
