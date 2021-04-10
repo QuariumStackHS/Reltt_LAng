@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/bootstrap-5.0.0-beta3-dist/css/bootstrap.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/ADdForm.css'>
+    <script src='/static/bootstrap-5.0.0-beta3-dist/js/bootstrap.js'></script>
+    <script src='/static/JS/Reltt_mod_add.js'></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/mod">Reltt Modulator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Obtain Reltt Binarys
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/mod">Build your Reltt</a></li>
+                            <li><a class="dropdown-item" href="#">get normal reltt</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">this webapp will compile for os.type.{{OS}}</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" id="build" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav><svg class="wave4" id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 270.1 361"><defs><linearGradient id="Nouvelle_nuance_de_dégradé_1" x1="505.49" y1="514.33" x2="505.49" y2="883.69" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#dfdfdf"/><stop offset="1" stop-color="#fff"/></linearGradient></defs><title>waveinvert</title><path d="M640.54,500V861S625.25,801.25,575,802.75s-49.5-38.5,6.25-18.25S620,755,601.5,732.25s-56-9.25-81.5,13.5-70.5,32.5-76.5,17,93.75-34.75,32-32S399,722.25,387,710c-25.14-25.66-25.38-98.5,25.5-38,28,33.28,137.5,13.33,64.5-19.67-70.86-32-89-112.32-41.25-88.08,177.83,90.25,208,21.13,167.5,16.25-67-8.08-80.46-25-59-34.5,18.74-8.26,31.1-27,36.43-46Z" transform="translate(-370.44 -500)" style="fill:url(#Nouvelle_nuance_de_dégradé_1)"/></svg> 
+    <br>
+    <div class="Fbody">
+        <form>
+
+
+
+            <div class="card text-center">
+                <div class="card-header">
+                    Create a new QSRcModule
+                </div>
+                <div class="card-body">
+
+                    <h5 class="card-title">Create Module.. (step 1/2)</h5>
+                    <p class="card-text">Please provide information about your Module </p>
+                        
+                        <div class="input-group mb-3">
+                            <div class="input-group flex-nowrap">
+                                <span class="input-group-text" id="addon-wrapping">@</span>
+                                <input type="text" class="form-control" placeholder="Developer name" id="Dev"
+                                    aria-label="Username" aria-describedby="addon-wrapping">
+                            </div>
+                            <div class="input-group flex-nowrap ">
+                                <span class="input-group-text" id="addon-wrapping">Reltt_INT::QSRcModule</span>
+                                <input type="text" class="form-control" id="Constructor"
+                                    placeholder="Name of the init function of your module" aria-label="Username"
+                                    aria-describedby="addon-wrapping">
+    
+                            </div>
+                            <br>
+                            <br>
+                            <label class="input-group-text" for="OSdrop">Working Operating system</label>
+                            <select class="form-select" id="OSdrop">
+                              <option value="OSX">OSX</option>
+                              <option value="Win">Win</option>
+                              <option value="Linux">Linux</option>
+                            </select>
+                          </div>
+                          <div class="input-group flex-nowrap ">
+                            <span class="input-group-text" id="addon-wrapping">Version</span>
+                            <input type="text" class="form-control" id="Version"
+                                placeholder="Version of your project" aria-label="Username"
+                                aria-describedby="addon-wrapping">
+
+                        </div>
+                        
+                        <br>
+                        <div class="input-group ">
+                            <span class="input-group-text">Describe Module</span>
+                            <textarea class="form-control" id="Desc" aria-label="With textarea"></textarea>
+                            <button class="btn btn-success" onclick="add_module()" type="button" id="Push">Create
+                                Module</button>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <br>
+            </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="card-footer textez">
+        Next you will be ask the object file for the linking process (basicly the .o that your compiler output)
+    </div>
+</body>
+
+</html>

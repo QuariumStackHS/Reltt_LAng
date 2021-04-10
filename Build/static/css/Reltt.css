@@ -1,0 +1,45 @@
+.input-group {
+        padding-left: 11%;
+        width: 24cm;
+
+}
+.btn{
+    padding-left: 10%;
+    padding-right: -10%;
+    text-align: center;
+}
+.card{
+    padding-left: 23%;
+    margin-left: 7.5cm;
+    width: 80cm;
+    background-color: rgba(39, 36, 36, 0.648);
+}
+.card-body{
+    padding-left: -16%;
+    margin-left: -7.5cm;
+    width: 8cm;
+    
+}
+.wave4 {
+    position: absolute;
+    right: 0px;
+    z-index: 0;
+    height: 150em;
+    color: white;
+}
+.Fbody{
+    background-color: rgba(39, 36, 36, 0.548);
+    color: white;
+}
+.list-group-item{
+    background-color: rgba(44, 43, 43, 0.932);
+    color: white;
+}
+.navbar{
+    background-color: rgba(0, 0, 0, 0.829);
+    color: white;
+}
+.textez{
+    text-align: center;
+color:rgba(44, 43, 43, 0.932);
+}

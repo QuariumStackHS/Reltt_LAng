@@ -1,0 +1,16 @@
+Begin:
+
+
+import Std
+
+
+<> I "YO"
+<> Master "MasterPisopArtz"
+
+
+
+<> J ( I + Master )
+cout J
+
+
+end;

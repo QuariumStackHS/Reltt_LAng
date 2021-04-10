@@ -241,7 +241,6 @@ Helper::Helper(Reltt_INT *HTL)
         if (M.__Tasks.size() == 0)
         {
             cout << "No Module named: " << Module << endl;
-            exit(0);
         }
         else
         {
@@ -407,7 +406,7 @@ int Reltt_INT::runfile()
     if (this->Cfg.debug)
         cout << RQFS << RESET << RED << SKN << RESET << "-----" << endl;
     // Read from the text file
-    ifstream Src(this->get_fileOBJ(getVar(getcurrentIns())->S_value.c_str()));
+    ifstream Src(this->get_fileOBJ(SKN.c_str()));
     charstr++;
     int SG = 0;
     while (getline(Src, Code))
@@ -960,7 +959,7 @@ void *String(Reltt_INT *IN)
     //Value T =;
     //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
     //IN->StackPointer--;
-    IN->New_Var(VarValue, IN->StackPointer - 1);
+    IN->New_Var(VarValue, IN->StackPointer);
     //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
 }
@@ -1220,7 +1219,7 @@ int Reltt_INT::init_Func()
     // Gen_this
 
     add_path(getenv("RelttPath"));
-    add_path("");
+    add_path("./");
     add_path(((string)getenv("RelttPath")).append("RlS/"));
     add_path(((string)getenv("RelttPath")).append("scripts/"));
     //inline asm("mov ")
@@ -1364,11 +1363,15 @@ string Reltt_INT::get_fileOBJ(string ik)
     {
         ifstream Src((paths[i] + ((string)ik)).c_str());
         if (Src)
-        {
+        {cout<<"find "<<ik<<" in"<<paths[i]<<endl;;
             return paths[i] + (ik);
+
+        }
+        else{
+            cout<<"did not find "<<ik<<" in"<<paths[i]<<endl;;
         }
     }
-
+    
     return "None";
 }
 void Reltt_INT::add_path(string i)

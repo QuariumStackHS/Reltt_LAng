@@ -126,17 +126,17 @@ std::ofstream(path, std::ios::out).close();
 cout<<path<<endl;
 ofstream Mod_list;
 Mod_list.open(path,ios::app);
-Mod_list<<"import os"
-<<"def convert_bytes(num):"
-<<"    for x in ['bytes', 'KB', 'MB', 'GB', 'TB']:"
-<<"      if num < 1024.0:"
-<<"          return \"%3.1f %s\" % (num, x)"
-<<"       num /= 1024.0"
-<<"def file_size(file_path):"
-<<"\tif os.path.isfile(file_path):"
-<<"\t\tfile_info = os.stat(file_path)"
-<<"\t\treturn convert_bytes(file_info.st_size)"<<"\nclass mod:\n\t"
-
+Mod_list<<"import os\n"
+<<"def convert_bytes(num):\n"
+<<"\tfor x in ['bytes', 'KB', 'MB', 'GB', 'TB']:\n"
+<<"\t\tif num < 1024.0:\n"
+<<"\t\t\treturn \"%3.1f %s\" % (num, x)\n"
+<<"\t\tnum /= 1024.0\n"
+<<"def file_size(file_path):\n"
+<<"\tif os.path.isfile(file_path):\n"
+<<"\t\tfile_info = os.stat(file_path)\n"
+<<"\t\treturn convert_bytes(file_info.st_size)\n"
+<<"\nclass mod:\n\t"
         <<"def __init__(self,name,Path,size):\n\t"
         <<"\tself.name=name\n\t"
         <<"\tself.Path=Path\n\t"
