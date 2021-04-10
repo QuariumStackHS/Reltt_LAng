@@ -14,6 +14,24 @@ margin-left: 7.5cm;
 width: 32cm;
 background-color: rgba(39, 36, 36, 0.648);
 }
+.card-text{
+    margin-left: -3.66cm;
+    text-align: center;
+    padding-left: -23%;
+    width: 32cm;
+}
+.card-title{
+    margin-left: -3.66cm;
+    text-align: center;
+    padding-left: -23%;
+    width: 32cm;
+}
+.card-header{
+    padding-left: -26%;
+margin-left: -11cm;
+width: 32cm;
+background-color: rgba(39, 36, 36, 0.648);
+}
 .card-body{
 padding-left: -16%;
 margin-left: -7.5cm;
@@ -23,12 +41,13 @@ width: 8cm;
 .wave4 {
 position: absolute;
 right: 0px;
-z-index: 0;
+z-index: -1;
+transform:scale(-1,1);
 height: 150em;
 color: white;
 }
 .Fbody{
-background-color: rgba(39, 36, 36, 0.548);
+
 color: white;
 }
 .list-group-item{
@@ -42,6 +61,7 @@ color: white;
 .textez{
 color:rgba(44, 43, 43, 0.932);
 z-index: 0;
+text-align: center;
 }
 .card-footer{
     z-index: 1;

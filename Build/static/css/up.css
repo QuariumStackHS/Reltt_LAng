@@ -1,0 +1,67 @@
+.card-body{
+    margin-left: 10cm;
+}
+.input-group {
+    padding-left: 11%;
+    width: 24cm;
+
+}
+.btn{
+padding-left: 10%;
+padding-right: -10%;
+text-align: center;
+}
+.card{
+padding-left: 23%;
+margin-left: 7.5cm;
+width: 32cm;
+background-color: rgba(39, 36, 36, 0.648);
+}
+.card-text{
+    margin-left: -3.66cm;
+    text-align: center;
+    padding-left: -23%;
+    width: 32cm;
+}
+.card-title{
+    margin-left: -3.66cm;
+    text-align: center;
+    padding-left: -23%;
+    width: 32cm;
+}
+.card-header{
+    padding-left: -26%;
+margin-left: -11cm;
+width: 32cm;
+background-color: rgba(39, 36, 36, 0.648);
+}
+.wave4 {
+position: absolute;
+right: 0px;
+z-index: 0;
+transform:scale(-1,1);
+height: 150em;
+color: white;
+}
+.Fbody{
+
+color: white;
+}
+.list-group-item{
+background-color: rgba(44, 43, 43, 0.932);
+color: white;
+}
+.navbar{
+background-color: rgba(0, 0, 0, 0.829);
+color: white;
+}
+.textez{
+color:rgba(44, 43, 43, 0.932);
+z-index: 0;
+text-align: center;
+}
+.card-footer{
+    z-index: 1;
+  
+}
+  

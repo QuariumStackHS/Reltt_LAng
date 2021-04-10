@@ -5,7 +5,7 @@ from flask.helpers import url_for
 import mods
 import subprocess
 from flask import render_template
-from flask import Flask, session, redirect, url_for, escape, request, send_file,flash
+from flask import Flask, session, redirect, url_for, escape, request, send_file,flash,session
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)

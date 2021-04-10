@@ -5,9 +5,9 @@ import Std
 if ( arg1 == "Create" )
     Create_Hdd
 endif;
-<> IMP ( RelttPath + "VM/" + arg1 )
+<> IMP ( RelttPath + "RlS/" + arg1 )
 
-using IMP
+using arg1
 func Restore ( )
     cout argc
     if ( argc == "3" )

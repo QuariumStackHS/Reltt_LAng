@@ -1,8 +1,0 @@
-Begin:
-
-PATH /Users/christopherclement/Projects/Reltt_LAng/Reltt/VM/
-Set_HDD Fedora.vhd
-<> ISO Fedora-Server-dvd-x86_64-33-1.2.iso
-cores 4
-Mem 8
-end;

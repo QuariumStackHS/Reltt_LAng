@@ -1,0 +1,12 @@
+Begin:
+
+PATH /Users/christopherclement/Projects/Reltt_LAng/Reltt/bin/fedserver/
+set_bcfolder /Users/christopherclement/Projects/Reltt_LAng/Reltt/bin/fedserver/snapshot/
+Add_shared_folder rw /Users/christopherclement/Projects/Reltt_LAng/Reltt/VM/shared
+
+Set_HDD "Linux.vhd"
+
+<> ISO None
+cores 4
+Mem 8
+end;
