@@ -17,24 +17,63 @@ function Build() {
 
 
 }
-function run(){
-  console.log(document.getElementById("code").value);
+var filex;
+function read(file){
+  filex=file;
   var xhttp = new XMLHttpRequest();
-  var old=document.getElementById("runer").className;
+  var old=document.getElementById(file+"Ex").className;
+  console.log("Save.onclick="+"save('"+file+"')");
   xhttp.onreadystatechange = function() {
-    document.getElementById("runer").innerHTML="Runng your Script...";
-    document.getElementById("runer").className="btn btn-secondary";
-
+    document.getElementById(file+"Ex").innerHTML="Running Script "+file;
+    document.getElementById(file+"Ex").className="btn btn-secondary";
+    
     if (this.readyState == 4 && this.status == 200) {
 
-      document.getElementById("runer").innerHTML = "Execute";
-      document.getElementById("runer").className = old;
-      console.log(this.responseText);
+      document.getElementById(file+"Ex").innerHTML = "Execute";
+      document.getElementById(file+"Ex").className = old;
+      document.getElementById("console").innerHTML=this.responseText;
     }
   };
-  xhttp.open("GET", "run/"+encodeURIComponent(document.getElementById("code").value), true);
+  xhttp.open("GET", "/read/"+file);
   xhttp.send();
 }
+function save(){
+  file=filex
+  console.log("save");
+  var xhttp = new XMLHttpRequest();
+  var old=document.getElementById("Save").className;
+  content=document.getElementById("console").innerHTML;
+  xhttp.onreadystatechange = function() {
+    document.getElementById("Save").innerHTML="Saving Script "+file;
+    document.getElementById("Save").className="btn btn-secondary";
+    
+    if (this.readyState == 4 && this.status == 200) {
+
+      document.getElementById("Save").innerHTML = "Save";
+      document.getElementById("Save").className = old;
+      //document.getElementById("console").innerHTML=this.responseText;
+    }
+  };
+  xhttp.open("GET", "/save/"+file+"/"+content);
+  xhttp.send();
+}
+function run(file){
+  var xhttp = new XMLHttpRequest();
+  var old=document.getElementById(file+"Ex").className;
+  xhttp.onreadystatechange = function() {
+    document.getElementById(file+"Ex").innerHTML="Running Script "+file;
+    document.getElementById(file+"Ex").className="btn btn-secondary";
+    if (this.readyState == 4 && this.status == 200) {
+
+      document.getElementById(file+"Ex").innerHTML = "Execute";
+      document.getElementById(file+"Ex").className = old;
+      document.getElementById("console").innerHTML=this.responseText;
+    }
+  };
+  xhttp.open("GET", "/run/"+file);
+  xhttp.send();
+}
+
 function switchs(name=String) {
     
     var lxhttp=new XMLHttpRequest();

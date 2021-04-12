@@ -133,12 +133,12 @@ string Reltt_INT::get_Next_Token()
 
             //cout<<null_Token.c_str()<<endl;
             //next_Token.append(null_Token);
-            return next_Token;
+            return *(&next_Token);
         }
 
         elif (!isinstring)
         {
-            return getVar(Word)->S_value;
+            return Word;
         }
 
         else
@@ -795,6 +795,7 @@ int Reltt_INT::Parse()
 
     Fncs.push_back(I);
 }*/
+
 void *Call(Reltt_INT *IN)
 {
     bool isexist = 0;
@@ -953,15 +954,45 @@ void *String(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
     Value *VarValue = resolve_parentensis(IN);
-    VarValue->v_Name = Varname;
+    
     //cout<<"Newvar__"<<VarValue->L_size()<<endl;
     //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
-    //cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue<<endl;
+    cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue->S_value<<endl;
     //IN->StackPointer--;
+    if (IN->is_in_class){
+        VarValue->v_Name =Varname;
+        //cout<<VarValue->
+        IN->Static_Obj[IN->Static_Obj.size()-1]->add_Property(VarValue);
+    }
+    else{
+        VarValue->v_Name = Varname;
     IN->New_Var(VarValue, IN->StackPointer);
+    }
     //IN->StackPointer++;
     //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
+}
+void *NewObj(Reltt_INT*IN){
+    string Objtype=IN->get_Next_Token();
+    string Objname=IN->get_Next_Token();
+    cout<<"cherching: "<<Objtype<<endl;
+    for (int i=0;i<IN->Static_Obj.size();i++){
+        cout<<IN->Static_Obj[i]->classname<<endl;
+        if(strcmp(Objtype.c_str(),IN->Static_Obj[i]->classname.c_str())==0){
+            cout<<"found: "<<Objtype<<endl;
+            for (int j=0;j<IN->Static_Obj[i]->Propertys.size();j++){
+                Value *Newvar=new Value();
+                Newvar->S_value=IN->Static_Obj[i]->Propertys[j]->S_value;
+                Newvar->I_value=IN->Static_Obj[i]->Propertys[j]->I_value;
+                Newvar->F_value=IN->Static_Obj[i]->Propertys[j]->F_value;
+                Newvar->B_value=IN->Static_Obj[i]->Propertys[j]->B_value;
+                Newvar->T_R=IN->Static_Obj[i]->Propertys[j]->T_R;
+                Newvar->v_Name=Objname+"."+IN->Static_Obj[i]->Propertys[j]->v_Name;
+                IN->New_Var(Newvar,IN->StackPointer);
+            }
+        }
+    }
+
 }
 void *func(Reltt_INT *IN)
 {
@@ -1000,8 +1031,13 @@ void *func(Reltt_INT *IN)
             FncCode.append(" ");
         }
     }
-
+    if (IN->is_in_class){
+        UD_Function*T=new UD_Function(FucName,beginline,EndOFFunc);
+        IN->Static_Obj[IN->Static_Obj.size()-1]->add_UDF(T);
+    }
+    else{
     IN->newFunc(FucName, beginline, EndOFFunc, G);
+    }
     //cout << "analized Func properly" << endl;
     //charstr--;
 }
@@ -1180,7 +1216,14 @@ void*aliase(Reltt_INT*IN){
     
     }
 }
-
+void *Rclass(Reltt_INT*IN){
+    string classname=IN->get_Next_Token();
+    Reltt_INT::C_Object *newClass=new Reltt_INT::C_Object(classname);
+    IN->Static_Obj.push_back(newClass);
+    IN->is_in_class=1;
+    IN->Parse();
+    IN->is_in_class=0;
+}
 int Reltt_INT::init_Func()
 {
     //&Compile;
@@ -1212,6 +1255,11 @@ int Reltt_INT::init_Func()
     add_Cask("wait", "wait for enter key √", &Sleeper);
     add_Cask("aliase", "newkey key √", &aliase);
     add_Cask("cin", "get until enter key √", &ciner);
+    add_Cask("struct", "get until enter key √", &Rclass);
+    add_Cask("New", "get until enter key √", &NewObj);
+
+    
+    
     
     //add_Cask("endif", "end if else statement", &handler);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);

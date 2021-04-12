@@ -1,6 +1,6 @@
 Begin:
 
-
+show
 import Std
 import C++
 import "Generator"
@@ -51,6 +51,8 @@ func Add_Reltt_import ( )
         Add Reltt_Ins_func
         Add Reltt_Value
         Add Reltt_linked
+        Add MTT
+        Add oop
         Add Reltt
 
 
@@ -58,8 +60,11 @@ func Add_Reltt_import ( )
 end;
 
 func Add_Reltt ( )
-
+    <> RelttPath "/Users/christopherclement/Projects/Reltt_LAng/Reltt/"
+        cout RelttPath
+        show
         m "ASM" ( RelttPath + "Modules/ASM.cpp" )
+        show
         m "Compilator" ( RelttPath + "Modules/Compilator.cpp" )
         m "CPP_Module" ( RelttPath + "Modules/CPP_Module.cpp" )
         m "Generator" ( RelttPath + "Modules/Generator.cpp" )
@@ -77,6 +82,8 @@ func Add_Reltt ( )
         m "Reltt_linked" ( RelttPath + "Reltt_Linked_List.cpp" )
         m "Reltt_Ins_func" ( RelttPath + "Reltt_Instruction_func.cpp" )
         m "Reltt_Utils" ( RelttPath + "Utils.cpp" )
+        m "MTT" ( RelttPath + "MTT.cpp" )
+        m "oop" ( RelttPath + "oop.cpp" )
 
 
         /* Tell the linked .o here */

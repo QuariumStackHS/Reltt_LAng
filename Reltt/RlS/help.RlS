@@ -6,6 +6,5 @@ Begin:
 -help Generator
 -help ASM
 -help Std
--help Remote
 -help Compilator
 end;

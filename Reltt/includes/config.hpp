@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 //#define Color 0
-#ifdef COLOR
+#ifdef COLOR 
 #define RESET   "\033[0m"
 #define BLACK   "\033[30m"      /* Black */
 #define RED     "\033[31m"      /* Red */

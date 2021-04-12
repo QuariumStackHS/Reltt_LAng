@@ -3,9 +3,10 @@ import sys
 import platform
 from flask.helpers import url_for
 import mods
+import hashlib
 import subprocess
 from flask import render_template
-from flask import Flask, session, redirect, url_for, escape, request, send_file,flash,session
+from flask import Flask, redirect, url_for, escape, request, send_file,flash,session
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
@@ -40,6 +41,91 @@ class Mods(db.Model):
         self.OS = OS
         self.Description=Desk
         self.Path=OBJPATH
+class User(db.Model):
+    """DB CLASSES"""
+
+    _id = db.Column(db.Integer, primary_key=True)
+    Developer = db.Column(db.String(100))
+    Description = db.Column(db.String(100))
+    passw=db.Column(db.String(100))
+    picPath=db.Column(db.String(100))
+    Root=db.Column(db.Integer)
+
+    def __init__(self, Developer, passw,OBJPATH,Desk):
+        """DB CLASSES"""
+        self.Developer = Developer
+        self.passw = passw
+        self.Description=Desk
+        self.picPath=OBJPATH
+        self.Root=0
+@app.route("/register", methods=["POST", "GET"])
+def Register():
+    if request.method == "POST":
+        user = request.form["UN"]
+
+        passw = request.form["PS"]
+        passw = hashlib.sha512(str(user+passw).encode()).hexdigest()
+        if passw != "" or user != "":
+            if User.query.filter_by(Developer=user).first() is not None:
+                return render_template('Register.html', pasw="", usr=user)
+            else:
+                usr=User(user,passw,"none","none")
+                db.session.add(usr)
+                session["user"] = usr.Developer
+                session["passw"] = usr.passw
+                db.session.commit()
+                return redirect(url_for("home"))
+            
+        else:
+            return render_template('Register.html', pasw="", usr=user)
+        return redirect(url_for("home"))
+    else:
+        return render_template('Register.html')
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    if request.method == "POST":
+        user = request.form["UN"]
+
+        passw = request.form["PS"]
+        passw = hashlib.sha512(str(user+passw).encode()).hexdigest()
+        if passw != "" or user != "":
+            fu = User.query.filter_by(Developer=user, passw=passw).first()
+            if fu:
+                session["user"] = fu.Developer
+                session["passw"] = fu.passw
+                return redirect(url_for("home"))
+                #return render_template('', pasw="", usr=user)
+            else:
+                flash(
+                    "invalid information or your account is not set-up correcly", "info")
+                return render_template('login.html', pasw="", usr=user)
+        else:
+            return render_template('login.html', pasw="", usr=user)
+        return redirect(url_for("home"))
+    else:
+        return render_template('login.html')
+
+
+@app.route("/Logoff")
+def logoff():
+    if "user" in session:
+        if "passw" in session:
+            user = session["user"]
+            passw = session["passw"]
+            if passw != "":
+                if user != "":
+                    session.pop("user", None)
+                    session.pop("passw", None)
+                    flash("you log out", "info")
+                    return redirect(url_for("login"))
+                else:
+                    return redirect(url_for("login"))
+            else:
+                return redirect(url_for("login"))
+        else:
+            return redirect(url_for("login"))
+    else:
+        return redirect(url_for("login"))
 @app.route('/Up/<constructor>/<Dev>/<Desc>/<Version>/<OS>', methods=['GET', 'POST'])
 def upload_file(constructor,Dev,Desc,Version,OS):
     if request.method == 'POST':
@@ -89,13 +175,14 @@ def nones(RelttPath):
     k.write(i)
     k.close()
 def build_Reltt():
-    objects="../Reltt/Cache/Rmain.o ../Reltt/Cache/Reltt.o ../Reltt/Cache/Reltt_Instruction_func.o ../Reltt/Cache/Utils.o ../Reltt/Cache/Reltt_Linked_List.o ../Reltt/Cache/Reltt_Value.o"
+    objects="../Reltt/Cache/Rmain.o ../Reltt/Cache/Reltt.o ../Reltt/Cache/oop.o ../Reltt/Cache/Reltt_Instruction_func.o ../Reltt/Cache/Utils.o ../Reltt/Cache/Reltt_Linked_List.o ../Reltt/Cache/Reltt_Value.o"
     os.system("g++ -w -std=c++17 -c ../Reltt/main.cpp -o ../Reltt/Cache/Rmain.o")
     os.system("g++ -std=c++17 -c ../Reltt/Reltt.cpp -o ../Reltt/Cache/Reltt.o")
     os.system("g++ -w -std=c++17 -c ../Reltt/Reltt_Linked_List.cpp -o ../Reltt/Cache/Reltt_Linked_List.o")
     os.system("g++ -w -std=c++17 -c ../Reltt/Reltt_Value.cpp -o ../Reltt/Cache/Reltt_Value.o")
     os.system("g++ -w -std=c++17 -c ../Reltt/Utils.cpp -o ../Reltt/Cache/Utils.o")
     os.system("g++ -w -std=c++17 -c ../Reltt/Reltt_Instruction_func.cpp -o ../Reltt/Cache/Reltt_Instruction_func.o")
+    os.system("g++ -w -std=c++17 -c ../Reltt/oop.cpp -o ../Reltt/Cache/oop.o")
     for i in Mods.query.all():
         if i.isused:
             objects+=" "+i.Path
@@ -103,15 +190,25 @@ def build_Reltt():
 @app.route('/run/<file>')
 def run(file):
     open("Out.txt","w").close()
-    k=open("../Reltt/tmp.RlS","w")
-    k.write(file)
-    k.close
-    os.system("Reltt build.RlS>>Out.txt")
+    os.system("Reltt "+file+">>Out.txt")
     return open("Out.txt","r").read();
-    
+@app.route('/read/<file>')
+def read(file):
+    return open("../reltt/RlS/"+file,"r").read();
+@app.route("/save/<filename>/<data>")
+def save(filename,data):
+    i=open(filename,"w")
+    print(data)
+    i.write(data)
+    i.close()
+    return "0"
+
 @app.route('/shell')
 def shell():
-    return render_template("Reltt_Shell.html")
+    from os import walk
+
+    _, _, filenames = next(walk("../Reltt/RlS"))
+    return render_template("Reltt_Shell.html",commandes=filenames)
 @app.route('/mod/compile')
 def cmp():
     k=open("../Reltt/includes/Mods.hpp","w")

@@ -1,0 +1,48 @@
+.input-group {
+    padding-left: 11%;
+    width: 45cm;
+    height: 20cm;
+
+}
+.btn{
+text-align: center;
+}
+.card{
+padding-left: 17%;
+margin-left: 7.5cm;
+width: 80cm;
+background-color: rgba(39, 36, 36, 0.648);
+}
+.card-body{
+padding-left: -16%;
+margin-left: -7.5cm;
+width: 8cm;
+
+}
+.table{
+background-color: rgba(31, 29, 29, 0.562);
+}
+.wave4 {
+position: absolute;
+right: 0px;
+z-index: -1;
+transform:scale(-1,1);
+height: 150em;
+color: white;
+}
+.Fbody{
+background-color: rgba(0, 0, 0, 0.404);
+color: white;
+}
+.list-group-item{
+background-color: rgba(32, 31, 31, 0.774);
+color: white;
+}
+.navbar{
+background-color: rgba(0, 0, 0, 0.829);
+color: white;
+}
+.textez{
+text-align: center;
+color:rgba(44, 43, 43, 0.932);
+}

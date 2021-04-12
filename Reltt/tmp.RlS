@@ -1,4 +1,5 @@
 Begin:
 
-using build
+import Std
+cout "yo!"
 end;

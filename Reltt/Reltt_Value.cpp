@@ -76,7 +76,8 @@ Value func_INS_Var::get_Value(string Varnmae)
 }
 Value *resolve_parentensis(Reltt_INT *IN)
 {
-    Value token = *IN->getVar(IN->get_Next_Token());
+    Value *tokenB = IN->getVar(IN->get_Next_Token());
+    Value token=*tokenB;
     Value *cachevalue = new Value("", "", "string");
     Value *Arrayvalue = new Value();
     Value *return_Value = new Value("", "", "string");
@@ -94,7 +95,8 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"Plus"<<endl;
 
-            token = *IN->getVar(IN->get_Next_Token());
+            tokenB = IN->getVar(IN->get_Next_Token());
+            token=*tokenB;
             if (strcmp(token.S_value.c_str(), " ") == 0)
             {
                 cachevalue->S_value = cachevalue->S_value.append(" ");
@@ -116,7 +118,8 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"Plus"<<endl;
 
-            token = *IN->getVar(IN->get_Next_Token());
+            tokenB = IN->getVar(IN->get_Next_Token());
+            token=*tokenB;
 
             if (strcmp(token.T_R.c_str(), "string") == 0)
             {
@@ -171,7 +174,8 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"divide"<<endl;
 
-            token = *IN->getVar(IN->get_Next_Token());
+            tokenB = IN->getVar(IN->get_Next_Token());
+            token=*tokenB;
 
             if (strcmp(token.T_R.c_str(), "string") == 0)
             {
@@ -226,7 +230,8 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"multiply"<<endl;
 
-            token = *IN->getVar(IN->get_Next_Token());
+            tokenB = IN->getVar(IN->get_Next_Token());
+            token=*tokenB;
 
             if (strcmp(token.T_R.c_str(), "string") == 0)
             {
@@ -330,7 +335,7 @@ Value *resolve_parentensis(Reltt_INT *IN)
             par--;
             if (par == 0)
             {
-                return_Value = cachevalue;
+                return_Value = *(&cachevalue);
                 //cout<<"return fast"<<endl;
                 return return_Value;
             }
@@ -378,8 +383,8 @@ Value *resolve_parentensis(Reltt_INT *IN)
         }
         elif (par == 0)
         {
-            Value *R = IN->getVar(cachevalue->S_value);
-            return_Value = R;
+            Value R = *IN->getVar(cachevalue->S_value);
+            return_Value = &R;
             //cout<<"return laster"<<return_Value.v_Name<<endl;
             return return_Value;
         }
@@ -409,11 +414,11 @@ void Reltt_INT::New_Var(Value *TR, int SP)
     //cout<<"NewVarBLBL:"<<VR->Objects.size()<<endl;
     if (strcmp(this->getVar(TR->v_Name)->S_value.c_str(), TR->v_Name.c_str()) == 0)
     {
-        //cout<<"new var"<<TR.v_Name<<" with value "<<TR.S_value<<" at:"<<SP<<endl;
+        cout<<"new var"<<TR->v_Name<<" with value "<<TR->S_value<<" at:"<<SP<<endl;
         if ((SP) <= (this->Math_Var.size()))
         {
             this->Math_Var[SP]->localVars.push_back(TR);
-            //cout<<"BLBLB: "<<this->Math_Var[SP]->localVars[this->Math_Var[SP]->localVars.size()-1]->Objects.size()<<endl;
+            cout<<"BLBLB: "<<this->Math_Var[SP]->localVars[this->Math_Var[SP]->localVars.size()-1]->Objects.size()<<endl;
         }
     }
     else

@@ -1,11 +1,11 @@
 #ifndef Reltt_Hpp
 //#include "../ConstArgv.hpp"
 #define Reltt_Hpp 1
-#define COLOR 1
+//#define COLOR 0
 
 #include "config.hpp"
 #include <cstring>
-
+#include <thread>
 #include <fstream> // std::fstream
 
 extern "C" int foo(void);
@@ -182,6 +182,17 @@ public:
     };
     vector<CallableOperator> Operators;
     int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *, Value &));
+    class C_Object{
+        public:
+        C_Object(string classnameS);
+        int add_Property(Value*);
+        int add_UDF(UD_Function*);
+        string classname;
+        vector<Value*>Propertys;
+        vector<UD_Function*>Methods;
+    };
+    vector<C_Object*>Static_Obj;
+    int is_in_class;
     class QSRcModule
     {
     public:
@@ -234,7 +245,6 @@ public:
 
     int try_task(string tname);
     QSRcModule getModule(string name);
-
     vector<CallableObj> __Tasks;
     struct Fnc
     {

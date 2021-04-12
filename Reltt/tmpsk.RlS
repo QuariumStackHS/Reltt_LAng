@@ -1,0 +1,12 @@
+Begin:
+
+import std
+
+using config
+
+if ( this->os == osx )
+cout "hello world"
+
+endif
+
+end;

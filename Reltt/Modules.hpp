@@ -4,6 +4,7 @@
 I->add_Module(Qemu_D());
 I->add_Module(FSys());
 I->add_Module(Generator());
+I->add_Module(ASM());
 I->add_Module(RelttSTD());
 I->add_Module(Compilator());
 }
