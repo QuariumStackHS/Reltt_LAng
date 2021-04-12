@@ -60,12 +60,8 @@ func Add_Reltt_import ( )
 end;
 
 func Add_Reltt ( )
-    <> RelttPath "/Users/christopherclement/Projects/Reltt_LAng/Reltt/"
-        cout RelttPath
-        show
-        m "ASM" ( RelttPath + "Modules/ASM.cpp" )
-        show
-        m "Compilator" ( RelttPath + "Modules/Compilator.cpp" )
+        m "ASM" ( "" + RelttPath + "Modules/ASM.cpp" )
+        m "Compilator" ( "" + RelttPath + "Modules/Compilator.cpp" )
         m "CPP_Module" ( RelttPath + "Modules/CPP_Module.cpp" )
         m "Generator" ( RelttPath + "Modules/Generator.cpp" )
         m "RelttSTD" ( RelttPath + "Modules/RelttSTD.cpp" )

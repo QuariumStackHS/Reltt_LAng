@@ -76,8 +76,8 @@ Value func_INS_Var::get_Value(string Varnmae)
 }
 Value *resolve_parentensis(Reltt_INT *IN)
 {
-    Value *tokenB = IN->getVar(IN->get_Next_Token());
-    Value token=*tokenB;
+    Value *tokenB =new Value("","","string");
+    Value token=*IN->getVar(IN->getVar(IN->get_Next_Token())->S_value);
     Value *cachevalue = new Value("", "", "string");
     Value *Arrayvalue = new Value();
     Value *return_Value = new Value("", "", "string");
@@ -86,7 +86,12 @@ Value *resolve_parentensis(Reltt_INT *IN)
     bool isfirst = 1;
     while (par >= 1 || isfirst)
     {
+        //cout<<token.S_value<<endl;
         //cout<<"Token: "<<token.v_Name<<" -> "<<token.S_value<<endl;
+        /*if (strcmp(token.S_value.c_str(), "") == 0)
+        {//This line has a bug
+            token=*IN->getVar(IN->getVar(IN->get_Next_Token())->S_value);
+        }*/
         if (strcmp(token.S_value.c_str(), " ") == 0)
         {
             cachevalue->S_value.append(" ");
@@ -95,8 +100,7 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"Plus"<<endl;
 
-            tokenB = IN->getVar(IN->get_Next_Token());
-            token=*tokenB;
+            token=*IN->getVar(IN->getVar(IN->get_Next_Token())->S_value);
             if (strcmp(token.S_value.c_str(), " ") == 0)
             {
                 cachevalue->S_value = cachevalue->S_value.append(" ");
@@ -118,8 +122,7 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"Plus"<<endl;
 
-            tokenB = IN->getVar(IN->get_Next_Token());
-            token=*tokenB;
+token=*IN->getVar(IN->getVar(IN->get_Next_Token())->S_value);
 
             if (strcmp(token.T_R.c_str(), "string") == 0)
             {
@@ -174,8 +177,7 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"divide"<<endl;
 
-            tokenB = IN->getVar(IN->get_Next_Token());
-            token=*tokenB;
+token=*IN->getVar(IN->getVar(IN->get_Next_Token())->S_value);
 
             if (strcmp(token.T_R.c_str(), "string") == 0)
             {
@@ -230,8 +232,7 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             //cout<<"multiply"<<endl;
 
-            tokenB = IN->getVar(IN->get_Next_Token());
-            token=*tokenB;
+            token=*IN->getVar(IN->getVar(IN->get_Next_Token())->S_value);
 
             if (strcmp(token.T_R.c_str(), "string") == 0)
             {
@@ -323,7 +324,7 @@ Value *resolve_parentensis(Reltt_INT *IN)
         {
             if (par)
             {
-                cachevalue = resolve_parentensis(IN);
+                cachevalue =new Value("",IN->getVar(IN->get_Next_Token())->S_value,"");
             }
             else
             {
@@ -383,7 +384,7 @@ Value *resolve_parentensis(Reltt_INT *IN)
         }
         elif (par == 0)
         {
-            Value R = *IN->getVar(cachevalue->S_value);
+            Value R = *IN->getVar(IN->getVar(token.v_Name)->S_value);
             return_Value = &R;
             //cout<<"return laster"<<return_Value.v_Name<<endl;
             return return_Value;
@@ -396,7 +397,8 @@ Value *resolve_parentensis(Reltt_INT *IN)
         }
         isfirst = 0;
 
-        token = *IN->getVar(IN->get_Next_Token());
+        token =*IN->getVar(IN->getVar(IN->get_Next_Token())->S_value);
+        cout<<token.S_value<<endl;
     }
     //cout<<"Reterning after: "<<return_Value.S_value<<endl;
     return return_Value;
