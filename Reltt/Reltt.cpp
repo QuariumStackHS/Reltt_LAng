@@ -12,6 +12,7 @@
 #include <time.h>
 #include <cstdlib>
 #include <sstream>
+#include <algorithm>
 void *Sleeper(Reltt_INT *IN)
 {
     char s;
@@ -342,58 +343,84 @@ int Reltt_INT::DeleteVar(string varname)
 Value *Reltt_INT::getVar(string varname)
 { //this->StackPointer++;
     //cout <<"is?"<< varname << endl;
-    for (int k = 0; k <= StackPointer; k++)
+    int is_A_property = count(varname.begin(), varname.end(), '.');
+
+    if (is_A_property == 1)
     {
-        for (int i = 0; i < this->Math_Var[k]->localVars.size(); i++)
+        vector<string> I;
+        split(varname, I, '.');
+
+        for (int i = 0; i < this->Dyn_INS_Obj.size(); i++)
         {
-            //cout << varname << i << endl;
-            //cout<<this->vars[i+1]<<"?"<<endl;
-            if (strcmp(this->Math_Var[k]->localVars[i]->v_Name.c_str(), varname.c_str()) == 0)
+            if (strcmp(this->Dyn_INS_Obj[i]->OBJname.c_str(), I[0].c_str()) == 0)
             {
-                //Value *E =
-                //cout<<"[DEBUG]"<<this->Math_Var[k]->localVars[i]->v_Name<<" V: "<<this->Math_Var[k]->localVars[i]->S_value<<this->Math_Var[k]->localVars[i]->L_size()<<endl;
-                return this->Math_Var[k]->localVars[i];
+                for (int j = 0; j < this->Dyn_INS_Obj[i]->Propertys.size(); j++)
+                {
+                    if (strcmp(this->Dyn_INS_Obj[i]->Propertys[j]->v_Name.c_str(), I[1].c_str()) == 0)
+                    {
+                        return this->Dyn_INS_Obj[i]->Propertys[j];
+                    }
+                }
             }
         }
+        return new Value(varname, varname, "string");
     }
-    Value *v = new Value(varname, varname, "string");
-    //Reltt_array v= Reltt_array(varname, varname, "string");
-    try
+    else
     {
-        int i = std::stoi(v->S_value);
-        //cachevalue.I_value = cachevalue.I_value-i;
-        v->T_R = "int";
-        //std::cout << i << '\n';
-    }
-    catch (std::invalid_argument const &e)
-    { //cout<<"operator - is not available for strings"<<endl;
-        //cachevalue.I_value = -1;
-        //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
-    }
-    catch (std::out_of_range const &e)
-    { //cout<<"operator - is not available for strings"<<endl;
-        //cachevalue.I_value = -1;
-        //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
-    }
-    try
-    {
-        float i = std::stof(v->S_value);
-        v->T_R = "float";
-        //cachevalue.F_value = cachevalue.F_value-i;
-        //std::cout << i << '\n';
-    }
-    catch (std::invalid_argument const &e)
-    {
-        //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
-    }
-    catch (std::out_of_range const &e)
-    {
-        //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
-    }
-    //this->StackPointer--;
 
-    //cout<<"BaddALO"<<varname<<endl;
-    return v;
+        for (int k = 0; k <= StackPointer; k++)
+        {
+            for (int i = 0; i < this->Math_Var[k]->localVars.size(); i++)
+            {
+                //cout << varname << i << endl;
+                //cout<<this->vars[i+1]<<"?"<<endl;
+                if (strcmp(this->Math_Var[k]->localVars[i]->v_Name.c_str(), varname.c_str()) == 0)
+                {
+                    //Value *E =
+                    //cout<<"[DEBUG]"<<this->Math_Var[k]->localVars[i]->v_Name<<" V: "<<this->Math_Var[k]->localVars[i]->S_value<<this->Math_Var[k]->localVars[i]->L_size()<<endl;
+                    return this->Math_Var[k]->localVars[i];
+                }
+            }
+        }
+        Value *v = new Value(varname, varname, "string");
+        //Reltt_array v= Reltt_array(varname, varname, "string");
+        try
+        {
+            int i = std::stoi(v->S_value);
+            //cachevalue.I_value = cachevalue.I_value-i;
+            v->T_R = "int";
+            //std::cout << i << '\n';
+        }
+        catch (std::invalid_argument const &e)
+        { //cout<<"operator - is not available for strings"<<endl;
+            //cachevalue.I_value = -1;
+            //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+        }
+        catch (std::out_of_range const &e)
+        { //cout<<"operator - is not available for strings"<<endl;
+            //cachevalue.I_value = -1;
+            //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+        }
+        try
+        {
+            float i = std::stof(v->S_value);
+            v->T_R = "float";
+            //cachevalue.F_value = cachevalue.F_value-i;
+            //std::cout << i << '\n';
+        }
+        catch (std::invalid_argument const &e)
+        {
+            //std::cout << "Bad input: std::invalid_argument thrown" << '\n';
+        }
+        catch (std::out_of_range const &e)
+        {
+            //std::cout << "Integer overflow: std::out_of_range thrown" << '\n';
+        }
+        //this->StackPointer--;
+
+        //cout<<"BaddALO"<<varname<<endl;
+        return v;
+    }
 }
 
 int Reltt_INT::runfile()
@@ -954,45 +981,72 @@ void *String(Reltt_INT *IN)
 {
     string Varname = IN->get_Next_Token();
     Value *VarValue = resolve_parentensis(IN);
-    
+
     //cout<<"Newvar__"<<VarValue->L_size()<<endl;
     //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
-    cout<<"NewVar Name: "<<Varname<<"Var value:"<<VarValue->S_value<<endl;
+    cout << "NewVar Name: " << Varname << "Var value:" << VarValue->S_value << endl;
     //IN->StackPointer--;
-    if (IN->is_in_class){
-        VarValue->v_Name =Varname;
-        //cout<<VarValue->
-        IN->Static_Obj[IN->Static_Obj.size()-1]->add_Property(VarValue);
-    }
-    else{
+    if (IN->is_in_class)
+    {
         VarValue->v_Name = Varname;
-    IN->New_Var(VarValue, IN->StackPointer);
+        VarValue->MasterName = IN->Static_Obj[IN->Static_Obj.size() - 1]->classname;
+        //cout<<VarValue->
+        IN->Static_Obj[IN->Static_Obj.size() - 1]->add_Property(VarValue);
     }
-    //IN->StackPointer++;
-    //cout<<"VAR:"<<T.S_value<<T.v_Name<<endl;
-}
-void *NewObj(Reltt_INT*IN){
-    string Objtype=IN->get_Next_Token();
-    string Objname=IN->get_Next_Token();
-    cout<<"cherching: "<<Objtype<<endl;
-    for (int i=0;i<IN->Static_Obj.size();i++){
-        cout<<IN->Static_Obj[i]->classname<<endl;
-        if(strcmp(Objtype.c_str(),IN->Static_Obj[i]->classname.c_str())==0){
-            cout<<"found: "<<Objtype<<endl;
-            for (int j=0;j<IN->Static_Obj[i]->Propertys.size();j++){
-                Value *Newvar=new Value();
-                Newvar->S_value=IN->Static_Obj[i]->Propertys[j]->S_value;
-                Newvar->I_value=IN->Static_Obj[i]->Propertys[j]->I_value;
-                Newvar->F_value=IN->Static_Obj[i]->Propertys[j]->F_value;
-                Newvar->B_value=IN->Static_Obj[i]->Propertys[j]->B_value;
-                Newvar->T_R=IN->Static_Obj[i]->Propertys[j]->T_R;
-                Newvar->v_Name=Objname+"."+IN->Static_Obj[i]->Propertys[j]->v_Name;
-                IN->New_Var(Newvar,IN->StackPointer);
-            }
+    else
+    {
+            Value*I= IN->getVar(Varname);
+            I->S_value=VarValue->S_value;
+            IN->New_Var(VarValue, IN->StackPointer);
         }
     }
 
+void* DumpClass(Reltt_INT*IN){
+    for(int i=0;i<IN->Dyn_INS_Obj.size();i++){
+        cout<<IN->Dyn_INS_Obj[i]->OBJname<<"::"<<IN->Dyn_INS_Obj[i]->classname<<endl;
+        for(int j=0;j<IN->Dyn_INS_Obj[i]->Propertys.size();j++){
+            cout<<"\t"<<IN->Dyn_INS_Obj[i]->Propertys[j]->MasterName<<"::"<<IN->Dyn_INS_Obj[i]->Propertys[j]->v_Name<<" : "<<IN->Dyn_INS_Obj[i]->Propertys[j]->S_value<<endl;
+        }
+    }
+}
+void *NewObj(Reltt_INT *IN)
+{
+    string Objtype = IN->get_Next_Token();
+    string Objname = IN->get_Next_Token();
+    cout << "cherching: " << Objtype << endl;
+    for (int i = 0; i < IN->Static_Obj.size(); i++)
+    {
+        cout << IN->Static_Obj[i]->classname << endl;
+        if (strcmp(Objtype.c_str(), IN->Static_Obj[i]->classname.c_str()) == 0)
+        {
+            cout << "found: " << Objtype << endl;
+            Reltt_INT::C_Object *NewClass = new Reltt_INT::C_Object(Objtype);
+            cout<<"gonna add Propertys to newclass"<<endl;
+            for (int k = 0; k < IN->Static_Obj[i]->Propertys.size(); k++)
+            {
+                Value *Prop = new Value(IN->Static_Obj[i]->Propertys[k]->v_Name, IN->Static_Obj[i]->Propertys[k]->S_value, IN->Static_Obj[i]->Propertys[k]->T_R);
+                Prop->MasterName = Objtype;
+                NewClass->add_Property(Prop);
+            }
+            cout<<"added to newclass Propertys\ngonna add UDF to newclass"<<endl;
+            for (int k = 0; k < IN->Static_Obj[i]->Methods.size(); k++)
+            {
+                UD_Function *Prop = new UD_Function(IN->Static_Obj[i]->Methods[k]->FuncName, IN->Static_Obj[i]->Methods[k]->BeginLine, IN->Static_Obj[i]->Methods[k]->EndLine);
+                Prop->master = Objtype;
+                for (int l = 0; l < IN->Static_Obj[i]->Methods[k]->ArgsT.size(); l++)
+                {
+                    Prop->ArgsT.push_back(IN->Static_Obj[i]->Methods[k]->ArgsT[l]);
+                }
+
+                NewClass->add_UDF(Prop);
+            }
+            cout<<"Added newCLasses"<<endl;
+            NewClass->OBJname=Objname;
+            IN->Dyn_INS_Obj.push_back(NewClass);
+            cout<<"Pushedit back!<<endl;";
+        }
+    }
 }
 void *func(Reltt_INT *IN)
 {
@@ -1031,12 +1085,15 @@ void *func(Reltt_INT *IN)
             FncCode.append(" ");
         }
     }
-    if (IN->is_in_class){
-        UD_Function*T=new UD_Function(FucName,beginline,EndOFFunc);
-        IN->Static_Obj[IN->Static_Obj.size()-1]->add_UDF(T);
+    if (IN->is_in_class)
+    {
+        UD_Function *T = new UD_Function(FucName, beginline, EndOFFunc);
+        T->master = IN->Static_Obj[IN->Static_Obj.size() - 1]->classname;
+        IN->Static_Obj[IN->Static_Obj.size() - 1]->add_UDF(T);
     }
-    else{
-    IN->newFunc(FucName, beginline, EndOFFunc, G);
+    else
+    {
+        IN->newFunc(FucName, beginline, EndOFFunc, G);
     }
     //cout << "analized Func properly" << endl;
     //charstr--;
@@ -1173,7 +1230,7 @@ void *ShowVar(Reltt_INT *IN)
         for (int j = 0; j < IN->Math_Var[i]->localVars.size(); j++)
         {
             stringstream ss;
-            ss << BLUE << IN->Math_Var[i]->localVars[j]->T_R << CYAN << ":" << RED
+            ss << BLUE << IN->Math_Var[i]->localVars[j]->MasterName << YELLOW << "::" << IN->Math_Var[i]->localVars[j]->T_R << CYAN << ":" << RED
                << IN->Math_Var[i]->localVars[j]->v_Name << RESET << " with Value: " << BLUE << IN->Math_Var[i]->localVars[j]->S_value << RESET << " StackP: " << i << " at Addr: " << CYAN << "0x"
                << std::hex << ((int64_t)&IN->Math_Var[i]->localVars[j]) << dec << RESET;
             IN->p.print_info(ss.str());
@@ -1197,32 +1254,36 @@ void *ciner(Reltt_INT *IN)
 void *handler(Reltt_INT *IN)
 {
 }
-void*aliase(Reltt_INT*IN){
-    string IK=resolve_parentensis(IN)->S_value;
-    string j=resolve_parentensis(IN)->S_value;
+void *aliase(Reltt_INT *IN)
+{
+    string IK = resolve_parentensis(IN)->S_value;
+    string j = resolve_parentensis(IN)->S_value;
     //cout<<IN->__Tasks.size()<<endl;
-    for(int i=0; i<IN->__Tasks.size();i++)
+    for (int i = 0; i < IN->__Tasks.size(); i++)
     {
-        
-        if(strcmp(IN->__Tasks[i].Name.c_str(),j.c_str())==0){
-                Reltt_INT::CallableObj NCO;
-                NCO.Desk = IN->__Tasks[i].Desk;
-                NCO.Name = IK;
-                NCO.Taddr = IN->__Tasks[i].Taddr;
-                IN->__Tasks.push_back(NCO);
-                i=IN->__Tasks.size()+1;
+
+        if (strcmp(IN->__Tasks[i].Name.c_str(), j.c_str()) == 0)
+        {
+            Reltt_INT::CallableObj NCO;
+            NCO.Desk = IN->__Tasks[i].Desk;
+            NCO.Name = IK;
+            NCO.Taddr = IN->__Tasks[i].Taddr;
+            IN->__Tasks.push_back(NCO);
+            i = IN->__Tasks.size() + 1;
         }
-        
-    
     }
 }
-void *Rclass(Reltt_INT*IN){
-    string classname=IN->get_Next_Token();
-    Reltt_INT::C_Object *newClass=new Reltt_INT::C_Object(classname);
+void *Rclass(Reltt_INT *IN)
+{
+    
+    string classname = IN->get_Next_Token();
+    cout<<"is in class"<<classname<<endl;
+    Reltt_INT::C_Object *newClass = new Reltt_INT::C_Object(classname);
     IN->Static_Obj.push_back(newClass);
-    IN->is_in_class=1;
+    IN->is_in_class = 1;
     IN->Parse();
-    IN->is_in_class=0;
+    IN->is_in_class = 0;
+    cout<<"end;"<<endl;
 }
 int Reltt_INT::init_Func()
 {
@@ -1257,10 +1318,8 @@ int Reltt_INT::init_Func()
     add_Cask("cin", "get until enter key √", &ciner);
     add_Cask("struct", "get until enter key √", &Rclass);
     add_Cask("New", "get until enter key √", &NewObj);
+    add_Cask("dumpclass", "get until enter key √", &DumpClass);
 
-    
-    
-    
     //add_Cask("endif", "end if else statement", &handler);
     //add_Cask("PATH", "Generate a script with this code)", &Add_To_Search);
 
@@ -1411,15 +1470,18 @@ string Reltt_INT::get_fileOBJ(string ik)
     {
         ifstream Src((paths[i] + ((string)ik)).c_str());
         if (Src)
-        {cout<<"find "<<ik<<" in"<<paths[i]<<endl;;
+        {
+            cout << "find " << ik << " in" << paths[i] << endl;
+            ;
             return paths[i] + (ik);
-
         }
-        else{
-            cout<<"did not find "<<ik<<" in"<<paths[i]<<endl;;
+        else
+        {
+            cout << "did not find " << ik << " in" << paths[i] << endl;
+            ;
         }
     }
-    
+
     return "None";
 }
 void Reltt_INT::add_path(string i)

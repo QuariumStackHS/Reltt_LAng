@@ -1,25 +1,19 @@
 Begin:
 
 import Std
-
 struct NewObject
     <> ObjName ( "Yo" )
-    <> ObjValue ( "2" * "2" + "2" / "2" - "2" )
+    <> ObjValue ( "2" * "2" )
+
 end;
 
 New NewObject OOP
-New NewObject OOP2
 
 
-cout OOP.ObjName
 <> OOP.ObjName ( "OOP2 data structure" )
 <> OOP.ObjValue ( "Yaya" )
-
 
 cout OOP.ObjName
 cout OOP.ObjValue
 
-cout OOP2.ObjName
-
-show
 end;

@@ -145,7 +145,7 @@ Mod_list<<"import os\n"
         <<mods_array;
 Mod_list<<"]\n";
 Mod_list.close();
-cout<<mods_array<<endl;
+//cout<<mods_array<<endl;
 }
 void *mod(Reltt_INT *IN)
 {

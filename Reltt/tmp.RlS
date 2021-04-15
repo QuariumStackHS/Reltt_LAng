@@ -1,5 +1,0 @@
-Begin:
-
-import Std
-cout "yo!"
-end;

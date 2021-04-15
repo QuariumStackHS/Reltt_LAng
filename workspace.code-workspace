@@ -25,6 +25,9 @@
 		},
 		{
 			"path": "Reltt/VM"
+		},
+		{
+			"path": "AuthServer/"
 		}
 	],
 	"settings": {"files.exclude": {
@@ -47,7 +50,8 @@
 	"files.associations": {
 		"iostream": "cpp",
 		"iosfwd": "cpp",
-		"thread": "cpp"
+		"thread": "cpp",
+		"string": "cpp"
 	},
 	"workspace.isHidden": true
 }

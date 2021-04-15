@@ -4,7 +4,6 @@ Begin:
 -help qemu
 -help FileSys
 -help Generator
--help ASM
 -help Std
 -help Compilator
 end;

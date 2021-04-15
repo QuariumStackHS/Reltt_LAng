@@ -1,7 +1,7 @@
 #ifndef Reltt_Hpp
 //#include "../ConstArgv.hpp"
 #define Reltt_Hpp 1
-//#define COLOR 0
+#define COLOR 0
 
 #include "config.hpp"
 #include <cstring>
@@ -88,6 +88,7 @@ this->T_R="(Linked)Array";
     //Reltt_array V_Array;
     string S_value;
     string v_Name;
+    string MasterName="Reltt";
     string T_R;
 };
 string Reltt_Array_to_string(Value*I);
@@ -105,7 +106,7 @@ public:
     UD_Function(string Fname, int Bl, int El);
     //argtype.size() is the number of args and argtype[i] is the type of arg
     vector<ArgType> ArgsT;
-
+    string master="Reltt";
     string FuncName;
 
     int BeginLine;
@@ -188,10 +189,12 @@ public:
         int add_Property(Value*);
         int add_UDF(UD_Function*);
         string classname;
+        string OBJname;
         vector<Value*>Propertys;
         vector<UD_Function*>Methods;
     };
     vector<C_Object*>Static_Obj;
+    vector<C_Object*>Dyn_INS_Obj;
     int is_in_class;
     class QSRcModule
     {
