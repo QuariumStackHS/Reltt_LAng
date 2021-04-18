@@ -104,8 +104,8 @@ function switchs(name=String) {
           }
           xhttp.open("GET", "mod/A/"+name, true);
           xhttp.send();
-          document.getElementById(name).className ="btn btn-outline-danger";
-          document.getElementById(name).innerHTML="Delete"
+          document.getElementById(name).className = "btn btn-outline-danger";
+          document.getElementById(name).innerHTML = "Delete"
         }
         
           console.log(name+"  "+lxhttp.responseText)

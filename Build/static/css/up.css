@@ -30,10 +30,12 @@ background-color: rgba(39, 36, 36, 0.648);
     width: 32cm;
 }
 .card-header{
-    padding-left: -26%;
+
+padding-left: -26%;
 margin-left: -11cm;
 width: 32cm;
 background-color: rgba(39, 36, 36, 0.648);
+
 }
 .wave4 {
 position: absolute;

@@ -27,7 +27,7 @@
 			"path": "Reltt/VM"
 		},
 		{
-			"path": "AuthServer/"
+			"path": "/Users/christopherclement/Documents/Reltt_auth/AuthServer"
 		}
 	],
 	"settings": {"files.exclude": {

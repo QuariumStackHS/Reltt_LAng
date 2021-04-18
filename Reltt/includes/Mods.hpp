@@ -5,5 +5,6 @@ Reltt_INT::QSRcModule CPP_Module();
 Reltt_INT::QSRcModule Qemu_D();
 Reltt_INT::QSRcModule FSys();
 Reltt_INT::QSRcModule Generator();
+Reltt_INT::QSRcModule RelttSTD();
 Reltt_INT::QSRcModule Compilator();
 #endif //RELTT_LANG_MODS_HPP
