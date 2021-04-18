@@ -4,6 +4,6 @@ Begin:
 <> Win64 "Win10-64"
 <> OSX "OSX"
 
-<> this->os OSX
+<> this->os "OSX"
 
 end;

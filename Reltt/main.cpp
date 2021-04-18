@@ -1,5 +1,6 @@
 #include "includes/Reltt.hpp"
 #include "includes/info.hpp"
+#include "includes/Auth.hpp"
 //   ___       __   _______           ___       ___  ___  __    _______           ________  ________  ________  ___  ___          ________  ________  _________  ________
 //  |\  \     |\  \|\  ___ \         |\  \     |\  \|\  \|\  \ |\  ___ \         |\   __  \|\   ____\|\   ____\|\  \|\  \        |\   __  \|\   __  \|\___   ___|\   ____\
 //  \ \  \    \ \  \ \   __/|        \ \  \    \ \  \ \  \/  /|\ \   __/|        \ \  \|\  \ \  \___|\ \  \___|\ \  \ \  \       \ \  \|\  \ \  \|\  \|___ \  \_\ \  \___|_
@@ -10,8 +11,25 @@
 //                                                                                            \|_________|                                                         \|_________|
 //
 //
+
 int main(int argc, char **argv)
 {
+    Client *Auth=new Client();
+    Reltt_INT *I=new Reltt_INT();
+    //cout<<I->getVar("RelttPath")->S_value+"bin/licence"<<endl;
+    ifstream Src(I->getVar("RelttPath")->S_value+"bin/licence.RlC");
+    //cout<<Appname<<IN->StackPointer<<endl;
+    string key;
+    string Code;
+    if (Src)
+    {
+            getline(Src, Code);
+            key=Code;
+            //cout<<Code<<endl;
+    }
+
+    Auth->Auth_(key);
+    cout<<"Got Auth by the Reltt Auth Server"<<endl;
     cout << "---------Reltt_Lang---------" << endl;
     /*while(true){
     cin>>ch;

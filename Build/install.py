@@ -323,4 +323,4 @@ def about():
 
 if __name__ == "__main__":
     db.create_all()
-    app.run(debug=1)
+    app.run(debug=1, port=8000)

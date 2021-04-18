@@ -68,7 +68,9 @@ int main(){
     system(((string)"mkdir ").append(fileout).c_str());
     cout<<"RelttPath="<<i<<endl;
     myfile.open(i+"/cfg.hpp");
-    myfile<<"#include <filesystem>\n"
+    myfile<<"#ifndef CFG\n"
+            <<"#define CFG 1\n"
+            <<"#include <filesystem>\n"
           <<"#include <dirent.h>\n"
           <<"#include <cstdlib>\nConfigurator::Configurator()\n"
           <<"{\n"
@@ -79,7 +81,7 @@ int main(){
           <<"this->debug=0;"
           <<"setenv(\"RelttPath\",\""<<i<<"\",1);"
           <<"this->Reltt_path=getenv(\"RelttPath\");"
-          <<"}";
+          <<"}\n#endif";
     myfile.close();
     string CMD="cd ";
     CMD.append(j).append(" && sh ").append(i).append("../compile.sh");
