@@ -207,7 +207,7 @@ def build_Reltt():
     for i in Mods.query.all():
         if i.isused:
             objects += " "+i.Path
-    os.system("g++ -w -o ../Reltt/bin/Reltt -std=c++17 "+objects)
+    os.system("g++ -w ../Reltt/Lib/client.a ../Reltt/Lib/SSL.a -o ../Reltt/bin/Reltt -std=c++17 "+objects)
 
 
 @app.route('/run/<file>')
