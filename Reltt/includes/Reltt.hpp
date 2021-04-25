@@ -107,6 +107,7 @@ public:
     //argtype.size() is the number of args and argtype[i] is the type of arg
     vector<ArgType> ArgsT;
     string master="Reltt";
+    string INSNAMEC="NULL";
     string FuncName;
 
     int BeginLine;

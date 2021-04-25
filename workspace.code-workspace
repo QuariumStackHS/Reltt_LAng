@@ -28,6 +28,9 @@
 		},
 		{
 			"path": "/Users/christopherclement/Documents/Reltt_auth/AuthServer"
+		},
+		{
+			"path": "/Users/christopherclement/Documents/ServiceLauncher"
 		}
 	],
 	"settings": {"files.exclude": {
@@ -51,7 +54,10 @@
 		"iostream": "cpp",
 		"iosfwd": "cpp",
 		"thread": "cpp",
-		"string": "cpp"
+		"string": "cpp",
+		"filesystem": "cpp",
+		"__node_handle": "c",
+		"ostream": "cpp"
 	},
 	"workspace.isHidden": true
 }

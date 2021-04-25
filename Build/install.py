@@ -13,7 +13,7 @@ app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///DB3.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
 db = SQLAlchemy(app)
-ALLOWED_EXTENSIONS = {'o', 'obj', 'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_EXTENSIONS = {'o', 'a', 'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = "../Reltt/Cache/"
 
 
@@ -194,7 +194,7 @@ def nones(RelttPath):
 
 
 def build_Reltt():
-    objects = "../Reltt/Cache/Rmain.o ../Reltt/Cache/Reltt.o ../Reltt/Cache/oop.o ../Reltt/Cache/Reltt_Instruction_func.o ../Reltt/Cache/Utils.o ../Reltt/Cache/Reltt_Linked_List.o ../Reltt/Cache/Reltt_Value.o"
+    objects = "../Reltt/Cache/main.o ../Reltt/Cache/Reltt.o ../Reltt/Cache/oop.o ../Reltt/Cache/Reltt_Instruction_func.o ../Reltt/Cache/Utils.o ../Reltt/Cache/Reltt_Linked_List.o ../Reltt/Cache/Reltt_Value.o"
     os.system("g++ -w -std=c++17 -c ../Reltt/main.cpp -o ../Reltt/Cache/Rmain.o")
     os.system("g++ -std=c++17 -c ../Reltt/Reltt.cpp -o ../Reltt/Cache/Reltt.o")
     os.system(
@@ -207,7 +207,7 @@ def build_Reltt():
     for i in Mods.query.all():
         if i.isused:
             objects += " "+i.Path
-    os.system("g++ -w ../Reltt/Lib/client.a ../Reltt/Lib/SSL.a -o ../Reltt/bin/Reltt -std=c++17 "+objects)
+    os.system("g++ -w ../Reltt/Lib/Client.a ../Reltt/Lib/SSL.a -o ../Reltt/bin/Reltt -std=c++17 "+objects)
 
 
 @app.route('/run/<file>')

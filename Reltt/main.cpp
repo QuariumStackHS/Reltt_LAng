@@ -14,6 +14,7 @@
 
 int main(int argc, char **argv)
 {
+    /*
     Client *Auth=new Client();
     Reltt_INT *I=new Reltt_INT();
     //cout<<I->getVar("RelttPath")->S_value+"bin/licence"<<endl;
@@ -25,11 +26,13 @@ int main(int argc, char **argv)
     {
             getline(Src, Code);
             key=Code;
-            //cout<<Code<<endl;
+            cout<<Code<<endl;
     }
 
     Auth->Auth_(key);
     cout<<"Got Auth by the Reltt Auth Server"<<endl;
+    */
+    //unlock!
     cout << "---------Reltt_Lang---------" << endl;
     /*while(true){
     cin>>ch;

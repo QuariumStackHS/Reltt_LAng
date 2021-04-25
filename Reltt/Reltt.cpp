@@ -927,13 +927,117 @@ void *Call(Reltt_INT *IN)
     }
     else
     {
-        cout << "Unknown Function:\"" << IN->argv[IN->charstr + 1] << "\"" << endl;
+        int args;
+        for (int i = 0; i < IN->Dyn_INS_Obj.size(); i++)
+        {
+            for (int j = 0; j < IN->Dyn_INS_Obj[i]->Methods.size(); j++)
+            {
+                vector<string> I;
+                vector<Value *> VA;
+                split(IN->argv[IN->charstr], I, '.');
+                if (I.size() >= 2)
+                {
+                    if ((strcmp(IN->Dyn_INS_Obj[i]->OBJname.c_str(), I[0].c_str()) == 0) && (strcmp(IN->Dyn_INS_Obj[i]->Methods[j]->FuncName.c_str(), I[1].c_str()) == 0))
+                    {
+                        //is the good one
+                        cout << "Good" << endl;
+                        func_INS_Var *S = new func_INS_Var();
+                        IN->Math_Var.push_back(S);
+                        string C = IN->get_Next_Token();
+                        bool args = 0;
+                        cout<<"1"<<endl;
+                        if ((strcmp(C.c_str(), "with") == 0) || (strcmp(C.c_str(), "->") == 0))
+                        {
+                            args = 1;
+
+                            //cout<<"With"<<IN->Functions[Path].ArgsT.size()<<endl;
+                            //IN->StackPointer--;
+                            string jk = IN->get_Next_Token();
+                            cout<<"2"<<endl;
+                            for (int k = 0; k < IN->Dyn_INS_Obj[i]->Methods[j]->ArgsT.size(); i++)
+                            {
+                                string type = IN->Dyn_INS_Obj[i]->Methods[j]->ArgsT[k].ArgTyper;
+                                string p2 = to_string(k + 1);
+                                string Arg = "@";
+                                Arg.append(p2);
+                                //cout<<"Var: "<<Arg<<" v: "<<j;
+                                Value *V = new Value(Arg, jk, type);
+
+                                //cout << "Addo" << endl;
+
+                                //cout<<"writing in"<<IN->StackPointer<<endl;
+                                VA.push_back(V);
+
+                                //cout << "Addo ok" << endl;
+                                jk = IN->get_Next_Token();
+                                //cout<<"V: "<<j<<endl;
+                                bfcharstr = k;
+                            }
+                            cout<<"3"<<endl;
+                            cout<<"4"<<endl;
+                            for (int k = 0; k < VA.size(); k++)
+                            {
+                                //cout << VA[i].S_value << VA[i].v_Name << endl;
+                                IN->New_Var(VA[k], IN->StackPointer);
+                            }
+                            cout<<"5"<<endl;
+                        }
+                        else
+                        {
+                            cout<<"OOF1"<<endl;
+                            IN->charstr -= 1;
+                            if (IN->Dyn_INS_Obj[i]->Methods[j]->ArgsT.size() >= 1)
+                            {
+                                cout << RED << "[ERROR] did you forget to use '->'? because Function: \"" << IN->Dyn_INS_Obj[i]->Methods[j]->FuncName << "\" use " << IN->Dyn_INS_Obj[i]->Methods[j]->ArgsT.size() << " Args;" << RESET << endl;
+                                isexist = 0;
+                            }
+                        }
+                        for (int k = 0; k < IN->Dyn_INS_Obj[i]->Propertys.size(); k++)
+                            {
+                                Value *inclassarg = new Value(*IN->Dyn_INS_Obj[i]->Propertys[k]);
+                                inclassarg->MasterName = "this";
+                                IN->New_Var(inclassarg,IN->StackPointer);
+                            }
+                        cout<<"6"<<endl;
+                        IN->StackPointer++;
+                        //cout << IN->StackPointer << endl;
+                        //IN->Math_Var.size()++;
+                        //1 sec before execution
+                        int add = 0;
+                        int oldCharstr = IN->charstr - 1;
+                        IN->charstr = IN->Dyn_INS_Obj[i]->Methods[j]->BeginLine;
+                        IN->Parse();
+                        for(int k=0;k<IN->Math_Var.size();k++){
+
+                            for(int l=0;l<IN->Math_Var[k]->localVars.size();l++){
+                                if((strcmp(IN->Math_Var[k]->localVars[l]->MasterName.c_str(),"this")==0)&&(strcmp(IN->Math_Var[k]->localVars[l]->v_Name.c_str(),IN->Dyn_INS_Obj[i]->Propertys[j]->v_Name.c_str())==0)){
+
+                                    IN->Dyn_INS_Obj[i]->Propertys[j]->S_value=IN->Math_Var[k]->localVars[l]->S_value;
+                                }
+                            }   
+                        }
+                        //IN->StackPointer--;
+                        IN->charstr = oldCharstr;
+                        if (args)
+                        {
+                            for (int jkl = 0; jkl < VA.size(); jkl++)
+                                IN->DeleteVar(VA[jkl]->v_Name);
+                        }
+                        IN->Math_Var.pop_back();
+
+                        IN->StackPointer--;
+                    }
+                    }
+                
+                else
+                {
+                    cout << "Invalid name2" << IN->Dyn_INS_Obj[i]->Methods[j]->master.c_str() << endl;
+                }
+            }
+        }
     }
-    //charstr++;
-
-    //charstr++;
+    cout << "Unknown Function:\"" << IN->argv[IN->charstr] << "\"" << endl;
 }
-
 void *Export(Reltt_INT *IN)
 {
 }
@@ -996,17 +1100,24 @@ void *String(Reltt_INT *IN)
     }
     else
     {
-            Value*I= IN->getVar(Varname);
-            I->S_value=VarValue->S_value;
-            IN->New_Var(VarValue, IN->StackPointer);
-        }
+        Value *I = IN->getVar(Varname);
+        I->S_value = VarValue->S_value;
+        IN->New_Var(VarValue, IN->StackPointer);
     }
+}
 
-void* DumpClass(Reltt_INT*IN){
-    for(int i=0;i<IN->Dyn_INS_Obj.size();i++){
-        cout<<IN->Dyn_INS_Obj[i]->OBJname<<"::"<<IN->Dyn_INS_Obj[i]->classname<<endl;
-        for(int j=0;j<IN->Dyn_INS_Obj[i]->Propertys.size();j++){
-            cout<<"\t"<<IN->Dyn_INS_Obj[i]->Propertys[j]->MasterName<<"::"<<IN->Dyn_INS_Obj[i]->Propertys[j]->v_Name<<" : "<<IN->Dyn_INS_Obj[i]->Propertys[j]->S_value<<endl;
+void *DumpClass(Reltt_INT *IN)
+{
+    for (int i = 0; i < IN->Dyn_INS_Obj.size(); i++)
+    {
+        cout << IN->Dyn_INS_Obj[i]->OBJname << "::" << IN->Dyn_INS_Obj[i]->classname << endl;
+        for (int j = 0; j < IN->Dyn_INS_Obj[i]->Propertys.size(); j++)
+        {
+            cout << "\t" << IN->Dyn_INS_Obj[i]->Propertys[j]->MasterName << "::" << IN->Dyn_INS_Obj[i]->Propertys[j]->v_Name << " : " << IN->Dyn_INS_Obj[i]->Propertys[j]->S_value << endl;
+        }
+        for (int j = 0; j < IN->Dyn_INS_Obj[i]->Methods.size(); j++)
+        {
+            cout << "\t" << IN->Dyn_INS_Obj[i]->Methods[j]->master << "::" << IN->Dyn_INS_Obj[i]->Methods[j]->FuncName << " : " << IN->Dyn_INS_Obj[i]->Methods[j]->BeginLine << endl;
         }
     }
 }
@@ -1022,14 +1133,14 @@ void *NewObj(Reltt_INT *IN)
         {
             cout << "found: " << Objtype << endl;
             Reltt_INT::C_Object *NewClass = new Reltt_INT::C_Object(Objtype);
-            cout<<"gonna add Propertys to newclass"<<endl;
+            cout << "gonna add Propertys to newclass" << endl;
             for (int k = 0; k < IN->Static_Obj[i]->Propertys.size(); k++)
             {
                 Value *Prop = new Value(IN->Static_Obj[i]->Propertys[k]->v_Name, IN->Static_Obj[i]->Propertys[k]->S_value, IN->Static_Obj[i]->Propertys[k]->T_R);
                 Prop->MasterName = Objtype;
                 NewClass->add_Property(Prop);
             }
-            cout<<"added to newclass Propertys\ngonna add UDF to newclass"<<endl;
+            cout << "added to newclass Propertys\ngonna add UDF to newclass" << endl;
             for (int k = 0; k < IN->Static_Obj[i]->Methods.size(); k++)
             {
                 UD_Function *Prop = new UD_Function(IN->Static_Obj[i]->Methods[k]->FuncName, IN->Static_Obj[i]->Methods[k]->BeginLine, IN->Static_Obj[i]->Methods[k]->EndLine);
@@ -1041,10 +1152,10 @@ void *NewObj(Reltt_INT *IN)
 
                 NewClass->add_UDF(Prop);
             }
-            cout<<"Added newCLasses"<<endl;
-            NewClass->OBJname=Objname;
+            cout << "Added newCLasses" << endl;
+            NewClass->OBJname = Objname;
             IN->Dyn_INS_Obj.push_back(NewClass);
-            cout<<"Pushedit back!<<endl;";
+            cout << "Pushedit back!<<endl;";
         }
     }
 }
@@ -1090,6 +1201,7 @@ void *func(Reltt_INT *IN)
         UD_Function *T = new UD_Function(FucName, beginline, EndOFFunc);
         T->master = IN->Static_Obj[IN->Static_Obj.size() - 1]->classname;
         IN->Static_Obj[IN->Static_Obj.size() - 1]->add_UDF(T);
+        //IN->Static_Obj[0]->Methods[0]->
     }
     else
     {
@@ -1275,15 +1387,15 @@ void *aliase(Reltt_INT *IN)
 }
 void *Rclass(Reltt_INT *IN)
 {
-    
+
     string classname = IN->get_Next_Token();
-    cout<<"is in class"<<classname<<endl;
+    cout << "is in class" << classname << endl;
     Reltt_INT::C_Object *newClass = new Reltt_INT::C_Object(classname);
     IN->Static_Obj.push_back(newClass);
     IN->is_in_class = 1;
     IN->Parse();
     IN->is_in_class = 0;
-    cout<<"end;"<<endl;
+    cout << "end;" << endl;
 }
 int Reltt_INT::init_Func()
 {

@@ -4,16 +4,22 @@ import Std
 struct NewObject
     <> ObjName ( "Yo" )
     <> ObjValue ( "2" * "2" )
-
+    func NewObject ( )
+        <> ObjName ( "OOF-" + ObjName )
+    end;
 end;
 
 New NewObject OOP
 
 
 <> OOP.ObjName ( "OOP2 data structure" )
+
 <> OOP.ObjValue ( "Yaya" )
 
 cout OOP.ObjName
 cout OOP.ObjValue
+> OOP.NewObject
+cout OOP.ObjName
+dumpclass
 
 end;

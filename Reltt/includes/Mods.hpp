@@ -7,4 +7,5 @@ Reltt_INT::QSRcModule FSys();
 Reltt_INT::QSRcModule Generator();
 Reltt_INT::QSRcModule RelttSTD();
 Reltt_INT::QSRcModule Compilator();
+Reltt_INT::QSRcModule Sqlite3();
 #endif //RELTT_LANG_MODS_HPP

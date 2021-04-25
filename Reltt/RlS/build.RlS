@@ -14,7 +14,7 @@ Set_Cache ( RelttPath + "cache/" )
 
 
 func Add_RelttDll ( )
-
+    Add_DLL ( RelttPath + "Lib/client.a" )
     Add_DLL ( RelttPath + "/bin/Bundled/Reltt.so" )
 
 end;
@@ -29,7 +29,7 @@ func Add_Reltt_import ( )
         Add Remote
         Add FSys
         Add Qemu_D
-
+        Add_DLL ( RelttPath + "Lib/client.a" )
 
         
         Add Reltt_Utils
@@ -125,12 +125,17 @@ func build_Reltt ( )
     
     link-this_DLL
 end;
+/*
+<> yoman ( RelttPath + "Lib/client.a" )
+*/
 func build_Reltt_int ( )
 
     Exe ( RelttPath + "bin/Reltt.RX")
         
         > Add_Reltt_import
         Add main
+        
+        
         module "main" ( RelttPath + "/main.cpp" )
     link-this
     
