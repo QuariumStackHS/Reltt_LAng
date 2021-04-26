@@ -334,6 +334,7 @@ int Reltt_INT::DeleteVar(string varname)
         {
             if (strcmp(this->Math_Var[k]->localVars[i]->v_Name.c_str(), varname.c_str()) == 0)
             {
+                //cout<<"DELETE"<<varname<<endl;
                 Math_Var[k]->localVars.erase(Math_Var[k]->localVars.begin() + i);
             }
         }
@@ -940,12 +941,12 @@ void *Call(Reltt_INT *IN)
                     if ((strcmp(IN->Dyn_INS_Obj[i]->OBJname.c_str(), I[0].c_str()) == 0) && (strcmp(IN->Dyn_INS_Obj[i]->Methods[j]->FuncName.c_str(), I[1].c_str()) == 0))
                     {
                         //is the good one
-                        cout << "Good" << endl;
+                        //cout << "Good" << endl;
                         func_INS_Var *S = new func_INS_Var();
                         IN->Math_Var.push_back(S);
                         string C = IN->get_Next_Token();
                         bool args = 0;
-                        cout<<"1"<<endl;
+                        //cout<<"1"<<endl;
                         if ((strcmp(C.c_str(), "with") == 0) || (strcmp(C.c_str(), "->") == 0))
                         {
                             args = 1;
@@ -953,7 +954,7 @@ void *Call(Reltt_INT *IN)
                             //cout<<"With"<<IN->Functions[Path].ArgsT.size()<<endl;
                             //IN->StackPointer--;
                             string jk = IN->get_Next_Token();
-                            cout<<"2"<<endl;
+                            //cout<<"2"<<endl;
                             for (int k = 0; k < IN->Dyn_INS_Obj[i]->Methods[j]->ArgsT.size(); i++)
                             {
                                 string type = IN->Dyn_INS_Obj[i]->Methods[j]->ArgsT[k].ArgTyper;
@@ -973,18 +974,18 @@ void *Call(Reltt_INT *IN)
                                 //cout<<"V: "<<j<<endl;
                                 bfcharstr = k;
                             }
-                            cout<<"3"<<endl;
-                            cout<<"4"<<endl;
+                            //cout<<"3"<<endl;
+                            //cout<<"4"<<endl;
                             for (int k = 0; k < VA.size(); k++)
                             {
                                 //cout << VA[i].S_value << VA[i].v_Name << endl;
                                 IN->New_Var(VA[k], IN->StackPointer);
                             }
-                            cout<<"5"<<endl;
+                            //cout<<"5"<<endl;
                         }
                         else
                         {
-                            cout<<"OOF1"<<endl;
+                            //cout<<"OOF1"<<endl;
                             IN->charstr -= 1;
                             if (IN->Dyn_INS_Obj[i]->Methods[j]->ArgsT.size() >= 1)
                             {
@@ -998,7 +999,7 @@ void *Call(Reltt_INT *IN)
                                 inclassarg->MasterName = "this";
                                 IN->New_Var(inclassarg,IN->StackPointer);
                             }
-                        cout<<"6"<<endl;
+                        //cout<<"6"<<endl;
                         IN->StackPointer++;
                         //cout << IN->StackPointer << endl;
                         //IN->Math_Var.size()++;
@@ -1013,6 +1014,7 @@ void *Call(Reltt_INT *IN)
                                 if((strcmp(IN->Math_Var[k]->localVars[l]->MasterName.c_str(),"this")==0)&&(strcmp(IN->Math_Var[k]->localVars[l]->v_Name.c_str(),IN->Dyn_INS_Obj[i]->Propertys[j]->v_Name.c_str())==0)){
 
                                     IN->Dyn_INS_Obj[i]->Propertys[j]->S_value=IN->Math_Var[k]->localVars[l]->S_value;
+                                    IN->DeleteVar(IN->Math_Var[k]->localVars[l]->v_Name);
                                 }
                             }   
                         }
@@ -1031,12 +1033,13 @@ void *Call(Reltt_INT *IN)
                 
                 else
                 {
-                    cout << "Invalid name2" << IN->Dyn_INS_Obj[i]->Methods[j]->master.c_str() << endl;
+                    cout << "Invalid name" << IN->Dyn_INS_Obj[i]->Methods[j]->master.c_str() << endl;
                 }
             }
         }
     }
-    cout << "Unknown Function:\"" << IN->argv[IN->charstr] << "\"" << endl;
+    IN->charstr++;
+    //cout << "Unknown Function:\"" << IN->argv[IN->charstr] << "\"" << endl;
 }
 void *Export(Reltt_INT *IN)
 {
@@ -1089,7 +1092,7 @@ void *String(Reltt_INT *IN)
     //cout<<"Newvar__"<<VarValue->L_size()<<endl;
     //cout<<"VarValue"<<VarValue<<endl;
     //Value T =;
-    cout << "NewVar Name: " << Varname << "Var value:" << VarValue->S_value << endl;
+    //cout << "NewVar Name: " << Varname << "Var value:" << VarValue->S_value << endl;
     //IN->StackPointer--;
     if (IN->is_in_class)
     {
@@ -1125,22 +1128,22 @@ void *NewObj(Reltt_INT *IN)
 {
     string Objtype = IN->get_Next_Token();
     string Objname = IN->get_Next_Token();
-    cout << "cherching: " << Objtype << endl;
+    //cout << "cherching: " << Objtype << endl;
     for (int i = 0; i < IN->Static_Obj.size(); i++)
     {
-        cout << IN->Static_Obj[i]->classname << endl;
+        //cout << IN->Static_Obj[i]->classname << endl;
         if (strcmp(Objtype.c_str(), IN->Static_Obj[i]->classname.c_str()) == 0)
         {
-            cout << "found: " << Objtype << endl;
+            //cout << "found: " << Objtype << endl;
             Reltt_INT::C_Object *NewClass = new Reltt_INT::C_Object(Objtype);
-            cout << "gonna add Propertys to newclass" << endl;
+            //cout << "gonna add Propertys to newclass" << endl;
             for (int k = 0; k < IN->Static_Obj[i]->Propertys.size(); k++)
             {
                 Value *Prop = new Value(IN->Static_Obj[i]->Propertys[k]->v_Name, IN->Static_Obj[i]->Propertys[k]->S_value, IN->Static_Obj[i]->Propertys[k]->T_R);
                 Prop->MasterName = Objtype;
                 NewClass->add_Property(Prop);
             }
-            cout << "added to newclass Propertys\ngonna add UDF to newclass" << endl;
+            //cout << "added to newclass Propertys\ngonna add UDF to newclass" << endl;
             for (int k = 0; k < IN->Static_Obj[i]->Methods.size(); k++)
             {
                 UD_Function *Prop = new UD_Function(IN->Static_Obj[i]->Methods[k]->FuncName, IN->Static_Obj[i]->Methods[k]->BeginLine, IN->Static_Obj[i]->Methods[k]->EndLine);
@@ -1152,10 +1155,10 @@ void *NewObj(Reltt_INT *IN)
 
                 NewClass->add_UDF(Prop);
             }
-            cout << "Added newCLasses" << endl;
+            //cout << "Added newCLasses" << endl;
             NewClass->OBJname = Objname;
             IN->Dyn_INS_Obj.push_back(NewClass);
-            cout << "Pushedit back!<<endl;";
+            //cout << "Pushedit back!<<endl;";
         }
     }
 }
@@ -1389,22 +1392,22 @@ void *Rclass(Reltt_INT *IN)
 {
 
     string classname = IN->get_Next_Token();
-    cout << "is in class" << classname << endl;
+    //cout << "is in class" << classname << endl;
     Reltt_INT::C_Object *newClass = new Reltt_INT::C_Object(classname);
     IN->Static_Obj.push_back(newClass);
     IN->is_in_class = 1;
     IN->Parse();
     IN->is_in_class = 0;
-    cout << "end;" << endl;
+    //cout << "end;" << endl;
 }
 int Reltt_INT::init_Func()
 {
     //&Compile;
-    add_Cask("compile", "[Compilable_Module]", &Compile);
-    add_Cask("link", "Link all objs together", &Link);
-    add_Cask("App-RCP", "Recompile app from local source √", &Update);
-    add_Cask("App-RUP", "Update from master-Github and recompile", &Update);
-    add_Cask("run", "run exe file in build/exe", &Run);
+    //add_Cask("compile", "[Compilable_Module]", &Compile);
+    //add_Cask("link", "Link all objs together", &Link);
+    //add_Cask("App-RCP", "Recompile app from local source √", &Update);
+    //add_Cask("App-RUP", "Update from master-Github and recompile", &Update);
+    //add_Cask("run", "run exe file in build/exe", &Run);
     add_Cask("import", "import [Module], note those are c++ import √", &import_Module);
     add_Cask("using", "using [Module], note those are QF import √", &import_T);
     add_Cask("func", "[Fname] ( argtype1 argtype2 ) as begin: {Code} end; √", &func);
@@ -1412,8 +1415,8 @@ int Reltt_INT::init_Func()
     add_Cask(">", "[Func] √", &Call);
     add_Cask("with", "call [Func] with/-> Args √", &with);
     add_Cask("exit", "exit Programme √", &Exit);
-    add_Cask("add", "add [Compilable_Module]", &add);
-    add_Cask("init", "init Project", &Init);
+    //add_Cask("add", "add [Compilable_Module]", &add);
+    //add_Cask("init", "init Project", &Init);
     add_Cask("-RlS", "Run Reltt Script √", &QF);
     add_Cask("-help", "[module] √", &HelperI);
     add_Cask("<>", "[varname] [\"var value\"] √", &String);
@@ -1428,8 +1431,10 @@ int Reltt_INT::init_Func()
     add_Cask("wait", "wait for enter key √", &Sleeper);
     add_Cask("aliase", "newkey key √", &aliase);
     add_Cask("cin", "get until enter key √", &ciner);
-    add_Cask("struct", "get until enter key √", &Rclass);
+    add_Cask("class", "get until enter key √", &Rclass);
+    add_Cask("Class", "get until enter key √", &Rclass);
     add_Cask("New", "get until enter key √", &NewObj);
+    add_Cask("new", "get until enter key √", &NewObj);
     add_Cask("dumpclass", "get until enter key √", &DumpClass);
 
     //add_Cask("endif", "end if else statement", &handler);
@@ -1583,13 +1588,13 @@ string Reltt_INT::get_fileOBJ(string ik)
         ifstream Src((paths[i] + ((string)ik)).c_str());
         if (Src)
         {
-            cout << "find " << ik << " in" << paths[i] << endl;
+            //cout << "find " << ik << " in" << paths[i] << endl;
             ;
             return paths[i] + (ik);
         }
         else
         {
-            cout << "did not find " << ik << " in" << paths[i] << endl;
+            //cout << "did not find " << ik << " in" << paths[i] << endl;
             ;
         }
     }

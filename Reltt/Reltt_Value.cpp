@@ -416,11 +416,11 @@ void Reltt_INT::New_Var(Value *TR, int SP)
     //cout<<"NewVarBLBL:"<<VR->Objects.size()<<endl;
     if (strcmp(this->getVar(TR->v_Name)->S_value.c_str(), TR->v_Name.c_str()) == 0)
     {
-        cout<<"new var"<<TR->v_Name<<" with value "<<TR->S_value<<" at:"<<SP<<endl;
+        //cout<<"new var"<<TR->v_Name<<" with value "<<TR->S_value<<" at:"<<SP<<endl;
         if ((SP) <= (this->Math_Var.size()))
         {
             this->Math_Var[SP]->localVars.push_back(TR);
-            cout<<"BLBLB: "<<this->Math_Var[SP]->localVars[this->Math_Var[SP]->localVars.size()-1]->Objects.size()<<endl;
+            //cout<<"BLBLB: "<<this->Math_Var[SP]->localVars[this->Math_Var[SP]->localVars.size()-1]->Objects.size()<<endl;
         }
     }
     else

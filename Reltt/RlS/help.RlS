@@ -6,5 +6,4 @@ Begin:
 -help Generator
 -help Std
 -help Compilator
--help sqlite3
 end;

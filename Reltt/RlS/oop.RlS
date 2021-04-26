@@ -1,15 +1,21 @@
 Begin:
 
 import Std
-struct NewObject
+
+class NewObject
     <> ObjName ( "Yo" )
     <> ObjValue ( "2" * "2" )
+    New NewObject OOP2
+
     func NewObject ( )
+        > OOP2.NewObject
         <> ObjName ( "OOF-" + ObjName )
     end;
+    
 end;
 
 New NewObject OOP
+
 
 
 <> OOP.ObjName ( "OOP2 data structure" )
@@ -19,7 +25,9 @@ New NewObject OOP
 cout OOP.ObjName
 cout OOP.ObjValue
 > OOP.NewObject
-cout OOP.ObjName
+
+
+cout OOP2.ObjName
 dumpclass
 
 end;
