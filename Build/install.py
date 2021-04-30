@@ -16,7 +16,6 @@ db = SQLAlchemy(app)
 ALLOWED_EXTENSIONS = {'o', 'a', 'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = "../Reltt/Cache/"
 
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -204,6 +203,8 @@ def build_Reltt():
     os.system("g++ -w -std=c++17 -c ../Reltt/Utils.cpp -o ../Reltt/Cache/Utils.o")
     os.system("g++ -w -std=c++17 -c ../Reltt/Reltt_Instruction_func.cpp -o ../Reltt/Cache/Reltt_Instruction_func.o")
     os.system("g++ -w -std=c++17 -c ../Reltt/oop.cpp -o ../Reltt/Cache/oop.o")
+    #os.system("g++ -w -std=c++17 -c ../Reltt/RC.cpp -o ../Reltt/Cache/RC.o")
+    #os.system("gcc -w -c ../Reltt/Lib/Sqlite3.c -o ../Reltt/Cache/Sql.o")
     for i in Mods.query.all():
         if i.isused:
             objects += " "+i.Path

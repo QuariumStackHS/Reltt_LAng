@@ -2,16 +2,32 @@ Begin:
 
 import Std
 
+
+class Main
+
+    <> DMO ( "DMO_VALUE" )
+    
+    func Main ( )
+
+    <> DMO ( arg1 )
+    
+    end;
+
+end;
+
 class NewObject
     <> ObjName ( "Yo" )
     <> ObjValue ( "2" * "2" )
-    New NewObject OOP2
+    
+    New Main OOP2
 
     func NewObject ( )
-        > OOP2.NewObject
         <> ObjName ( "OOF-" + ObjName )
+        > OOP2.Main
+
     end;
     
+
 end;
 
 New NewObject OOP
@@ -22,12 +38,9 @@ New NewObject OOP
 
 <> OOP.ObjValue ( "Yaya" )
 
-cout OOP.ObjName
-cout OOP.ObjValue
+
 > OOP.NewObject
-
-
-cout OOP2.ObjName
 dumpclass
 
+exit
 end;

@@ -3,13 +3,30 @@
 #define Reltt_Hpp 1
 #define COLOR 0
 
+//#include "../Lib/sqlite3.h"
 #include "config.hpp"
 #include <cstring>
-#include <thread>
+
 #include <fstream> // std::fstream
+/*
+class
+RCLoader
+{
+public:
+    string GetCode(string filename);
+    string dbname = "";
+    ~RCLoader();
 
+    RCLoader(string RCNAME);
+    int add_SRC(string filename, string code);
+
+protected:
+    sqlite3 *db;
+
+private:
+};
 extern "C" int foo(void);
-
+*/
 #define elif else if
 //user definable Function
 /*
@@ -62,25 +79,25 @@ public:
 
     Value *get_next();
     Value *get_prev();
-    void set_next(Value*);
-    void set_prev(Value*);
-    void Push_Back(Value*);
-    void Push_Forward(Value*);
-    int L_index=0;
+    void set_next(Value *);
+    void set_prev(Value *);
+    void Push_Back(Value *);
+    void Push_Forward(Value *);
+    int L_index = 0;
     int L_size();
     Value *GetAS() { return this; }
     Value(string Name, string Value, string type);
     Value(string Name, float Value);
     Value(string Name, int Value);
 
-    Value(){
-this->T_R="(Linked)Array";
+    Value()
+    {
+        this->T_R = "(Linked)Array";
     };
-    Value* Next_Obj=nullptr;
-    Value* Prev_Obj=nullptr;
+    Value *Next_Obj = nullptr;
+    Value *Prev_Obj = nullptr;
 
-
-    vector<Value*>Objects;
+    vector<Value *> Objects;
     ~Value();
     int I_value;
     float F_value;
@@ -88,10 +105,10 @@ this->T_R="(Linked)Array";
     //Reltt_array V_Array;
     string S_value;
     string v_Name;
-    string MasterName="Reltt";
+    string MasterName = "Reltt";
     string T_R;
 };
-string Reltt_Array_to_string(Value*I);
+string Reltt_Array_to_string(Value *I);
 
 class ArgType
 {
@@ -106,8 +123,8 @@ public:
     UD_Function(string Fname, int Bl, int El);
     //argtype.size() is the number of args and argtype[i] is the type of arg
     vector<ArgType> ArgsT;
-    string master="Reltt";
-    string INSNAMEC="NULL";
+    string master = "Reltt";
+    string INSNAMEC = "NULL";
     string FuncName;
 
     int BeginLine;
@@ -123,27 +140,29 @@ public:
 
     vector<Value *> localVars;
 };
-class printer{
+class printer
+{
 public:
-    printer(string user,string Thread);
+    printer(string user, string Thread);
     void begin_info();
     void end_info();
     void print_info(string info);
     void print_Error(string Error);
     void B_cin();
 
-
     string Suser;
     string SThread;
-
 };
 
 class Reltt_INT
 {
 public:
-    string RelttCache =((string)getenv("RelttPath")).append("OBJ/");
-    string RelttCheck =((string)getenv("RelttPath")).append("check/");
-    printer p=printer("Dev","Reltt_INT");
+    int compile=0;
+    //RCLoader *Compiled;
+    int is_method = 0;
+    string RelttCache = ((string)getenv("RelttPath")).append("OBJ/");
+    string RelttCheck = ((string)getenv("RelttPath")).append("check/");
+    printer p = printer("Dev", "Reltt_INT");
     int get_line_fromcharstr(int CharStr2);
     vector<string> paths;
     string get_fileOBJ(string ik);
@@ -157,16 +176,17 @@ public:
     vector<UD_Function> Functions;
     int StackPointer = 0;
     Reltt_INT(int argcr, char **argrv);
-    Reltt_INT(){
-    this->init_Func();
-    //this->Init_APP();
-    Cfg = Configurator();
-    func_INS_Var *R = new func_INS_Var();
-    Value *D = new Value();
-    R->localVars.push_back(D);
-    //cout<<GREEN<<R->localVars.size()<<endl;
-    this->Math_Var.push_back(R);
-        this->New_Var(new Value("RelttPath",getenv("RelttPath"),"string"),0);
+    Reltt_INT()
+    {
+        this->init_Func();
+        //this->Init_APP();
+        Cfg = Configurator();
+        func_INS_Var *R = new func_INS_Var();
+        Value *D = new Value();
+        R->localVars.push_back(D);
+        //cout<<GREEN<<R->localVars.size()<<endl;
+        this->Math_Var.push_back(R);
+        this->New_Var(new Value("RelttPath", getenv("RelttPath"), "string"), 0);
     }
 
     void AddVector(int argcv, vector<string> argvS);
@@ -184,18 +204,21 @@ public:
     };
     vector<CallableOperator> Operators;
     int add_Cask(string fname, string desk, void *(taddr)(Reltt_INT *, Value &));
-    class C_Object{
-        public:
+    class C_Object
+    {
+    public:
         C_Object(string classnameS);
-        int add_Property(Value*);
-        int add_UDF(UD_Function*);
+        int add_Property(Value *);
+        int add_UDF(UD_Function *);
+        int add_ChildClass_P(C_Object *);
         string classname;
         string OBJname;
-        vector<Value*>Propertys;
-        vector<UD_Function*>Methods;
+        vector<Value *> Propertys;
+        vector<C_Object *> ChildClass_P;
+        vector<UD_Function *> Methods;
     };
-    vector<C_Object*>Static_Obj;
-    vector<C_Object*>Dyn_INS_Obj;
+    vector<C_Object *> Static_Obj;
+    vector<C_Object *> Dyn_INS_Obj;
     int is_in_class;
     class QSRcModule
     {
@@ -229,9 +252,7 @@ public:
     int DeleteVar(string);
 
     Value *getVar(string);
-    void New_Var(Value *TR,int SP);
-
-
+    void New_Var(Value *TR, int SP);
 
     string get_Next_Token();
     bool is_operator(string name);
@@ -295,7 +316,7 @@ public:
     }
     return -1;
 }*/
-Value* resolve_parentensis(Reltt_INT *IN);
+Value *resolve_parentensis(Reltt_INT *IN);
 size_t split(const std::string &txt, std::vector<std::string> &strs, char ch);
 class Helper
 {
